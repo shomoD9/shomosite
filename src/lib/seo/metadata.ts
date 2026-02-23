@@ -9,7 +9,7 @@ import type { Metadata } from "next";
 import { getSiteConfig } from "@/lib/site-config";
 
 const baseDescription =
-  "Writer, video essayist, and product tinkerer building a calm home for essays, commentary, books, and software.";
+  "Builder, storyteller. Essays, videos, books, and software by Shomodip De.";
 
 export function buildBaseMetadata(): Metadata {
   const { siteUrl } = getSiteConfig();
@@ -17,20 +17,20 @@ export function buildBaseMetadata(): Metadata {
   return {
     metadataBase: new URL(siteUrl),
     title: {
-      default: "Shomo | Essays, Videos, Books, and Tools",
-      template: "%s | Shomo"
+      default: "Shomodip De",
+      template: "%s — Shomodip De"
     },
     description: baseDescription,
     openGraph: {
       type: "website",
-      title: "Shomo | Essays, Videos, Books, and Tools",
+      title: "Shomodip De",
       description: baseDescription,
       url: siteUrl,
-      siteName: "Shomo"
+      siteName: "Shomodip De"
     },
     twitter: {
       card: "summary_large_image",
-      title: "Shomo | Essays, Videos, Books, and Tools",
+      title: "Shomodip De",
       description: baseDescription
     }
   };
@@ -51,12 +51,12 @@ export function buildSectionMetadata(options: {
       canonical: url
     },
     openGraph: {
-      title: `${options.title} | Shomo`,
+      title: `${options.title} — Shomodip De`,
       description: options.description,
       url
     },
     twitter: {
-      title: `${options.title} | Shomo`,
+      title: `${options.title} — Shomodip De`,
       description: options.description
     }
   };

@@ -20,14 +20,14 @@ export function SiteHeader(): React.JSX.Element {
   const { substackUrl } = getSiteConfig();
 
   return (
-    <header className="sticky top-0 z-30 border-b border-line/80 bg-paper/95 backdrop-blur-sm">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4 md:px-10">
-        <Link href="/" className="font-serif text-xl tracking-tight text-ink transition hover:text-accent">
-          Shomo
+    <header className="sticky top-0 z-30 border-b border-line bg-[#0a0a0c]">
+      <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-4 md:px-10">
+        <Link href="/" className="font-heading text-2xl tracking-tight text-ink transition hover:text-accent">
+          Shomodip De
         </Link>
-        <nav aria-label="Primary" className="hidden gap-6 text-sm text-muted md:flex">
+        <nav aria-label="Primary" className="hidden gap-7 text-[0.84rem] text-muted md:flex" style={{ fontVariant: "small-caps" }}>
           {navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="transition hover:text-ink">
+            <Link key={item.href} href={item.href} className="tracking-wide transition hover:text-accent">
               {item.label}
             </Link>
           ))}
@@ -37,7 +37,8 @@ export function SiteHeader(): React.JSX.Element {
           href={substackUrl}
           target="_blank"
           rel="noreferrer"
-          className="rounded-full border border-ink px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-ink transition hover:border-accent hover:text-accent"
+          className="rounded-full border border-[#2a2a2e] px-4 py-2 text-[0.72rem] tracking-[0.1em] text-muted transition hover:border-accent hover:text-accent"
+          style={{ fontVariant: "small-caps" }}
         >
           Subscribe
         </a>

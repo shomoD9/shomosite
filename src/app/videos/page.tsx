@@ -24,21 +24,20 @@ export default async function VideosPage(): Promise<React.JSX.Element> {
   return (
     <section className="space-y-8 py-10">
       <div className="max-w-3xl space-y-4">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Videos</p>
-        <h1 className="font-serif text-5xl leading-tight text-ink">Commentary in long form</h1>
-        <p className="text-lg leading-relaxed text-muted">
-          Video essays, commentary, and visual arguments, indexed here with links to watch on YouTube.
+        <h1 className="font-heading text-[2.75rem] font-medium leading-[1.08] text-ink">Videos</h1>
+        <p className="text-lg leading-[1.8] text-muted">
+          Video essays and commentary. Hosted on YouTube.
         </p>
       </div>
 
       {videos.status === "cache" ? (
-        <p className="rounded-2xl border border-accentSoft bg-accentSoft/35 px-4 py-3 text-sm text-ink">
+        <p className="rounded-lg border border-accent/20 bg-[#0e0e10] px-4 py-3 text-sm text-ink">
           Showing cached video entries while YouTube feed is temporarily unreachable.
         </p>
       ) : null}
 
       {videos.status === "empty" ? (
-        <p className="rounded-2xl border border-line bg-white/70 px-4 py-4 text-sm text-muted">
+        <p className="rounded-lg border border-line bg-[#0e0e10] px-4 py-4 text-sm text-muted">
           YouTube feed is currently unavailable. You can still browse videos on{" "}
           <a
             href={youtubeChannelUrl}

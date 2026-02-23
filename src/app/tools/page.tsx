@@ -20,10 +20,9 @@ export default async function ToolsPage(): Promise<React.JSX.Element> {
   return (
     <section className="space-y-8 py-10">
       <div className="max-w-3xl space-y-4">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Tools</p>
-        <h1 className="font-serif text-5xl leading-tight text-ink">Software as thinking tools</h1>
-        <p className="text-lg leading-relaxed text-muted">
-          Personal and open projects, mostly around productivity and systems for better creative work.
+        <h1 className="font-heading text-[2.75rem] font-medium leading-[1.08] text-ink">Tools</h1>
+        <p className="text-lg leading-[1.8] text-muted">
+          Software I built, mostly for creative work.
         </p>
       </div>
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">

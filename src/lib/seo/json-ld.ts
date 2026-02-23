@@ -15,7 +15,8 @@ export function buildPersonJsonLd(): Record<string, unknown> {
     "@type": "Person",
     name: "Shomo",
     url: config.siteUrl,
-    sameAs: [config.substackUrl, config.youtubeChannelUrl],
+    // We include all major identity surfaces so search engines can reconcile authorship across platforms.
+    sameAs: [config.substackUrl, config.youtubeChannelUrl, config.linkedinUrl],
     jobTitle: "Writer and Product Tinkerer",
     description:
       "Writer, video essayist, and product tinkerer publishing essays, books, commentary, and software tools."

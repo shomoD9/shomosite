@@ -78,7 +78,7 @@ describe("HomePage", () => {
     ]);
 
     render(await HomePage());
-    expect(screen.getByText("Latest Across Media")).toBeInTheDocument();
+    expect(screen.getByText("Recent")).toBeInTheDocument();
     // The essay appears in both the latest strip and essay preview, so we assert presence across both regions.
     expect(screen.getAllByText("Essay One").length).toBeGreaterThan(0);
   });
@@ -91,7 +91,7 @@ describe("HomePage", () => {
     render(await HomePage());
     // This assertion protects the core narrative shell even if feeds fail hard.
     expect(
-      screen.getByText(/I make writing, video, books, and software speak to each other/i)
+      screen.getByText(/Shomodip De/i)
     ).toBeInTheDocument();
   });
 });

@@ -9,6 +9,7 @@ type SiteConfig = {
   plausibleDomain?: string;
   substackUrl: string;
   substackFeedUrl: string;
+  linkedinUrl: string;
   youtubeChannelUrl: string;
   youtubeFeedUrl: string;
   primaryEmail: string;
@@ -17,11 +18,12 @@ type SiteConfig = {
 const fallbackConfig: SiteConfig = {
   siteUrl: "https://example.com",
   plausibleDomain: undefined,
-  substackUrl: "https://example.substack.com",
-  substackFeedUrl: "https://example.substack.com/feed",
-  youtubeChannelUrl: "https://www.youtube.com/@example",
-  youtubeFeedUrl: "https://www.youtube.com/feeds/videos.xml?channel_id=CHANNEL_ID",
-  primaryEmail: "hello@example.com"
+  substackUrl: "https://ds013.substack.com",
+  substackFeedUrl: "https://ds013.substack.com/feed",
+  linkedinUrl: "https://www.linkedin.com/in/shomodip/",
+  youtubeChannelUrl: "https://www.youtube.com/@armchairdescending",
+  youtubeFeedUrl: "https://www.youtube.com/feeds/videos.xml?channel_id=UCOAgAWQ15_AkatLTKaGl9QA",
+  primaryEmail: "domoship09@gmail.com"
 };
 
 export function getSiteConfig(): SiteConfig {
@@ -31,6 +33,7 @@ export function getSiteConfig(): SiteConfig {
     plausibleDomain: process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || fallbackConfig.plausibleDomain,
     substackUrl: process.env.NEXT_PUBLIC_SUBSTACK_URL || fallbackConfig.substackUrl,
     substackFeedUrl: process.env.SUBSTACK_FEED_URL || fallbackConfig.substackFeedUrl,
+    linkedinUrl: process.env.NEXT_PUBLIC_LINKEDIN_URL || fallbackConfig.linkedinUrl,
     youtubeChannelUrl:
       process.env.NEXT_PUBLIC_YOUTUBE_CHANNEL_URL || fallbackConfig.youtubeChannelUrl,
     youtubeFeedUrl: process.env.YOUTUBE_FEED_URL || fallbackConfig.youtubeFeedUrl,

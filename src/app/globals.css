@@ -8,12 +8,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* We keep global colors and spacing tokens in CSS variables for easier iterative branding. */
+/* Cool, ashen palette — no warm amber, no glow. Matte surfaces only. */
 :root {
-  --paper: #f4f1ea;
-  --ink: #151312;
-  --muted: #6f665c;
-  --line: #d8d2c9;
+  --paper: #08080a;
+  --ink: #c8c2b8;
+  --muted: #716b63;
+  --line: #1e1e22;
+  --vellum: rgba(120, 115, 108, 0.03);
 }
 
 * {
@@ -27,12 +28,46 @@ body {
 }
 
 body {
-  font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
+  font-family: var(--font-body), "EB Garamond", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: 17px;
+  line-height: 1.7;
   color: var(--ink);
   background:
-    radial-gradient(circle at 10% 0%, rgba(176, 111, 47, 0.08), transparent 40%),
-    radial-gradient(circle at 90% 20%, rgba(44, 38, 33, 0.08), transparent 45%),
+    linear-gradient(175deg, #0a0a0c, #08080a 60%, #060608),
     var(--paper);
+  min-height: 100vh;
+  font-feature-settings: "liga", "kern";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Near-invisible grain — a whisper of texture, not a visible layer. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.05) 0.35px, transparent 0.35px),
+    radial-gradient(rgba(0, 0, 0, 0.3) 0.45px, transparent 0.45px);
+  background-size:
+    3px 3px,
+    5px 5px;
+  background-position:
+    0 0,
+    1px 1px;
+  z-index: -1;
+}
+
+/* Tight, deep vignette — the edges close in, pulling you into the rabbit hole. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 38%, transparent 22%, rgba(0, 0, 0, 0.72) 100%);
+  z-index: -1;
 }
 
 h1,
@@ -41,9 +76,31 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-family: var(--font-heading), "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  letter-spacing: -0.015em;
 }
 
 a {
   color: inherit;
+}
+
+::selection {
+  background: rgba(120, 115, 108, 0.28);
+  color: #e0ddd8;
+}
+
+/* Decorative separator — thin rule with fading ends, used between editorial sections. */
+.separator {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--line) 20%, var(--line) 80%, transparent);
 }

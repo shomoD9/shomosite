@@ -1,47 +1,23 @@
 /*
- * This file renders the homepage manifesto and primary conversion actions.
- * It is separated because the hero is a product-level narrative unit reused as the site's thesis statement.
- * The home route imports it, and it consumes link utilities and site config for CTAs.
+ * This file renders the homepage intro and primary identity statement.
+ * It is separated because the intro is a product-level narrative unit reused as the site's opening gesture.
+ * The home route imports it, and it consumes site config for any outbound links.
  */
 
-import { createPrefilledEmailLink } from "@/lib/links";
-import { getSiteConfig } from "@/lib/site-config";
-
 export function ManifestoHero(): React.JSX.Element {
-  const { substackUrl } = getSiteConfig();
-
   return (
-    <section className="animate-fade-up border-b border-line/80 pb-14 pt-12 md:pt-16">
-      <div className="max-w-3xl space-y-6">
-        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent">Author Manifesto</p>
-        <h1 className="font-serif text-5xl leading-[1.05] text-ink md:text-6xl">
-          I make writing, video, books, and software speak to each other.
+    <section className="animate-fade-up pb-10 pt-14 md:pt-20">
+      <div className="max-w-3xl space-y-5">
+        <h1 className="font-heading text-[2.75rem] font-medium leading-[1.08] text-ink md:text-[3.5rem]">
+          Shomodip De
         </h1>
-        <p className="max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
-          This site is my canonical workspace: a single place where essays, video commentary,
-          published books, and open tools can be read as one long argument about how we build and
-          live with better systems.
+        <p className="max-w-2xl text-lg leading-[1.8] text-muted md:text-[1.18rem]">
+          Builder, storyteller. I think about human capacity — what summons it,
+          what sustains it, and what we can do to get closer to it.
+          This site collects my work across essays, videos, books, and software.
         </p>
-        {/* Dual CTAs balance audience growth with direct conversation, which matches the site's purpose. */}
-        <div className="flex flex-wrap gap-4 pt-2">
-          <a
-            href={substackUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-full bg-ink px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-paper transition hover:bg-accent"
-          >
-            Subscribe on Substack
-          </a>
-          <a
-            href={createPrefilledEmailLink("Homepage hero")}
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-full border border-ink px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink transition hover:border-accent hover:text-accent"
-          >
-            Start a Conversation
-          </a>
-        </div>
       </div>
+      <hr className="separator mt-12" />
     </section>
   );
 }

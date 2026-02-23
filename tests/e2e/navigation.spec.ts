@@ -9,13 +9,12 @@ import { expect, test } from "@playwright/test";
 test("core navigation and primary CTAs are reachable", async ({ page }) => {
   await page.goto("/");
 
-  await expect(page.getByRole("heading", { name: /I make writing, video, books, and software/i })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: /Shomodip De/i })
+  ).toBeVisible();
 
-  const subscribeCta = page.getByRole("link", { name: "Subscribe on Substack" });
+  const subscribeCta = page.getByRole("link", { name: "Subscribe" });
   await expect(subscribeCta).toHaveAttribute("href", /substack/i);
-
-  const emailCta = page.getByRole("link", { name: "Start a Conversation" });
-  await expect(emailCta).toHaveAttribute("href", /^mailto:/i);
 
   // This sequence verifies each top-level medium route is navigable in production-like behavior.
   await page.getByRole("link", { name: "Essays" }).first().click();

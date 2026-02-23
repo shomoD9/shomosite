@@ -28,18 +28,21 @@ const mediumLabels: Record<CardMedium, string> = {
 
 export function ContentCard(props: ContentCardProps): React.JSX.Element {
   const anchorClassName =
-    "group flex h-full flex-col rounded-3xl border border-line/90 bg-white/80 p-6 shadow-card transition hover:-translate-y-0.5 hover:border-accent/60 hover:shadow-lg";
+    "group flex h-full flex-col rounded-lg border border-line bg-[#0c0c0e] p-6 transition hover:border-accent/30 hover:bg-[#101012]";
 
   const header = (
     <>
-      <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+      <span
+        className="text-[0.72rem] tracking-[0.12em] text-accent"
+        style={{ fontVariant: "small-caps" }}
+      >
         {mediumLabels[props.medium]}
       </span>
-      <h3 className="pt-3 font-serif text-2xl leading-tight text-ink transition group-hover:text-accent">
+      <h3 className="pt-3 font-heading text-xl font-medium leading-snug text-ink">
         {props.title}
       </h3>
-      <p className="pt-3 text-sm leading-relaxed text-muted">{props.summary}</p>
-      <p className="mt-auto pt-6 text-xs uppercase tracking-[0.14em] text-muted">
+      <p className="pt-3 text-[0.84rem] leading-relaxed text-muted">{props.summary}</p>
+      <p className="mt-auto pt-6 text-[0.72rem] tabular-nums text-muted/80">
         {toDisplayDate(props.publishedAt)}
       </p>
     </>

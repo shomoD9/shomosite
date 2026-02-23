@@ -13,13 +13,8 @@ type LatestMediaProps = {
 
 export function LatestMedia({ items }: LatestMediaProps): React.JSX.Element {
   return (
-    <section className="animate-fade-up space-y-5 pt-14">
-      <div className="flex items-end justify-between gap-6">
-        <h2 className="font-serif text-4xl text-ink">Latest Across Media</h2>
-        <p className="max-w-lg text-sm leading-relaxed text-muted">
-          The most recent movement across essays, video commentary, and software releases.
-        </p>
-      </div>
+    <section className="animate-fade-up space-y-6 pt-2 pb-4">
+      <h2 className="font-heading text-2xl font-medium text-ink">Recent</h2>
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {items.map((item) => (
           <ContentCard
@@ -33,6 +28,7 @@ export function LatestMedia({ items }: LatestMediaProps): React.JSX.Element {
           />
         ))}
       </div>
+      <hr className="separator mt-8" />
     </section>
   );
 }
