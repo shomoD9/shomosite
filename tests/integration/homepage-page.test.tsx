@@ -79,7 +79,6 @@ describe("HomePage", () => {
 
     render(await HomePage());
     expect(screen.getByText("Recent")).toBeInTheDocument();
-    // The essay appears in both the latest strip and essay preview, so we assert presence across both regions.
     expect(screen.getAllByText("Essay One").length).toBeGreaterThan(0);
   });
 
@@ -89,9 +88,9 @@ describe("HomePage", () => {
     mockedGetTools.mockResolvedValue([]);
 
     render(await HomePage());
-    // This assertion protects the core narrative shell even if feeds fail hard.
+    // The hero always renders even when feeds fail.
     expect(
-      screen.getByText(/Shomodip De/i)
+      screen.getByText(/Capacity is the/i)
     ).toBeInTheDocument();
   });
 });

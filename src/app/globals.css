@@ -1,20 +1,19 @@
-/*
- * This file defines global design tokens and baseline typography for the entire site.
- * It exists separately so systemic visual decisions stay centralized and reusable across every route.
- * The root layout imports it once, and all components inherit these primitives.
- */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Cool, ashen palette — no warm amber, no glow. Matte surfaces only. */
+/* ═══════════════════════════════════════════════════════
+   DARK ATHENAEUM — Design Tokens
+   An ancient library at midnight, lit by a single amber lamp.
+   ═══════════════════════════════════════════════════════ */
+
 :root {
-  --paper: #08080a;
-  --ink: #c8c2b8;
-  --muted: #716b63;
-  --line: #1e1e22;
-  --vellum: rgba(120, 115, 108, 0.03);
+  --paper: #0c0c10;
+  --ink: #dbd6cc;
+  --muted: #8e887e;
+  --line: #1f1f25;
+  --accent: #c9a84c;
+  --accent-soft: #151518;
 }
 
 * {
@@ -32,44 +31,40 @@ body {
   font-size: 17px;
   line-height: 1.7;
   color: var(--ink);
-  background:
-    linear-gradient(175deg, #0a0a0c, #08080a 60%, #060608),
-    var(--paper);
+  background-color: var(--paper);
   min-height: 100vh;
   font-feature-settings: "liga", "kern";
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Near-invisible grain — a whisper of texture, not a visible layer. */
+/* ═══════════════════════════════════════════════════════
+   SVG NOISE OVERLAY
+   feTurbulence grain — eliminates flat digital gradients.
+   ═══════════════════════════════════════════════════════ */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: 0.03;
-  background-image:
-    radial-gradient(rgba(255, 255, 255, 0.05) 0.35px, transparent 0.35px),
-    radial-gradient(rgba(0, 0, 0, 0.3) 0.45px, transparent 0.45px);
-  background-size:
-    3px 3px,
-    5px 5px;
-  background-position:
-    0 0,
-    1px 1px;
-  z-index: -1;
+  z-index: 9999;
+  opacity: 0.04;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
 }
 
-/* Tight, deep vignette — the edges close in, pulling you into the rabbit hole. */
+/* Subtle vignette — frames the content. */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(circle at 50% 38%, transparent 22%, rgba(0, 0, 0, 0.72) 100%);
-  z-index: -1;
+  background: radial-gradient(ellipse 80% 70% at 50% 40%, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+  z-index: 0;
 }
 
+/* ═══════════════════════════════════════════════════════
+   TYPOGRAPHY
+   ═══════════════════════════════════════════════════════ */
 h1,
 h2,
 h3,
@@ -82,7 +77,7 @@ h6 {
 }
 
 h1 {
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 h2 {
@@ -91,16 +86,142 @@ h2 {
 
 a {
   color: inherit;
+  text-decoration: none;
 }
 
 ::selection {
-  background: rgba(120, 115, 108, 0.28);
-  color: #e0ddd8;
+  background: rgba(201, 168, 76, 0.25);
+  color: #f0ece4;
 }
 
-/* Decorative separator — thin rule with fading ends, used between editorial sections. */
+/* ═══════════════════════════════════════════════════════
+   MICRO-INTERACTIONS
+   ═══════════════════════════════════════════════════════ */
+
+/* Magnetic button — subtle scale pulse on hover. */
+.magnetic-btn {
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.magnetic-btn:hover {
+  transform: scale(1.03);
+}
+
+/* Slide background button — accent fill slides in from left. */
+.slide-bg-btn {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.slide-bg-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: translateX(-101%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: -1;
+}
+
+.slide-bg-btn:hover::before {
+  transform: translateX(0);
+}
+
+.slide-bg-btn:hover {
+  color: var(--paper);
+}
+
+/* Lift link — subtle vertical lift on hover. */
+.lift-link {
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.lift-link:hover {
+  transform: translateY(-1px);
+  color: var(--accent);
+}
+
+/* ═══════════════════════════════════════════════════════
+   CARD SURFACE
+   ═══════════════════════════════════════════════════════ */
+.card-surface {
+  background:
+    linear-gradient(180deg, rgba(219, 214, 204, 0.025) 0%, transparent 50%),
+    var(--accent-soft);
+  box-shadow: inset 0 1px 0 rgba(219, 214, 204, 0.04);
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-surface:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow:
+    inset 0 1px 0 rgba(219, 214, 204, 0.06),
+    0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* ═══════════════════════════════════════════════════════
+   SEPARATOR
+   ═══════════════════════════════════════════════════════ */
 .separator {
   border: none;
+  height: auto;
+  background: none;
+  text-align: center;
+  overflow: visible;
+  position: relative;
+  color: var(--accent);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  opacity: 0.3;
+}
+
+.separator::before {
+  content: "◆";
+  display: block;
+}
+
+.separator::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
   height: 1px;
-  background: linear-gradient(to right, transparent, var(--line) 20%, var(--line) 80%, transparent);
+  background: linear-gradient(to right, transparent, var(--line) 15%, var(--line) 43%, transparent 50%, var(--line) 57%, var(--line) 85%, transparent);
+  z-index: -1;
+}
+
+/* ═══════════════════════════════════════════════════════
+   PROSE
+   ═══════════════════════════════════════════════════════ */
+.prose-dropcap>p:first-of-type::first-letter {
+  font-family: var(--font-heading), "Cormorant Garamond", Georgia, serif;
+  float: left;
+  font-size: 3.2em;
+  line-height: 0.85;
+  padding-right: 0.08em;
+  padding-top: 0.05em;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ═══════════════════════════════════════════════════════
+   STATUS INDICATOR (footer)
+   ═══════════════════════════════════════════════════════ */
+@keyframes pulse-dot {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
 }

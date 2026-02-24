@@ -1,8 +1,3 @@
-/*
- * This file defines the design token surface for the whole interface.
- * It is separate from components so visual language stays coherent and centrally managed.
- * Components in src/app and src/components consume these tokens through utility classes.
- */
 import type { Config } from "tailwindcss";
 import typography from "@tailwindcss/typography";
 
@@ -11,26 +6,32 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: "#08080a",
-        ink: "#c8c2b8",
-        muted: "#716b63",
-        line: "#1e1e22",
-        accent: "#8a8478",
-        accentSoft: "#0e0e10"
+        paper: "#0c0c10",
+        ink: "#dbd6cc",
+        muted: "#8e887e",
+        line: "#1f1f25",
+        accent: "#c9a84c",
+        accentSoft: "#151518"
       },
       fontFamily: {
         heading: ["var(--font-heading)", "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", "Georgia", "serif"],
         body: ["var(--font-body)", "EB Garamond", "Palatino Linotype", "Book Antiqua", "Georgia", "serif"],
-        serif: ["var(--font-heading)", "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", "Georgia", "serif"]
+        serif: ["var(--font-heading)", "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", "Georgia", "serif"],
+        mono: ["var(--font-mono)", "IBM Plex Mono", "Menlo", "monospace"]
+      },
+      borderRadius: {
+        "2xl": "1rem",
+        "3xl": "1.5rem",
+        "4xl": "2rem"
       },
       keyframes: {
         "fade-up": {
-          "0%": { opacity: "0", transform: "translateY(12px)" },
+          "0%": { opacity: "0", transform: "translateY(20px)" },
           "100%": { opacity: "1", transform: "translateY(0)" }
         }
       },
       animation: {
-        "fade-up": "fade-up 0.7s ease-out"
+        "fade-up": "fade-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards"
       }
     }
   },

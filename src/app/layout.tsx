@@ -1,12 +1,6 @@
-/*
- * This file defines the root document frame shared by every route.
- * It is separated so global metadata, fonts, analytics wiring, and persistent chrome are managed once.
- * All route pages render inside this layout, and it imports global styles plus top/bottom navigation components.
- */
-
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Cormorant_Garamond, EB_Garamond } from "next/font/google";
+import { Cormorant_Garamond, EB_Garamond, IBM_Plex_Mono } from "next/font/google";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -31,15 +25,21 @@ const bodyFont = EB_Garamond({
   variable: "--font-body"
 });
 
+const monoFont = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
+  variable: "--font-mono"
+});
+
 export const metadata: Metadata = buildBaseMetadata();
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>): React.JSX.Element {
   const { plausibleDomain } = getSiteConfig();
 
   return (
-    <html lang="en" className={`scroll-smooth ${headingFont.variable} ${bodyFont.variable}`}>
+    <html lang="en" className={`scroll-smooth ${headingFont.variable} ${bodyFont.variable} ${monoFont.variable}`}>
       <body className="min-h-screen bg-paper text-ink antialiased">
-        {/* Plausible is loaded only when a domain is configured so local development stays noise-free. */}
         {plausibleDomain ? (
           <Script
             defer
@@ -49,7 +49,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           />
         ) : null}
         <SiteHeader />
-        <main className="mx-auto w-full max-w-5xl px-6 pb-16 pt-4 md:px-10">{children}</main>
+        <main>{children}</main>
         <SiteFooter />
       </body>
     </html>

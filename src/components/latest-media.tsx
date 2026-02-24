@@ -1,9 +1,3 @@
-/*
- * This file renders the homepage's cross-medium recency strip.
- * It is separated because this section has specific aggregation semantics different from single-medium pages.
- * The home route passes normalized latest entries into this component.
- */
-
 import { ContentCard } from "@/components/content-card";
 import type { LatestEntry } from "@/types/content";
 
@@ -13,8 +7,13 @@ type LatestMediaProps = {
 
 export function LatestMedia({ items }: LatestMediaProps): React.JSX.Element {
   return (
-    <section className="animate-fade-up space-y-6 pt-2 pb-4">
-      <h2 className="font-heading text-2xl font-medium text-ink">Recent</h2>
+    <section id="recent" className="mx-auto w-full max-w-6xl space-y-8 px-8 py-20 md:px-12">
+      <div className="flex items-end justify-between gap-6">
+        <h2 className="font-heading text-3xl font-medium text-ink">Recent</h2>
+        <p className="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-muted/60">
+          Latest across media
+        </p>
+      </div>
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {items.map((item) => (
           <ContentCard
@@ -28,7 +27,7 @@ export function LatestMedia({ items }: LatestMediaProps): React.JSX.Element {
           />
         ))}
       </div>
-      <hr className="separator mt-8" />
+      <hr className="separator mt-10" />
     </section>
   );
 }

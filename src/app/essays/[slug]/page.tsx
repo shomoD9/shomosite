@@ -63,19 +63,18 @@ export default async function EssayDetailPage({ params }: EssayDetailProps): Pro
   const articleJsonLd = buildEssayJsonLd(essay);
 
   return (
-    <article className="mx-auto max-w-3xl space-y-8 py-10">
+    <article className="mx-auto max-w-3xl space-y-8 px-8 py-16 md:px-12">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
       <header className="space-y-4 border-b border-line pb-8">
-        <p className="text-[0.78rem] tracking-[0.18em] text-accent" style={{ fontVariant: "small-caps" }}>Essay</p>
+        <p className="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-accent">Essay</p>
         <h1 className="font-heading text-[2.75rem] font-medium leading-[1.08] text-ink">{essay.title}</h1>
-        <p className="text-[0.82rem] tabular-nums text-muted">{toDisplayDate(essay.publishedAt)}</p>
+        <p className="font-mono text-[0.72rem] text-muted/60">{toDisplayDate(essay.publishedAt)}</p>
       </header>
 
-      {/* Some Substack feeds publish only excerpts, so we preserve continuity while routing to canonical source. */}
       {essay.html ? (
         <RichText html={essay.html} />
       ) : (
-        <div className="space-y-4 rounded-lg border border-line bg-[#0e0e10] p-6">
+        <div className="space-y-4 rounded-2xl border border-line bg-accentSoft p-6">
           <p className="text-base leading-relaxed text-muted">{essay.excerpt || essay.summary}</p>
           <p className="text-sm text-muted">This entry is excerpt-only in the feed.</p>
         </div>
@@ -85,8 +84,7 @@ export default async function EssayDetailPage({ params }: EssayDetailProps): Pro
         href={essay.canonicalUrl}
         target="_blank"
         rel="noreferrer"
-        className="inline-flex rounded-full border border-ink px-5 py-2 text-[0.72rem] tracking-[0.1em] text-ink transition hover:border-accent hover:text-accent"
-        style={{ fontVariant: "small-caps" }}
+        className="magnetic-btn inline-flex rounded-full border border-accent/40 px-6 py-3 text-[0.72rem] uppercase tracking-[0.15em] text-accent transition hover:border-accent hover:text-ink"
       >
         Read on Substack
       </a>

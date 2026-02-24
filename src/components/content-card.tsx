@@ -1,11 +1,4 @@
-/*
- * This file provides a reusable card primitive for entries across all media sections.
- * It lives in its own file so visual consistency and interaction behavior stay aligned across routes.
- * Home and section pages pass content metadata into this component for rendering.
- */
-
 import Link from "next/link";
-
 import { toDisplayDate } from "@/lib/date";
 
 type CardMedium = "essay" | "video" | "book" | "tool";
@@ -28,13 +21,12 @@ const mediumLabels: Record<CardMedium, string> = {
 
 export function ContentCard(props: ContentCardProps): React.JSX.Element {
   const anchorClassName =
-    "group flex h-full flex-col rounded-lg border border-line bg-[#0c0c0e] p-6 transition hover:border-accent/30 hover:bg-[#101012]";
+    "group card-surface flex h-full flex-col rounded-2xl border border-line p-7";
 
   const header = (
     <>
       <span
-        className="text-[0.72rem] tracking-[0.12em] text-accent"
-        style={{ fontVariant: "small-caps" }}
+        className="font-mono text-[0.68rem] uppercase tracking-[0.15em] text-accent"
       >
         {mediumLabels[props.medium]}
       </span>
@@ -42,13 +34,12 @@ export function ContentCard(props: ContentCardProps): React.JSX.Element {
         {props.title}
       </h3>
       <p className="pt-3 text-[0.84rem] leading-relaxed text-muted">{props.summary}</p>
-      <p className="mt-auto pt-6 text-[0.72rem] tabular-nums text-muted/80">
+      <p className="mt-auto pt-6 font-mono text-[0.68rem] text-muted/60">
         {toDisplayDate(props.publishedAt)}
       </p>
     </>
   );
 
-  // We branch between internal and external navigation so cards can represent both local and remote detail pages.
   if (props.external) {
     return (
       <a href={props.href} className={anchorClassName} target="_blank" rel="noreferrer">

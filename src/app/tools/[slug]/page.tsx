@@ -50,11 +50,11 @@ export default async function ToolDetailPage({ params }: ToolDetailProps): Promi
   }
 
   return (
-    <article className="mx-auto max-w-3xl space-y-8 py-10">
+    <article className="mx-auto max-w-3xl space-y-8 px-8 py-16 md:px-12">
       <header className="space-y-4 border-b border-line pb-8">
-        <p className="text-[0.78rem] tracking-[0.18em] text-accent" style={{ fontVariant: "small-caps" }}>Tool</p>
+        <p className="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-accent">Tool</p>
         <h1 className="font-heading text-[2.75rem] font-medium leading-[1.08] text-ink">{tool.title}</h1>
-        <p className="text-[0.82rem] tabular-nums text-muted">{toDisplayDate(tool.publishedAt)}</p>
+        <p className="font-mono text-[0.72rem] text-muted/60">{toDisplayDate(tool.publishedAt)}</p>
       </header>
       <RichText html={tool.bodyHtml} />
       <div className="flex flex-wrap gap-3">
@@ -62,8 +62,7 @@ export default async function ToolDetailPage({ params }: ToolDetailProps): Promi
           href={tool.repoUrl}
           target="_blank"
           rel="noreferrer"
-          className="rounded-full border border-ink px-5 py-2 text-[0.72rem] tracking-[0.1em] text-ink transition hover:border-accent hover:text-accent"
-          style={{ fontVariant: "small-caps" }}
+          className="magnetic-btn rounded-full border border-line px-6 py-3 text-[0.72rem] uppercase tracking-[0.15em] text-muted transition hover:border-accent hover:text-accent"
         >
           GitHub
         </a>
@@ -72,8 +71,7 @@ export default async function ToolDetailPage({ params }: ToolDetailProps): Promi
             href={tool.liveUrl}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full bg-ink px-5 py-2 text-[0.72rem] tracking-[0.1em] text-paper transition hover:bg-accent"
-            style={{ fontVariant: "small-caps" }}
+            className="magnetic-btn slide-bg-btn rounded-full border border-accent/40 px-6 py-3 text-[0.72rem] uppercase tracking-[0.15em] text-accent"
           >
             Open App
           </a>
@@ -83,8 +81,7 @@ export default async function ToolDetailPage({ params }: ToolDetailProps): Promi
             href={tool.chromeStoreUrl}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full border border-ink px-5 py-2 text-[0.72rem] tracking-[0.1em] text-ink transition hover:border-accent hover:text-accent"
-            style={{ fontVariant: "small-caps" }}
+            className="magnetic-btn rounded-full border border-line px-6 py-3 text-[0.72rem] uppercase tracking-[0.15em] text-muted transition hover:border-accent hover:text-accent"
           >
             Chrome Web Store
           </a>
