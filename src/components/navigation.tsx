@@ -1,68 +1,104 @@
 "use client";
 
-import React, { useRef } from "react";
+/*
+ * This file renders the persistent top navigation used across the entire site.
+ * It exists as its own component so route-level pages can stay content-focused while navigation behavior stays centralized.
+ * It interacts with Next routing via next/link and uses GSAP ScrollTrigger to morph the nav shell on scroll.
+ */
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { MagneticElement } from "@/components/ui/magnetic-element";
-import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function Navigation() {
-    const navRef = useRef<HTMLDivElement>(null);
+const primaryLinks = [
+  { href: "/essays", label: "Essays" },
+  { href: "/videos", label: "Films" },
+  { href: "/books", label: "Books" },
+  { href: "/tools", label: "Builders" }
+];
 
-    useGSAP(() => {
-        if (!navRef.current) return;
+export function Navigation(): React.JSX.Element {
+  const pathname = usePathname();
+  const navRef = useRef<HTMLElement>(null);
 
-        // Morph the navbar on scroll
-        ScrollTrigger.create({
-            start: "top -100px",
-            end: 99999,
-            toggleClass: {
-                targets: navRef.current,
-                className: "nav-scrolled"
-            }
-        });
-    }, { scope: navRef });
+  useGSAP(
+    () => {
+      const element = navRef.current;
+      if (!element) {
+        return;
+      }
 
-    return (
-        <div className="fixed top-0 left-0 right-0 z-50 flex justify-center py-6 px-4 pointer-events-none">
-            <nav
-                ref={navRef}
-                className="pointer-events-auto flex items-center justify-between rounded-full bg-void/0 px-8 py-3 transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] border border-transparent backdrop-blur-none"
-                style={{ width: "min(100%, 800px)" }}
-            >
-                <style jsx>{`
-          .nav-scrolled {
-            background-color: rgba(3, 3, 5, 0.7) !important;
-            backdrop-filter: blur(12px) !important;
-            border-color: rgba(201, 168, 76, 0.1) !important;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
-          }
-        `}</style>
+      // The nav condenses as the page advances so large opening space does not cost persistent navigation clarity.
+      const trigger = ScrollTrigger.create({
+        start: 48,
+        end: 99999,
+        onUpdate: ({ scroll }) => {
+          element.classList.toggle("site-nav--scrolled", scroll() > 48);
+        }
+      });
 
-                <MagneticElement>
-                    <Link href="/" className="text-light font-heading text-2xl tracking-tighter hover:text-accent transition-colors">
-                        Shomo
-                    </Link>
-                </MagneticElement>
+      return () => {
+        trigger.kill();
+      };
+    },
+    { scope: navRef }
+  );
 
-                <div className="hidden md:flex items-center space-x-8 font-mono text-sm tracking-widest text-light/70 uppercase">
-                    <MagneticElement><Link href="#essays" className="hover:text-accent transition-colors">Essays</Link></MagneticElement>
-                    <MagneticElement><Link href="#films" className="hover:text-accent transition-colors">Films</Link></MagneticElement>
-                    <MagneticElement><Link href="#software" className="hover:text-accent transition-colors">Software</Link></MagneticElement>
-                </div>
+  return (
+    <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-5 py-5 md:py-7">
+      <nav
+        ref={navRef}
+        className="site-nav pointer-events-auto flex w-full max-w-6xl items-center justify-between rounded-full px-4 py-3 md:px-6"
+      >
+        <Link href="/" className="group flex items-center gap-3 pr-2">
+          {/* The symbol is the superposed cross from the brand brief: a plus and x sharing one center. */}
+          <svg
+            aria-hidden
+            viewBox="0 0 24 24"
+            className="h-5 w-5 text-accent transition-transform duration-500 group-hover:rotate-45"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.2"
+            strokeLinecap="round"
+          >
+            <path d="M12 3.5v17" />
+            <path d="M3.5 12h17" />
+            <path d="M5.4 5.4l13.2 13.2" />
+            <path d="M18.6 5.4L5.4 18.6" />
+          </svg>
+          <span className="font-heading text-xl italic tracking-tight text-light md:text-[1.45rem]">Shomo</span>
+        </Link>
 
-                <MagneticElement>
-                    <Link href="#connect" className="relative overflow-hidden rounded-full bg-accent px-5 py-2 text-sm font-semibold tracking-wide text-void transition-colors hover:text-light group">
-                        <span className="relative z-10 transition-colors duration-300">Connect</span>
-                        <div className="absolute inset-0 z-0 bg-void translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"></div>
-                    </Link>
-                </MagneticElement>
-            </nav>
+        <div className="hidden items-center gap-5 md:flex">
+          {primaryLinks.map((link) => {
+            const isActive = pathname === link.href;
+
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`font-mono text-[0.62rem] uppercase tracking-[0.22em] transition-colors ${
+                  isActive ? "text-accent" : "text-light/74 hover:text-light"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </div>
-    );
+
+        <Link
+          href="/#contact"
+          className="rounded-full border border-accent/55 px-4 py-2 font-mono text-[0.58rem] uppercase tracking-[0.2em] text-accent transition-colors hover:bg-accent hover:text-[#1a1108]"
+        >
+          Contact
+        </Link>
+      </nav>
+    </header>
+  );
 }

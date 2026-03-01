@@ -25,7 +25,7 @@ describe("HomePage", () => {
     vi.clearAllMocks();
   });
 
-  it("renders latest cards when data exists", async () => {
+  it("renders medium sections when data exists", async () => {
     mockedGetEssayFeed.mockResolvedValue({
       status: "live",
       items: [
@@ -78,19 +78,21 @@ describe("HomePage", () => {
     ]);
 
     render(await HomePage());
-    expect(screen.getByText("Recent")).toBeInTheDocument();
-    expect(screen.getAllByText("Essay One").length).toBeGreaterThan(0);
+
+    expect(screen.getByText(/Intellectual food/i)).toBeInTheDocument();
+    expect(screen.getByText("Essay One")).toBeInTheDocument();
+    expect(screen.getByText("Video One")).toBeInTheDocument();
+    expect(screen.getByText("Tool One")).toBeInTheDocument();
   });
 
-  it("still renders manifesto when external streams are empty", async () => {
+  it("still renders hero when external streams are empty", async () => {
     mockedGetEssayFeed.mockResolvedValue({ status: "empty", items: [] });
     mockedGetVideoFeed.mockResolvedValue({ status: "empty", items: [] });
     mockedGetTools.mockResolvedValue([]);
 
     render(await HomePage());
-    // The hero always renders even when feeds fail.
-    expect(
-      screen.getByText(/I went looking for/i)
-    ).toBeInTheDocument();
+
+    // The hero is the structural anchor regardless of feed availability.
+    expect(screen.getByText(/Intellectual food/i)).toBeInTheDocument();
   });
 });

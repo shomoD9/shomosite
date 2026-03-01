@@ -49,7 +49,7 @@
 
 1. **The Hook (Hero):** An immediate atmospheric landing focusing on the core synthesis ("Intellectual food for the romantic soul") and establishing the identity (Context Engineer / Philosopher).
 2. **Essays (Substack Integration):** A stark, elegant index or library of long-form writing.
-3. **Films (YouTube / Armchair Descending):** A module to showcase high-production video essays.
+3. **Videos (YouTube / Armchair Descending):** A module to showcase high-production video essays.
 4. **Software / Builders (GitHub/Projects):** Proof of work. Where the rationalist builds tools (e.g., Context Engines, Indie Apps).
 
 ---

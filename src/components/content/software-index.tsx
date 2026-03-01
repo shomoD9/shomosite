@@ -1,86 +1,109 @@
 "use client";
 
-import React, { useRef } from "react";
+/*
+ * This file renders the software/tools section with a restrained stagger reveal.
+ * It exists as its own module so tool-specific layout and motion can evolve independently from other media sections.
+ * It consumes ToolEntry data from the content layer and links users to route or canonical tool URLs.
+ */
+
+import Link from "next/link";
+import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { MagneticElement } from "@/components/ui/magnetic-element";
-import Link from "next/link";
+
+import type { ToolEntry } from "@/types/content";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function SoftwareIndex({ items }: { items: any[] }) {
-    const containerRef = useRef<HTMLDivElement>(null);
+type SoftwareIndexProps = {
+  items: ToolEntry[];
+};
 
-    useGSAP(() => {
-        if (!containerRef.current) return;
+export function SoftwareIndex({ items }: SoftwareIndexProps): React.JSX.Element {
+  const sectionRef = useRef<HTMLElement>(null);
 
-        gsap.from(".software-row", {
-            scrollTrigger: {
-                trigger: containerRef.current,
-                start: "top 75%",
-            },
-            x: -30,
-            opacity: 0,
-            duration: 1.2,
-            stagger: 0.1,
-            ease: "power2.out"
-        });
-    }, { scope: containerRef });
+  useGSAP(
+    () => {
+      const section = sectionRef.current;
+      if (!section) {
+        return;
+      }
 
-    return (
-        <section ref={containerRef} id="software" className="relative w-full py-32 px-6 md:px-12 lg:px-24 border-t border-dim">
-            <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-32">
-                {/* Sticky Header Side */}
-                <div className="lg:w-1/3 flex flex-col">
-                    <div className="sticky top-40">
-                        <h2 className="text-sm font-mono tracking-[0.3em] uppercase text-accent mb-4">
-                            03 // The Foundry
-                        </h2>
-                        <h3 className="text-5xl md:text-6xl font-heading font-medium italic text-light/90 mb-8">
-                            Code as
-                            <br />
-                            <span className="text-light">Architecture.</span>
-                        </h3>
-                        <p className="font-mono text-sm text-light/50 leading-relaxed mb-12 max-w-sm">
-                            Tools, applications, and structural systems built for the modern rationalist and creative engineer.
-                        </p>
-                        <MagneticElement>
-                            <Link href="/tools" className="group inline-flex border border-dim hover:border-accent rounded-full px-6 py-3 items-center gap-4 text-xs font-mono uppercase tracking-widest text-light/60 hover:text-accent transition-colors bg-obsidian">
-                                <span>View Repository</span>
-                                <span className="text-accent transform group-hover:translate-x-1 transition-transform">→</span>
-                            </Link>
-                        </MagneticElement>
-                    </div>
-                </div>
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduceMotion) {
+        return;
+      }
 
-                {/* List Side */}
-                <div className="lg:w-2/3 flex flex-col gap-6">
-                    {items.slice(0, 6).map((item, idx) => (
-                        <Link
-                            key={idx}
-                            href={item.link || '#'}
-                            className="software-row group relative flex flex-col md:flex-row md:items-center justify-between p-8 md:p-10 bg-obsidian/50 border border-dim rounded-[2rem] hover:bg-obsidian hover:border-accent/40 hover:shadow-[0_8px_32px_rgba(0,0,0,0.35)] transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
-                        >
-                            <div className="flex flex-col gap-4 mb-6 md:mb-0">
-                                <div className="flex items-center gap-3">
-                                    <span className="w-2 h-2 rounded-full bg-accent opacity-50 group-hover:opacity-100 group-hover:shadow-[0_0_10px_rgba(201,168,76,0.6)] transition-all"></span>
-                                    <h4 className="text-2xl font-heading font-medium text-light group-hover:text-accent transition-colors">
-                                        {item.name}
-                                    </h4>
-                                </div>
-                                <p className="font-mono text-xs text-light/50 max-w-md leading-relaxed group-hover:text-light/70 transition-colors">
-                                    {item.description}
-                                </p>
-                            </div>
+      const rows = gsap.utils.toArray<HTMLElement>(".tool-row");
+      if (!rows.length) {
+        return;
+      }
 
-                            <div className="flex bg-void px-4 py-2 border border-dim rounded-full font-mono text-[10px] uppercase tracking-widest text-light/40 group-hover:border-accent/30 group-hover:text-accent transition-colors">
-                                Execute
-                            </div>
-                        </Link>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
+      // Short, weighted reveals keep the section energetic while preserving legibility.
+      const revealTween = gsap.from(rows, {
+        opacity: 0,
+        y: 28,
+        duration: 0.82,
+        ease: "power2.out",
+        stagger: 0.09,
+        scrollTrigger: {
+          trigger: section,
+          start: "top 76%"
+        }
+      });
+
+      return () => {
+        revealTween.kill();
+      };
+    },
+    { scope: sectionRef, dependencies: [items.length] }
+  );
+
+  return (
+    <section ref={sectionRef} id="software" className="px-6 py-24 md:px-12 md:py-32">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-2xl space-y-4">
+            <p className="font-mono text-[0.58rem] uppercase tracking-[0.24em] text-accent">Builders</p>
+            <h2 className="font-heading text-4xl italic leading-[0.92] text-light md:text-6xl">
+              Rational machinery,
+              <br />
+              built with taste.
+            </h2>
+          </div>
+
+          <Link
+            href="/tools"
+            className="inline-flex w-fit rounded-full border border-line px-5 py-2 font-mono text-[0.58rem] uppercase tracking-[0.22em] text-light/80 transition-colors hover:border-accent/70 hover:text-accent"
+          >
+            Builder Archive
+          </Link>
+        </div>
+
+        {items.length ? (
+          <div className="grid gap-4 lg:grid-cols-2">
+            {items.slice(0, 6).map((tool, index) => (
+              <Link
+                key={tool.id}
+                href={`/tools/${tool.slug}`}
+                className="tool-row group rounded-[1.5rem] border border-line bg-[linear-gradient(180deg,rgba(16,23,46,0.72)_0%,rgba(10,14,28,0.9)_100%)] p-6 transition-transform duration-300 hover:-translate-y-[2px] hover:border-accent/52"
+              >
+                <p className="font-mono text-[0.54rem] uppercase tracking-[0.2em] text-accent">
+                  Build {String(index + 1).padStart(2, "0")}
+                </p>
+                <h3 className="mt-3 font-heading text-2xl leading-tight text-light">{tool.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{tool.summary}</p>
+                <p className="mt-6 font-mono text-[0.54rem] uppercase tracking-[0.2em] text-light/68">Open Detail</p>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <p className="rounded-2xl border border-line bg-white/[0.03] px-5 py-4 text-sm text-muted">
+            Tool entries are unavailable right now. Placeholder state is active.
+          </p>
+        )}
+      </div>
+    </section>
+  );
 }

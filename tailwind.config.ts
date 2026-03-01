@@ -1,3 +1,8 @@
+/*
+ * This file defines Tailwind's design-token bridge for the pure monochromatic frontend.
+ * Aesthetic: Unapologetic Grayscale, Infinite Depth.
+ */
+
 import type { Config } from "tailwindcss";
 import typography from "@tailwindcss/typography";
 
@@ -6,22 +11,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        void: "#030305",
-        obsidian: "#0D0D12",
-        light: "#FAF8F5",
-        accent: "#C9A84C",
-        dim: "#2A2A35",
+        void: "#000000",       // Pure black
+        "void-soft": "#0A0A0A", // Deep off-black
+        ink: "#1A1A1A",        // Darkest gray
+        ash: "#888888",        // Mid gray
+        light: "#FAFAFA",      // Off-white for max contrast
+        pure: "#FFFFFF",       // Pure white
       },
       fontFamily: {
-        heading: ["var(--font-heading)", "Cormorant Garamond", "Playfair Display", "serif"],
-        sans: ["var(--font-sans)", "Inter", "sans-serif"],
+        sans: ["var(--font-sans)", "Inter", "Helvetica", "sans-serif"],
+        serif: ["var(--font-serif)", "Playfair Display", "Georgia", "serif"],
         mono: ["var(--font-mono)", "JetBrains Mono", "monospace"]
       },
-      borderRadius: {
-        "2xl": "1rem",
-        "3xl": "1.5rem",
-        "4xl": "2rem",
-        "5xl": "3rem" // For extreme rounded corners, ensuring no sharp edges
+      transitionTimingFunction: {
+        "custom-spring": "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+        "physics": "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
       },
       keyframes: {
         "fade-up": {

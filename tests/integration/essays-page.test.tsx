@@ -21,7 +21,7 @@ describe("EssaysPage", () => {
     vi.clearAllMocks();
   });
 
-  it("renders essay cards when feed data is available", async () => {
+  it("renders Substack previews when feed data is available", async () => {
     mockedGetEssayFeed.mockResolvedValue({
       status: "live",
       items: [
@@ -42,6 +42,7 @@ describe("EssaysPage", () => {
 
     render(await EssaysPage());
     expect(screen.getByText("Essay One")).toBeInTheDocument();
+    expect(screen.getByText(/Substack preview/i)).toBeInTheDocument();
   });
 
   it("renders fallback copy when feed is unavailable", async () => {
@@ -51,7 +52,8 @@ describe("EssaysPage", () => {
     });
 
     render(await EssaysPage());
+
     // We verify the resilience path so feed failures do not collapse the page.
-    expect(screen.getByText(/Substack is currently unavailable/i)).toBeInTheDocument();
+    expect(screen.getByText(/Substack is temporarily unreachable/i)).toBeInTheDocument();
   });
 });

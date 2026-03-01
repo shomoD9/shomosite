@@ -2,16 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ═══════════════════════════════════════════════════════
-   THE VOID — Bespoke Design Tokens
-   ═══════════════════════════════════════════════════════ */
-
 :root {
-  --void: #030305;
-  --obsidian: #0D0D12;
-  --light: #FAF8F5;
-  --accent: #C9A84C;
-  --dim: #2A2A35;
+  --void: #000000;
+  --light: #FAFAFA;
 }
 
 * {
@@ -21,30 +14,23 @@
 html,
 body {
   margin: 0;
-  padding: 0;
-  overscroll-behavior: none;
+  min-height: 100%;
+}
+
+html {
+  background: var(--void);
+  color: var(--light);
 }
 
 body {
-  font-family: var(--font-sans), "Inter", sans-serif;
+  position: relative;
+  overflow-x: clip;
+  background: var(--void);
   color: var(--light);
-  background-color: var(--void);
-  min-height: 100vh;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-
-/* Dynamic blurred radial gradient lighting */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(circle at 50% 0%, rgba(201, 168, 76, 0.03) 0%, transparent 60%);
-  z-index: 0;
-}
-
-/* ═══════════════════════════════════════════════════════ */
 
 h1,
 h2,
@@ -52,17 +38,18 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-heading), "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-family: var(--font-sans), sans-serif;
+  letter-spacing: -0.04em;
 }
 
-h1 {
-  letter-spacing: -0.025em;
-}
-
-h2 {
-  letter-spacing: -0.015em;
+/* 
+ * The Typographic Tension:
+ * Serif handles the dramatic, heavy, "ancient" weight
+ */
+.font-drama {
+  font-family: var(--font-serif), serif;
+  font-style: italic;
+  font-weight: 300;
 }
 
 a {
@@ -70,130 +57,79 @@ a {
   text-decoration: none;
 }
 
+/* Hard inversion for selection, no colors. */
 ::selection {
-  background: rgba(106, 117, 133, 0.3);
-  color: #e4e8f0;
+  background: var(--light);
+  color: var(--void);
 }
 
-/* ═══════════════════════════════════════════════════════
-   MICRO-INTERACTIONS
-   ═══════════════════════════════════════════════════════ */
-.magnetic-btn {
-  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.magnetic-btn:hover {
-  transform: scale(1.03);
-}
-
-.slide-bg-btn {
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  transition: color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.slide-bg-btn::before {
-  content: "";
-  position: absolute;
+/* 
+ * Very subtle global noise overlay. 
+ * Kept at 0.03 to break digital sterility but not create distraction.
+ */
+.noise-overlay {
+  pointer-events: none;
+  position: fixed;
   inset: 0;
-  background: var(--accent);
-  transform: translateX(-101%);
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  z-index: -1;
+  z-index: 50;
+  opacity: 0.03;
+  mix-blend-mode: difference;
 }
 
-.slide-bg-btn:hover::before {
-  transform: translateX(0);
-}
-
-.slide-bg-btn:hover {
-  color: var(--paper);
-}
-
-.lift-link {
-  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.lift-link:hover {
-  transform: translateY(-1px);
-  color: var(--accent);
-}
-
-/* ═══════════════════════════════════════════════════════
-   CARD SURFACE — cold surfaces with frost-edge glow
-   ═══════════════════════════════════════════════════════ */
-.card-surface {
-  background:
-    linear-gradient(180deg, rgba(205, 211, 222, 0.02) 0%, transparent 50%),
-    var(--accent-soft);
-  box-shadow: inset 0 1px 0 rgba(205, 211, 222, 0.035);
-  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.card-surface:hover {
-  transform: translateY(-3px) scale(1.01);
-  box-shadow:
-    inset 0 1px 0 rgba(205, 211, 222, 0.05),
-    0 8px 32px rgba(0, 0, 0, 0.35);
-}
-
-/* ═══════════════════════════════════════════════════════
-   SEPARATOR — amber ornament in the fog
-   ═══════════════════════════════════════════════════════ */
-.separator {
-  border: none;
+/* Lenis Smooth Scroll base styles */
+html.lenis,
+html.lenis body {
   height: auto;
-  background: none;
-  text-align: center;
-  overflow: visible;
-  position: relative;
-  color: var(--accent);
-  font-size: 0.6rem;
-  letter-spacing: 0.3em;
-  opacity: 0.3;
 }
 
-.separator::before {
-  content: "◆";
-  display: block;
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
 }
 
-.separator::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--line) 15%, var(--line) 43%, transparent 50%, var(--line) 57%, var(--line) 85%, transparent);
-  z-index: -1;
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
 }
 
-/* ═══════════════════════════════════════════════════════ */
-.prose-dropcap>p:first-of-type::first-letter {
-  font-family: var(--font-heading), "Cormorant Garamond", Georgia, serif;
-  float: left;
-  font-size: 3.2em;
-  line-height: 0.85;
-  padding-right: 0.08em;
-  padding-top: 0.05em;
-  font-weight: 600;
-  color: var(--ink);
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
-@keyframes pulse-dot {
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
 
-  0%,
-  100% {
-    opacity: 1;
+@layer utilities {
+
+  /* No cards, no massive borders. Only text-driven links with physics easing */
+  .lift-link {
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
   }
 
-  50% {
-    opacity: 0.4;
+  .lift-link:hover {
+    transform: translateY(-2px);
+    opacity: 0.7;
+  }
+
+  .magnetic-text {
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: inline-block;
+  }
+
+  /* Deep void for full-bleed sections */
+  .bg-void-deep {
+    background-color: var(--void);
   }
 }
 
-.pulse-dot {
-  animation: pulse-dot 2s ease-in-out infinite;
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
