@@ -6,23 +6,22 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: "#0c0c10",
-        ink: "#dbd6cc",
-        muted: "#8e887e",
-        line: "#1f1f25",
-        accent: "#c9a84c",
-        accentSoft: "#151518"
+        void: "#030305",
+        obsidian: "#0D0D12",
+        light: "#FAF8F5",
+        accent: "#C9A84C",
+        dim: "#2A2A35",
       },
       fontFamily: {
-        heading: ["var(--font-heading)", "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", "Georgia", "serif"],
-        body: ["var(--font-body)", "EB Garamond", "Palatino Linotype", "Book Antiqua", "Georgia", "serif"],
-        serif: ["var(--font-heading)", "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", "Georgia", "serif"],
-        mono: ["var(--font-mono)", "IBM Plex Mono", "Menlo", "monospace"]
+        heading: ["var(--font-heading)", "Cormorant Garamond", "Playfair Display", "serif"],
+        sans: ["var(--font-sans)", "Inter", "sans-serif"],
+        mono: ["var(--font-mono)", "JetBrains Mono", "monospace"]
       },
       borderRadius: {
         "2xl": "1rem",
         "3xl": "1.5rem",
-        "4xl": "2rem"
+        "4xl": "2rem",
+        "5xl": "3rem" // For extreme rounded corners, ensuring no sharp edges
       },
       keyframes: {
         "fade-up": {

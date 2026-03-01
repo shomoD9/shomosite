@@ -3,17 +3,15 @@
 @tailwind utilities;
 
 /* ═══════════════════════════════════════════════════════
-   DARK ATHENAEUM — Design Tokens
-   An ancient library at midnight, lit by a single amber lamp.
+   THE VOID — Bespoke Design Tokens
    ═══════════════════════════════════════════════════════ */
 
 :root {
-  --paper: #0c0c10;
-  --ink: #dbd6cc;
-  --muted: #8e887e;
-  --line: #1f1f25;
-  --accent: #c9a84c;
-  --accent-soft: #151518;
+  --void: #030305;
+  --obsidian: #0D0D12;
+  --light: #FAF8F5;
+  --accent: #C9A84C;
+  --dim: #2A2A35;
 }
 
 * {
@@ -24,47 +22,30 @@ html,
 body {
   margin: 0;
   padding: 0;
+  overscroll-behavior: none;
 }
 
 body {
-  font-family: var(--font-body), "EB Garamond", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-  font-size: 17px;
-  line-height: 1.7;
-  color: var(--ink);
-  background-color: var(--paper);
+  font-family: var(--font-sans), "Inter", sans-serif;
+  color: var(--light);
+  background-color: var(--void);
   min-height: 100vh;
-  font-feature-settings: "liga", "kern";
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ═══════════════════════════════════════════════════════
-   SVG NOISE OVERLAY
-   feTurbulence grain — eliminates flat digital gradients.
-   ═══════════════════════════════════════════════════════ */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.04;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-}
-
-/* Subtle vignette — frames the content. */
+/* Dynamic blurred radial gradient lighting */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse 80% 70% at 50% 40%, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+  background: radial-gradient(circle at 50% 0%, rgba(201, 168, 76, 0.03) 0%, transparent 60%);
   z-index: 0;
 }
 
-/* ═══════════════════════════════════════════════════════
-   TYPOGRAPHY
-   ═══════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════ */
+
 h1,
 h2,
 h3,
@@ -90,15 +71,13 @@ a {
 }
 
 ::selection {
-  background: rgba(201, 168, 76, 0.25);
-  color: #f0ece4;
+  background: rgba(106, 117, 133, 0.3);
+  color: #e4e8f0;
 }
 
 /* ═══════════════════════════════════════════════════════
    MICRO-INTERACTIONS
    ═══════════════════════════════════════════════════════ */
-
-/* Magnetic button — subtle scale pulse on hover. */
 .magnetic-btn {
   transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -107,7 +86,6 @@ a {
   transform: scale(1.03);
 }
 
-/* Slide background button — accent fill slides in from left. */
 .slide-bg-btn {
   position: relative;
   overflow: hidden;
@@ -133,7 +111,6 @@ a {
   color: var(--paper);
 }
 
-/* Lift link — subtle vertical lift on hover. */
 .lift-link {
   transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -144,25 +121,25 @@ a {
 }
 
 /* ═══════════════════════════════════════════════════════
-   CARD SURFACE
+   CARD SURFACE — cold surfaces with frost-edge glow
    ═══════════════════════════════════════════════════════ */
 .card-surface {
   background:
-    linear-gradient(180deg, rgba(219, 214, 204, 0.025) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(205, 211, 222, 0.02) 0%, transparent 50%),
     var(--accent-soft);
-  box-shadow: inset 0 1px 0 rgba(219, 214, 204, 0.04);
+  box-shadow: inset 0 1px 0 rgba(205, 211, 222, 0.035);
   transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .card-surface:hover {
   transform: translateY(-3px) scale(1.01);
   box-shadow:
-    inset 0 1px 0 rgba(219, 214, 204, 0.06),
-    0 8px 32px rgba(0, 0, 0, 0.3);
+    inset 0 1px 0 rgba(205, 211, 222, 0.05),
+    0 8px 32px rgba(0, 0, 0, 0.35);
 }
 
 /* ═══════════════════════════════════════════════════════
-   SEPARATOR
+   SEPARATOR — amber ornament in the fog
    ═══════════════════════════════════════════════════════ */
 .separator {
   border: none;
@@ -193,9 +170,7 @@ a {
   z-index: -1;
 }
 
-/* ═══════════════════════════════════════════════════════
-   PROSE
-   ═══════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════ */
 .prose-dropcap>p:first-of-type::first-letter {
   font-family: var(--font-heading), "Cormorant Garamond", Georgia, serif;
   float: left;
@@ -207,9 +182,6 @@ a {
   color: var(--ink);
 }
 
-/* ═══════════════════════════════════════════════════════
-   STATUS INDICATOR (footer)
-   ═══════════════════════════════════════════════════════ */
 @keyframes pulse-dot {
 
   0%,

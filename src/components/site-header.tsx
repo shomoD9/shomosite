@@ -29,8 +29,8 @@ export function SiteHeader(): React.JSX.Element {
     <header
       ref={headerRef}
       className={`fixed left-1/2 top-4 z-50 -translate-x-1/2 transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${scrolled
-          ? "w-[min(92vw,700px)] rounded-full border border-line/60 bg-paper/70 px-6 py-3 shadow-lg shadow-black/20 backdrop-blur-xl"
-          : "w-[min(92vw,900px)] rounded-full bg-transparent px-8 py-5"
+        ? "w-[min(92vw,700px)] rounded-full border border-line/60 bg-[#090c12]/70 px-6 py-3 shadow-lg shadow-black/20 backdrop-blur-xl"
+        : "w-[min(92vw,900px)] rounded-full bg-transparent px-8 py-5"
         }`}
     >
       <div className="flex items-center justify-between">

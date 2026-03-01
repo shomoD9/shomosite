@@ -5,7 +5,7 @@ export function SiteFooter(): React.JSX.Element {
   const { substackUrl, youtubeChannelUrl, linkedinUrl } = getSiteConfig();
 
   return (
-    <footer className="mt-20 rounded-t-3xl bg-[#08080b] px-8 py-14 md:px-12">
+    <footer className="mt-20 rounded-t-3xl bg-[#070a0f] px-8 py-14 md:px-12">
       <div className="mx-auto grid w-full max-w-6xl gap-12 md:grid-cols-[1fr_auto]">
         {/* Left: Brand + tagline */}
         <div className="space-y-4">

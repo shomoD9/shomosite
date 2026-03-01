@@ -90,7 +90,7 @@ describe("HomePage", () => {
     render(await HomePage());
     // The hero always renders even when feeds fail.
     expect(
-      screen.getByText(/Capacity is the/i)
+      screen.getByText(/I went looking for/i)
     ).toBeInTheDocument();
   });
 });

@@ -10,7 +10,7 @@ test("core navigation and primary CTAs are reachable", async ({ page }) => {
   await page.goto("/");
 
   await expect(
-    page.getByRole("heading", { name: /Capacity is the/i })
+    page.getByRole("heading", { name: /I went looking for/i })
   ).toBeVisible();
 
   const subscribeCta = page.getByRole("link", { name: "Subscribe" });

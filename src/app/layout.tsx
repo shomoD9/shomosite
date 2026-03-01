@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Cormorant_Garamond, EB_Garamond, IBM_Plex_Mono } from "next/font/google";
+import { Cormorant_Garamond, Inter, JetBrains_Mono } from "next/font/google";
 
 import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
+import { Navigation } from "@/components/navigation";
+import { SVGNoiseOverlay } from "@/components/texture/noise";
 import { buildBaseMetadata } from "@/lib/seo/metadata";
 import { getSiteConfig } from "@/lib/site-config";
 
@@ -17,17 +18,14 @@ const headingFont = Cormorant_Garamond({
   variable: "--font-heading"
 });
 
-const bodyFont = EB_Garamond({
+const sansFont = Inter({
   subsets: ["latin"],
-  weight: ["400", "500"],
-  style: ["normal", "italic"],
   display: "swap",
-  variable: "--font-body"
+  variable: "--font-sans"
 });
 
-const monoFont = IBM_Plex_Mono({
+const monoFont = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["400", "500"],
   display: "swap",
   variable: "--font-mono"
 });
@@ -38,8 +36,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   const { plausibleDomain } = getSiteConfig();
 
   return (
-    <html lang="en" className={`scroll-smooth ${headingFont.variable} ${bodyFont.variable} ${monoFont.variable}`}>
-      <body className="min-h-screen bg-paper text-ink antialiased">
+    <html lang="en" className={`scroll-smooth ${headingFont.variable} ${sansFont.variable} ${monoFont.variable}`}>
+      <body className="min-h-screen bg-void text-light antialiased font-sans flex flex-col items-center overflow-x-hidden selection:bg-accent/30 selection:text-accent">
+        <SVGNoiseOverlay />
         {plausibleDomain ? (
           <Script
             defer
@@ -48,7 +47,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             strategy="afterInteractive"
           />
         ) : null}
-        <SiteHeader />
+        <Navigation />
         <main>{children}</main>
         <SiteFooter />
       </body>
