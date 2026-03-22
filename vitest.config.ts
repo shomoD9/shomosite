@@ -1,23 +1,24 @@
 /*
- * This file configures how unit and integration tests run in Vitest.
- * It exists apart from app modules so test-runtime concerns do not leak into production code.
- * Test files in tests/ rely on these aliases, environment settings, and setup hooks.
+ * This file teaches Vitest how to execute the site's unit and integration tests.
+ * It stays separate so test-environment concerns do not leak into application modules.
+ * The `npm run test` script reads this config before loading the suites in `tests/`.
  */
-import path from "node:path";
+
 import { defineConfig } from "vitest/config";
+import path from "node:path";
+import { configDefaults } from "vitest/config";
 
 export default defineConfig({
   test: {
-    globals: true,
     environment: "jsdom",
+    globals: true,
     setupFiles: ["./vitest.setup.ts"],
-    include: ["tests/unit/**/*.{test,spec}.{ts,tsx}", "tests/integration/**/*.{test,spec}.{ts,tsx}"],
-    exclude: ["tests/e2e/**"]
+    // Playwright specs belong to the browser runner, so Vitest should ignore that directory entirely.
+    exclude: [...configDefaults.exclude, "tests/e2e/**"]
   },
-  // Next.js keeps JSX in preserve mode for its own compiler, so Vitest needs an explicit automatic transform.
+  // Injecting React keeps TSX route modules renderable under Vitest's transform without changing production code style.
   esbuild: {
-    jsx: "automatic",
-    jsxImportSource: "react"
+    jsxInject: 'import React from "react"'
   },
   resolve: {
     alias: {

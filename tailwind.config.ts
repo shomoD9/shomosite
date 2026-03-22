@@ -1,44 +1,41 @@
 /*
- * This file defines Tailwind's design-token bridge for the pure monochromatic frontend.
- * Aesthetic: Unapologetic Grayscale, Infinite Depth.
+ * This file defines the design tokens that Tailwind can reference across the site.
+ * It is separated from component files so typography, spacing, and color decisions stay coherent.
+ * App routes and shared components consume these tokens through utility classes.
  */
 
 import type { Config } from "tailwindcss";
-import typography from "@tailwindcss/typography";
 
 const config: Config = {
-  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
+  content: [
+    "./src/**/*.{js,ts,jsx,tsx,mdx}"
+  ],
   theme: {
     extend: {
       colors: {
-        void: "#000000",       // Pure black
-        "void-soft": "#0A0A0A", // Deep off-black
-        ink: "#1A1A1A",        // Darkest gray
-        ash: "#888888",        // Mid gray
-        light: "#FAFAFA",      // Off-white for max contrast
-        pure: "#FFFFFF",       // Pure white
+        bone: "#f6f1e7",
+        paper: "#e9dfd0",
+        graphite: "#746d62",
+        steel: "#5d6770",
+        ink: "#171412",
+        ember: "#2a2520"
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "Inter", "Helvetica", "sans-serif"],
-        serif: ["var(--font-serif)", "Playfair Display", "Georgia", "serif"],
-        mono: ["var(--font-mono)", "JetBrains Mono", "monospace"]
+        display: ["var(--font-display)", "serif"],
+        mono: ["var(--font-mono)", "monospace"]
       },
-      transitionTimingFunction: {
-        "custom-spring": "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-        "physics": "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+      letterSpacing: {
+        poster: "0.12em"
       },
-      keyframes: {
-        "fade-up": {
-          "0%": { opacity: "0", transform: "translateY(20px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" }
-        }
+      boxShadow: {
+        hairline: "0 0 0 1px rgba(23, 20, 18, 0.08)"
       },
-      animation: {
-        "fade-up": "fade-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards"
+      maxWidth: {
+        copy: "42rem"
       }
     }
   },
-  plugins: [typography]
+  plugins: []
 };
 
 export default config;

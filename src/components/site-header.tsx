@@ -1,68 +1,51 @@
 "use client";
 
+/*
+ * This file renders the persistent navigation shell for the public site.
+ * It is separated from individual pages because orientation needs to remain stable as visitors move between tracks.
+ * The root layout mounts this component, and it reads the current pathname to softly indicate the active section.
+ */
+
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
-import { getSiteConfig } from "@/lib/site-config";
+import type { SiteSettings } from "@/lib/content-types";
+import { cx } from "@/lib/classes";
+import { SiteMark } from "@/components/site-mark";
 
-const navItems = [
-  { label: "Essays", href: "/essays" },
-  { label: "Videos", href: "/videos" },
-  { label: "Books", href: "/books" },
-  { label: "Tools", href: "/tools" }
-];
+type SiteHeaderProps = {
+  settings: SiteSettings;
+};
 
-export function SiteHeader(): React.JSX.Element {
-  const [scrolled, setScrolled] = useState(false);
-  const headerRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const handleScroll = (): void => {
-      setScrolled(window.scrollY > 80);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+export function SiteHeader({ settings }: SiteHeaderProps): React.JSX.Element {
+  const pathname = usePathname();
 
   return (
-    <header
-      ref={headerRef}
-      className={`fixed left-1/2 top-4 z-50 -translate-x-1/2 transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${scrolled
-        ? "w-[min(92vw,700px)] rounded-full border border-line/60 bg-[#090c12]/70 px-6 py-3 shadow-lg shadow-black/20 backdrop-blur-xl"
-        : "w-[min(92vw,900px)] rounded-full bg-transparent px-8 py-5"
-        }`}
-    >
-      <div className="flex items-center justify-between">
-        <Link
-          href="/"
-          className="font-heading text-xl tracking-tight text-ink transition-colors hover:text-accent"
-        >
-          Shomodip De
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-ink/10 bg-bone/90 backdrop-blur-md">
+      <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-5 px-6 py-4 lg:px-12">
+        <Link className="group inline-flex items-center gap-3 text-ink" href="/">
+          <SiteMark className="h-5 w-5 transition-transform duration-300 group-hover:rotate-45" />
+          <span className="font-display text-lg tracking-[0.08em]">Shomo</span>
         </Link>
-        <nav
-          aria-label="Primary"
-          className="hidden items-center gap-6 md:flex"
-        >
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="lift-link text-[0.82rem] text-muted"
-              style={{ fontVariant: "small-caps" }}
-            >
-              {item.label}
-            </Link>
-          ))}
-          <a
-            href="https://ds013.substack.com"
-            target="_blank"
-            rel="noreferrer"
-            className="magnetic-btn slide-bg-btn rounded-full border border-accent/40 px-5 py-2 text-[0.72rem] tracking-wider text-accent"
-            style={{ fontVariant: "small-caps" }}
-          >
-            Subscribe
-          </a>
+
+        <nav aria-label="Primary" className="flex flex-wrap items-center justify-end gap-x-5 gap-y-2">
+          {settings.nav.map((item) => {
+            const isActive = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+
+            return (
+              <Link
+                aria-current={isActive ? "page" : undefined}
+                className={cx(
+                  "border-b border-transparent pb-1 font-mono text-[11px] uppercase tracking-[0.18em] text-graphite transition-colors duration-300 hover:border-ink/25 hover:text-ink",
+                  isActive && "border-ink/25 text-ink"
+                )}
+                href={item.href}
+                key={item.href}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
       </div>
     </header>

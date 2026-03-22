@@ -1,59 +1,66 @@
-import type { Metadata } from "next";
-import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
-import Script from "next/script";
+/*
+ * This file defines the root shell shared by every public route.
+ * It is separate because typography, metadata defaults, navigation, and footer behavior belong to the whole site rather than any one page.
+ * Next.js loads this layout first, then nests each page route inside it.
+ */
 
-import { SVGNoiseOverlay } from "@/components/texture/noise";
-import { LenisProvider } from "@/components/cinematic/lenis-provider";
-import { PrimitiveNav } from "@/components/cinematic/primitive-nav";
-import { buildBaseMetadata } from "@/lib/seo/metadata";
-import { getSiteConfig } from "@/lib/site-config";
+import type { Metadata } from "next";
+import localFont from "next/font/local";
+import type { ReactNode } from "react";
+
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+import { getSiteSettings } from "@/lib/site-config";
 
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
+const displayFont = localFont({
+  src: [
+    {
+      path: "./fonts/Georgia.ttf",
+      weight: "400",
+      style: "normal"
+    },
+    {
+      path: "./fonts/Georgia-Bold.ttf",
+      weight: "700",
+      style: "normal"
+    }
+  ],
+  variable: "--font-display",
   display: "swap"
 });
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-serif",
-  style: ["normal", "italic"],
-  display: "swap"
-});
-
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
+const monoFont = localFont({
+  src: [
+    {
+      path: "./fonts/SFNSMono.ttf",
+      weight: "400",
+      style: "normal"
+    }
+  ],
   variable: "--font-mono",
   display: "swap"
 });
 
-export const metadata: Metadata = buildBaseMetadata();
+const settings = getSiteSettings();
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>): React.JSX.Element {
-  const { plausibleDomain } = getSiteConfig();
+export const metadata: Metadata = {
+  metadataBase: new URL(settings.siteUrl),
+  title: {
+    default: settings.title,
+    template: `%s | ${settings.title}`
+  },
+  description: settings.description
+};
 
+export default function RootLayout({ children }: { children: ReactNode }): React.JSX.Element {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable} ${jetbrains.variable}`}>
-      <body className="font-sans text-light antialiased">
-        <LenisProvider>
-          {/* Aesthetic Overlay - 0.03 opacity pure noise */}
-          <SVGNoiseOverlay />
-
-          {/* Analytics Configuration */}
-          {plausibleDomain ? (
-            <Script
-              defer
-              data-domain={plausibleDomain}
-              src="https://plausible.io/js/script.js"
-              strategy="afterInteractive"
-            />
-          ) : null}
-
-          <PrimitiveNav />
-          <main className="relative z-10 mx-auto flex w-full flex-col">{children}</main>
-        </LenisProvider>
+    <html className={`${displayFont.variable} ${monoFont.variable}`} lang="en">
+      <body className="bg-bone text-ink">
+        <SiteHeader settings={settings} />
+        {children}
+        <SiteFooter settings={settings} />
       </body>
     </html>
   );

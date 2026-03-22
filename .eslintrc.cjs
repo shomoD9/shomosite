@@ -1,11 +1,9 @@
 /*
- * This file configures lint rules for the whole codebase.
- * It is kept separate so quality constraints remain centralized and tooling-friendly.
- * ESLint reads this file when npm run lint is executed.
+ * This file configures linting rules for the rebuilt codebase.
+ * It lives on its own because style and correctness checks should remain independent from runtime code.
+ * The `npm run lint` script reads this file when validating the project.
  */
+
 module.exports = {
-  extends: ["next/core-web-vitals"],
-  rules: {
-    "react/no-unescaped-entities": "off"
-  }
+  extends: ["next/core-web-vitals"]
 };

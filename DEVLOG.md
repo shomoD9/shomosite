@@ -1,5 +1,47 @@
 # Devlog
 
+## 2026-03-22
+
+14:06:00 IST - Audited the repository root, confirmed the presence of `ARCHITECTURE.md` and `DEVLOG.md`, and inspected git status before performing the branch reset.
+14:07:00 IST - Listed every top-level path except `.git`, `ARCHITECTURE.md`, and `DEVLOG.md` to verify the exact deletion scope requested for the clean-slate rebuild.
+14:08:00 IST - Removed all code, docs, configs, tests, generated output, content, and assets from the working tree while preserving `.git`, `ARCHITECTURE.md`, and `DEVLOG.md`.
+14:09:00 IST - Rewrote `ARCHITECTURE.md` to describe the intentionally empty branch and appended this reset sequence to `DEVLOG.md` so the narrative state matches the filesystem.
+14:10:00 IST - Re-entered the blank branch to implement the approved v1 rebuild plan and audited the surviving repository state plus git history for reusable public links and feed sources.
+14:12:00 IST - Inspected the previous `site-config`, content entries, feed adapters, and git remote to recover truthful public URLs for Substack, YouTube, LinkedIn, email, and the GitHub repository.
+14:14:00 IST - Created the new project directory scaffold and copied local serif and mono font files into `src/app/fonts` to satisfy the self-hosted typography requirement without remote fetches.
+14:18:00 IST - Recreated root project infrastructure with `package.json`, TypeScript, Next.js, Tailwind, PostCSS, ESLint, Vitest, Playwright, environment documentation, and git ignore rules.
+14:22:00 IST - Built the typed data model and behavior layer in `src/lib`, including shared content interfaces, site settings, mailto helpers, Markdown rendering, narrated content loading, feed parsing, date formatting, class joining, and metadata helpers.
+14:29:00 IST - Built the shared UI layer in `src/components`, including the site mark, header, footer, hero, section reveal motion, track rail, rich text renderer, proof lists, archive lists, and the reusable track page template.
+14:34:00 IST - Implemented the App Router surface in `src/app` with the root layout, global styling system, homepage, Prose/Product/Productivity/Work/Collaborate routes, icon, robots, and sitemap.
+14:36:00 IST - Authored all local MDX content for the homepage, track pages, collaboration page, and curated proof records, including one intentionally hidden proof entry to exercise omission logic.
+14:37:00 IST - Added unit, integration, and browser-level navigation tests covering feed parsing, homepage narrative structure, route rendering, hybrid-proof fallback behavior, and public navigation.
+14:38:00 IST - Ran `npm install` to restore dependencies and generate the new lockfile for the rebuilt application.
+14:40:00 IST - Ran `npm run test`; patched `vitest.config.ts` to exclude Playwright specs from Vitest and inject React during TSX test transforms after the first failure pass.
+14:40:00 IST - Patched `vitest.setup.ts` with a `matchMedia` mock after jsdom failed on the reduced-motion check inside `src/components/section-reveal.tsx`.
+14:41:00 IST - Patched `src/lib/content.ts` to strip leading MDX narration comments before frontmatter parsing so narrated content files remain valid data sources.
+14:41:00 IST - Quoted the colon-bearing summary in `content/proof/linkedin-profile.mdx` after YAML parsing failed during the next test run.
+14:41:00 IST - Re-ran `npm run test` and confirmed the unit and integration suites passed.
+14:42:00 IST - Ran `npm run build`; patched the type guard in `src/lib/seo.ts` after TypeScript rejected the initial `sameAs` filter narrowing.
+14:42:00 IST - Re-ran `npm run build` and confirmed the production build completed successfully.
+14:43:00 IST - Ran `npm run lint` and confirmed there were no ESLint warnings or errors.
+14:43:00 IST - Ran `npm run test:e2e`; tightened the Playwright navigation selectors and added explicit URL waits after two navigation assertion failures.
+14:44:00 IST - Re-ran `npm run test:e2e` and confirmed the browser-level navigation test passed; noted the non-blocking Next.js dev warning about future `allowedDevOrigins` configuration during Playwright execution.
+14:44:00 IST - Rewrote `ARCHITECTURE.md` to describe the rebuilt track-led site architecture and appended this full implementation and verification sequence to `DEVLOG.md`.
+15:13:07 IST - Reviewed the local `playwright` skill instructions, confirmed `npm` and `npx` are available in the workspace, re-ran `npm run test:e2e`, and confirmed the browser-level navigation test still passes so local browser-run instructions can be given against a current verified state.
+15:26:00 IST - Audited the current content documents, shared components, metadata helpers, and test files to locate the sales-forward copy and the places where AI language was leaking outside Productivity.
+15:34:00 IST - Rewrote `content/pages/home.mdx`, `content/pages/prose.mdx`, `content/pages/product.mdx`, `content/pages/productivity.mdx`, and `content/pages/collaborate.mdx` to reposition the site as the public documentation of an independent research practice centered on productivity.
+15:39:00 IST - Patched shared UI and route code in `src/app/`, `src/components/`, `src/lib/site-config.ts`, and `src/lib/seo.ts` so the hero points to Work, the public nav reads `Working together`, the footer and metadata match the new framing, and visible AI language remains confined to Productivity plus one quiet homepage mention.
+15:44:00 IST - Updated the integration and browser tests to assert the new hero CTA, the renamed nav label, the document-first public-work language, and the rule that Prose and Product stay free of visible AI signaling.
+15:47:00 IST - Ran `npm run test`, `npm run lint`, and `npm run build`; all passed after the copy repositioning pass.
+15:48:00 IST - Ran `npm run test:e2e`; diagnosed a stale-server problem caused by Playwright reusing an older local dev server on port `3000`, which surfaced a dev-overlay runtime error unrelated to the new copy.
+15:49:00 IST - Updated `playwright.config.ts` to launch an isolated dev server on port `3100`, re-ran `npm run test:e2e`, and confirmed the browser-level navigation test passed again against a fresh server.
+15:49:43 IST - Rewrote `ARCHITECTURE.md` so the narrative map reflects the document-first independent-research framing, the quieter `Working together` surface, and the dedicated Playwright server configuration.
+
+## 2026-03-21
+
+14:34:00 IST - Reviewed the local `skill-installer` instructions and confirmed the workspace already contains `ARCHITECTURE.md` and `DEVLOG.md`.
+14:35:00 IST - Installed the curated OpenAI skill `frontend-skill` into `/Users/shomo/.codex/skills/frontend-skill` with the helper installer script.
+
 ## 2026-03-01
 
 23:15:14 IST - Audited repository structure and catalogued route/component/content files to understand current frontend composition.

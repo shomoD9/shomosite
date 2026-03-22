@@ -1,21 +1,21 @@
 /*
- * This file declares crawler directives and sitemap location for search engines.
- * It exists separately because robots policy is operational metadata rather than page content.
- * Next.js reads this route handler to emit the site's robots.txt response.
+ * This file declares the site's crawler rules from the same shared settings used by the rest of the app.
+ * It exists separately because search engines expect a dedicated robots endpoint rather than inferring intent from page markup.
+ * Next.js turns this module into `/robots.txt` at build time.
  */
 
 import type { MetadataRoute } from "next";
 
-import { getSiteConfig } from "@/lib/site-config";
+import { getSiteSettings } from "@/lib/site-config";
 
 export default function robots(): MetadataRoute.Robots {
-  const { siteUrl } = getSiteConfig();
+  const settings = getSiteSettings();
 
   return {
     rules: {
       userAgent: "*",
       allow: "/"
     },
-    sitemap: `${siteUrl}/sitemap.xml`
+    sitemap: `${settings.siteUrl}/sitemap.xml`
   };
 }

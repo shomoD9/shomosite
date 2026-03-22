@@ -1,55 +1,35 @@
+/*
+ * This file establishes the site's visual system: fonts, palette, spacing rules, and the small motion vocabulary.
+ * It lives at the app boundary because every route depends on the same atmospheric discipline.
+ * The root layout imports it once so shared styles apply everywhere.
+ */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --void: #000000;
-  --light: #FAFAFA;
+  color-scheme: light;
+  --background-top: #fbf7ef;
+  --background-bottom: #efe6d8;
 }
 
 * {
   box-sizing: border-box;
 }
 
-html,
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  min-height: 100%;
-}
-
-html {
-  background: var(--void);
-  color: var(--light);
-}
-
-body {
-  position: relative;
-  overflow-x: clip;
-  background: var(--void);
-  color: var(--light);
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-sans), sans-serif;
-  letter-spacing: -0.04em;
-}
-
-/* 
- * The Typographic Tension:
- * Serif handles the dramatic, heavy, "ancient" weight
- */
-.font-drama {
-  font-family: var(--font-serif), serif;
-  font-style: italic;
-  font-weight: 300;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(116, 109, 98, 0.09), transparent 34%),
+    linear-gradient(180deg, var(--background-top), var(--background-bottom));
+  color: #171412;
+  font-family: var(--font-display), serif;
 }
 
 a {
@@ -57,79 +37,90 @@ a {
   text-decoration: none;
 }
 
-/* Hard inversion for selection, no colors. */
 ::selection {
-  background: var(--light);
-  color: var(--void);
+  background: rgba(93, 103, 112, 0.16);
+  color: #171412;
 }
 
-/* 
- * Very subtle global noise overlay. 
- * Kept at 0.03 to break digital sterility but not create distraction.
- */
-.noise-overlay {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  opacity: 0.03;
-  mix-blend-mode: difference;
+.page-frame {
+  margin-inline: auto;
+  max-width: 1440px;
+  padding-inline: 1.5rem;
+  padding-top: 6.5rem;
+  padding-bottom: 7rem;
 }
 
-/* Lenis Smooth Scroll base styles */
-html.lenis,
-html.lenis body {
-  height: auto;
+.section-grid {
+  padding-block: 5rem;
 }
 
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
+.section-label {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #746d62;
 }
 
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
+.rich-text p {
+  margin: 0 0 1.2rem;
 }
 
-.lenis.lenis-stopped {
-  overflow: hidden;
+.rich-text p:last-child {
+  margin-bottom: 0;
 }
 
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
+.rich-text a {
+  border-bottom: 1px solid rgba(23, 20, 18, 0.18);
 }
 
-@layer utilities {
+.reveal-block {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
 
-  /* No cards, no massive borders. Only text-driven links with physics easing */
-  .lift-link {
-    display: inline-block;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+.reveal-block[data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: fade-up 800ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes fade-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .page-frame {
+    padding-top: 6rem;
   }
 
-  .lift-link:hover {
-    transform: translateY(-2px);
-    opacity: 0.7;
-  }
-
-  .magnetic-text {
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    display: inline-block;
-  }
-
-  /* Deep void for full-bleed sections */
-  .bg-void-deep {
-    background-color: var(--void);
+  .section-grid {
+    padding-block: 4rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  .reveal-block,
+  .animate-fade-up {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
   }
 }

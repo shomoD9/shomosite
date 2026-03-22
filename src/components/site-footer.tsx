@@ -1,54 +1,47 @@
 /*
- * This file renders the global footer with outbound identity links and direct contact affordances.
- * It exists separately so communication endpoints stay consistent regardless of which route is currently active.
- * It reads canonical URLs from src/lib/site-config.ts and builds an email action through src/lib/links.ts.
+ * This file renders the closing band of the site with lightweight contact and social exits.
+ * It exists separately because the ending tone should remain coherent across every public route.
+ * The root layout places it after page content, and it reads from the shared site settings.
  */
 
-import { createPrefilledEmailLink } from "@/lib/links";
-import { getSiteConfig } from "@/lib/site-config";
+import Link from "next/link";
 
-export function SiteFooter(): React.JSX.Element {
-  const { substackUrl, youtubeChannelUrl, linkedinUrl } = getSiteConfig();
+import type { SiteSettings } from "@/lib/content-types";
+import { SiteMark } from "@/components/site-mark";
+
+type SiteFooterProps = {
+  settings: SiteSettings;
+};
+
+export function SiteFooter({ settings }: SiteFooterProps): React.JSX.Element {
+  const liveLinks = settings.socialLinks.filter((link) => Boolean(link.url));
 
   return (
-    <footer id="contact" className="relative z-10 mt-28 border-t border-line px-6 pb-14 pt-16 md:px-12">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 md:flex-row md:items-end md:justify-between">
-        <div className="max-w-2xl space-y-4">
-          <p className="font-mono text-[0.58rem] uppercase tracking-[0.24em] text-accent">Contact</p>
-          <p className="font-heading text-3xl italic leading-[1.12] text-light md:text-4xl">
-            Built as a digital instrument for people who think in long arcs.
-          </p>
-          <p className="max-w-lg text-sm leading-relaxed text-muted">
-            Placeholder copy for now. If anything in the archive resonates, send a note.
+    <footer className="border-t border-ink/10 px-6 py-10 lg:px-12">
+      <div className="mx-auto flex max-w-[1440px] flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+        <div className="space-y-3">
+          <div className="inline-flex items-center gap-3 text-ink">
+            <SiteMark className="h-5 w-5" />
+            <span className="font-display text-lg">Shomo</span>
+          </div>
+          <p className="max-w-md text-sm leading-7 text-graphite">
+            An independent research practice centered on productivity, expressed through prose, products, and systems.
           </p>
         </div>
 
-        {/* External profile links are compact so the closing section stays calm and minimal. */}
-        <div className="flex flex-col items-start gap-5 md:items-end">
-          <div className="flex flex-wrap gap-5 font-mono text-[0.58rem] uppercase tracking-[0.22em] text-light/72">
-            <a className="lift-link" href={substackUrl} target="_blank" rel="noreferrer">
-              Substack
-            </a>
-            <a className="lift-link" href={youtubeChannelUrl} target="_blank" rel="noreferrer">
-              YouTube
-            </a>
-            <a className="lift-link" href={linkedinUrl} target="_blank" rel="noreferrer">
-              LinkedIn
-            </a>
-            <a
-              className="lift-link"
-              href={createPrefilledEmailLink("Footer CTA")}
-              target="_blank"
-              rel="noreferrer"
+        <div className="flex flex-wrap gap-x-5 gap-y-2">
+          {/* We only surface links that are live so the footer stays precise instead of aspirational. */}
+          {liveLinks.map((link) => (
+            <Link
+              className="font-mono text-[11px] uppercase tracking-[0.18em] text-graphite transition-colors duration-300 hover:text-ink"
+              href={link.url as string}
+              key={link.label}
+              rel={link.url?.startsWith("mailto:") ? undefined : "noreferrer"}
+              target={link.url?.startsWith("mailto:") ? undefined : "_blank"}
             >
-              Email
-            </a>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <span className="pulse-dot inline-block h-2 w-2 rounded-full bg-accent" />
-            <span className="font-mono text-[0.52rem] uppercase tracking-[0.2em] text-muted/85">Studio Signal Active</span>
-          </div>
+              {link.label}
+            </Link>
+          ))}
         </div>
       </div>
     </footer>

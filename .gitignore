@@ -1,14 +1,13 @@
-# This file records generated artifacts and secrets that should never be committed.
-# It remains a small dedicated file so repository hygiene is visible at a glance.
-# Git references this list whenever it decides what belongs in version history.
+# This file keeps generated output and local machine state out of version control.
+# It exists separately so the rebuild stays clean even as Next.js, tests, and editors generate artifacts.
+# Git reads it before tracking new files, which keeps the repository focused on intentional source files.
 
 node_modules
 .next
-out
 coverage
 playwright-report
 test-results
-.env
-.env.local
 .DS_Store
 *.log
+*.tsbuildinfo
+.env.local

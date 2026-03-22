@@ -1,8 +1,9 @@
 /*
- * This file is the framework-level boundary where we configure global Next.js behavior.
- * It exists separately from route code so deployment/runtime concerns remain centralized and predictable.
- * Next.js reads this file at build/start time, and the rest of the app depends on the decisions declared here.
+ * This file establishes the framework-level behavior for the rebuilt site.
+ * It stays separate from route code so platform decisions remain easy to find and adjust.
+ * Next.js reads this module before compiling the app shell and page routes.
  */
+
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {

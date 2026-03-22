@@ -1,13 +1,12 @@
 /*
- * This file wires PostCSS transforms used during stylesheet compilation.
- * It is isolated so style tooling can evolve independently from application logic.
- * Tailwind and autoprefixer both plug into this pipeline before CSS reaches the browser.
+ * This file wires Tailwind and Autoprefixer into the CSS build pipeline.
+ * It exists separately because stylesheet compilation is infrastructure, not page logic.
+ * Next.js invokes this config whenever it processes `src/app/globals.css`.
  */
-const config = {
+
+export default {
   plugins: {
     tailwindcss: {},
     autoprefixer: {}
   }
 };
-
-export default config;
