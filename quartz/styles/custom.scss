@@ -1,0 +1,75 @@
+/*
+This stylesheet is the final visual calibration layer for Shomosite. It exists
+separately because Quartz gives the reading engine, but this file decides how
+that engine should feel: quieter, denser, and closer to a serious print essay
+than to a product-marketing site. It talks to Quartz's base styles and to the
+custom homepage and folder components through shared class names.
+*/
+
+@use "./base.scss";
+
+:root[saved-theme="light"] {
+  --shomo-rule: rgba(32, 27, 21, 0.14);
+}
+
+:root[saved-theme="dark"] {
+  --shomo-rule: rgba(247, 243, 235, 0.12);
+}
+
+body {
+  letter-spacing: 0.002em;
+}
+
+a {
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.14em;
+}
+
+.page-title a {
+  font-size: 1.45rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.left.sidebar,
+.right.sidebar {
+  gap: 1.5rem;
+}
+
+article {
+  max-width: 46rem;
+}
+
+article > p,
+article li {
+  line-height: 1.72;
+}
+
+article > h1,
+article > h2,
+article > h3 {
+  letter-spacing: 0.01em;
+}
+
+.plain-link-fallback {
+  color: var(--darkgray);
+}
+
+.explorer .title-button h2,
+.backlinks h3,
+.toc h3 {
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.content-meta {
+  border-bottom: 1px solid var(--shomo-rule);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+}
+
+.popover {
+  border: 1px solid var(--lightgray);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}

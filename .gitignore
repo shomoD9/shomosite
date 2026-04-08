@@ -1,13 +1,10 @@
-# This file keeps generated output and local machine state out of version control.
-# It exists separately so the rebuild stays clean even as Next.js, tests, and editors generate artifacts.
-# Git reads it before tracking new files, which keeps the repository focused on intentional source files.
-
-node_modules
 .next
-coverage
+node_modules
 playwright-report
 test-results
-.DS_Store
-*.log
-*.tsbuildinfo
-.env.local
+coverage
+public
+.quartz-cache
+.sync-cache
+prof
+tsconfig.tsbuildinfo

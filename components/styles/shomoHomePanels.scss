@@ -1,0 +1,52 @@
+/*
+This stylesheet handles the homepage's curated two-column index. It exists as a
+separate style file because the homepage panels have a different rhythm from the
+rest of the note pages: they need to feel like a serious table of contents, not
+like cards or marketing tiles. It talks only to `ShomoHomePanels.tsx`.
+*/
+
+.home-panels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem;
+  margin-top: 2.5rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--lightgray);
+}
+
+.home-panel h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.home-panel ol {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.home-panel-entry {
+  margin-bottom: 1.1rem;
+}
+
+.home-panel-entry h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+}
+
+.home-panel-entry p {
+  margin: 0.2rem 0;
+}
+
+.home-panel-date {
+  color: var(--gray);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 800px) {
+  .home-panels {
+    grid-template-columns: 1fr;
+  }
+}

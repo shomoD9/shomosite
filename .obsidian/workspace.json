@@ -1,0 +1,234 @@
+{
+  "main": {
+    "id": "619256382cbe6334",
+    "type": "split",
+    "children": [
+      {
+        "id": "7296b2c72b9aa075",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e05e028bda0a0d01",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/_J-Shomosite.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "_J-Shomosite"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "d53152b7a8c3ce93",
+    "type": "split",
+    "children": [
+      {
+        "id": "a4fe08e90b663d24",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b122398b2b97165b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "ff31bc2c954efd3a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "c7bbf29515eda118",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "ef6e1ee90c9c21f3",
+    "type": "split",
+    "children": [
+      {
+        "id": "d6846dd79eb6d256",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ab85515f28b94441",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "_docs/home.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for home"
+            }
+          },
+          {
+            "id": "9fbabf9997030378",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "_docs/home.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from home"
+            }
+          },
+          {
+            "id": "df1d8cc63e833b21",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "016aa79c0aea8611",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "59cc23a53a05d0b6",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "_docs/home.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of home"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "e05e028bda0a0d01",
+  "lastOpenFiles": [
+    "docs/index.md",
+    "public/tags/index.html",
+    "public/product/shomosite/index.html",
+    "public/postscript.js",
+    "public/tags/psychology.html",
+    "public/product/shomosite/docs/index.html",
+    "public/prescript.js",
+    "public/tags/productivity.html",
+    "public/product/prompt-wallet/index.html",
+    "public/index.css",
+    "public/tags/product.html",
+    "public/static/og-image.png",
+    "public/static/icon.png",
+    "docs/SYSTEM-DESIGN.md",
+    "docs/about.md",
+    "docs/_J-Shomosite.md",
+    "product/corpus/docs/research-corpus.md",
+    "product/corpus/index.md",
+    "product/obsidian-chat/docs/knowledge-loop.md",
+    "product/obsidian-chat/index.md",
+    "product/prompt-wallet/docs/knowledge-asset.md",
+    "product/prompt-wallet/index.md",
+    "product/master/docs/integrated-vault.md",
+    "product/master/index.md",
+    "product/shomosite/docs/public-system.md",
+    "product/shomosite/index.md",
+    "product/index.md",
+    "prose/freedom-through-constraints.md",
+    "prose/building-with-ontologies.md",
+    "prose/critical-optimism.md",
+    "prose/memetic-knowledge-creation.md",
+    "prose/anthropic-exceptionalism.md",
+    "prose/index.md",
+    "node_modules/pixi.js/README.md",
+    "node_modules/mathjax-full/README.md",
+    "node_modules/mathjax-full/CONTRIBUTING.md",
+    "node_modules/gifuct-js/README.md",
+    "node_modules/cli-spinner/img/spinner.gif",
+    "node_modules/gifuct-js/demo/jblack.gif",
+    "node_modules/gifuct-js/demo/horses.gif",
+    "node_modules/gifuct-js/demo/dog.gif",
+    "node_modules/js-binary-schema-parser/example/horses.gif",
+    "node_modules/js-binary-schema-parser/example/dog.gif",
+    "node_modules/js-binary-schema-parser/example/box.gif",
+    "quartz/static/og-image.png"
+  ]
+}
