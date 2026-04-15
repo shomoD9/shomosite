@@ -1,14 +1,10 @@
-# This file records generated artifacts and secrets that should never be committed.
-# It remains a small dedicated file so repository hygiene is visible at a glance.
-# Git references this list whenever it decides what belongs in version history.
-
-node_modules
 .next
-out
-coverage
+node_modules
 playwright-report
 test-results
-.env
-.env.local
-.DS_Store
-*.log
+coverage
+public
+.quartz-cache
+.sync-cache
+prof
+tsconfig.tsbuildinfo

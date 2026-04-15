@@ -1,0 +1,83 @@
+/*
+This stylesheet gives the prose, product, and docs folder pages their own quiet
+index language. It exists separately because these section pages are not generic
+archives: they are sectional maps of the public wiki and need spacing and rules
+that make browsing feel deliberate. It talks only to `ShomoFolderContent.tsx`.
+*/
+
+.shomo-folder {
+  display: grid;
+  gap: clamp(3rem, 5vw, 4.4rem);
+  max-width: min(100%, var(--shomo-editorial-frame, 78rem));
+  margin-inline: auto;
+}
+
+.folder-intro {
+  max-width: 43rem;
+}
+
+.topic-groups,
+.product-clusters,
+.docs-grid {
+  display: grid;
+  gap: clamp(2.4rem, 4vw, 3.6rem);
+}
+
+.topic-group,
+.product-cluster {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.topic-group h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-bottom: 0.18rem;
+  border-bottom: 1px solid var(--shomo-rule, var(--lightgray));
+  font-family: var(--bodyFont);
+  font-size: 1.16rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  font-variant-caps: all-small-caps;
+}
+
+.topic-group-grid,
+.docs-grid {
+  display: grid;
+  gap: 1rem 1.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+}
+
+.folder-entry h3 {
+  margin: 0 0 0.2rem;
+  font-size: 1rem;
+}
+
+.folder-entry p {
+  margin: 0.22rem 0;
+  max-width: 26rem;
+  line-height: 1.62;
+}
+
+.folder-entry-date {
+  color: var(--gray);
+  font-size: 0.85rem;
+}
+
+.product-doc-list {
+  margin: 0.75rem 0 0;
+  padding-left: 1.2rem;
+  columns: 2;
+  column-gap: 1.8rem;
+}
+
+.product-doc-list li + li {
+  margin-top: 0.3rem;
+}
+
+@media (max-width: 760px) {
+  .product-doc-list {
+    columns: 1;
+  }
+}

@@ -1,0 +1,65 @@
+.shomo-margin-notes {
+  width: 100%;
+  min-height: 1px;
+}
+
+.shomo-margin-notes__canvas {
+  position: relative;
+  min-height: 24rem;
+}
+
+.shomo-margin-note {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  padding: 0;
+  border-left: none;
+  background: transparent;
+  font-style: italic;
+  font-size: 0.85em;
+  line-height: 1.35;
+  opacity: 0.85;
+  hyphens: manual;
+  transition: opacity 0.2s ease;
+}
+
+.shomo-margin-note:hover {
+  opacity: 1;
+}
+
+.shomo-margin-note .sidenote-fragment__header {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.4rem;
+  font-style: normal;
+}
+
+.shomo-margin-note .sidenote-fragment__eyebrow {
+  margin-bottom: 0.1rem;
+  font-style: normal;
+}
+
+.shomo-margin-note p,
+.shomo-margin-note li {
+  font-size: inherit;
+  line-height: 1.35;
+}
+
+.shomo-margin-note p:first-child {
+  margin-top: 0;
+}
+
+.shomo-margin-note p:last-child,
+.shomo-margin-note ul:last-child,
+.shomo-margin-note ol:last-child {
+  margin-bottom: 0;
+}
+
+.shomo-margin-note a {
+  font-style: normal;
+}
+
+@media (max-width: 1080px) {
+  .shomo-margin-notes {
+    display: none;
+  }
+}

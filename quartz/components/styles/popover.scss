@@ -1,0 +1,211 @@
+@use "../../styles/variables.scss" as *;
+
+.popover {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.popover.is-modal {
+  background: rgba(18, 16, 14, 0.32);
+  pointer-events: auto;
+}
+
+.popover-window {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: min(40rem, calc(100vw - 2.25rem));
+  height: min(29rem, calc(100vh - 2.5rem));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  box-shadow: 0 4px 24px rgba(18, 16, 14, 0.10), 0 1px 4px rgba(18, 16, 14, 0.06);
+  pointer-events: auto;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease,
+    box-shadow 0.18s ease;
+}
+
+.popover.active-popover .popover-window {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.popover-fading .popover-window {
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.popover.is-pinned .popover-window,
+.popover.is-maximized .popover-window {
+  box-shadow: 0 8px 40px rgba(18, 16, 14, 0.18), 0 2px 8px rgba(18, 16, 14, 0.08);
+}
+
+.popover.is-modal .popover-window {
+  width: min(44rem, calc(100vw - 1.5rem));
+  height: min(34rem, calc(100vh - 1.5rem));
+}
+
+.popover-window[data-preview-kind="document"],
+.popover-window[data-preview-kind="media"] {
+  width: min(46rem, calc(100vw - 2.25rem));
+  height: min(33rem, calc(100vh - 2.5rem));
+}
+
+.popover-chrome {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.4rem 0.65rem;
+  border-bottom: 1px solid var(--lightgray);
+  background: color-mix(in srgb, var(--light) 92%, var(--lightgray));
+  cursor: grab;
+}
+
+.popover-chrome:active {
+  cursor: grabbing;
+}
+
+.popover-title {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--gray);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-decoration: none;
+  font-family: var(--sansFont);
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-align: right;
+}
+
+.popover-title:hover {
+  color: var(--dark);
+}
+
+.popover-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.popover-action {
+  appearance: none;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--gray);
+  cursor: pointer;
+  width: 1.55rem;
+  height: 1.55rem;
+  padding: 0;
+  display: inline-grid;
+  place-items: center;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.popover-action:hover {
+  color: var(--dark);
+  background: color-mix(in srgb, var(--lightgray) 30%, transparent);
+}
+
+.popover.is-pinned .popover-action--pin,
+.popover.is-maximized .popover-action--maximize {
+  color: var(--dark);
+  background: color-mix(in srgb, var(--lightgray) 36%, transparent);
+}
+
+.popover-action svg {
+  width: 0.78rem;
+  height: 0.78rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.popover-action[hidden] {
+  display: none;
+}
+
+.popover-inner {
+  flex: 1 1 auto;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 0.85rem 1rem 1.1rem;
+  background: var(--light);
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--lightgray) 60%, transparent) transparent;
+}
+
+.popover-inner[data-content-type*="image"],
+.popover-inner[data-content-type*="pdf"] {
+  padding: 0;
+}
+
+.popover-inner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+.popover-inner iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.popover-inner article {
+  max-width: none;
+  margin: 0;
+}
+
+.popover-inner h1 {
+  font-size: 1.45rem;
+}
+
+.popover-inner .content-meta {
+  margin-bottom: 1rem;
+}
+
+.popover.is-modal .popover-inner {
+  max-height: 100%;
+}
+
+.popover.is-collapsed .popover-inner {
+  display: none;
+}
+
+.popover.is-collapsed .popover-window {
+  height: auto !important;
+}
+
+@media (max-width: 1080px) {
+  .popover-window {
+    width: min(44rem, calc(100vw - 1.2rem));
+    height: min(78vh, calc(100vh - 1.2rem));
+  }
+
+  .popover-chrome {
+    padding-inline: 0.7rem;
+  }
+
+  .popover-inner {
+    padding-inline: 0.85rem;
+  }
+}
