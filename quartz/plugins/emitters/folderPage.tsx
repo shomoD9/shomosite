@@ -1,3 +1,11 @@
+/*
+This emitter writes Quartz's synthetic folder index pages. It exists separately
+because Shomosite relies on folder pages for section indexes like `/prose`, but
+its nested prose and product roots are real notes that merely happen to live at
+`.../index`. It talks to the folder-content component, to the build context,
+and to the writer that emits static HTML files.
+*/
+
 import { QuartzEmitterPlugin } from "../types"
 import { QuartzComponentProps } from "../../components/types"
 import HeaderConstructor from "../../components/Header"
@@ -17,9 +25,14 @@ import {
 import { defaultListPageLayout, sharedPageComponents } from "../../../quartz.layout"
 import { FolderContent } from "../../components"
 import { write } from "./helpers"
-import { i18n, TRANSLATIONS } from "../../i18n"
+import { TRANSLATIONS } from "../../i18n"
 import { BuildCtx } from "../../util/ctx"
 import { StaticResources } from "../../util/resources"
+
+function isPrimaryNoteIndex(slug: string) {
+  const segments = slug.split("/")
+  return slug.endsWith("/index") && segments.length === 3 && (slug.startsWith("prose/") || slug.startsWith("product/"))
+}
 interface FolderPageOptions extends FullPageLayout {
   sort?: (f1: QuartzPluginData, f2: QuartzPluginData) => number
 }
@@ -62,7 +75,7 @@ async function* processFolderInfo(
 function computeFolderInfo(
   folders: Set<SimpleSlug>,
   content: ProcessedContent[],
-  locale: keyof typeof TRANSLATIONS,
+  _locale: keyof typeof TRANSLATIONS,
 ): Record<SimpleSlug, ProcessedContent> {
   // Create default folder descriptions
   const folderInfo: Record<SimpleSlug, ProcessedContent> = Object.fromEntries(
@@ -71,7 +84,7 @@ function computeFolderInfo(
       defaultProcessedContent({
         slug: joinSegments(folder, "index") as FullSlug,
         frontmatter: {
-          title: `${i18n(locale).pages.folderContent.folder}: ${folder}`,
+          title: folder.charAt(0).toUpperCase() + folder.slice(1),
           tags: [],
         },
       }),
@@ -81,6 +94,10 @@ function computeFolderInfo(
   // Update with actual content if available
   for (const [tree, file] of content) {
     const slug = stripSlashes(simplifySlug(file.data.slug!)) as SimpleSlug
+    if (isPrimaryNoteIndex(slug)) {
+      continue
+    }
+
     if (folders.has(slug)) {
       folderInfo[slug] = [tree, file]
     }
@@ -136,7 +153,8 @@ export const FolderPage: QuartzEmitterPlugin<Partial<FolderPageOptions>> = (user
         allFiles.flatMap((data) => {
           return data.slug
             ? _getFolders(data.slug).filter(
-                (folderName) => folderName !== "." && folderName !== "tags",
+                (folderName) =>
+                  folderName !== "." && folderName !== "tags" && !isPrimaryNoteIndex(folderName),
               )
             : []
         }),
@@ -157,7 +175,9 @@ export const FolderPage: QuartzEmitterPlugin<Partial<FolderPageOptions>> = (user
         const folders = _getFolders(slug).filter(
           (folderName) => folderName !== "." && folderName !== "tags",
         )
-        folders.forEach((folder) => affectedFolders.add(folder))
+        folders
+          .filter((folder) => !isPrimaryNoteIndex(folder))
+          .forEach((folder) => affectedFolders.add(folder))
       }
 
       // If there are affected folders, rebuild their pages

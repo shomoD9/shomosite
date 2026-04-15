@@ -6,8 +6,16 @@
   overflow-y: hidden;
   min-height: 1.4rem;
   flex: 0 0.5 auto;
+  font-family: var(--sansFont);
+  font-size: 0.84rem;
+  line-height: 1.25;
+  background: var(--shomo-muted-surface, rgba(215, 208, 195, 0.15));
+  border: 1px solid var(--shomo-rule, var(--lightgray));
+  padding: 0.6rem 0.8rem;
+
   &:has(button.toc-header.collapsed) {
-    flex: 0 1 1.4rem;
+    flex: 0 1 auto;
+    padding-bottom: 0.4rem;
   }
 }
 
@@ -20,17 +28,26 @@ button.toc-header {
   color: var(--dark);
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-family: var(--sansFont);
 
   & h3 {
-    font-size: 1rem;
+    font-family: var(--sansFont);
+    font-size: 0.82rem;
+    font-weight: 600;
     display: inline-block;
     margin: 0;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 
   & .fold {
     margin-left: 0.5rem;
     transition: transform 0.3s ease;
-    opacity: 0.8;
+    opacity: 0.6;
+    width: 16px;
+    height: 16px;
   }
 
   &.collapsed .fold {
@@ -41,20 +58,58 @@ button.toc-header {
 ul.toc-content.overflow {
   list-style: none;
   position: relative;
-  margin: 0.5rem 0;
+  margin: 0.5rem 0 0;
   padding: 0;
   max-height: calc(100% - 2rem);
   overscroll-behavior: contain;
-  list-style: none;
+  counter-reset: toc-l1;
+
+  &.collapsed {
+    display: none;
+  }
+
+  & > li {
+    counter-increment: toc-l1;
+    counter-reset: toc-l2;
+  }
+
+  & > li > a::before {
+    content: counter(toc-l1) ".\2002";
+    color: var(--gray);
+    transition: color 0.2s ease;
+  }
+
+  & > li.depth-1 {
+    counter-increment: toc-l2;
+  }
+  & > li.depth-1 > a::before {
+    content: counter(toc-l1) "." counter(toc-l2) "\2002";
+  }
+
+  & > li.depth-2 {
+    counter-increment: toc-l2;
+  }
+  & > li.depth-2 > a::before {
+    content: counter(toc-l1) "." counter(toc-l2) "\2002";
+  }
 
   & > li > a {
     color: var(--dark);
-    opacity: 0.35;
+    opacity: 0.5;
+    text-decoration: none;
     transition:
-      0.5s ease opacity,
-      0.3s ease color;
+      0.3s ease opacity,
+      0.2s ease color;
+
+    &:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+    &:hover::before {
+      color: var(--dark);
+    }
     &.in-view {
-      opacity: 0.75;
+      opacity: 0.85;
     }
   }
 

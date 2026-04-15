@@ -9,14 +9,21 @@ homepage component that renders the curated front page index.
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 import ShomoHomePanels from "./components/ShomoHomePanels"
+import ShomoMarginNotes from "./components/ShomoMarginNotes"
+import ShomoTopNav from "./components/ShomoTopNav"
+import { isHomePage, isPrimaryNotePage } from "./components/siteData"
 
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
-  header: [],
+  header: [ShomoTopNav()],
   afterBody: [
     Component.ConditionalRender({
       component: ShomoHomePanels(),
-      condition: (page) => page.fileData.slug === "index",
+      condition: (page) => isHomePage(page.fileData),
+    }),
+    Component.ConditionalRender({
+      component: Component.Backlinks(),
+      condition: (page) => isPrimaryNotePage(page.fileData),
     }),
   ],
   footer: Component.Footer({
@@ -31,66 +38,30 @@ export const sharedPageComponents: SharedLayout = {
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
     Component.ConditionalRender({
-      component: Component.Breadcrumbs(),
-      condition: (page) => page.fileData.slug !== "index",
-    }),
-    Component.ConditionalRender({
       component: Component.ArticleTitle(),
-      condition: (page) => page.fileData.slug !== "index",
+      condition: (page) => !isHomePage(page.fileData),
     }),
     Component.ConditionalRender({
       component: Component.ContentMeta(),
-      condition: (page) => page.fileData.slug !== "index",
+      condition: (page) => !isHomePage(page.fileData),
     }),
   ],
   left: [
-    Component.PageTitle(),
-    Component.MobileOnly(Component.Spacer()),
-    Component.Flex({
-      components: [
-        {
-          Component: Component.Search(),
-          grow: true,
-        },
-        { Component: Component.Darkmode() },
-        { Component: Component.ReaderMode() },
-      ],
-    }),
-    Component.Explorer({
-      title: "Browse",
-      folderDefaultState: "collapsed",
+    Component.ConditionalRender({
+      component: Component.TableOfContents(),
+      condition: (page) => isPrimaryNotePage(page.fileData) && Boolean(page.fileData.toc?.length),
     }),
   ],
   right: [
     Component.ConditionalRender({
-      component: Component.DesktopOnly(Component.TableOfContents()),
-      condition: (page) => page.fileData.slug !== "index",
-    }),
-    Component.ConditionalRender({
-      component: Component.Backlinks(),
-      condition: (page) => page.fileData.slug !== "index",
+      component: ShomoMarginNotes(),
+      condition: (page) => isPrimaryNotePage(page.fileData),
     }),
   ],
 }
 
 export const defaultListPageLayout: PageLayout = {
-  beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
-  left: [
-    Component.PageTitle(),
-    Component.MobileOnly(Component.Spacer()),
-    Component.Flex({
-      components: [
-        {
-          Component: Component.Search(),
-          grow: true,
-        },
-        { Component: Component.Darkmode() },
-      ],
-    }),
-    Component.Explorer({
-      title: "Browse",
-      folderDefaultState: "collapsed",
-    }),
-  ],
+  beforeBody: [Component.ArticleTitle(), Component.ContentMeta()],
+  left: [],
   right: [],
 }

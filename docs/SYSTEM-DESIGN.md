@@ -1,12 +1,4 @@
-<!--
-This file is the cross-repository design document for the whole Shomovault and
-Shomosite system. It exists because the architecture now spans the private
-master vault, multiple local product repos, and the downstream public site, and
-those relationships are too important to leave scattered across journals or
-project-specific briefs. It talks to the root architecture here, to the product
-docs mirrors under `product/`, and to the future Shomosite repo copy that is
-intended to become the long-term source of truth for this same document.
--->
+
 
 # System Design
 
@@ -77,6 +69,7 @@ The top-level public site stays intentionally small: `/`, `/prose`, and `/produc
 This design intentionally does not implement everything at once.
 
 Implemented now:
+
 - the integrated `master` hub model
 - the product docs registry
 - explicit import/export scripts for product docs
@@ -84,6 +77,7 @@ Implemented now:
 - the collapse of the old top-level vault `shomosite/` workspace into the integrated product docs side
 
 Deferred for later:
+
 - a fully aligned `docs/` tree inside the external `shomosite` repo
 - the actual Quartz implementation in that repo
 - automated public-content pull scripts owned by that repo

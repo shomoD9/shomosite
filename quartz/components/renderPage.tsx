@@ -1,3 +1,11 @@
+/*
+This file assembles a full Quartz HTML page from the chosen component layout. It
+exists separately because page rendering is where global layout decisions become
+real DOM: headers, side rails, page bodies, and shared resources all converge
+here. It talks to the page-layout configuration, to Quartz's transclusion pass,
+and to the component constructors that shape each rendered page shell.
+*/
+
 import { render } from "preact-render-to-string"
 import { QuartzComponent, QuartzComponentProps } from "./types"
 import HeaderConstructor from "./Header"
@@ -241,22 +249,6 @@ export function renderPage(
   const Header = HeaderConstructor()
   const Body = BodyConstructor()
 
-  const LeftComponent = (
-    <div class="left sidebar">
-      {left.map((BodyComponent) => (
-        <BodyComponent {...componentData} />
-      ))}
-    </div>
-  )
-
-  const RightComponent = (
-    <div class="right sidebar">
-      {right.map((BodyComponent) => (
-        <BodyComponent {...componentData} />
-      ))}
-    </div>
-  )
-
   const lang = componentData.fileData.frontmatter?.lang ?? cfg.locale?.split("-")[0] ?? "en"
   const direction = i18n(cfg.locale).direction ?? "ltr"
   const doc = (
@@ -265,7 +257,15 @@ export function renderPage(
       <body data-slug={slug}>
         <div id="quartz-root" class="page">
           <Body {...componentData}>
-            {LeftComponent}
+            {left.length > 0 ? (
+              <div class="left sidebar">
+                {left.map((BodyComponent) => (
+                  <BodyComponent {...componentData} />
+                ))}
+              </div>
+            ) : (
+              <></>
+            )}
             <div class="center">
               <div class="page-header">
                 <Header {...componentData}>
@@ -287,7 +287,16 @@ export function renderPage(
                 ))}
               </div>
             </div>
-            {RightComponent}
+            {/* Empty rails should disappear entirely so custom layouts can opt out of Quartz's default sidebar shell. */}
+            {right.length > 0 ? (
+              <div class="right sidebar">
+                {right.map((BodyComponent) => (
+                  <BodyComponent {...componentData} />
+                ))}
+              </div>
+            ) : (
+              <></>
+            )}
             <Footer {...componentData} />
           </Body>
         </div>

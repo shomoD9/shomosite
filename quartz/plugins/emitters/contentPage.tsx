@@ -1,3 +1,11 @@
+/*
+This emitter writes Quartz's ordinary note pages to disk. It exists separately
+because content pages and folder indexes are now intentionally different shells:
+some nested `index` files in Shomosite are actual essays or product roots and
+must still render as note pages rather than folder listings. It talks to
+`quartz.layout.ts`, to the parsed markdown tree, and to the output writer.
+*/
+
 import path from "path"
 import { QuartzEmitterPlugin } from "../types"
 import { QuartzComponentProps } from "../../components/types"
@@ -14,6 +22,11 @@ import { BuildCtx } from "../../util/ctx"
 import { Node } from "unist"
 import { StaticResources } from "../../util/resources"
 import { QuartzPluginData } from "../vfile"
+
+function isPrimaryNoteIndex(slug: string) {
+  const segments = slug.split("/")
+  return slug.endsWith("/index") && segments.length === 3 && (slug.startsWith("prose/") || slug.startsWith("product/"))
+}
 
 async function processContent(
   ctx: BuildCtx,
@@ -83,8 +96,8 @@ export const ContentPage: QuartzEmitterPlugin<Partial<FullPageLayout>> = (userOp
           containsIndex = true
         }
 
-        // only process home page, non-tag pages, and non-index pages
-        if (slug.endsWith("/index") || slug.startsWith("tags/")) continue
+        // Shomosite's nested prose/product roots are authored as index files but should render like ordinary notes.
+        if ((slug.endsWith("/index") && !isPrimaryNoteIndex(slug)) || slug.startsWith("tags/")) continue
         yield processContent(ctx, tree, file.data, allFiles, opts, resources)
       }
 
@@ -112,7 +125,7 @@ export const ContentPage: QuartzEmitterPlugin<Partial<FullPageLayout>> = (userOp
       for (const [tree, file] of content) {
         const slug = file.data.slug!
         if (!changedSlugs.has(slug)) continue
-        if (slug.endsWith("/index") || slug.startsWith("tags/")) continue
+        if ((slug.endsWith("/index") && !isPrimaryNoteIndex(slug)) || slug.startsWith("tags/")) continue
 
         yield processContent(ctx, tree, file.data, allFiles, opts, resources)
       }

@@ -21,6 +21,47 @@ export type ProductCluster = {
   docs: QuartzPluginData[]
 }
 
+export function getSlug(input: QuartzPluginData | string | undefined): string {
+  if (!input) {
+    return ""
+  }
+
+  return typeof input === "string" ? input : (input.slug ?? "")
+}
+
+function normalizeSlugCandidate(candidate: string): string {
+  return candidate.replace(/^\/+|\/+$/g, "").replace(/\/index$/, "")
+}
+
+function isSectionRoot(page: QuartzPluginData, section: "prose" | "product"): boolean {
+  const slug = page.slug ?? ""
+  const segments = slug.split("/")
+  return slug.startsWith(`${section}/`) && slug.endsWith("/index") && segments.length === 3
+}
+
+export function isHomePage(input: QuartzPluginData | string | undefined): boolean {
+  return getSlug(input) === "index"
+}
+
+export function isSectionIndexPage(input: QuartzPluginData | string | undefined): boolean {
+  const slug = getSlug(input)
+  return slug === "prose/index" || slug === "product/index" || slug === "docs/index"
+}
+
+export function isProseNotePage(input: QuartzPluginData | string | undefined): boolean {
+  const slug = getSlug(input)
+  return slug.startsWith("prose/") && slug !== "prose/index"
+}
+
+export function isProductNotePage(input: QuartzPluginData | string | undefined): boolean {
+  const slug = getSlug(input)
+  return slug.startsWith("product/") && slug !== "product/index"
+}
+
+export function isPrimaryNotePage(input: QuartzPluginData | string | undefined): boolean {
+  return isProseNotePage(input) || isProductNotePage(input)
+}
+
 function getPrimaryDate(page: QuartzPluginData): Date | undefined {
   return page.dates?.published ?? page.dates?.modified ?? page.dates?.created
 }
@@ -90,14 +131,15 @@ export function resolveHomeEntries(
 
   // The homepage is deliberately editorial, so the declared order in frontmatter is preserved.
   return curated
-    .map((slug) => allFiles.find((page) => page.slug === String(slug)))
+    .map((slug) => {
+      const normalized = normalizeSlugCandidate(String(slug))
+      return allFiles.find((page) => normalizeSlugCandidate(page.slug ?? "") === normalized)
+    })
     .filter((page): page is QuartzPluginData => Boolean(page))
 }
 
 export function getProseTopicGroups(allFiles: QuartzPluginData[]): TopicGroup[] {
-  const prosePages = allFiles.filter((page) => {
-    return page.slug?.startsWith("prose/") && page.slug !== "prose/index"
-  })
+  const prosePages = allFiles.filter((page) => isSectionRoot(page, "prose"))
 
   const groups = new Map<string, QuartzPluginData[]>()
   for (const page of prosePages) {
@@ -118,9 +160,7 @@ export function getProseTopicGroups(allFiles: QuartzPluginData[]): TopicGroup[] 
 }
 
 export function getProductClusters(allFiles: QuartzPluginData[]): ProductCluster[] {
-  const productRoots = allFiles.filter((page) => {
-    return page.slug?.startsWith("product/") && page.slug?.split("/").length === 3
-  })
+  const productRoots = allFiles.filter((page) => isSectionRoot(page, "product"))
 
   return sortPages(productRoots).map((root) => {
     const folder = root.slug!.replace(/\/index$/, "")
