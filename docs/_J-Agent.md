@@ -4,6 +4,12 @@
 - Refine the long-term visual layer and motifs only after the wiki reading system and public information architecture are stable.
 - Lock the eventual production domain, metadata, and social image strategy once the public hostname is decided.
 
+## 2026-04-16 - GPT-5 - Codex App
+
+#work_context Surgically repaired the local dev startup path without undoing popup loading states or changing the stock Quartz title/metadata header. Restored valid frontmatter boundaries in the Anthropic Exceptionalism essay, removed only the latest 19:xx Playwright YAML verification artifacts, and regenerated `.quartz-content` from source.
+
+#hurdles The previous rollback left generated `.quartz-content` dirty and the essay source malformed, so `npm run dev` failed during content staging before Quartz could serve. The chosen repair was source-level metadata normalization plus generated-state regeneration, not a visual header intervention.
+
 ## 2026-04-15 - Opus 4.6 - Cursor
 
 #work_context Fixed nested popup positioning: `chooseAnchoredBox()` now accepts a `parentPopover` parameter and anchors child popups relative to the parent popup's window rect instead of the tiny link rect, so children appear to the side of the parent window (like gwern) rather than on top. Added Wikipedia article-summary popups via the public REST API (`/api/rest_v1/page/summary/{title}`)—`isWikipediaLink()` detects Wikipedia links, `loadWikipediaPreview()` fetches and caches summaries with optional thumbnails, `openPreview()` routes Wikipedia links to the new loader, and `attachPopoverListeners()` now selects Wikipedia links alongside internal links so Wikipedia-to-Wikipedia popups recurse exactly like internal ones. Verified with `tsc --noEmit`, `npm run build`, and no linter errors.
