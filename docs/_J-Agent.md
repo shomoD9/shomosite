@@ -6,6 +6,8 @@
 
 ## 2026-04-16 - GPT-5 - Codex App
 
+#work_context Made a tightly scoped prose typography polish pass: compared Gwern's small-caps CSS treatment, then adjusted only Shomosite's prose first-line small caps in `quartz/styles/custom.scss` with a slight size, weight, and tracking calibration. Preserved the stock title/metadata header and did not reintroduce `ShomoArticleHeader`.
+
 #work_context Surgically repaired the local dev startup path without undoing popup loading states or changing the stock Quartz title/metadata header. Restored valid frontmatter boundaries in the Anthropic Exceptionalism essay, removed only the latest 19:xx Playwright YAML verification artifacts, and regenerated `.quartz-content` from source.
 
 #hurdles The previous rollback left generated `.quartz-content` dirty and the essay source malformed, so `npm run dev` failed during content staging before Quartz could serve. The chosen repair was source-level metadata normalization plus generated-state regeneration, not a visual header intervention.

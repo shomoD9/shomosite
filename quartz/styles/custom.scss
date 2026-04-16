@@ -416,7 +416,11 @@ body[data-slug^="prose/"]:not([data-slug="prose/index"]) .center > article > p:f
 }
 
 body[data-slug^="prose/"]:not([data-slug="prose/index"]) .center > article > p:first-of-type::first-line {
+  /* Gwern's small caps read denser than default caps; this keeps the intro line subtly firmer without redesigning the page. */
   font-variant-caps: small-caps;
+  font-size: 1.01em;
+  font-weight: 500;
+  letter-spacing: -0.012em;
 }
 
 @media (max-width: 1080px) {
