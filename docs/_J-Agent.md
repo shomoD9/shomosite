@@ -4,7 +4,11 @@
 - Refine the long-term visual layer and motifs only after the wiki reading system and public information architecture are stable.
 - Lock the eventual production domain, metadata, and social image strategy once the public hostname is decided.
 
-## 2026-04-16 - GPT-5 - Codex App
+## 2026-04-16 - Opus 4.6 - Warp
+
+#work_context Typography polish pass in `quartz/styles/custom.scss`: switched `article > h2` from `text-transform: uppercase` to `font-variant-caps: small-caps` to match Gwern's section-heading treatment, bumped essay title size from `clamp(2rem…2.5rem)` to `clamp(2.3rem…3rem)` with more vertical breathing room, and strengthened the prose first-line `::first-line` small caps by adding `font-feature-settings: 'smcp'` (Source Serif 4 has native OpenType small caps), increasing size to `1.06em`, weight to `600`, and widening letter-spacing.
+
+### GPT-5 - Codex App
 
 #work_context Made a tightly scoped prose typography polish pass: compared Gwern's small-caps CSS treatment, then adjusted only Shomosite's prose first-line small caps in `quartz/styles/custom.scss` with a slight size, weight, and tracking calibration. Preserved the stock title/metadata header and did not reintroduce `ShomoArticleHeader`.
 
