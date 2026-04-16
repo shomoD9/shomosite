@@ -9,6 +9,7 @@ home:
     - prose/memetic-knowledge-creation
     - prose/critical-optimism
     - prose/building-with-ontologies
+    - prose/margins-are-part-of-the-argument
     - prose/freedom-through-constraints
   product:
     - product/shomosite

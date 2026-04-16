@@ -543,14 +543,14 @@ function chooseAnchoredBox(
       Math.max(0, candidate.top + height - safeBottom)
     const overlap = parentRect
       ? getRectOverlapArea(
-          {
-            left: clampedLeft,
-            top: clampedTop,
-            right: clampedLeft + width,
-            bottom: clampedTop + height,
-          },
-          parentRect,
-        )
+        {
+          left: clampedLeft,
+          top: clampedTop,
+          right: clampedLeft + width,
+          bottom: clampedTop + height,
+        },
+        parentRect,
+      )
       : 0
     const score = candidate.penalty + overflow * 120 + overlap / 120
 
