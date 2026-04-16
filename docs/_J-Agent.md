@@ -6,9 +6,21 @@
 
 ## 2026-04-16 - Opus 4.6 - Warp
 
+### Opus 4.7 (max) - Warp
+
+#work_context Fixed the long-standing desktop margin-note anchoring failure on prose/product note pages. Root cause was inherited from `quartz/styles/base.scss` (`.sidebar { position: sticky; top: 0; height: 100vh }`) applied at desktop widths: the right rail was a sticky viewport-height container, so its absolutely-positioned children tracked the viewport instead of the article regardless of how correctly the script computed each link's document-absolute y. Fix in `quartz/styles/custom.scss`: added a scoped override for `body[data-slug^="prose/"]:not([data-slug="prose/index"]) .sidebar.right` (and the product equivalent) that sets `position: static; top: auto; height: auto; display: block; gap: 0`, letting the canvas grow with the article. Left TOC untouched — its own `position: sticky; top: 1.25rem` inside `.sidebar.left .toc` handles stickiness independently. Also hardened `components/scripts/marginNotes.inline.ts` by re-reading `canvasDocTop` in Phase 3 (after `replaceChildren`) instead of once during Phase 2, so any reflow between measurement and paint is absorbed. Verified live at `http://localhost:8080/prose/margins-are-part-of-the-argument/`: at 1600×1000, link #1 and note #1 share `y=320` at scroll=0 and `y=-265` at scroll=900 (perfect tracking). Per-note `diff = noteY - linkY` stays constant across scroll positions (collision push-down preserved as relative offset). Screenshots confirm correct placement across the essay including the dense Density Test stack. `npm run check` and `npm run build` both clean.
+
+#hurdles The last two models iterated on the script (first-line rect measurement, render-generation guards, `ResizeObserver`, etc.) without diagnosing that the container was the problem. Every improvement to the measurement logic was moot while the canvas sat inside a `position: sticky; height: 100vh` parent. Evidence was only visible by reading `getBoundingClientRect()` during actual scroll in a live browser, not by static inspection of the script or the HTML. Lesson: when an absolute-positioning system fails to follow its document anchor, always verify the offset parent's own positioning first.
+
+#work_context Redesigned margin note cards to behave as comments on annotated text. Renamed eyebrow from "Sidenote" to "Note" in `scripts/prepare-content.mjs` (`createSidenoteFragment`). Added client-side title swap in `components/scripts/marginNotes.inline.ts`: the card now shows the linked text from the article in curly quotes as its title (replacing the note file's own title), with a `truncateForTitle` helper that collapses passages longer than 8 words to "first 3 … last 3". Note file title remains in the static HTML as fallback. Regenerated `.quartz-content` fragments.
+
+#shomos_preferences The user wants margin notes to function as inline comments rather than standalone definitions. The note title should reflect the annotated passage, not the note file name.
+
 #work_context Typography polish pass in `quartz/styles/custom.scss`: switched `article > h2` from `text-transform: uppercase` to `font-variant-caps: small-caps` to match Gwern's section-heading treatment, bumped essay title size from `clamp(2rem…2.5rem)` to `clamp(2.3rem…3rem)` with more vertical breathing room, and strengthened the prose first-line `::first-line` small caps by adding `font-feature-settings: 'smcp'` (Source Serif 4 has native OpenType small caps), increasing size to `1.06em`, weight to `600`, and widening letter-spacing.
 
 ### GPT-5 - Codex App
+
+#work_context Implemented the desktop margin-note anchoring contract in `components/scripts/marginNotes.inline.ts`: each note now waits for stable layout, measures the first rendered line of its linked phrase, ignores stale async render passes after navigation or resize, and reflows from an article-only `ResizeObserver` while keeping the existing no-overlap margin policy. The dense `Margins Are Part of the Argument` prose fixture remains published so this behavior has a real regression page.
 
 #work_context Made a tightly scoped prose typography polish pass: compared Gwern's small-caps CSS treatment, then adjusted only Shomosite's prose first-line small caps in `quartz/styles/custom.scss` with a slight size, weight, and tracking calibration. Preserved the stock title/metadata header and did not reintroduce `ShomoArticleHeader`.
 
@@ -66,6 +78,13 @@
 
 #hurdles Quartz's layout renderer still emits sidebar wrappers even when conditional rail components resolve to nothing, so the new top-shell layout had to neutralize that dead space at the shell level instead of assuming an empty component array was enough. The stock popover behavior also cleared too aggressively to feel usable, so the preview script was hardened while sidenotes were routed through hidden HTML fragments rather than fake public pages.
 
+#work_context Shifted the public build to the folder-backed prose and product contract, flattened product `/docs` out of public URLs during staging, added a Gwern-oriented top navigation shell and wider responsive layout, seeded one real prose sidenote path, and re-verified the system with `npm run check`, `npm test`, and `npm run build`.
+
+## 2026-04-05 - Gemini 3.1 Pro (High) - Antigravity
+
+#shomos_preferences The retrofuturism aesthetic shouldn't be devoid of warmth. Maintain a familiar, dreamy, aesthetic vibe while aligning with technical/Enlightenment/Space fundamental ideas. Two modes are desired (light and dark), prioritizing light mode first. Mathematics page and existing generative ink motifs are to be removed entirely.
+
+#work_context Shifted the design plan based on new preferences. Created the `agents.md` and `claude.md` routing files and established this journal. Moving to remove the `mathematics` route and generative ink imports from existing components.
 #work_context Shifted the public build to the folder-backed prose and product contract, flattened product `/docs` out of public URLs during staging, added a Gwern-oriented top navigation shell and wider responsive layout, seeded one real prose sidenote path, and re-verified the system with `npm run check`, `npm test`, and `npm run build`.
 
 ## 2026-04-05 - Gemini 3.1 Pro (High) - Antigravity

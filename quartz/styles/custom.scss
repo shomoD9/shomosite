@@ -240,6 +240,20 @@ body[data-slug^="product/"]:not([data-slug="product/index"]) .page > #quartz-bod
   padding: 0;
 }
 
+// The right rail holds absolutely-positioned margin notes whose `top` values
+// are computed against document-level link positions. The inherited base.scss
+// rule pins the sidebar as `position: sticky; height: 100vh`, which forces
+// those children to track the viewport instead of the article. Unstick it on
+// note pages so the canvas can grow with the article and anchor correctly.
+body[data-slug^="prose/"]:not([data-slug="prose/index"]) .page > #quartz-body .sidebar.right,
+body[data-slug^="product/"]:not([data-slug="product/index"]) .page > #quartz-body .sidebar.right {
+  position: static;
+  top: auto;
+  height: auto;
+  display: block;
+  gap: 0;
+}
+
 a {
   color: var(--shomo-link);
   font-weight: inherit;
