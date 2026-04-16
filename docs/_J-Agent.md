@@ -10,6 +10,8 @@
 
 ### GPT-5.4 - Cursor
 
+#work_context Added Gwern-style popup loading shells in `popover.inline.ts` and `popover.scss`: `openPreview()` now computes preview identity before fetch, spawns a real shell immediately after the hover delay, reuses in-flight requests via `loadingRequests`, tracks active loading shells via `loadingPopovers`, and hydrates the same DOM node in place when either internal or Wikipedia payloads arrive. Added restrained loading/failure status UI inside `.popover-inner`. Verified with `npm run build`, direct `tsc --noEmit` (`npm run check` script target), and a live browser pass on `localhost:8080` confirming the Wikipedia shell renders before content arrives, hydrates in place, and a child Wikipedia popup still opens while the parent remains visible; local internal previews still resolve through the same shell path but hydrate almost immediately on localhost.
+
 #shomos_preferences When popup behavior is being tuned, the user wants Gwern copied more literally: link-side placement over parent-frame anchoring, gentler hover timing, and explicit dummy links on-page so the recursion can be tested manually.
 
 #hurdles Wikipedia's `page/summary` endpoint returns linkless `extract_html`, which made recursive wiki popups impossible despite the loader working. The workaround was to keep the summary endpoint for title/thumbnail metadata but source the popup body from `page/html/{title}` lead paragraphs, then force imported wiki links to stay absolute instead of being rebased into Quartz-local `/wiki/...` paths.

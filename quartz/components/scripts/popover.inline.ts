@@ -17,6 +17,8 @@ import { fetchCanonical } from "./util"
 const parser = new DOMParser()
 type Point = { x: number; y: number }
 const previewCache = new Map<string, PreviewPayload>()
+const loadingRequests = new Map<string, Promise<PreviewPayload | null>>()
+const loadingPopovers = new Map<string, HTMLElement>()
 const pinnedPopovers = new Map<string, HTMLElement>()
 const popoverStates = new WeakMap<HTMLElement, PopoverState>()
 const linkSpawnPoints = new WeakMap<HTMLAnchorElement, Point>()
@@ -43,11 +45,22 @@ type PreviewPayload = {
   linkHref: string | null
 }
 
+type PreviewIdentity = {
+  key: string
+  hash: string
+  title: string
+  contentType: string
+  linkHref: string | null
+  isWiki: boolean
+}
+
 type PopoverState = {
   key: string
   trigger: HTMLAnchorElement
   spawnPoint: Point | null
   hash: string
+  loading: boolean
+  failed: boolean
   pinned: boolean
   maximized: boolean
   collapsed: boolean
@@ -84,6 +97,43 @@ function getPreviewTarget(link: HTMLAnchorElement) {
 
 function getPreviewKey(targetUrl: URL) {
   return targetUrl.pathname.replace(/\/$/, "") || "/"
+}
+
+function guessPreviewContentType(targetUrl: URL) {
+  const pathname = targetUrl.pathname.toLowerCase()
+  if (/\.(avif|gif|jpe?g|png|svg|webp)$/.test(pathname)) {
+    return "image/*"
+  }
+
+  if (pathname.endsWith(".pdf")) {
+    return "application/pdf"
+  }
+
+  return "text/html"
+}
+
+function getPreviewIdentity(link: HTMLAnchorElement): PreviewIdentity {
+  if (isWikipediaLink(link)) {
+    const { title, url } = getWikipediaInfo(link)
+    return {
+      key: `${url.origin}${url.pathname}`.replace(/\/$/, ""),
+      hash: "",
+      title: link.textContent?.trim() || title.replace(/_/g, " "),
+      contentType: "text/html",
+      linkHref: url.toString(),
+      isWiki: true,
+    }
+  }
+
+  const { targetUrl, hash } = getPreviewTarget(link)
+  return {
+    key: getPreviewKey(targetUrl),
+    hash,
+    title: fallbackTitle(link, targetUrl),
+    contentType: guessPreviewContentType(targetUrl),
+    linkHref: link.dataset.sidenote === "true" ? null : link.href,
+    isWiki: false,
+  }
 }
 
 function setSpawnPoint(link: HTMLAnchorElement, x: number, y: number) {
@@ -170,6 +220,10 @@ function getPopoverWindow(popover: HTMLElement) {
   return popover.querySelector(".popover-window") as HTMLElement | null
 }
 
+function getPopoverInner(popover: HTMLElement) {
+  return popover.querySelector(".popover-inner") as HTMLElement | null
+}
+
 function getDefaultPopoverMetrics(popover: HTMLElement) {
   const previewKind = getPopoverWindow(popover)?.dataset.previewKind
   if (previewKind === "document" || previewKind === "media") {
@@ -177,6 +231,18 @@ function getDefaultPopoverMetrics(popover: HTMLElement) {
   }
 
   return { width: 640, height: 464 }
+}
+
+function getPreviewKindFromContentType(contentType: string) {
+  if (contentType.startsWith("image/")) {
+    return "media"
+  }
+
+  if (contentType.includes("pdf")) {
+    return "document"
+  }
+
+  return "text"
 }
 
 function distanceToRectSquared(point: Point, rect: DOMRect) {
@@ -217,6 +283,157 @@ function getRectOverlapArea(
   const horizontal = Math.max(0, Math.min(a.right, b.right) - Math.max(a.left, b.left))
   const vertical = Math.max(0, Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top))
   return horizontal * vertical
+}
+
+function createPopoverTitleElement(title: string, linkHref: string | null) {
+  if (linkHref) {
+    return Object.assign(document.createElement("a"), {
+      className: "popover-title",
+      href: linkHref,
+      textContent: title,
+    })
+  }
+
+  return Object.assign(document.createElement("span"), {
+    className: "popover-title",
+    textContent: title,
+  })
+}
+
+function setPopoverTitle(popover: HTMLElement, title: string, linkHref: string | null) {
+  const nextTitle = createPopoverTitleElement(title, linkHref)
+  const currentTitle = popover.querySelector(".popover-title")
+  if (currentTitle) {
+    currentTitle.replaceWith(nextTitle)
+    return
+  }
+
+  const chrome = popover.querySelector(".popover-chrome")
+  chrome?.appendChild(nextTitle)
+}
+
+function setPopoverStatus(popover: HTMLElement, status: "ready" | "loading" | "failed") {
+  const state = popoverStates.get(popover)
+  if (state) {
+    state.loading = status === "loading"
+    state.failed = status === "failed"
+  }
+
+  popover.classList.toggle("is-loading", status === "loading")
+  popover.classList.toggle("is-failed", status === "failed")
+
+  const inner = getPopoverInner(popover)
+  if (inner) {
+    inner.dataset.previewState = status
+  }
+}
+
+function createPopoverStatusView(
+  kind: "loading" | "failed",
+  {
+    title,
+    message,
+    detail,
+  }: {
+    title: string
+    message: string
+    detail?: string
+  },
+) {
+  const status = document.createElement("div")
+  status.className = `popover-status popover-status--${kind}`
+
+  const label = document.createElement("p")
+  label.className = "popover-status__label"
+  label.textContent = kind === "loading" ? "Loading preview" : "Preview unavailable"
+
+  const messageEl = document.createElement("p")
+  messageEl.className = "popover-status__message"
+  messageEl.textContent = message
+
+  const titleEl = document.createElement("p")
+  titleEl.className = "popover-status__title"
+  titleEl.textContent = title
+
+  status.append(label, titleEl, messageEl)
+
+  if (kind === "loading") {
+    const bar = document.createElement("div")
+    bar.className = "popover-status__bar"
+    bar.setAttribute("aria-hidden", "true")
+    status.appendChild(bar)
+  } else if (detail) {
+    const detailEl = document.createElement("p")
+    detailEl.className = "popover-status__detail"
+    detailEl.textContent = detail
+    status.appendChild(detailEl)
+  }
+
+  return status
+}
+
+function renderPopoverPayload(popover: HTMLElement, payload: PreviewPayload) {
+  const windowElement = getPopoverWindow(popover)
+  const inner = getPopoverInner(popover)
+  if (!windowElement || !inner) {
+    return
+  }
+
+  setPopoverTitle(popover, payload.title, payload.linkHref)
+  windowElement.dataset.previewKind = getPreviewKindFromContentType(payload.contentType)
+  inner.dataset.contentType = payload.contentType
+  inner.replaceChildren()
+
+  if (payload.contentType.startsWith("image/") && payload.mediaSrc) {
+    const img = document.createElement("img")
+    img.src = payload.mediaSrc
+    img.alt = payload.title
+    inner.appendChild(img)
+  } else if (payload.contentType.includes("pdf") && payload.mediaSrc) {
+    const iframe = document.createElement("iframe")
+    iframe.src = payload.mediaSrc
+    inner.appendChild(iframe)
+  } else if (payload.bodyHTML) {
+    inner.innerHTML = payload.bodyHTML
+  }
+}
+
+function setPopoverLoading(popover: HTMLElement, payload: PreviewPayload) {
+  const inner = getPopoverInner(popover)
+  if (!inner) {
+    return
+  }
+
+  renderPopoverPayload(popover, payload)
+  inner.replaceChildren(
+    createPopoverStatusView("loading", {
+      title: payload.title,
+      message: "Fetching the preview contents.",
+    }),
+  )
+  setPopoverStatus(popover, "loading")
+}
+
+function setPopoverFailure(popover: HTMLElement, payload: PreviewPayload, detail?: string) {
+  const state = popoverStates.get(popover)
+  if (state) {
+    loadingPopovers.delete(state.key)
+  }
+
+  const inner = getPopoverInner(popover)
+  if (!inner) {
+    return
+  }
+
+  renderPopoverPayload(popover, payload)
+  inner.replaceChildren(
+    createPopoverStatusView("failed", {
+      title: payload.title,
+      message: "This preview could not be loaded.",
+      detail,
+    }),
+  )
+  setPopoverStatus(popover, "failed")
 }
 
 function bringToFront(popover: HTMLElement) {
@@ -503,6 +720,7 @@ function removePopoverImmediate(popover: HTMLElement) {
   const windowElement = getPopoverWindow(popover)
   const state = popoverStates.get(popover)
   if (state) {
+    loadingPopovers.delete(state.key)
     pinnedPopovers.delete(state.key)
     popoverStates.delete(popover)
   }
@@ -984,6 +1202,75 @@ function setCollapsed(popover: HTMLElement, collapsed: boolean) {
   popover.classList.toggle("is-collapsed", collapsed)
 }
 
+function hydratePopover(popover: HTMLElement, payload: PreviewPayload) {
+  const state = popoverStates.get(popover)
+  if (!state || !popover.isConnected) {
+    return
+  }
+
+  renderPopoverPayload(popover, payload)
+  loadingPopovers.delete(state.key)
+  setPopoverStatus(popover, "ready")
+
+  const inner = getPopoverInner(popover)
+  if (inner) {
+    attachPopoverListeners(inner)
+  }
+  scrollPreviewToHash(popover, state.hash)
+
+  if (state.modal) {
+    applyCenteredPlacement(popover)
+  } else if (state.maximized) {
+    applyMaximizedPlacement(popover)
+  } else {
+    reflowPopover(popover)
+    window.requestAnimationFrame(() => {
+      const currentState = popoverStates.get(popover)
+      if (!currentState || currentState.modal || currentState.maximized) {
+        return
+      }
+
+      reflowPopover(popover)
+    })
+  }
+}
+
+function updatePopoverContext(
+  popover: HTMLElement,
+  link: HTMLAnchorElement,
+  {
+    hash,
+    spawnPoint,
+    parentPopover,
+  }: { hash: string; spawnPoint: Point | null; parentPopover: HTMLElement | null },
+) {
+  const state = popoverStates.get(popover)
+  if (!state) {
+    return
+  }
+
+  state.hash = hash
+  state.trigger = link
+  state.spawnPoint = spawnPoint
+  state.parentPopover = parentPopover
+}
+
+function ensurePreviewRequest(identity: PreviewIdentity, link: HTMLAnchorElement) {
+  const existing = loadingRequests.get(identity.key)
+  if (existing) {
+    return existing
+  }
+
+  const request = (identity.isWiki ? loadWikipediaPreview(link) : loadPreview(link)).finally(() => {
+    if (loadingRequests.get(identity.key) === request) {
+      loadingRequests.delete(identity.key)
+    }
+  })
+
+  loadingRequests.set(identity.key, request)
+  return request
+}
+
 function buildPopover(
   payload: PreviewPayload,
   trigger: HTMLAnchorElement,
@@ -991,32 +1278,19 @@ function buildPopover(
   hash: string,
   modal: boolean,
   parentPopover: HTMLElement | null,
+  options: { loading?: boolean } = {},
 ) {
   const popover = document.createElement("div")
   popover.className = modal ? "popover is-modal active-popover" : "popover active-popover"
 
   const windowElement = document.createElement("section")
   windowElement.className = "popover-window"
-  windowElement.dataset.previewKind =
-    payload.contentType.startsWith("image/")
-      ? "media"
-      : payload.contentType.includes("pdf")
-        ? "document"
-        : "text"
+  windowElement.dataset.previewKind = getPreviewKindFromContentType(payload.contentType)
 
   const chrome = document.createElement("div")
   chrome.className = "popover-chrome"
 
-  const title = payload.linkHref
-    ? Object.assign(document.createElement("a"), {
-        className: "popover-title",
-        href: payload.linkHref,
-        textContent: payload.title,
-      })
-    : Object.assign(document.createElement("span"), {
-        className: "popover-title",
-        textContent: payload.title,
-      })
+  const title = createPopoverTitleElement(payload.title, payload.linkHref)
 
   const actions = document.createElement("div")
   actions.className = "popover-actions"
@@ -1068,6 +1342,8 @@ function buildPopover(
     trigger,
     spawnPoint,
     hash,
+    loading: Boolean(options.loading),
+    failed: false,
     pinned: false,
     maximized: false,
     collapsed: false,
@@ -1165,8 +1441,13 @@ function buildPopover(
     })
   }
 
-  attachPopoverListeners(inner)
-  scrollPreviewToHash(popover, hash)
+  if (options.loading) {
+    setPopoverLoading(popover, payload)
+  } else {
+    attachPopoverListeners(inner)
+    scrollPreviewToHash(popover, hash)
+  }
+
   return popover
 }
 
@@ -1185,27 +1466,19 @@ function attachPopoverListeners(container: HTMLElement | Document) {
 }
 
 async function openPreview(link: HTMLAnchorElement, { modal }: { modal: boolean }) {
-  const isWiki = isWikipediaLink(link)
-  const payload = isWiki ? await loadWikipediaPreview(link) : await loadPreview(link)
-  if (!payload) {
-    return
-  }
-
-  const hash = isWiki ? "" : getPreviewTarget(link).hash
+  const identity = getPreviewIdentity(link)
+  const payload = previewCache.get(identity.key) ?? null
+  const hash = identity.hash
   const spawnPoint = modal ? null : getSpawnPoint(link)
   const parentPopover = modal ? null : (link.closest(".popover") as HTMLElement | null)
-  const pinnedPopover = pinnedPopovers.get(payload.key)
+  const pinnedPopover = pinnedPopovers.get(identity.key)
   if (pinnedPopover) {
-    const state = popoverStates.get(pinnedPopover)
-    if (state) {
-      state.hash = hash
-      state.trigger = link
-      state.spawnPoint = spawnPoint
-      state.parentPopover = parentPopover
-    }
-
+    updatePopoverContext(pinnedPopover, link, { hash, spawnPoint, parentPopover })
     bringToFront(pinnedPopover)
-    if (!state?.modal && !state?.maximized) {
+    const state = popoverStates.get(pinnedPopover)
+    if (payload && (state?.loading || state?.failed)) {
+      hydratePopover(pinnedPopover, payload)
+    } else if (!state?.modal && !state?.maximized) {
       applyAnchoredPlacement(pinnedPopover)
     }
     scrollPreviewToHash(pinnedPopover, hash)
@@ -1216,10 +1489,70 @@ async function openPreview(link: HTMLAnchorElement, { modal }: { modal: boolean 
     closePopover(modalPopover)
   }
 
-  const popover = buildPopover(payload, link, spawnPoint, hash, modal, parentPopover)
+  let popover = loadingPopovers.get(identity.key) ?? null
+
+  if (!popover && payload) {
+    popover = buildPopover(payload, link, spawnPoint, hash, modal, parentPopover)
+  }
+
+  if (!popover) {
+    const shellPayload: PreviewPayload = {
+      key: identity.key,
+      title: identity.title,
+      contentType: identity.contentType,
+      linkHref: identity.linkHref,
+    }
+
+    popover = buildPopover(shellPayload, link, spawnPoint, hash, modal, parentPopover, {
+      loading: true,
+    })
+    loadingPopovers.set(identity.key, popover)
+  } else {
+    updatePopoverContext(popover, link, { hash, spawnPoint, parentPopover })
+    bringToFront(popover)
+    const state = popoverStates.get(popover)
+    if (payload && (state?.loading || state?.failed)) {
+      hydratePopover(popover, payload)
+    } else if (state?.loading) {
+      setPopoverLoading(popover, {
+        key: identity.key,
+        title: identity.title,
+        contentType: identity.contentType,
+        linkHref: identity.linkHref,
+      })
+      reflowPopover(popover)
+    }
+  }
+
   if (!modal) {
     syncHoverStackToPopover(popover)
   }
+
+  if (payload) {
+    return
+  }
+
+  const resolvedPayload = await ensurePreviewRequest(identity, link)
+  if (!popover.isConnected) {
+    return
+  }
+
+  const currentState = popoverStates.get(popover)
+  if (!currentState || currentState.key !== identity.key) {
+    return
+  }
+
+  if (!resolvedPayload) {
+    setPopoverFailure(popover, {
+      key: identity.key,
+      title: identity.title,
+      contentType: identity.contentType,
+      linkHref: identity.linkHref,
+    })
+    return
+  }
+
+  hydratePopover(popover, resolvedPayload)
 }
 
 function handlePointerEnter(this: HTMLAnchorElement, event: MouseEvent) {
