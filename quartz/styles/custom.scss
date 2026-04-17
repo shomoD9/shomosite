@@ -11,7 +11,12 @@ through shared class names and page-level slug selectors.
 
 :root {
   --shomo-editorial-frame: 78rem;
-  --shomo-home-copy: 54rem;
+  // Landing page runs inside a wider editorial frame for the two curated
+  // panels, but the hero opening copy holds the same 42rem reading measure as
+  // the essay body column so the landing's negative space feels continuous
+  // with prose pages rather than a marketing-wide hero.
+  --shomo-home-frame: 64rem;
+  --shomo-home-copy: 42rem;
   --shomo-note-column: 42rem;
   --shomo-note-left-rail: 12.25rem;
   --shomo-note-right-rail: 15rem;
@@ -23,6 +28,15 @@ through shared class names and page-level slug selectors.
   --shomo-muted-surface: rgba(215, 208, 195, 0.22);
   --shomo-link: #3a322a;
   --shomo-shadow: 0 12px 40px rgba(18, 16, 14, 0.12);
+  // Iron-gall ink: deeper, a hair cooler than --darkgray, with a whisper of
+  // bleed so glyphs feel soaked into laid paper rather than printed onto it.
+  --shomo-text: #211d1a;
+  --shomo-text-bleed: 0 0 0.35px rgba(28, 24, 36, 0.22);
+  // Pressed-plate frame for the popover window: a 2px ink rule plus a
+  // hair-thin inner engraving line for the copperplate double-rule feel.
+  --shomo-frame: #{color-mix(in srgb, #1a1612 70%, transparent)};
+  --shomo-frame-inner: rgba(26, 22, 18, 0.10);
+  --shomo-frame-halo: 0 0 0 rgba(0, 0, 0, 0);
 }
 
 :root[saved-theme="dark"] {
@@ -30,6 +44,15 @@ through shared class names and page-level slug selectors.
   --shomo-muted-surface: rgba(48, 41, 35, 0.55);
   --shomo-link: #dbcfbe;
   --shomo-shadow: 0 12px 40px rgba(0, 0, 0, 0.34);
+  // Moonlit vellum: same luminance as --darkgray but the warm cream cast is
+  // replaced by cool neutral, with a whisper of silver halo behind glyphs.
+  --shomo-text: #e2e0dd;
+  --shomo-text-bleed: 0 0 0.5px rgba(206, 218, 236, 0.22);
+  // Moonlit frame: cool silver rule, faint inner engraving, outer halo cast
+  // as if the popover is lit from beyond the edge of the page.
+  --shomo-frame: #{color-mix(in srgb, #cfd7e4 42%, transparent)};
+  --shomo-frame-inner: rgba(207, 215, 228, 0.10);
+  --shomo-frame-halo: 0 10px 40px rgba(150, 168, 198, 0.14);
 }
 
 html,
@@ -48,6 +71,23 @@ body {
 
 @media (max-width: 649px) {
   body { font-size: 18px; }
+}
+
+// Inky (light) / moonly (dark) running prose. Scoped only to body text and
+// list/quote surfaces so Quartz chrome (breadcrumbs, grays, SVG fills) stays
+// untouched. The text-shadow is deliberately sub-pixel — visible up close as
+// ink-on-paper bleed in light mode and as a silver halo in dark mode, invisible
+// at reading distance.
+body,
+article > p,
+article > ul li,
+article > ol li,
+article > blockquote,
+article > blockquote p,
+.popover-inner p,
+.popover-inner li {
+  color: var(--shomo-text);
+  text-shadow: var(--shomo-text-bleed);
 }
 
 .page {
@@ -169,24 +209,51 @@ body[data-slug="index"] .page > #quartz-body .page-header {
   margin-top: clamp(2rem, 4vw, 3.4rem);
 }
 
+// Landing article sits inside the editorial frame for the panels below, but
+// hero paragraphs inside hold the essay body measure (42rem) so the reading
+// experience matches a prose page rather than a widescreen marketing hero.
 body[data-slug="index"] .page > #quartz-body .center > article {
-  max-width: min(100%, var(--shomo-editorial-frame));
-  margin-top: clamp(2.4rem, 5vw, 4.6rem);
-  font-size: clamp(1.08rem, 1rem + 0.24vw, 1.22rem);
+  max-width: min(100%, var(--shomo-home-frame));
+  margin-top: clamp(2.2rem, 4vw, 3.4rem);
 }
 
+// Hero paragraphs: 42rem reading column, centered inside the wider panels
+// frame. Body font-size inherits from `body` so the text weight matches the
+// essay body column exactly. The frontispiece feel is carried by the
+// small-caps first line below, not by a font-size bump.
 body[data-slug="index"] .page > #quartz-body .center > article > p {
   max-width: min(100%, var(--shomo-home-copy));
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.82;
+  margin: 0.7rem auto;
+  line-height: 1.78;
 }
 
-body[data-slug="index"] .page > #quartz-body .page-footer,
+body[data-slug="index"] .page > #quartz-body .center > article > p:first-of-type {
+  margin-top: 0;
+}
+
+// Frontispiece gesture: small-caps first line on the opening paragraph. Ties
+// the landing to the prose pages' typographic opening without the drop cap.
+body[data-slug="index"] .page > #quartz-body .center > article > p:first-of-type::first-line {
+  font-variant-caps: small-caps;
+  font-feature-settings: 'smcp';
+  font-size: 1.04em;
+  font-weight: 600;
+  letter-spacing: 0.015em;
+}
+
 body[data-slug="prose/index"] .page > #quartz-body .page-footer,
 body[data-slug="product/index"] .page > #quartz-body .page-footer,
 body[data-slug="docs/index"] .page > #quartz-body .page-footer {
   max-width: min(100%, var(--shomo-editorial-frame));
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+// Landing page-footer holds the two curated panels; clamp it to the same
+// narrow home frame so panels can never outrun the hero column above.
+body[data-slug="index"] .page > #quartz-body .page-footer {
+  max-width: min(100%, var(--shomo-home-frame));
   margin-top: 0;
   padding-top: 0;
   border-top: 0;
