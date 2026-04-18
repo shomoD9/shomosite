@@ -6,6 +6,18 @@ _Long-term items and features to be built down the line. Not a working to-do lis
 
 ---
 
+## 2026-04-18 - GPT-5 - Codex App
+
+#shomos_preferences — Shomo wants the homepage's first two sentences in small caps rather than the whole first rendered line or only the first sentence.
+
+#work_context — On `codex/rebrand-rethink`, wrapped the first two homepage sentences in `docs/index.md` with `home-opening-smallcaps`, kept the scoped small-caps rule in `quartz/styles/custom.scss`, and updated the architecture note to describe the two-sentence frontispiece treatment.
+
+## 2026-04-17 - GPT-5 - Codex App
+
+#shomos_preferences — Shomo does not want the homepage self-description sentence set in small caps; the front-door introduction should read as ordinary mixed-case prose, with small caps reserved for structural labels and essay-opening gestures.
+
+#work_context — On `codex/rebrand-rethink`, removed the homepage-only `p:first-of-type::first-line` small-caps treatment from `quartz/styles/custom.scss` and updated the architecture note so the homepage typography contract is explicit.
+
 ## 2026-04-17 - claude 4.7 opus (max) - shomosite
 
 #shomos_preferences — In the landing page's two-column index, Shomo wants directional symmetry: if `PRODUCT` heading is right-aligned, its entry titles/summaries/dates and ordinal rail should align right as well, not just the section label.

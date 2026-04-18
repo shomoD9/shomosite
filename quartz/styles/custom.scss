@@ -219,8 +219,9 @@ body[data-slug="index"] .page > #quartz-body .center > article {
 
 // Hero paragraphs: 42rem reading column, centered inside the wider panels
 // frame. Body font-size inherits from `body` so the text weight matches the
-// essay body column exactly. The frontispiece feel is carried by the
-// small-caps first line below, not by a font-size bump.
+// essay body column exactly. The homepage introduction gets a two-sentence
+// small-caps opening, giving the page a quiet frontispiece signal without
+// letting the effect spill into the rest of the biography.
 body[data-slug="index"] .page > #quartz-body .center > article > p {
   max-width: min(100%, var(--shomo-home-copy));
   margin: 0.7rem auto;
@@ -231,9 +232,7 @@ body[data-slug="index"] .page > #quartz-body .center > article > p:first-of-type
   margin-top: 0;
 }
 
-// Frontispiece gesture: small-caps first line on the opening paragraph. Ties
-// the landing to the prose pages' typographic opening without the drop cap.
-body[data-slug="index"] .page > #quartz-body .center > article > p:first-of-type::first-line {
+body[data-slug="index"] .home-opening-smallcaps {
   font-variant-caps: small-caps;
   font-feature-settings: 'smcp';
   font-size: 1.04em;

@@ -18,7 +18,7 @@ home:
     - product/obsidian-chat
     - product/corpus
 ---
-This is the site of Shomodip De. I write about Productivity, AI and the Human Condition in the 21st Century.
+<span class="home-opening-smallcaps">This is the site of Shomodip De. I write about Productivity, AI and the Human Condition in the 21st Century.</span>
 
 I am a Product Manager by Profession. I have built and managed B2B Platform products in Enterprise Ontology, Enterprise Data Productization and Context Management.
 
