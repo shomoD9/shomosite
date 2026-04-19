@@ -22,7 +22,7 @@ aliases:
 ---
 <span class="home-opening-smallcaps">This is the site of Shomodip De. I write about psychology, AI, personal productivity and knowledge management systems.</span>
 
-<section class="vanity-metrics" aria-label="Reach Report" data-generated-at="2026-04-19T19:42:19.612Z">
+<section class="vanity-metrics" aria-label="Reach Report" data-generated-at="2026-04-19T20:12:32.757Z">
   <span class="vanity-metrics__corner">Reach Report</span>
   <ol class="vanity-metrics__grid">
     <li class="vanity-metrics__stat" tabindex="0" data-metric="views">

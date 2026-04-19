@@ -9,6 +9,18 @@ _Long-term items and features to be built down the line. Not a working to-do lis
 ## 2026-04-19 - GPT-5 - Codex App
 ### GPT-5.4 (xhigh) - Warp
 
+#shomos_preferences — In the footer, Shomo wants the top line in each column to read clearly as a label, not as tiny whisper text; “slightly bigger and better spaced” means more breathing room and a more legible editorial hierarchy, not a louder footer.
+
+#work_context — On `codex/rebrand-rethink`, tuned `components/styles/shomoFooter.scss` again after the first footer pass: increased the column-internal gap, enlarged the top eyebrow labels with a fluid clamp, slightly raised the nav/email sizes, and opened the inline link spacing so the footer reads less cramped. Rebuilt successfully with `npm run build`.
+
+#work_context — Restored the homepage Reach Report count-up as a client-side animation over the build-time snapshot values by reintroducing a homepage-only script/component pair. The numbers now start at zero and ease up to the staged totals on load or refresh without reintroducing runtime metric fetching.
+
+#shomos_preferences — Shomo wants the site footer to feel deliberately composed rather than like a leftover Quartz strip: the social cluster should anchor to the page’s right edge with real gutter padding, and the footer’s spacing, sizing, and typography should read as polished editorial chrome rather than generic utility text.
+
+#work_context — On `codex/rebrand-rethink`, reworked the custom footer so prose/product pages no longer trap it inside the centered note grid. `quartz/styles/custom.scss` now gives those page shells outer spacer tracks and lets `grid-footer` span the full page width, while `components/styles/shomoFooter.scss` now uses a three-zone layout (`1fr / auto / 1fr`) with calmer uppercase colophon text, tighter hierarchy, increased top/bottom breathing room, and a cleaner mobile stack.
+
+#hurdles — The footer was not merely “misaligned” inside its own component. The real constraint was the prose/product page grid: `justify-content: center` plus capped explicit track widths meant the entire footer row was narrower than the page. Solved by widening the grid definition itself before tuning the footer internals. Build passed and the rendered footer was visually checked in Playwright against a prose page.
+
 #work_context — Updated the build-time Reach Report definitions per Shomo’s chosen presentation rules: comments now include a manual YouTube total of 464 alongside Substack archive comments, subscribers now include 96 X followers, the hover breakdowns were rewritten to match, and the note line beneath the box was removed entirely.
 
 #work_context — Switched the homepage Reach Report away from a runtime Cloudflare fetch and into the staging pipeline: `scripts/prepare-content.mjs` now calculates a build-time public snapshot and writes the resolved totals, tooltips, and note directly into the staged homepage so the numbers render locally and on deploy without waiting on `/api/reach-report`.
