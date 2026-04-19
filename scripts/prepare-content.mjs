@@ -40,6 +40,7 @@ const REACH_REQUEST_HEADERS = {
 const YOUTUBE_ABOUT_URL = "https://www.youtube.com/@armchairdescending/about"
 const SUBSTACK_PROFILE_URL = "https://substack.com/@shomodip"
 const SUBSTACK_ARCHIVE_URL = "https://armchairdescending.substack.com/api/v1/archive"
+const MANUAL_SUBSTACK_VIEW_COUNT = 458
 const MANUAL_YOUTUBE_COMMENT_COUNT = 464
 const MANUAL_X_FOLLOWER_COUNT = 96
 
@@ -180,6 +181,7 @@ async function buildReachReportSnapshot() {
   }
 
   if (substackResult.status === "fulfilled") {
+    viewsBreakdown.push({ label: "Substack", value: MANUAL_SUBSTACK_VIEW_COUNT })
     commentsBreakdown.push({
       label: "Substack archive comments",
       value: substackResult.value.comments,
@@ -233,9 +235,10 @@ function renderReachReportSection(snapshot) {
     })
     .join("\n")
 
+  const cornerHint = "From platforms I publish on — not this site."
 
-  return `<section class="vanity-metrics" aria-label="Reach Report" data-generated-at="${escapeHtml(snapshot.generatedAt)}">
-  <span class="vanity-metrics__corner">Reach Report</span>
+  return `<section class="vanity-metrics" aria-label="Elsewhere" data-generated-at="${escapeHtml(snapshot.generatedAt)}">
+  <span class="vanity-metrics__corner" tabindex="0" aria-describedby="vanity-metrics-elsewhere-hint">Elsewhere<span id="vanity-metrics-elsewhere-hint" class="vanity-metrics__corner-hint" role="tooltip">${escapeHtml(cornerHint)}</span></span>
   <ol class="vanity-metrics__grid">
 ${stats}
   </ol>

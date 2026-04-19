@@ -9,6 +9,18 @@ _Long-term items and features to be built down the line. Not a working to-do lis
 ## 2026-04-19 - GPT-5 - Codex App
 ### GPT-5.4 (xhigh) - Warp
 
+#shomos_preferences — The explanatory tooltip for the homepage `Elsewhere` label should appear above the corner title, not below it; below-the-notch hover text crowds the first metric row and makes the panel feel dirty.
+
+#shomos_preferences — The homepage metrics box should disclaim off-site provenance in the label itself, not in a block note. “Elsewhere” plus a terse hover hint is the right register: crisp, editorial, and explicit that the numbers come from the platforms where Shomo publishes rather than from shomosite.
+
+#work_context — Updated the build-time Reach Report again so Views is no longer YouTube-only: it now adds Shomo’s manual Substack all-time views count of 458 into both the headline total and the hover breakdown.
+
+#shomos_preferences — Shomo reads footer vertical rhythm at the page level, not just inside the footer element. The space above the footer text (rule to first line) must match the space below the last line to the bottom of the page, and the old Quartz `.page { padding-bottom: 4rem }` under the footer breaks that symmetry. Footer should own its own bottom breathing; `.page` should not add extra dead space beneath it.
+
+#shomos_preferences — For the footer top line in each column, Shomo wants editorial character, not just bigger uppercase sans. The colophon voice from the old Quartz footer (mixed-case serif body text with small uppercase-sans chips for marks) is the reference — hierarchy comes from a style shift (serif label vs. letter-spaced sans supporting row), not just from size.
+
+#work_context — Third footer pass on `codex/rebrand-rethink`: zeroed out `.page { padding-bottom }`, gave `.page > #quartz-body > footer` matching `padding-top` and `padding-bottom` clamps (~2.8–3.8rem) so the rule-to-text and text-to-page-bottom spacing are symmetric (verified in Playwright at 51.2px each). Retyped `shomo-footer__colophon` to mixed-case serif at ~1–1.14rem, rebuilt `shomo-footer__mark` as an inline uppercase-sans chip (0.68em, letter-spaced, border-bottom), and promoted `shomo-footer__link--email` to serif so the center column reads as a single editorial thought. Build green.
+
 #shomos_preferences — In the footer, Shomo wants the top line in each column to read clearly as a label, not as tiny whisper text; “slightly bigger and better spaced” means more breathing room and a more legible editorial hierarchy, not a louder footer.
 
 #work_context — On `codex/rebrand-rethink`, tuned `components/styles/shomoFooter.scss` again after the first footer pass: increased the column-internal gap, enlarged the top eyebrow labels with a fluid clamp, slightly raised the nav/email sizes, and opened the inline link spacing so the footer reads less cramped. Rebuilt successfully with `npm run build`.

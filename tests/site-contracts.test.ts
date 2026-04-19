@@ -170,8 +170,8 @@ title: Home
 state: published
 ---
 
-<section class="vanity-metrics" aria-label="Reach Report">
-  <span class="vanity-metrics__corner">Reach Report</span>
+<section class="vanity-metrics" aria-label="Elsewhere">
+  <span class="vanity-metrics__corner" tabindex="0" aria-describedby="vanity-metrics-elsewhere-hint">Elsewhere<span id="vanity-metrics-elsewhere-hint" class="vanity-metrics__corner-hint" role="tooltip">From platforms I publish on — not this site.</span></span>
   <ol class="vanity-metrics__grid">
     <li class="vanity-metrics__stat" tabindex="0" data-metric="views">
       <span class="vanity-metrics__num">—</span>
@@ -189,8 +189,11 @@ state: published
         generatedAt: "2026-04-19T19:00:00.000Z",
         metrics: {
           views: {
-            value: 77810,
-            breakdown: [{ label: "YouTube", value: 77810 }],
+            value: 78268,
+            breakdown: [
+              { label: "YouTube", value: 77810 },
+              { label: "Substack", value: 458 },
+            ],
           },
           comments: {
             value: 467,
@@ -219,7 +222,10 @@ state: published
     })
 
     const home = await readFile(path.join(outputDir, "index.md"), "utf8")
-    assert.match(home, /77,810/)
+    assert.match(home, /Elsewhere/)
+    assert.match(home, /From platforms I publish on — not this site\./)
+    assert.match(home, /78,268/)
+    assert.match(home, /YouTube 77,810 · Substack 458/)
     assert.match(home, /467/)
     assert.match(home, /YouTube comments 464 · Substack archive comments 3/)
     assert.match(home, /1,081/)

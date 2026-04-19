@@ -22,9 +22,9 @@ home:
 
 <section
   class="vanity-metrics"
-  aria-label="Reach Report"
+  aria-label="Elsewhere"
 >
-  <span class="vanity-metrics__corner">Reach Report</span>
+  <span class="vanity-metrics__corner" tabindex="0" aria-describedby="vanity-metrics-elsewhere-hint">Elsewhere<span id="vanity-metrics-elsewhere-hint" class="vanity-metrics__corner-hint" role="tooltip">From platforms I publish on — not this site.</span></span>
   <ol class="vanity-metrics__grid">
     <li class="vanity-metrics__stat" tabindex="0" data-metric="views">
       <span class="vanity-metrics__num">—</span>

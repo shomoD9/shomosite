@@ -92,7 +92,10 @@ article > blockquote p,
 
 .page {
   max-width: min(100vw, 126rem);
-  padding: 0 clamp(1.25rem, 3vw, 3.25rem) 4rem;
+  // Bottom breathing is owned by the footer itself (padding-bottom) so the
+  // space above and below the footer text stays symmetric. Adding extra page
+  // padding below the footer is what makes the old layout feel top-heavy.
+  padding: 0 clamp(1.25rem, 3vw, 3.25rem) 0;
 }
 
 .page > #quartz-body {
@@ -157,7 +160,10 @@ article > blockquote p,
 .page > #quartz-body > footer {
   grid-area: grid-footer;
   margin-top: clamp(3rem, 5vw, 4.8rem);
-  padding-top: clamp(1.35rem, 2vw, 1.9rem);
+  // Match top and bottom padding so the footer content sits centered between
+  // the hairline rule above and the page's bottom edge below.
+  padding-top: clamp(2.8rem, 4vw, 3.8rem);
+  padding-bottom: clamp(2.8rem, 4vw, 3.8rem);
   border-top: 1px solid var(--shomo-rule);
 }
 
@@ -589,6 +595,8 @@ body[data-slug="index"] .vanity-metrics__corner {
   top: 0;
   left: 1.1rem;
   transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
   background: var(--light);
   padding: 0 0.4rem;
   font-family: var(--sansFont);
@@ -597,6 +605,35 @@ body[data-slug="index"] .vanity-metrics__corner {
   font-size: 0.68rem;
   color: var(--gray);
   white-space: nowrap;
+  cursor: help;
+}
+
+body[data-slug="index"] .vanity-metrics__corner-hint {
+  position: absolute;
+  bottom: calc(100% + 0.55rem);
+  left: 0;
+  transform: translateY(3px);
+  z-index: 10;
+  white-space: nowrap;
+  border: 1px solid var(--shomo-rule);
+  background: var(--light);
+  padding: 0.35rem 0.65rem;
+  font-family: var(--sansFont);
+  font-size: 0.68rem;
+  font-variant-caps: normal;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: var(--gray);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 140ms ease, transform 140ms ease, visibility 140ms ease;
+  pointer-events: none;
+}
+
+body[data-slug="index"] .vanity-metrics__corner:is(:hover, :focus-visible, :focus-within) .vanity-metrics__corner-hint {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 body[data-slug="index"] .vanity-metrics__grid {
@@ -697,7 +734,8 @@ body[data-slug="index"] .vanity-metrics__note {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body[data-slug="index"] .vanity-metrics__tooltip {
+  body[data-slug="index"] .vanity-metrics__tooltip,
+  body[data-slug="index"] .vanity-metrics__corner-hint {
     transition: none;
   }
 }

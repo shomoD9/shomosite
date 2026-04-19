@@ -22,13 +22,13 @@ aliases:
 ---
 <span class="home-opening-smallcaps">This is the site of Shomodip De. I write about psychology, AI, personal productivity and knowledge management systems.</span>
 
-<section class="vanity-metrics" aria-label="Reach Report" data-generated-at="2026-04-19T20:12:32.757Z">
-  <span class="vanity-metrics__corner">Reach Report</span>
+<section class="vanity-metrics" aria-label="Elsewhere" data-generated-at="2026-04-19T20:44:27.893Z">
+  <span class="vanity-metrics__corner" tabindex="0" aria-describedby="vanity-metrics-elsewhere-hint">Elsewhere<span id="vanity-metrics-elsewhere-hint" class="vanity-metrics__corner-hint" role="tooltip">From platforms I publish on — not this site.</span></span>
   <ol class="vanity-metrics__grid">
     <li class="vanity-metrics__stat" tabindex="0" data-metric="views">
-      <span class="vanity-metrics__num">77,810</span>
+      <span class="vanity-metrics__num">78,268</span>
       <span class="vanity-metrics__label">Views</span>
-      <span class="vanity-metrics__tooltip" role="tooltip">YouTube 77,810</span>
+      <span class="vanity-metrics__tooltip" role="tooltip">YouTube 77,810 · Substack 458</span>
     </li>
     <li class="vanity-metrics__stat" tabindex="0" data-metric="comments">
       <span class="vanity-metrics__num">467</span>
