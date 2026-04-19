@@ -232,11 +232,19 @@ body[data-slug="index"] .page > #quartz-body .center > article > p:first-of-type
   margin-top: 0;
 }
 
+// Hold this block at the regular body weight on purpose. `small-caps` keeps
+// real capitals at full cap height (so proper nouns still read as proper
+// nouns) while converting the lowercase to true smcp glyphs. Bumping weight
+// here would force the browser to source semibold real-caps from Source
+// Serif 4's 600 cut while smcp glyphs fall back to the regular-weight pool,
+// which is what makes the first letters of proper nouns look bolder than
+// the surrounding small-caps. The frontispiece presence comes from
+// --shomo-text-bleed and the slight size bump, not from font-weight.
 body[data-slug="index"] .home-opening-smallcaps {
   font-variant-caps: small-caps;
   font-feature-settings: 'smcp';
   font-size: 1.04em;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.015em;
 }
 
@@ -493,11 +501,17 @@ body[data-slug^="prose/"]:not([data-slug="prose/index"]) .center > article > p:f
   color: var(--dark);
 }
 
+// Same rule as the homepage opener: regular weight only. The first-line
+// pseudo-element gets its emphasis from the size bump and the drop-cap
+// next to it; semibold on top would make every real capital in the line
+// (sentence-start, proper nouns, acronyms) read as bolder than the
+// surrounding small-caps because Source Serif 4's semibold cut and its
+// smcp glyph pool are not weight-matched.
 body[data-slug^="prose/"]:not([data-slug="prose/index"]) .center > article > p:first-of-type::first-line {
   font-variant-caps: small-caps;
   font-feature-settings: 'smcp';
   font-size: 1.06em;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.01em;
 }
 
@@ -569,6 +583,126 @@ body[data-slug^="prose/"]:not([data-slug="prose/index"]) .center > article > p:f
     font-size: inherit;
     line-height: inherit;
     padding: 0;
+  }
+}
+
+// Vanity metrics dashboard: editorial rectangle, sits between hero paragraphs,
+// aligned to the 42rem reading measure. Corner label uses a background bleed
+// trick to "notch" itself into the top border like a manuscript rubric.
+body[data-slug="index"] .vanity-metrics {
+  position: relative;
+  max-width: min(100%, var(--shomo-home-copy));
+  margin: clamp(2rem, 3vw, 2.8rem) auto;
+  padding: clamp(1.6rem, 2vw, 2.2rem) clamp(1.4rem, 2vw, 2rem) clamp(1.2rem, 1.6vw, 1.6rem);
+  border: 1px solid var(--shomo-rule);
+  background: transparent;
+  list-style: none;
+}
+
+body[data-slug="index"] .vanity-metrics__corner {
+  position: absolute;
+  top: 0;
+  left: 1.1rem;
+  transform: translateY(-50%);
+  background: var(--light);
+  padding: 0 0.4rem;
+  font-family: var(--sansFont);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.14em;
+  font-size: 0.68rem;
+  color: var(--gray);
+  white-space: nowrap;
+}
+
+body[data-slug="index"] .vanity-metrics__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+body[data-slug="index"] .vanity-metrics__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding: 0 clamp(0.6rem, 1.2vw, 1rem);
+  cursor: default;
+  outline: none;
+}
+
+body[data-slug="index"] .vanity-metrics__stat + .vanity-metrics__stat {
+  border-left: 1px solid var(--shomo-rule);
+}
+
+body[data-slug="index"] .vanity-metrics__num {
+  font-family: var(--headerFont);
+  font-size: clamp(1.8rem, 1.3rem + 1.4vw, 2.5rem);
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "lnum" 1, "tnum" 1;
+  color: var(--shomo-text);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+body[data-slug="index"] .vanity-metrics__label {
+  font-family: var(--sansFont);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  color: var(--gray);
+  margin-top: 0.4rem;
+}
+
+body[data-slug="index"] .vanity-metrics__tooltip {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(-3px);
+  z-index: 10;
+  white-space: nowrap;
+  border: 1px solid var(--shomo-rule);
+  background: var(--light);
+  padding: 0.35rem 0.65rem;
+  font-family: var(--sansFont);
+  font-size: 0.68rem;
+  color: var(--gray);
+  letter-spacing: 0.02em;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 140ms ease, transform 140ms ease, visibility 140ms ease;
+  pointer-events: none;
+}
+
+body[data-slug="index"] .vanity-metrics__stat:is(:hover, :focus-visible, :focus-within) .vanity-metrics__tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 640px) {
+  body[data-slug="index"] .vanity-metrics__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: clamp(1.2rem, 2.5vw, 1.6rem);
+  }
+
+  body[data-slug="index"] .vanity-metrics__stat:nth-child(2n+1) {
+    border-left: none;
+  }
+
+  body[data-slug="index"] .vanity-metrics__stat:nth-child(n+3) {
+    padding-top: clamp(1rem, 2vw, 1.4rem);
+    border-top: 1px solid var(--shomo-rule);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-slug="index"] .vanity-metrics__tooltip {
+    transition: none;
   }
 }
 

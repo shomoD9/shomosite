@@ -1,4 +1,16 @@
-#### Wednesday April 8th | 2026-04-08
+
+### Sunday April 19th | 2026-04-19
+I need to write the following prose and product docs:
+
+| **Prose**                | **Product**                    |
+| ------------------------ | ------------------------------ |
+| Anthropic Esceptionalism | Write-well                     |
+|                          | Parseleaf                      |
+|                          | Enterprise Ontology            |
+| CSA Framework            | Enterprise Data Productization |
+
+
+### Wednesday April 8th | 2026-04-08
 https://gwern.net/design I need to borrow these design principles and make a site that works as similar to this, with my implementation. 
 
 prompt:
