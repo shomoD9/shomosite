@@ -186,7 +186,10 @@ async function buildSidenoteCatalog(notesDir, outputDir) {
     const fileName = path.posix.basename(relativePath, ".md")
     const title = typeof parsed.data.title === "string" ? parsed.data.title : fileName
     const body = await renderMarkdownFragment(parsed.content)
-    const fragmentFile = path.join(outputDir, `${stripMarkdownExtension(relativePath)}.html`)
+    // Quartz's asset emitter slugifies `.html` files into extensionless public
+    // routes, so sidenote fragments are staged that way from the start. The
+    // link hrefs then match both local `public/` output and Cloudflare Pages.
+    const fragmentFile = path.join(outputDir, stripMarkdownExtension(relativePath))
 
     await mkdir(path.dirname(fragmentFile), { recursive: true })
     await writeFile(fragmentFile, createSidenoteFragment({ title, body }))
