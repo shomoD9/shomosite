@@ -6,6 +6,10 @@ _Long-term items and features to be built down the line. Not a working to-do lis
 
 ---
 
+## 2026-04-19 - GPT-5 - Codex App
+
+#hurdles — Live Cloudflare Pages sidenotes failed because the staged prose links pointed at `.html` fragment paths, while Quartz's asset emitter publishes static HTML fragments as extensionless routes. Adjusted sidenote staging and the contract test so preview links use the final extensionless asset path.
+
 ## 2026-04-18 - claude-sonnet-4-6 - shomosite
 
 #work_context — On `codex/rebrand-rethink`, added a Vanity Metrics dashboard to the homepage between P3 and P4. Raw HTML block in `.quartz-content/index.md` holds a `<section class="vanity-metrics">` with four `<li>` stats (Views 128,430 / Comments 2,184 / Likes 18,942 / Subscribers 4,327 — all dummy). New files: `components/scripts/vanityMetrics.inline.ts` (IntersectionObserver count-up, 1100ms easeOutCubic, respects prefers-reduced-motion), `components/ShomoVanityMetricsScript.tsx` (null-rendering Quartz component that attaches the script). Styles added to `quartz/styles/custom.scss` (hairline border rectangle, all-small-caps corner label notched into border, 4-across grid collapsing to 2×2 at 640px, hover tooltip for per-platform breakdown). Component mounted in `quartz.layout.ts` under homepage `ConditionalRender`.
