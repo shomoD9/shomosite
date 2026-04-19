@@ -18,7 +18,7 @@ home:
     - product/obsidian-chat
     - product/corpus
 ---
-<span class="home-opening-smallcaps">This is the site of Shomodip De. I write about psychology, AI and knowledge management systems.</span>
+<span class="home-opening-smallcaps">This is the site of Shomodip De. I write about psychology, AI, personal productivity and knowledge management systems.</span>
 
 <section class="vanity-metrics" aria-label="Vanity Metrics">
   <span class="vanity-metrics__corner">Reach Report</span>
@@ -46,12 +46,10 @@ home:
   </ol>
 </section>
 
-I am interested in topics like personal productivity, existential metaphysics and anthropic exceptionalism.
-
 I am a Product Manager. I have built and managed B2B Platform products in Enterprise Ontology and Enterprise Data Productization.
 
 My strongest influences include David Deutsch and Steve Jobs. My favorite writers are Friedrich Nietzsche and JRR Tolkien. My philosophical aesthetic is Bhadralok Intellectualism, which itself is a form of the Sanskrit Intellectual Worldview.
 
-This site is an evolving and navigable encyclopedia of my Prose as well as theses for the Products I build or ideate.
+This site is an evolving and navigable encyclopedia of my Prose as well as documentation and theses for the Products I build or ideate.
 
 If you want to point your AI to this Site or export a Markdown snapshot of the entire site as a wiki, visit:

@@ -6,9 +6,9 @@ kanban-plugin: board
 
 ## Planned
 
-- [ ] Explain how to launch a site, if I already have a domain name from cloudflare
-- [ ] [[Launch Site]]
-- [ ] Build cascading popups
+- [ ] Center the title alignment
+- [ ] Improve the Cascade Out of popups. Currently the popups don't disappear seamlessly.
+- [ ] Improve the dragging and pinning behaviour of the popups.
 
 
 ## To-do
@@ -32,7 +32,10 @@ kanban-plugin: board
 
 ## Done
 
+- [ ] Explain how to launch a site, if I already have a domain name from cloudflare
+- [ ] [[Launch Site]]
 - [ ] Make sidenotes as comments
+- [ ] Build cascading popups
 
 
 

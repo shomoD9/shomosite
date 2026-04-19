@@ -122,10 +122,13 @@ Alpha system note.`,
     assert.match(prose, /Example prose with/)
     assert.match(prose, /aliases:\s*\n\s*- prose\/example\/example/)
     assert.match(prose, /class="internal sidenote-ref"/)
-    assert.match(prose, /static\/sidenotes\/prose\/example\/gloss\.html/)
+    assert.match(prose, /static\/sidenotes\/prose\/example\/gloss/)
+    assert.doesNotMatch(prose, /static\/sidenotes\/prose\/example\/gloss\.html/)
 
     const sidenote = await readFile(
-      path.join(outputDir, "static", "sidenotes", "prose", "example", "gloss.html"),
+      // Sidenote fragments are extensionless because Quartz serves static HTML
+      // fragments through slugified asset paths rather than literal `.html` paths.
+      path.join(outputDir, "static", "sidenotes", "prose", "example", "gloss"),
       "utf8",
     )
     assert.match(sidenote, /This is the note that should render inside a preview\./)

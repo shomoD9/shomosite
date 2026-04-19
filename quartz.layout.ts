@@ -31,13 +31,7 @@ export const sharedPageComponents: SharedLayout = {
       condition: (page) => isPrimaryNotePage(page.fileData),
     }),
   ],
-  footer: Component.Footer({
-    links: {
-      About: "/docs/about",
-      Design: "/docs/design",
-      GitHub: "https://github.com/shomoD9/shomosite",
-    },
-  }),
+  footer: Component.Spacer(),
 }
 
 export const defaultContentPageLayout: PageLayout = {

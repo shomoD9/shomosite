@@ -17,13 +17,13 @@ aliases:
   - prose/anthropic-exceptionalism/anthropic-exceptionalism
 ---
 
-Human beings are interesting not because we are the strongest animals, but because we can create <a href="#" class="internal sidenote-ref" data-sidenote="true" data-preview="../../static/sidenotes/prose/anthropic-exceptionalism/explanatory-knowledge.html">explanatory knowledge</a> that no genome directly encoded for us. That is the discontinuity I mean by anthropic exceptionalism. It is not mysticism. It is the simple observation that criticism, conjecture, and cultural accumulation let us reach beyond our starting conditions.
+Human beings are interesting not because we are the strongest animals, but because we can create <a href="#" class="internal sidenote-ref" data-sidenote="true" data-preview="../../static/sidenotes/prose/anthropic-exceptionalism/explanatory-knowledge">explanatory knowledge</a> that no genome directly encoded for us. That is the discontinuity I mean by anthropic exceptionalism. It is not mysticism. It is the simple observation that criticism, conjecture, and cultural accumulation let us reach beyond our starting conditions.
 
 For popup-chain testing on this page, you can also jump to [Karl Popper](https://en.wikipedia.org/wiki/Karl_Popper), [critical rationalism](https://en.wikipedia.org/wiki/Critical_rationalism), [evolutionary epistemology](https://en.wikipedia.org/wiki/Evolutionary_epistemology), and [cultural evolution](https://en.wikipedia.org/wiki/Cultural_evolution).
 
 ## The Discontinuity
 
-Other animals inherit strategies. Human beings inherit a <a href="#" class="internal sidenote-ref" data-sidenote="true" data-preview="../../static/sidenotes/prose/anthropic-exceptionalism/criticism-engine.html">criticism engine</a> that lets us treat our own ideas as corrigible objects. That capacity turns culture into a real source of new knowledge rather than a mere transmission channel for instinct.
+Other animals inherit strategies. Human beings inherit a <a href="#" class="internal sidenote-ref" data-sidenote="true" data-preview="../../static/sidenotes/prose/anthropic-exceptionalism/criticism-engine">criticism engine</a> that lets us treat our own ideas as corrigible objects. That capacity turns culture into a real source of new knowledge rather than a mere transmission channel for instinct.
 
 This is why intelligence cannot be reduced to present capability alone. What matters is whether a mind can enter an ecology where conjecture, criticism, and correction accumulate across generations.
 
@@ -35,7 +35,7 @@ Pure scale matters, but scale without a surrounding culture of error correction 
 
 ### Intelligence Inside Institutions
 
-The real discontinuity shows up inside institutions. A society that preserves <a href="#" class="internal sidenote-ref" data-sidenote="true" data-preview="../../static/sidenotes/prose/anthropic-exceptionalism/cultural-accumulation.html">cultural accumulation</a> can out-think any one individual because criticism gets stored, reused, and recombined.
+The real discontinuity shows up inside institutions. A society that preserves <a href="#" class="internal sidenote-ref" data-sidenote="true" data-preview="../../static/sidenotes/prose/anthropic-exceptionalism/cultural-accumulation">cultural accumulation</a> can out-think any one individual because criticism gets stored, reused, and recombined.
 
 That is why the [[docs/design|design page]] for a public thinking system matters at all: the surface is not ornament around the ideas. The surface decides whether arguments remain inspectable, linkable, and easy to challenge.
 

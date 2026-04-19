@@ -8,6 +8,8 @@
 
 #work_context On `codex/rebrand-rethink`, removed visible dates and reading-time estimates from the page shell, footer, homepage panels, section index entries, reusable Quartz lists, and generated Open Graph images while keeping date metadata available for sorting, feeds, and build output.
 
+#work_context On `codex/rebrand-rethink`, removed the site-wide Quartz footer from the shared layout so no page ends with the Created with Quartz / About / Design / GitHub strip.
+
 ## 2026-04-18 - GPT-5 - Codex App
 
 #shomos_preferences Shomo wants the homepage's first two sentences in small caps rather than the whole first rendered line or only the first sentence.
