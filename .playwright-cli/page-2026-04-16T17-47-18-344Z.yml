@@ -1,0 +1,141 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - banner [ref=e6]:
+      - navigation "Primary" [ref=e7]:
+        - link "Shomosite" [ref=e8] [cursor=pointer]:
+          - /url: .
+        - generic [ref=e9]:
+          - link "Site" [ref=e10] [cursor=pointer]:
+            - /url: ./
+          - link "Prose" [ref=e11] [cursor=pointer]:
+            - /url: ./prose/
+          - link "Product" [ref=e12] [cursor=pointer]:
+            - /url: ./product/
+          - link "Docs" [ref=e13] [cursor=pointer]:
+            - /url: ./docs/
+          - link "Design" [ref=e14] [cursor=pointer]:
+            - /url: ./docs/design
+        - generic [ref=e15]:
+          - button "Search Search" [ref=e17] [cursor=pointer]:
+            - img "Search" [ref=e18]
+            - paragraph [ref=e22]: Search
+          - button "Dark mode" [ref=e23] [cursor=pointer]:
+            - img "Dark mode" [ref=e24]
+    - article [ref=e26]:
+      - paragraph [ref=e27]: This is the site of Shomodip De. I write about Productivity, AI and the Human Condition in the 21st Century.
+      - paragraph [ref=e28]: I am a Product Manager by Profession. I have built and managed B2B Platform products in Enterprise Ontology, Enterprise Data Productization and Context Management.
+      - paragraph [ref=e29]: I am interested in the topic of Anthropic Exceptionalism. The uncanny human ability to create Knowledge beyond what evolution encoded into us (Memetic Knowledge Creation as opposed to Genetic Knowledge Creation) and it’s emergent characteristics like Creativity, Critical Optimism, Free Will, and the Will to Infinity.
+      - paragraph [ref=e30]: My strongest influences include David Deutsch, Steve Jobs, Friedrich Nietzsche and JRR Tolkien. The aesthetic of my philosophy is influenced by Bhadralok Intellectualism, which itself is a form of Sanskrit Intellectual Worldview.
+      - paragraph [ref=e31]: This site is an evolving and navigable encyclopedia of my Prose as well as the Products I build.
+      - paragraph [ref=e32]: "If you want to point your AI to this Site or export a Markdown snapshot of the entire site as a wiki, visit:"
+    - generic [ref=e34]:
+      - generic [ref=e35]:
+        - heading "Prose" [level=2] [ref=e36]
+        - list [ref=e37]:
+          - listitem [ref=e38]:
+            - article [ref=e39]:
+              - heading "Anthropic Exceptionalism" [level=3] [ref=e40]:
+                - link "Anthropic Exceptionalism" [ref=e41] [cursor=pointer]:
+                  - /url: ./prose/anthropic-exceptionalism/
+              - paragraph [ref=e42]: Why the human capacity to create explanatory knowledge deserves to be treated as a real discontinuity.
+              - paragraph [ref=e43]:
+                - time [ref=e44]: Apr 09, 2026
+          - listitem [ref=e45]:
+            - article [ref=e46]:
+              - heading "Memetic Knowledge Creation" [level=3] [ref=e47]:
+                - link "Memetic Knowledge Creation" [ref=e48] [cursor=pointer]:
+                  - /url: ./prose/memetic-knowledge-creation/
+              - paragraph [ref=e49]: A working distinction between genetic inheritance and the creation of knowledge in culture.
+              - paragraph [ref=e50]:
+                - time [ref=e51]: Apr 08, 2026
+          - listitem [ref=e52]:
+            - article [ref=e53]:
+              - heading "Critical Optimism" [level=3] [ref=e54]:
+                - link "Critical Optimism" [ref=e55] [cursor=pointer]:
+                  - /url: ./prose/critical-optimism/
+              - paragraph [ref=e56]: Optimism is only serious when it is paired with criticism sharp enough to expose failure.
+              - paragraph [ref=e57]:
+                - time [ref=e58]: Apr 08, 2026
+          - listitem [ref=e59]:
+            - article [ref=e60]:
+              - heading "Building with Ontologies" [level=3] [ref=e61]:
+                - link "Building with Ontologies" [ref=e62] [cursor=pointer]:
+                  - /url: ./prose/building-with-ontologies/
+              - paragraph [ref=e63]: Why ontology work matters when products need to make complex domains legible instead of merely searchable.
+              - paragraph [ref=e64]:
+                - time [ref=e65]: Apr 08, 2026
+          - listitem [ref=e66]:
+            - article [ref=e67]:
+              - heading "Margins Are Part of the Argument" [level=3] [ref=e68]:
+                - link "Margins Are Part of the Argument" [ref=e69] [cursor=pointer]:
+                  - /url: ./prose/margins-are-part-of-the-argument/
+              - paragraph [ref=e70]: A page with notes in the margin should make annotation feel like an editorial instrument rather than decorative gloss.
+              - paragraph [ref=e71]:
+                - time [ref=e72]: Apr 16, 2026
+          - listitem [ref=e73]:
+            - article [ref=e74]:
+              - heading "Freedom Through Constraints" [level=3] [ref=e75]:
+                - link "Freedom Through Constraints" [ref=e76] [cursor=pointer]:
+                  - /url: ./prose/freedom-through-constraints/
+              - paragraph [ref=e77]: Personal productivity becomes more interesting when constraints are treated as design decisions rather than punishments.
+              - paragraph [ref=e78]:
+                - time [ref=e79]: Apr 08, 2026
+      - generic [ref=e80]:
+        - heading "Product" [level=2] [ref=e81]
+        - list [ref=e82]:
+          - listitem [ref=e83]:
+            - article [ref=e84]:
+              - heading "Shomosite" [level=3] [ref=e85]:
+                - link "Shomosite" [ref=e86] [cursor=pointer]:
+                  - /url: ./product/shomosite/
+              - paragraph [ref=e87]: The public wiki site that renders Shomo's prose, products, and design notes through Quartz.
+              - paragraph [ref=e88]:
+                - time [ref=e89]: Apr 09, 2026
+          - listitem [ref=e90]:
+            - article [ref=e91]:
+              - heading "Master" [level=3] [ref=e92]:
+                - link "Master" [ref=e93] [cursor=pointer]:
+                  - /url: ./product/master/
+              - paragraph [ref=e94]: The private integrated vault where prose, product docs, and private knowledge are kept in one linked system.
+              - paragraph [ref=e95]:
+                - time [ref=e96]: Apr 08, 2026
+          - listitem [ref=e97]:
+            - article [ref=e98]:
+              - heading "Prompt Wallet" [level=3] [ref=e99]:
+                - link "Prompt Wallet" [ref=e100] [cursor=pointer]:
+                  - /url: ./product/prompt-wallet/
+              - paragraph [ref=e101]: A system for capturing, organizing, and reusing prompts as working knowledge rather than disposable snippets.
+              - paragraph [ref=e102]:
+                - time [ref=e103]: Apr 08, 2026
+          - listitem [ref=e104]:
+            - article [ref=e105]:
+              - heading "Obsidian Chat" [level=3] [ref=e106]:
+                - link "Obsidian Chat" [ref=e107] [cursor=pointer]:
+                  - /url: ./product/obsidian-chat/
+              - paragraph [ref=e108]: A bridge between conversational AI and the user's long-lived markdown knowledge base.
+              - paragraph [ref=e109]:
+                - time [ref=e110]: Apr 08, 2026
+          - listitem [ref=e111]:
+            - article [ref=e112]:
+              - heading "Corpus" [level=3] [ref=e113]:
+                - link "Corpus" [ref=e114] [cursor=pointer]:
+                  - /url: ./product/corpus/
+              - paragraph [ref=e115]: A research-oriented corpus layer for keeping source material organized, inspectable, and reusable.
+              - paragraph [ref=e116]:
+                - time [ref=e117]: Apr 08, 2026
+  - contentinfo [ref=e118]:
+    - paragraph [ref=e119]:
+      - text: Created with
+      - link "Quartz v4.5.2" [ref=e120] [cursor=pointer]:
+        - /url: https://quartz.jzhao.xyz/
+      - text: © 2026
+    - list [ref=e121]:
+      - listitem [ref=e122]:
+        - link "About" [ref=e123] [cursor=pointer]:
+          - /url: /docs/about
+      - listitem [ref=e124]:
+        - link "Design" [ref=e125] [cursor=pointer]:
+          - /url: /docs/design
+      - listitem [ref=e126]:
+        - link "GitHub" [ref=e127] [cursor=pointer]:
+          - /url: https://github.com/shomoD9/shomosite

@@ -3,56 +3,161 @@ This stylesheet handles the homepage's curated two-column index. It exists as a
 separate style file because the homepage panels have a different rhythm from the
 rest of the note pages: they need to feel like a serious table of contents, not
 like cards or marketing tiles. It talks only to `ShomoHomePanels.tsx`.
+
+The panels share the landing page's `--shomo-home-frame` with the hero so hero
+and panels align on one left/right edge. A centered asterism (⁂) breaking a
+short hairline rule punctuates the transition from hero prose to curated index
+— an enlightenment-frontispiece gesture that costs zero markup.
 */
 
 .home-panels {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(3rem, 4vw, 4.25rem);
-  max-width: min(100%, var(--shomo-editorial-frame, 78rem));
-  margin: clamp(4.6rem, 7vw, 7.4rem) auto 0;
+  gap: clamp(2.6rem, 3.6vw, 4rem);
+  max-width: min(100%, var(--shomo-home-frame, 64rem));
+  margin: clamp(2.6rem, 4vw, 3.8rem) auto 0;
+  padding-top: clamp(2rem, 3vw, 2.8rem);
+}
+
+// Centered hairline between hero and panels. Short, so the asterism reads as
+// a paused breath rather than a full divider.
+.home-panels::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: clamp(4rem, 12vw, 8.5rem);
+  height: 1px;
+  background: var(--shomo-rule, var(--lightgray));
+  transform: translateX(-50%);
+}
+
+// Asterism glyph sitting on the rule, masked by page background so the rule
+// appears to break around it. Uses header font so it inherits the site's
+// serif character rather than rendering as a sans fallback.
+.home-panels::before {
+  content: "⁂";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  padding: 0 0.75rem;
+  transform: translate(-50%, -50%);
+  background: var(--light);
+  font-family: var(--headerFont);
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--gray);
+  z-index: 1;
 }
 
 .home-panel h2 {
   margin-top: 0;
-  margin-bottom: 1rem;
-  padding-bottom: 0.18rem;
-  border-bottom: 1px solid var(--shomo-rule, var(--lightgray));
+  margin-bottom: 1.4rem;
+  padding-bottom: 0.26rem;
+  border-bottom: 1.5px solid var(--shomo-rule, var(--lightgray));
   font-family: var(--bodyFont);
-  font-size: clamp(1.32rem, 1.12rem + 0.45vw, 1.7rem);
+  font-size: clamp(1.45rem, 1.2rem + 0.5vw, 1.85rem);
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: none;
   font-variant-caps: all-small-caps;
+  color: var(--dark);
 }
 
+// Right column's title hangs at the far end of its rule so the two headings
+// bracket the panel band — PROSE at the left edge, PRODUCT at the right.
+.home-panel:nth-child(2) h2 {
+  text-align: right;
+}
+
+// Drop default Arabic numerals; render lowercase roman in the left margin
+// rail so the numbers feel like a classical table of contents rather than a
+// wiki list. The rail is fixed width and right-aligned so titles line up no
+// matter how the numerals grow (i, ii, viii, xii...).
 .home-panel ol {
+  counter-reset: home-entry;
   margin: 0;
-  padding-left: 1.2rem;
+  padding-left: 0;
+  list-style: none;
+}
+
+.home-panel ol > li {
+  position: relative;
+  padding-left: 2.4rem;
+  margin-bottom: 1.65rem;
+  counter-increment: home-entry;
+}
+
+.home-panel ol > li:last-child {
+  margin-bottom: 0;
+}
+
+.home-panel ol > li::before {
+  content: counter(home-entry, lower-roman) ".";
+  position: absolute;
+  left: 0;
+  top: 0.4rem;
+  width: 1.8rem;
+  text-align: right;
+  font-family: var(--sansFont);
+  font-size: 0.7rem;
+  font-variant-numeric: lining-nums;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray);
 }
 
 .home-panel-entry {
-  margin-bottom: 1.25rem;
+  margin: 0;
 }
 
 .home-panel-entry h3 {
-  margin: 0 0 0.24rem;
-  font-size: 1.02rem;
+  margin: 0 0 0.32rem;
+  font-size: 1.16rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+}
+
+.home-panel-entry h3 a {
+  text-decoration-thickness: 0.05em;
+  text-underline-offset: 0.16em;
 }
 
 .home-panel-entry p {
-  margin: 0.25rem 0;
-  max-width: 26rem;
-  line-height: 1.62;
+  margin: 0.28rem 0 0;
+  max-width: none;
+  line-height: 1.58;
+  color: var(--shomo-text);
+  text-shadow: var(--shomo-text-bleed);
 }
 
 .home-panel-date {
-  color: var(--gray);
-  font-size: 0.8rem;
+  margin-top: 0.55rem;
+  font-family: var(--sansFont);
+  font-size: 0.68rem;
+  font-variant-numeric: lining-nums;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tertiary);
+  text-shadow: none;
 }
 
 @media (max-width: 800px) {
   .home-panels {
     grid-template-columns: 1fr;
+    gap: 2.2rem;
+    margin-top: clamp(1.8rem, 4vw, 2.4rem);
+    padding-top: clamp(1.6rem, 3vw, 2.2rem);
+  }
+
+  .home-panels::after {
+    width: clamp(3rem, 12vw, 6rem);
+  }
+
+  .home-panels::before {
+    font-size: 0.9rem;
+    padding: 0 0.6rem;
   }
 }

@@ -1,0 +1,10 @@
+[      84ms] [ERROR] WebSocket connection to 'ws://localhost:3001/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/prose/anthropic-exceptionalism/:132
+[     166ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8080/static/sidenotes/prose/anthropic-exceptionalism/criticism-engine.html:0
+[     166ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8080/static/sidenotes/prose/anthropic-exceptionalism/cultural-accumulation.html:0
+[     166ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8080/static/sidenotes/prose/anthropic-exceptionalism/explanatory-knowledge.html:0
+[     690ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8080/static/sidenotes/prose/anthropic-exceptionalism/explanatory-knowledge.html:0
+[     690ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8080/static/sidenotes/prose/anthropic-exceptionalism/criticism-engine.html:0
+[     691ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8080/static/sidenotes/prose/anthropic-exceptionalism/cultural-accumulation.html:0
+[  106425ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8080/static/sidenotes/prose/anthropic-exceptionalism/explanatory-knowledge.html:0
+[  106426ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8080/static/sidenotes/prose/anthropic-exceptionalism/criticism-engine.html:0
+[  106426ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8080/static/sidenotes/prose/anthropic-exceptionalism/cultural-accumulation.html:0

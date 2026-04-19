@@ -21,9 +21,17 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border: 1px solid var(--lightgray);
+  // Pressed-plate frame: a 2px ink rule in light mode, a cool silver rule in
+  // dark mode. The inset 1px line is the hair-thin inner engraving that sells
+  // the copperplate double-rule without going full `border: double`. The halo
+  // layer is empty in light mode and a cool moonlight cast in dark mode.
+  border: 2px solid var(--shomo-frame);
   background: var(--light);
-  box-shadow: 0 4px 24px rgba(18, 16, 14, 0.10), 0 1px 4px rgba(18, 16, 14, 0.06);
+  box-shadow:
+    inset 0 0 0 1px var(--shomo-frame-inner),
+    0 4px 24px rgba(18, 16, 14, 0.10),
+    0 1px 4px rgba(18, 16, 14, 0.06),
+    var(--shomo-frame-halo);
   pointer-events: auto;
   opacity: 0;
   transform: translateY(6px);
@@ -49,7 +57,11 @@
 
 .popover.is-pinned .popover-window,
 .popover.is-maximized .popover-window {
-  box-shadow: 0 8px 40px rgba(18, 16, 14, 0.18), 0 2px 8px rgba(18, 16, 14, 0.08);
+  box-shadow:
+    inset 0 0 0 1px var(--shomo-frame-inner),
+    0 8px 40px rgba(18, 16, 14, 0.18),
+    0 2px 8px rgba(18, 16, 14, 0.08),
+    var(--shomo-frame-halo);
 }
 
 .popover.is-modal .popover-window {
@@ -149,6 +161,77 @@
   background: var(--light);
   scrollbar-width: thin;
   scrollbar-color: color-mix(in srgb, var(--lightgray) 60%, transparent) transparent;
+}
+
+.popover.is-loading .popover-inner,
+.popover.is-failed .popover-inner {
+  display: flex;
+  align-items: flex-start;
+}
+
+.popover-status {
+  width: min(100%, 29rem);
+  display: grid;
+  gap: 0.45rem;
+  color: var(--gray);
+  font-family: var(--sansFont);
+}
+
+.popover-status__label,
+.popover-status__title,
+.popover-status__message,
+.popover-status__detail {
+  margin: 0;
+}
+
+.popover-status__label {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tertiary);
+}
+
+.popover-status__title {
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--dark);
+}
+
+.popover-status__message,
+.popover-status__detail {
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.popover-status__bar {
+  position: relative;
+  width: min(100%, 15rem);
+  height: 2px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--lightgray) 60%, transparent);
+}
+
+.popover-status__bar::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 42%;
+  background: color-mix(in srgb, var(--tertiary) 72%, var(--darkgray));
+  animation: popover-loading-bar 1.1s ease-in-out infinite;
+}
+
+.popover.is-failed .popover-status__title {
+  color: var(--secondary);
+}
+
+@keyframes popover-loading-bar {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  100% {
+    transform: translateX(300%);
+  }
 }
 
 .popover-inner[data-content-type*="image"],

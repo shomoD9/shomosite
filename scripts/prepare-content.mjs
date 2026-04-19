@@ -154,7 +154,7 @@ async function renderMarkdownFragment(markdown) {
 
 function createSidenoteFragment({ title, body }) {
   const renderedTitle = title
-    ? `<header class="sidenote-fragment__header"><p class="sidenote-fragment__eyebrow">Sidenote</p><h2>${escapeHtml(title)}</h2></header>`
+    ? `<header class="sidenote-fragment__header"><p class="sidenote-fragment__eyebrow">Note</p><h2>${escapeHtml(title)}</h2></header>`
     : ""
 
   return `<!doctype html>

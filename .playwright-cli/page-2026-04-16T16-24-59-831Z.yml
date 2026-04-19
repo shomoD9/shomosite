@@ -1,0 +1,148 @@
+- generic [ref=e3]:
+  - generic [ref=e5]:
+    - button "Table of Contents" [expanded] [ref=e6] [cursor=pointer]:
+      - heading "Table of Contents" [level=3] [ref=e7]
+      - img [ref=e8]
+    - list [ref=e10]:
+      - listitem [ref=e11]:
+        - link "Margins Change Reading" [ref=e12] [cursor=pointer]:
+          - /url: "#margins-change-reading"
+      - listitem [ref=e13]:
+        - link "The Shape of Intervention" [ref=e14] [cursor=pointer]:
+          - /url: "#the-shape-of-intervention"
+      - listitem [ref=e15]:
+        - link "Cheap Criticism" [ref=e16] [cursor=pointer]:
+          - /url: "#cheap-criticism"
+      - listitem [ref=e17]:
+        - link "Density Test" [ref=e18] [cursor=pointer]:
+          - /url: "#density-test"
+      - listitem [ref=e19]:
+        - link "A Test Worth Running" [ref=e20] [cursor=pointer]:
+          - /url: "#a-test-worth-running"
+      - listitem [ref=e21]
+  - generic [ref=e22]:
+    - generic [ref=e23]:
+      - banner [ref=e24]:
+        - navigation "Primary" [ref=e25]:
+          - link "Shomosite" [ref=e26] [cursor=pointer]:
+            - /url: ../..
+          - generic [ref=e27]:
+            - link "Site" [ref=e28] [cursor=pointer]:
+              - /url: ../../
+            - link "Prose" [ref=e29] [cursor=pointer]:
+              - /url: ../../prose/
+            - link "Product" [ref=e30] [cursor=pointer]:
+              - /url: ../../product/
+            - link "Docs" [ref=e31] [cursor=pointer]:
+              - /url: ../../docs/
+            - link "Design" [ref=e32] [cursor=pointer]:
+              - /url: ../../docs/design
+          - generic [ref=e33]:
+            - button "Search Search" [ref=e35] [cursor=pointer]:
+              - img "Search" [ref=e36]
+              - paragraph [ref=e40]: Search
+            - button "Dark mode" [ref=e41] [cursor=pointer]:
+              - img "Dark mode" [ref=e42]
+      - generic [ref=e44]:
+        - heading "Margins Are Part of the Argument" [level=1] [ref=e45]
+        - paragraph [ref=e46]:
+          - time [ref=e47]: Apr 16, 2026,
+          - text: 5 min read
+    - article [ref=e48]:
+      - paragraph [ref=e49]:
+        - text: I keep returning to the claim that
+        - link "the edge of a page is not dead space" [ref=e50] [cursor=pointer]:
+          - /url: "#"
+        - text: . If an essay is trying to teach, persuade, or refine a thought, the margin can do more than hold ornament. It can carry clarifications, objections, qualifications, and pressure. A note, at its best, is not a digression. It is a way of keeping the main line clean while still letting the argument expose its joints.
+      - paragraph [ref=e51]:
+        - text: "That matters because readers do not move through prose as disembodied logic engines. They move with pace, suspicion, curiosity, and fatigue. A good margin note can slow the eye at the exact instant a sentence risks becoming too compressed. A bad one does the opposite: it breaks cadence and leaves behind the feeling that"
+        - link "a note is not an afterthought; it is a second sentence running beside the first" [ref=e52] [cursor=pointer]:
+          - /url: "#"
+        - text: .
+      - heading "Margins Change Reading" [level=2] [ref=e53]:
+        - text: Margins Change Reading
+        - link [ref=e54] [cursor=pointer]:
+          - /url: "#margins-change-reading"
+          - img [ref=e55]
+      - paragraph [ref=e58]:
+        - text: "The moment you add annotation, you are no longer designing only paragraphs. You are designing attention. The reader now has two simultaneous surfaces: the line of argument in the center and the editorial whisper at the side. That is why"
+        - link "where a comment lands changes what it means" [ref=e59] [cursor=pointer]:
+          - /url: "#"
+        - text: . Attach the same note to an adjective, a clause, or a whole sentence, and you have made three different claims about what needs inspection.
+      - paragraph [ref=e60]:
+        - text: This is also why narrow labels often fail. Sometimes the right target is a term of art. Sometimes it is a turn of phrase. Sometimes it is
+        - link "the unit of annotation is not always a word; sometimes it is the pressure created by an entire clause" [ref=e61] [cursor=pointer]:
+          - /url: "#"
+        - text: . A system that only works for neat little nouns will teach the writer to think in neat little nouns. That is the wrong lesson.
+      - heading "The Shape of Intervention" [level=2] [ref=e62]:
+        - text: The Shape of Intervention
+        - link [ref=e63] [cursor=pointer]:
+          - /url: "#the-shape-of-intervention"
+          - img [ref=e64]
+      - paragraph [ref=e67]:
+        - text: There is a craft question here, not just a technical one. A note should clarify without bullying the sentence it accompanies. The main line still has to breathe. That is why
+        - link "precision can damage rhythm if it arrives in the wrong place" [ref=e68] [cursor=pointer]:
+          - /url: "#"
+        - text: . Too much interruption makes the page feel defensive, as if every claim arrived pre-anxious about its own objections.
+      - paragraph [ref=e69]: "I prefer comments that act like clean editorial pressure. They say: slow down here; name the hidden assumption here; notice the ambition of this phrase here. That is different from flooding the edge with miniature essays. The note has to earn its presence. It should either sharpen the reader’s grip, expose a real ambiguity, or preserve a piece of live thinking that would otherwise be ironed flat into false smoothness."
+      - heading "Cheap Criticism" [level=2] [ref=e70]:
+        - text: Cheap Criticism
+        - link [ref=e71] [cursor=pointer]:
+          - /url: "#cheap-criticism"
+          - img [ref=e72]
+      - paragraph [ref=e75]:
+        - text: Well-made margins matter because they
+        - link "make disagreement cheap" [ref=e76] [cursor=pointer]:
+          - /url: "#"
+        - text: . When criticism is cheap, more of it happens, and better thinking survives. A note can register an objection without forcing the body text to swell into apology. It can record a competing frame without derailing the sentence that first needed to be stated cleanly.
+      - paragraph [ref=e77]:
+        - text: "This is especially useful when a piece is still close to its own making. Drafts often contain a valuable wobble: the writer half knows something, says it provisionally, and has not yet decided whether to harden or cut it. In those moments,"
+        - link "visible hesitation is often more honest than polished certainty" [ref=e78] [cursor=pointer]:
+          - /url: "#"
+        - text: . A good note can hold that hesitation in public instead of hiding it behind premature confidence.
+      - heading "Density Test" [level=3] [ref=e79]:
+        - text: Density Test
+        - link [ref=e80] [cursor=pointer]:
+          - /url: "#density-test"
+          - img [ref=e81]
+      - paragraph [ref=e84]:
+        - text: The hardest case is density. Several claims may pile up inside one paragraph, each deserving a different kind of gloss. One phrase may need definition. Another may need qualification. A third may need a small objection. If the system is any good, it should survive a paragraph where
+        - link "pace" [ref=e85] [cursor=pointer]:
+          - /url: "#"
+        - text: matters, where
+        - link "a short label can flatten a passage that was doing two things at once" [ref=e86] [cursor=pointer]:
+          - /url: "#"
+        - text: ", and where the reader needs to feel that the page itself is still composed rather than merely crowded."
+      - paragraph [ref=e87]:
+        - text: That last point is not cosmetic. Form tells the reader what sort of encounter is available. If the center column feels deliberate while the margin feels panicked, the page teaches distrust. If both feel calm, the reader learns that annotation is part of the rhetoric, not an emergency patch. In that sense,
+        - link "a page teaches its reader how to think with it" [ref=e88] [cursor=pointer]:
+          - /url: "#"
+        - text: .
+      - heading "A Test Worth Running" [level=2] [ref=e89]:
+        - text: A Test Worth Running
+        - link [ref=e90] [cursor=pointer]:
+          - /url: "#a-test-worth-running"
+          - img [ref=e91]
+      - paragraph [ref=e94]: This piece is useful to me only if it can be read as an essay and as an instrument panel. The long anchors should show whether notes can track phrases instead of isolated nouns. The denser paragraphs should show whether stacked notes still feel legible. The quoted titles should show whether the comment is attached to the right unit of thought rather than merely floating beside a nearby sentence.
+      - paragraph [ref=e95]:
+        - text: What I want, finally, is simple. The margin should feel deliberate. The title of a note should not shout harder than the body. The body should not look detached from the phrase that called it into being. And
+        - link "the surface has to remain inspectable even when the argument gets dense" [ref=e96] [cursor=pointer]:
+          - /url: "#"
+        - text: . If those things hold, the page is doing real editorial work. If they fail, the reader will feel the failure before they name it.
+  - complementary [ref=e98]
+  - contentinfo [ref=e100]:
+    - paragraph [ref=e101]:
+      - text: Created with
+      - link "Quartz v4.5.2" [ref=e102] [cursor=pointer]:
+        - /url: https://quartz.jzhao.xyz/
+      - text: © 2026
+    - list [ref=e103]:
+      - listitem [ref=e104]:
+        - link "About" [ref=e105] [cursor=pointer]:
+          - /url: /docs/about
+      - listitem [ref=e106]:
+        - link "Design" [ref=e107] [cursor=pointer]:
+          - /url: /docs/design
+      - listitem [ref=e108]:
+        - link "GitHub" [ref=e109] [cursor=pointer]:
+          - /url: https://github.com/shomoD9/shomosite

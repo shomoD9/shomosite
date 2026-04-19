@@ -11,14 +11,22 @@
             "id": "e05e028bda0a0d01",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "kanban",
               "state": {
-                "file": "docs/ARCHITECTURE.md",
-                "mode": "source",
-                "source": false
+                "file": "docs/Shomosite-Kanban.md",
+                "kanbanViewState": {
+                  "kanban-plugin": "board",
+                  "list-collapse": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                  ]
+                }
               },
-              "icon": "lucide-file",
-              "title": "ARCHITECTURE"
+              "icon": "lucide-trello",
+              "title": "Shomosite-Kanban"
             }
           },
           {
@@ -200,27 +208,38 @@
   },
   "active": "e05e028bda0a0d01",
   "lastOpenFiles": [
-    "docs/Shomosite-Kanban.md",
-    "docs/Kanban-Notes/Launch Site.md",
-    "docs/Kanban-Notes",
-    "docs/index.md",
+    "public/static/sidenotes/prose/anthropic-exceptionalism/explanatory-knowledge",
+    "public/static/sidenotes/prose/anthropic-exceptionalism/cultural-accumulation",
+    "public/docs/Kanban-Notes/index.html",
+    "public/docs/Kanban-Notes",
     "public/prose/memetic-knowledge-creation/memetic-knowledge-creation.html",
-    "public/prose/memetic-knowledge-creation/index.html",
-    "public/prose/memetic-knowledge-creation",
-    "public/product/shomosite/public-system.html",
-    "public/product/shomosite/index.html",
-    "public/prose/freedom-through-constraints/index.html",
+    "public/prose/margins-are-part-of-the-argument/margins-are-part-of-the-argument.html",
     "public/prose/freedom-through-constraints/freedom-through-constraints.html",
-    "public/prose/freedom-through-constraints",
-    "public/product/prompt-wallet/knowledge-asset.html",
+    "public/tags/index.html",
+    "public/tags/design.html",
+    "public/static/sidenotes/prose/margins-are-part-of-the-argument/visible-hesitation",
+    "public/static/sidenotes/prose/margins-are-part-of-the-argument/unit-of-annotation",
     "public/static/og-image.png",
     "public/static/icon.png",
+    "docs/index.md",
+    "docs/Shomosite-Kanban.md",
+    "home-narrow-dark.png",
+    "home-narrow.png",
+    "home-mobile.png",
+    "home-dark-v2.png",
+    "home-light-v2.png",
+    "current-home-light.png",
+    "dark-popover2.png",
+    "dark-popover-only.png",
+    "_journals/_J-Agent.md",
+    "docs/Kanban-Notes/Vanity section.md",
+    "docs/ARCHITECTURE.md",
+    "docs/Kanban-Notes/Launch Site.md",
     "prose/anthropic-exceptionalism/notes/cultural-accumulation.md",
     "prose/anthropic-exceptionalism/notes/criticism-engine.md",
     "docs/about.md",
     "docs/design.md",
     "docs/_J-Agent.md",
-    "docs/ARCHITECTURE.md",
     "docs/DEVLOG.md",
     "docs/SYSTEM-DESIGN.md",
     "prose/anthropic-exceptionalism/notes/explanatory-knowledge.md",
@@ -234,16 +253,6 @@
     "prose/critical-optimism/critical-optimism.md",
     "prose/anthropic-exceptionalism/anthropic-exceptionalism.md",
     "prose/building-with-ontologies/building-with-ontologies.md",
-    "docs/_J-Shomosite.md",
-    "product/corpus/docs/research-corpus.md",
-    "product/corpus/index.md",
-    "node_modules/cli-spinner/img/spinner.gif",
-    "node_modules/gifuct-js/demo/jblack.gif",
-    "node_modules/gifuct-js/demo/horses.gif",
-    "node_modules/gifuct-js/demo/dog.gif",
-    "node_modules/js-binary-schema-parser/example/horses.gif",
-    "node_modules/js-binary-schema-parser/example/dog.gif",
-    "node_modules/js-binary-schema-parser/example/box.gif",
-    "quartz/static/og-image.png"
+    "docs/_J-Shomosite.md"
   ]
 }
