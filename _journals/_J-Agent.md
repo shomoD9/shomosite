@@ -7,6 +7,17 @@ _Long-term items and features to be built down the line. Not a working to-do lis
 ---
 
 ## 2026-04-19 - GPT-5 - Codex App
+### GPT-5.4 (xhigh) - Warp
+
+#work_context — Updated the build-time Reach Report definitions per Shomo’s chosen presentation rules: comments now include a manual YouTube total of 464 alongside Substack archive comments, subscribers now include 96 X followers, the hover breakdowns were rewritten to match, and the note line beneath the box was removed entirely.
+
+#work_context — Switched the homepage Reach Report away from a runtime Cloudflare fetch and into the staging pipeline: `scripts/prepare-content.mjs` now calculates a build-time public snapshot and writes the resolved totals, tooltips, and note directly into the staged homepage so the numbers render locally and on deploy without waiting on `/api/reach-report`.
+
+#hurdles — The earlier `Comments` headline was easy to misread as a full YouTube+Substack aggregate. Kept the four-slot design but made the generated note explicit that the current public comments total is Substack-archive-only because YouTube does not expose a reliable channel-wide public comment count.
+
+#work_context — On `codex/rebrand-rethink`, replaced the homepage’s dummy Vanity Metrics block with a live `/api/reach-report` Cloudflare Pages Function plus client-side hydration: headline totals now aggregate public YouTube + Substack counts, while source-native X followers and Reddit karma are called out separately instead of being mislabeled as subscribers/likes.
+
+#hurdles — Public social surfaces expose uneven data. X only yielded follower/post counters from its full default HTML response, not the lighter header-forced variant; Reddit karma also needed HTML-aware parsing because the numbers sit inside `<span>` markup. LessWrong was left out rather than guessed because only the site root, not a profile URL, was available.
 
 #work_context — Reviewed Shomosite's deployment shape for launch planning. The site is a static Quartz build: `npm run build` stages `.quartz-content` from `docs/`, `prose/`, and `product/`, then emits `public/`; `scripts/sync-master-subtrees.sh` remains the manual bridge from the private `master` repo into public `prose/` and `product/`.
 

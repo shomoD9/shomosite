@@ -31,6 +31,216 @@ const INTERNAL_PRODUCT_DOC_SEGMENTS = new Set(["journals", ".obsidian"])
 const thisFile = fileURLToPath(import.meta.url)
 const thisDir = path.dirname(thisFile)
 const repoRoot = path.resolve(thisDir, "..")
+const NUMBER_FORMATTER = new Intl.NumberFormat("en-US")
+const REACH_REPORT_SECTION_PATTERN = /<section\s+class="vanity-metrics"[\s\S]*?<\/section>/
+const REACH_REQUEST_HEADERS = {
+  accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+  "user-agent": "Mozilla/5.0 (compatible; ShomositeReachBot/1.0; +https://shomodip.com)",
+}
+const YOUTUBE_ABOUT_URL = "https://www.youtube.com/@armchairdescending/about"
+const SUBSTACK_PROFILE_URL = "https://substack.com/@shomodip"
+const SUBSTACK_ARCHIVE_URL = "https://armchairdescending.substack.com/api/v1/archive"
+const MANUAL_YOUTUBE_COMMENT_COUNT = 464
+const MANUAL_X_FOLLOWER_COUNT = 96
+
+function formatCount(value) {
+  return NUMBER_FORMATTER.format(value)
+}
+
+function parseNumber(value) {
+  const digits = String(value).replace(/[^0-9]/g, "")
+
+  if (!digits) {
+    throw new Error(`Could not parse numeric value from "${value}"`)
+  }
+
+  return Number.parseInt(digits, 10)
+}
+
+async function fetchMetricText(url, accept = REACH_REQUEST_HEADERS.accept, { useDefaultHeaders = false } = {}) {
+  const response = await fetch(
+    url,
+    useDefaultHeaders
+      ? undefined
+      : {
+          headers: {
+            ...REACH_REQUEST_HEADERS,
+            accept,
+          },
+        },
+  )
+
+  if (!response.ok) {
+    throw new Error(`Fetch failed for ${url}: ${response.status}`)
+  }
+
+  return response.text()
+}
+
+async function fetchMetricJson(url) {
+  const text = await fetchMetricText(url, "application/json, text/plain;q=0.9, */*;q=0.8")
+  return JSON.parse(text)
+}
+
+function createReachMetric(breakdown) {
+  const cleaned = breakdown
+    .filter((item) => Number.isFinite(item.value))
+    .sort((left, right) => right.value - left.value)
+
+  return {
+    value: cleaned.reduce((sum, item) => sum + item.value, 0),
+    breakdown: cleaned,
+  }
+}
+
+function formatBreakdown(breakdown) {
+  if (!Array.isArray(breakdown) || breakdown.length === 0) {
+    return "Not publicly exposed"
+  }
+
+  return breakdown.map((item) => `${item.label} ${formatCount(item.value)}`).join(" · ")
+}
+
+async function getYouTubeReachSummary() {
+  const aboutPage = await fetchMetricText(YOUTUBE_ABOUT_URL)
+  const metadataMatch = aboutPage.match(
+    /subscriberCountText\":\"([^\"]+)\",\"viewCountText\":\"([^\"]+)\"[\s\S]*?\"channelId\":\"([^\"]+)\"[\s\S]*?\"videoCountText\":\"([^\"]+)\"/,
+  )
+
+  if (!metadataMatch) {
+    throw new Error("Could not parse the YouTube channel about page")
+  }
+
+  const [, subscriberText, viewText, channelId] = metadataMatch
+  const feedXml = await fetchMetricText(`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`)
+  const videoIds = [...feedXml.matchAll(/<yt:videoId>([^<]+)<\/yt:videoId>/g)].map((match) => match[1])
+  const uniqueVideoIds = [...new Set(videoIds)]
+  const likeResults = await Promise.allSettled(
+    uniqueVideoIds.map(async (videoId) => {
+      const watchPage = await fetchMetricText(`https://www.youtube.com/watch?v=${videoId}`)
+      const likeMatch = watchPage.match(/\"likeCount\":\"([0-9,]+)\"/)
+      if (!likeMatch) {
+        throw new Error(`Could not parse likeCount for ${videoId}`)
+      }
+
+      return parseNumber(likeMatch[1])
+    }),
+  )
+  const parsedLikeCounts = likeResults
+    .filter((result) => result.status === "fulfilled")
+    .map((result) => result.value)
+  const likes = parsedLikeCounts.length === uniqueVideoIds.length && uniqueVideoIds.length > 0
+    ? parsedLikeCounts.reduce((sum, value) => sum + value, 0)
+    : null
+
+  return {
+    subscribers: parseNumber(subscriberText),
+    views: parseNumber(viewText),
+    likes,
+  }
+}
+
+async function getSubstackReachSummary() {
+  const profilePage = await fetchMetricText(SUBSTACK_PROFILE_URL)
+  const subscriberMatch = profilePage.match(/([0-9,]+) subscribers/)
+
+  if (!subscriberMatch) {
+    throw new Error("Could not parse the Substack profile subscriber count")
+  }
+
+  const archive = await fetchMetricJson(SUBSTACK_ARCHIVE_URL)
+
+  return {
+    subscribers: parseNumber(subscriberMatch[1]),
+    likes: archive.reduce((sum, post) => sum + (post.reaction_count ?? 0), 0),
+    comments: archive.reduce((sum, post) => sum + (post.comment_count ?? 0), 0),
+  }
+}
+
+
+async function buildReachReportSnapshot() {
+  const [youtubeResult, substackResult] = await Promise.allSettled([
+    getYouTubeReachSummary(),
+    getSubstackReachSummary(),
+  ])
+
+  const metrics = {}
+  const viewsBreakdown = []
+  const commentsBreakdown = [{ label: "YouTube comments", value: MANUAL_YOUTUBE_COMMENT_COUNT }]
+  const likesBreakdown = []
+  const subscribersBreakdown = [{ label: "X followers", value: MANUAL_X_FOLLOWER_COUNT }]
+
+  if (youtubeResult.status === "fulfilled") {
+    viewsBreakdown.push({ label: "YouTube", value: youtubeResult.value.views })
+    subscribersBreakdown.push({ label: "YouTube", value: youtubeResult.value.subscribers })
+
+    if (youtubeResult.value.likes !== null) {
+      likesBreakdown.push({ label: "YouTube likes", value: youtubeResult.value.likes })
+    }
+  }
+
+  if (substackResult.status === "fulfilled") {
+    commentsBreakdown.push({
+      label: "Substack archive comments",
+      value: substackResult.value.comments,
+    })
+    likesBreakdown.push({ label: "Substack reactions", value: substackResult.value.likes })
+    subscribersBreakdown.push({
+      label: "Substack profile",
+      value: substackResult.value.subscribers,
+    })
+  }
+
+  if (viewsBreakdown.length > 0) {
+    metrics.views = createReachMetric(viewsBreakdown)
+  }
+  metrics.comments = createReachMetric(commentsBreakdown)
+
+  if (likesBreakdown.length > 0) {
+    metrics.likes = createReachMetric(likesBreakdown)
+  }
+
+  if (subscribersBreakdown.length > 0) {
+    metrics.subscribers = createReachMetric(subscribersBreakdown)
+  }
+
+
+  return {
+    generatedAt: new Date().toISOString(),
+    metrics,
+  }
+}
+
+function renderReachReportSection(snapshot) {
+  const metricDefinitions = [
+    { key: "views", label: "Views" },
+    { key: "comments", label: "Comments" },
+    { key: "likes", label: "Likes" },
+    { key: "subscribers", label: "Subscribers" },
+  ]
+
+  const stats = metricDefinitions
+    .map(({ key, label }) => {
+      const metric = snapshot.metrics[key]
+      const value = metric ? formatCount(metric.value) : "—"
+      const tooltip = metric ? formatBreakdown(metric.breakdown) : "Not publicly exposed"
+
+      return `    <li class="vanity-metrics__stat" tabindex="0" data-metric="${key}">
+      <span class="vanity-metrics__num">${escapeHtml(value)}</span>
+      <span class="vanity-metrics__label">${escapeHtml(label)}</span>
+      <span class="vanity-metrics__tooltip" role="tooltip">${escapeHtml(tooltip)}</span>
+    </li>`
+    })
+    .join("\n")
+
+
+  return `<section class="vanity-metrics" aria-label="Reach Report" data-generated-at="${escapeHtml(snapshot.generatedAt)}">
+  <span class="vanity-metrics__corner">Reach Report</span>
+  <ol class="vanity-metrics__grid">
+${stats}
+  </ol>
+</section>`
+}
 
 function toPosix(value) {
   return value.split(path.sep).join("/")
@@ -267,7 +477,11 @@ async function clearDirectory(targetDir) {
   }
 }
 
-async function mirrorHomePage(rootDir, outputDir) {
+async function mirrorHomePage(
+  rootDir,
+  outputDir,
+  { buildReachReportSnapshot: getReachReportSnapshot = buildReachReportSnapshot } = {},
+) {
   const homeSource = path.join(rootDir, "docs", "index.md")
   const raw = await readFile(homeSource, "utf8")
   const parsed = matter(raw)
@@ -290,8 +504,14 @@ async function mirrorHomePage(rootDir, outputDir) {
             : home.product,
         }
       : home
+  let nextContent = parsed.content
 
-  const output = matter.stringify(parsed.content, {
+  if (REACH_REPORT_SECTION_PATTERN.test(nextContent)) {
+    const snapshot = await getReachReportSnapshot()
+    nextContent = nextContent.replace(REACH_REPORT_SECTION_PATTERN, renderReachReportSection(snapshot))
+  }
+
+  const output = matter.stringify(nextContent, {
     ...parsed.data,
     aliases,
     ...(normalizedHome !== undefined ? { home: normalizedHome } : {}),
@@ -395,6 +615,7 @@ async function stageProduct(rootDir, outputDir) {
 export async function prepareContent({
   rootDir = repoRoot,
   outputDir = path.join(repoRoot, ".quartz-content"),
+  buildReachReportSnapshot: getReachReportSnapshot = buildReachReportSnapshot,
 } = {}) {
   await clearDirectory(outputDir)
 
@@ -404,7 +625,7 @@ export async function prepareContent({
   // Prose and product are restaged into clean public routes while keeping the source vault structure intact.
   await stageProse(rootDir, outputDir)
   await stageProduct(rootDir, outputDir)
-  await mirrorHomePage(rootDir, outputDir)
+  await mirrorHomePage(rootDir, outputDir, { buildReachReportSnapshot: getReachReportSnapshot })
 }
 
 const isDirectRun = path.resolve(process.argv[1] ?? "") === thisFile

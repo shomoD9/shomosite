@@ -9,6 +9,8 @@ kanban-plugin: board
 - [ ] Center the title alignment
 - [ ] Improve the Cascade Out of popups. Currently the popups don't disappear seamlessly.
 - [ ] Improve the dragging and pinning behaviour of the popups.
+- [ ] Improve the email id for shomodip.com
+- [ ] Add a Subscribe or Share button for all Prose pages
 
 
 ## To-do

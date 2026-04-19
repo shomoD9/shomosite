@@ -11,7 +11,7 @@ import * as Component from "./quartz/components"
 import ShomoHomePanels from "./components/ShomoHomePanels"
 import ShomoMarginNotes from "./components/ShomoMarginNotes"
 import ShomoTopNav from "./components/ShomoTopNav"
-import ShomoVanityMetricsScript from "./components/ShomoVanityMetricsScript"
+import ShomoFooter from "./components/ShomoFooter"
 import { isHomePage, isPrimaryNotePage } from "./components/siteData"
 
 export const sharedPageComponents: SharedLayout = {
@@ -23,15 +23,11 @@ export const sharedPageComponents: SharedLayout = {
       condition: (page) => isHomePage(page.fileData),
     }),
     Component.ConditionalRender({
-      component: ShomoVanityMetricsScript(),
-      condition: (page) => isHomePage(page.fileData),
-    }),
-    Component.ConditionalRender({
       component: Component.Backlinks(),
       condition: (page) => isPrimaryNotePage(page.fileData),
     }),
   ],
-  footer: Component.Spacer(),
+  footer: ShomoFooter(),
 }
 
 export const defaultContentPageLayout: PageLayout = {

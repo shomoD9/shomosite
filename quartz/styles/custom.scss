@@ -156,25 +156,9 @@ article > blockquote p,
 
 .page > #quartz-body > footer {
   grid-area: grid-footer;
-  margin-top: clamp(1.6rem, 3vw, 2.4rem);
-  padding-top: 1rem;
+  margin-top: clamp(2.4rem, 4.2vw, 3.6rem);
+  padding-top: clamp(1rem, 1.6vw, 1.4rem);
   border-top: 1px solid var(--shomo-rule);
-}
-
-.page > #quartz-body > footer {
-  text-align: center;
-}
-
-.page > #quartz-body > footer a {
-  font-family: var(--sansFont);
-  font-size: 0.78rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--gray);
-}
-
-.page > #quartz-body > footer a:hover {
-  color: var(--dark);
 }
 
 body[data-slug="index"] .page,
@@ -682,6 +666,17 @@ body[data-slug="index"] .vanity-metrics__stat:is(:hover, :focus-visible, :focus-
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
+}
+
+body[data-slug="index"] .vanity-metrics__note {
+  margin: 1rem 0 0;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--shomo-rule);
+  color: var(--gray);
+  font-family: var(--sansFont);
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
 }
 
 @media (max-width: 640px) {

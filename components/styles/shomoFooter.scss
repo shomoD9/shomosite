@@ -1,0 +1,111 @@
+.shomo-footer {
+  padding-bottom: clamp(2.4rem, 4vw, 3.6rem);
+  color: var(--shomo-text, var(--dark));
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: clamp(1.5rem, 3vw, 3rem);
+    row-gap: 1.8rem;
+    align-items: start;
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    min-width: 0;
+
+    &--left {
+      text-align: left;
+      align-items: flex-start;
+    }
+
+    &--center {
+      text-align: center;
+      align-items: center;
+    }
+
+    &--right {
+      text-align: right;
+      align-items: flex-end;
+    }
+  }
+
+  &__colophon {
+    font-family: var(--bodyFont);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: color-mix(in srgb, var(--shomo-text) 70%, transparent);
+    margin: 0;
+  }
+
+  &__mark {
+    font-family: var(--sansFont);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gray);
+    text-decoration: underline;
+    text-decoration-thickness: 0.5px;
+    text-underline-offset: 0.28em;
+    transition: color 120ms ease;
+    white-space: nowrap;
+
+    &:hover {
+      color: var(--shomo-text, var(--dark));
+      text-decoration-thickness: 1px;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+
+  &__link {
+    font-family: var(--sansFont);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 120ms ease;
+
+    &:hover {
+      color: var(--shomo-text, var(--dark));
+    }
+
+    &--email {
+      text-transform: none;
+      font-size: 0.82rem;
+      letter-spacing: 0;
+    }
+  }
+
+  &__dot {
+    font-family: var(--sansFont);
+    font-size: 0.78rem;
+    color: var(--shomo-rule, var(--lightgray));
+    user-select: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .shomo-footer {
+    &__grid {
+      grid-template-columns: 1fr;
+      row-gap: 1.2rem;
+    }
+
+    &__col {
+      &--center,
+      &--right {
+        text-align: left;
+        align-items: flex-start;
+      }
+    }
+  }
+}

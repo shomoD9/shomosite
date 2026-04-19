@@ -154,6 +154,82 @@ Alpha system note.`,
   }
 })
 
+test("prepareContent replaces the homepage reach-report placeholder with a build snapshot", async () => {
+  const rootDir = await mkdtemp(path.join(os.tmpdir(), "shomosite-reach-report-"))
+  const outputDir = path.join(rootDir, ".quartz-content")
+
+  try {
+    await mkdir(path.join(rootDir, "docs"), { recursive: true })
+    await mkdir(path.join(rootDir, "prose"), { recursive: true })
+    await mkdir(path.join(rootDir, "product"), { recursive: true })
+
+    await writeFile(
+      path.join(rootDir, "docs", "index.md"),
+      `---
+title: Home
+state: published
+---
+
+<section class="vanity-metrics" aria-label="Reach Report">
+  <span class="vanity-metrics__corner">Reach Report</span>
+  <ol class="vanity-metrics__grid">
+    <li class="vanity-metrics__stat" tabindex="0" data-metric="views">
+      <span class="vanity-metrics__num">—</span>
+      <span class="vanity-metrics__label">Views</span>
+      <span class="vanity-metrics__tooltip" role="tooltip">Loading…</span>
+    </li>
+  </ol>
+</section>`,
+    )
+
+    await prepareContent({
+      rootDir,
+      outputDir,
+      buildReachReportSnapshot: async () => ({
+        generatedAt: "2026-04-19T19:00:00.000Z",
+        metrics: {
+          views: {
+            value: 77810,
+            breakdown: [{ label: "YouTube", value: 77810 }],
+          },
+          comments: {
+            value: 467,
+            breakdown: [
+              { label: "YouTube comments", value: 464 },
+              { label: "Substack archive comments", value: 3 },
+            ],
+          },
+          likes: {
+            value: 6490,
+            breakdown: [
+              { label: "YouTube likes", value: 6471 },
+              { label: "Substack reactions", value: 19 },
+            ],
+          },
+          subscribers: {
+            value: 1081,
+            breakdown: [
+              { label: "YouTube", value: 966 },
+              { label: "X followers", value: 96 },
+              { label: "Substack profile", value: 19 },
+            ],
+          },
+        },
+      }),
+    })
+
+    const home = await readFile(path.join(outputDir, "index.md"), "utf8")
+    assert.match(home, /77,810/)
+    assert.match(home, /467/)
+    assert.match(home, /YouTube comments 464 · Substack archive comments 3/)
+    assert.match(home, /1,081/)
+    assert.match(home, /YouTube 966 · X followers 96 · Substack profile 19/)
+    assert.doesNotMatch(home, /vanity-metrics__note/)
+  } finally {
+    await rm(rootDir, { recursive: true, force: true })
+  }
+})
+
 test("PublishedState only exposes notes with explicit state: published", () => {
   const filter = PublishedState()
   const published = filter.shouldPublish({} as never, [

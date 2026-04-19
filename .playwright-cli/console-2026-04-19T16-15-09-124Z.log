@@ -1,0 +1,6 @@
+[   34683ms] TypeError: Cannot read properties of undefined (reading 'url')
+    at HTMLDocument.<anonymous> (http://localhost:8080/postscript.js:9:2132)
+    at eval (eval at evaluate (:302:30), <anonymous>:1:157)
+    at UtilityScript.evaluate (<anonymous>:304:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+[   34685ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:8080/api/fail:0

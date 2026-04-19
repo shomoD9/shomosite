@@ -20,40 +20,38 @@ home:
 aliases:
   - docs/index
 ---
-<span class="home-opening-smallcaps">This is the site of Shomodip De. I write about psychology, AI and knowledge management systems.</span>
+<span class="home-opening-smallcaps">This is the site of Shomodip De. I write about psychology, AI, personal productivity and knowledge management systems.</span>
 
-<section class="vanity-metrics" aria-label="Vanity Metrics">
+<section class="vanity-metrics" aria-label="Reach Report" data-generated-at="2026-04-19T19:42:19.612Z">
   <span class="vanity-metrics__corner">Reach Report</span>
   <ol class="vanity-metrics__grid">
-    <li class="vanity-metrics__stat" tabindex="0">
-      <span class="vanity-metrics__num" data-target="128430">0</span>
+    <li class="vanity-metrics__stat" tabindex="0" data-metric="views">
+      <span class="vanity-metrics__num">77,810</span>
       <span class="vanity-metrics__label">Views</span>
-      <span class="vanity-metrics__tooltip" role="tooltip">Substack 64,200 · YouTube 42,180 · X 22,050</span>
+      <span class="vanity-metrics__tooltip" role="tooltip">YouTube 77,810</span>
     </li>
-    <li class="vanity-metrics__stat" tabindex="0">
-      <span class="vanity-metrics__num" data-target="2184">0</span>
+    <li class="vanity-metrics__stat" tabindex="0" data-metric="comments">
+      <span class="vanity-metrics__num">467</span>
       <span class="vanity-metrics__label">Comments</span>
-      <span class="vanity-metrics__tooltip" role="tooltip">Substack 1,210 · YouTube 612 · X 362</span>
+      <span class="vanity-metrics__tooltip" role="tooltip">YouTube comments 464 · Substack archive comments 3</span>
     </li>
-    <li class="vanity-metrics__stat" tabindex="0">
-      <span class="vanity-metrics__num" data-target="18942">0</span>
+    <li class="vanity-metrics__stat" tabindex="0" data-metric="likes">
+      <span class="vanity-metrics__num">6,490</span>
       <span class="vanity-metrics__label">Likes</span>
-      <span class="vanity-metrics__tooltip" role="tooltip">X 9,410 · YouTube 6,120 · Substack 3,412</span>
+      <span class="vanity-metrics__tooltip" role="tooltip">YouTube likes 6,471 · Substack reactions 19</span>
     </li>
-    <li class="vanity-metrics__stat" tabindex="0">
-      <span class="vanity-metrics__num" data-target="4327">0</span>
+    <li class="vanity-metrics__stat" tabindex="0" data-metric="subscribers">
+      <span class="vanity-metrics__num">1,081</span>
       <span class="vanity-metrics__label">Subscribers</span>
-      <span class="vanity-metrics__tooltip" role="tooltip">Substack 2,850 · YouTube 1,120 · X 357</span>
+      <span class="vanity-metrics__tooltip" role="tooltip">YouTube 966 · X followers 96 · Substack profile 19</span>
     </li>
   </ol>
 </section>
-
-I am interested in topics like personal productivity, existential metaphysics and anthropic exceptionalism.
 
 I am a Product Manager. I have built and managed B2B Platform products in Enterprise Ontology and Enterprise Data Productization.
 
 My strongest influences include David Deutsch and Steve Jobs. My favorite writers are Friedrich Nietzsche and JRR Tolkien. My philosophical aesthetic is Bhadralok Intellectualism, which itself is a form of the Sanskrit Intellectual Worldview.
 
-This site is an evolving and navigable encyclopedia of my Prose as well as theses for the Products I build or ideate.
+This site is an evolving and navigable encyclopedia of my Prose as well as documentation and theses for the Products I build or ideate.
 
 If you want to point your AI to this Site or export a Markdown snapshot of the entire site as a wiki, visit:

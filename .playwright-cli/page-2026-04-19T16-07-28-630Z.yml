@@ -1,0 +1,154 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - banner [ref=e6]:
+      - navigation "Primary" [ref=e7]:
+        - link "Shomosite" [ref=e8] [cursor=pointer]:
+          - /url: .
+        - generic [ref=e9]:
+          - link "Site" [ref=e10] [cursor=pointer]:
+            - /url: ./
+          - link "Prose" [ref=e11] [cursor=pointer]:
+            - /url: ./prose/
+          - link "Product" [ref=e12] [cursor=pointer]:
+            - /url: ./product/
+          - link "Docs" [ref=e13] [cursor=pointer]:
+            - /url: ./docs/
+          - link "Design" [ref=e14] [cursor=pointer]:
+            - /url: ./docs/design
+        - generic [ref=e15]:
+          - button "Search Search" [ref=e17] [cursor=pointer]:
+            - img "Search" [ref=e18]
+            - paragraph [ref=e22]: Search
+          - button "Dark mode" [ref=e23] [cursor=pointer]:
+            - img "Dark mode" [ref=e24]
+    - article [ref=e26]:
+      - paragraph [ref=e27]: This is the site of Shomodip De. I write about psychology, AI, personal productivity and knowledge management systems.
+      - region "Vanity Metrics" [ref=e28]:
+        - generic [ref=e29]: Reach Report
+        - list [ref=e30]:
+          - listitem [ref=e31]:
+            - generic [ref=e32]: "362"
+            - generic [ref=e33]: Views
+          - listitem [ref=e34]:
+            - generic [ref=e35]: "9"
+            - generic [ref=e36]: Comments
+          - listitem [ref=e37]:
+            - generic [ref=e38]: "21"
+            - generic [ref=e39]: Likes
+          - listitem [ref=e40]:
+            - generic [ref=e41]: "4"
+            - generic [ref=e42]: Subscribers
+      - paragraph [ref=e43]: I am a Product Manager. I have built and managed B2B Platform products in Enterprise Ontology and Enterprise Data Productization.
+      - paragraph [ref=e44]: My strongest influences include David Deutsch and Steve Jobs. My favorite writers are Friedrich Nietzsche and JRR Tolkien. My philosophical aesthetic is Bhadralok Intellectualism, which itself is a form of the Sanskrit Intellectual Worldview.
+      - paragraph [ref=e45]: This site is an evolving and navigable encyclopedia of my Prose as well as documentation and theses for the Products I build or ideate.
+      - paragraph [ref=e46]: "If you want to point your AI to this Site or export a Markdown snapshot of the entire site as a wiki, visit:"
+    - generic [ref=e48]:
+      - text: ⁂
+      - generic [ref=e49]:
+        - heading "Prose" [level=2] [ref=e50]
+        - list [ref=e51]:
+          - listitem [ref=e52]:
+            - article [ref=e53]:
+              - heading "Anthropic Exceptionalism" [level=3] [ref=e54]:
+                - link "Anthropic Exceptionalism" [ref=e55] [cursor=pointer]:
+                  - /url: ./prose/anthropic-exceptionalism/
+              - paragraph [ref=e56]: Why the human capacity to create explanatory knowledge deserves to be treated as a real discontinuity.
+          - listitem [ref=e57]:
+            - article [ref=e58]:
+              - heading "Memetic Knowledge Creation" [level=3] [ref=e59]:
+                - link "Memetic Knowledge Creation" [ref=e60] [cursor=pointer]:
+                  - /url: ./prose/memetic-knowledge-creation/
+              - paragraph [ref=e61]: A working distinction between genetic inheritance and the creation of knowledge in culture.
+          - listitem [ref=e62]:
+            - article [ref=e63]:
+              - heading "Critical Optimism" [level=3] [ref=e64]:
+                - link "Critical Optimism" [ref=e65] [cursor=pointer]:
+                  - /url: ./prose/critical-optimism/
+              - paragraph [ref=e66]: Optimism is only serious when it is paired with criticism sharp enough to expose failure.
+          - listitem [ref=e67]:
+            - article [ref=e68]:
+              - heading "Building with Ontologies" [level=3] [ref=e69]:
+                - link "Building with Ontologies" [ref=e70] [cursor=pointer]:
+                  - /url: ./prose/building-with-ontologies/
+              - paragraph [ref=e71]: Why ontology work matters when products need to make complex domains legible instead of merely searchable.
+          - listitem [ref=e72]:
+            - article [ref=e73]:
+              - heading "Margins Are Part of the Argument" [level=3] [ref=e74]:
+                - link "Margins Are Part of the Argument" [ref=e75] [cursor=pointer]:
+                  - /url: ./prose/margins-are-part-of-the-argument/
+              - paragraph [ref=e76]: A page with notes in the margin should make annotation feel like an editorial instrument rather than decorative gloss.
+          - listitem [ref=e77]:
+            - article [ref=e78]:
+              - heading "Freedom Through Constraints" [level=3] [ref=e79]:
+                - link "Freedom Through Constraints" [ref=e80] [cursor=pointer]:
+                  - /url: ./prose/freedom-through-constraints/
+              - paragraph [ref=e81]: Personal productivity becomes more interesting when constraints are treated as design decisions rather than punishments.
+      - generic [ref=e82]:
+        - heading "Product" [level=2] [ref=e83]
+        - list [ref=e84]:
+          - listitem [ref=e85]:
+            - article [ref=e86]:
+              - heading "Shomosite" [level=3] [ref=e87]:
+                - link "Shomosite" [ref=e88] [cursor=pointer]:
+                  - /url: ./product/shomosite/
+              - paragraph [ref=e89]: The public wiki site that renders Shomo's prose, products, and design notes through Quartz.
+          - listitem [ref=e90]:
+            - article [ref=e91]:
+              - heading "Master" [level=3] [ref=e92]:
+                - link "Master" [ref=e93] [cursor=pointer]:
+                  - /url: ./product/master/
+              - paragraph [ref=e94]: The private integrated vault where prose, product docs, and private knowledge are kept in one linked system.
+          - listitem [ref=e95]:
+            - article [ref=e96]:
+              - heading "Prompt Wallet" [level=3] [ref=e97]:
+                - link "Prompt Wallet" [ref=e98] [cursor=pointer]:
+                  - /url: ./product/prompt-wallet/
+              - paragraph [ref=e99]: A system for capturing, organizing, and reusing prompts as working knowledge rather than disposable snippets.
+          - listitem [ref=e100]:
+            - article [ref=e101]:
+              - heading "Obsidian Chat" [level=3] [ref=e102]:
+                - link "Obsidian Chat" [ref=e103] [cursor=pointer]:
+                  - /url: ./product/obsidian-chat/
+              - paragraph [ref=e104]: A bridge between conversational AI and the user's long-lived markdown knowledge base.
+          - listitem [ref=e105]:
+            - article [ref=e106]:
+              - heading "Corpus" [level=3] [ref=e107]:
+                - link "Corpus" [ref=e108] [cursor=pointer]:
+                  - /url: ./product/corpus/
+              - paragraph [ref=e109]: A research-oriented corpus layer for keeping source material organized, inspectable, and reusable.
+  - contentinfo [ref=e110]:
+    - generic [ref=e111]:
+      - generic [ref=e112]:
+        - paragraph [ref=e113]:
+          - text: Created with
+          - link "Obsidian" [ref=e114] [cursor=pointer]:
+            - /url: https://obsidian.md/
+          - text: and
+          - link "Quartz v4.5.2" [ref=e115] [cursor=pointer]:
+            - /url: https://quartz.jzhao.xyz/
+          - text: © 2026
+        - navigation "Site" [ref=e116]:
+          - link "About" [ref=e117] [cursor=pointer]:
+            - /url: .
+          - generic [ref=e118]: ·
+          - link "Design" [ref=e119] [cursor=pointer]:
+            - /url: ./docs/design
+          - generic [ref=e120]: ·
+          - link "GitHub" [ref=e121] [cursor=pointer]:
+            - /url: "#"
+      - generic [ref=e122]:
+        - paragraph [ref=e123]: Write to me at
+        - navigation "Contact" [ref=e124]:
+          - link "letters@shomodip.com" [ref=e125] [cursor=pointer]:
+            - /url: mailto:letters@shomodip.com
+      - generic [ref=e126]:
+        - paragraph [ref=e127]: Follow me on
+        - navigation "Elsewhere" [ref=e128]:
+          - link "X" [ref=e129] [cursor=pointer]:
+            - /url: "#"
+          - generic [ref=e130]: ·
+          - link "YouTube" [ref=e131] [cursor=pointer]:
+            - /url: https://www.youtube.com/@armchairdescending
+          - generic [ref=e132]: ·
+          - link "Substack" [ref=e133] [cursor=pointer]:
+            - /url: https://armchairdescending.substack.com/
