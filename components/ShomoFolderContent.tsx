@@ -8,7 +8,6 @@ the local site-data helpers that group notes by topic or product cluster.
 */
 
 import { Root } from "hast"
-import { Date, getDate } from "../quartz/components/Date"
 import DefaultFolderContent from "../quartz/components/pages/FolderContent"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "../quartz/components/types"
 import { htmlToJsx } from "../quartz/util/jsx"
@@ -39,11 +38,6 @@ function renderEntry(
         </a>
       </h3>
       {getSummary(page) && <p>{getSummary(page)}</p>}
-      {page.dates && (
-        <p class="folder-entry-date">
-          <Date date={getDate(props.cfg, page)!} locale={props.cfg.locale} />
-        </p>
-      )}
     </article>
   )
 }

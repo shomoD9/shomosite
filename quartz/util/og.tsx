@@ -1,3 +1,12 @@
+/*
+This file builds Quartz's generated Open Graph image assets. It exists
+separately because social images are rendered outside the normal page shell:
+they need fonts, theme colors, and page metadata converted into a standalone
+image tree. It talks to theme configuration, file data, filesystem font loading,
+and Satori, while Shomosite keeps date and reading-time metadata out of the
+generated image just as it keeps them out of visible pages.
+*/
+
 import { promises as fs } from "fs"
 import { FontWeight, SatoriOptions } from "satori/wasm"
 import { GlobalConfiguration } from "../cfg"
@@ -6,9 +15,6 @@ import { JSXInternal } from "preact/src/jsx"
 import { FontSpecification, getFontSpecificationName, ThemeKey } from "./theme"
 import path from "path"
 import { QUARTZ } from "./path"
-import { formatDate, getDate } from "../components/Date"
-import readingTime from "reading-time"
-import { i18n } from "../i18n"
 import { styleText } from "util"
 
 const defaultHeaderWeight = [700]
@@ -183,16 +189,6 @@ export const defaultImage: SocialImageOptions["imageStructure"] = ({
   const fontBreakPoint = 32
   const useSmallerFont = title.length > fontBreakPoint
 
-  // Format date if available
-  const rawDate = getDate(cfg, fileData)
-  const date = rawDate ? formatDate(rawDate, cfg.locale) : null
-
-  // Calculate reading time
-  const { minutes } = readingTime(fileData.text ?? "")
-  const readingTimeText = i18n(cfg.locale).components.contentMeta.readingTime({
-    minutes: Math.ceil(minutes),
-  })
-
   // Get tags if available
   const tags = fileData.frontmatter?.tags ?? []
   const bodyFont = getFontSpecificationName(cfg.theme.typography.body)
@@ -303,51 +299,7 @@ export const defaultImage: SocialImageOptions["imageStructure"] = ({
           borderTop: `1px solid ${cfg.theme.colors[colorScheme].lightgray}`,
         }}
       >
-        {/* Left side - Date and Reading Time */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "2rem",
-            color: cfg.theme.colors[colorScheme].gray,
-            fontSize: 28,
-          }}
-        >
-          {date && (
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <svg
-                style={{ marginRight: "0.5rem" }}
-                width="28"
-                height="28"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-              >
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-              {date}
-            </div>
-          )}
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <svg
-              style={{ marginRight: "0.5rem" }}
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-            >
-              <circle cx="12" cy="12" r="10"></circle>
-              <polyline points="12 6 12 12 16 14"></polyline>
-            </svg>
-            {readingTimeText}
-          </div>
-        </div>
-
-        {/* Right side - Tags */}
+        {/* Tags are the only footer metadata left because they describe the page's argument, not its timestamp. */}
         <div
           style={{
             display: "flex",

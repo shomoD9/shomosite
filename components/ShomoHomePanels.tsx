@@ -7,7 +7,6 @@ frontmatter, to the parsed site-wide page data, and to Quartz's relative-link
 utilities so the generated links stay source-shaped.
 */
 
-import { Date, getDate } from "../quartz/components/Date"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "../quartz/components/types"
 import { concatenateResources } from "../quartz/util/resources"
 import { resolveRelative } from "../quartz/util/path"
@@ -18,12 +17,10 @@ function HomeColumn({
   title,
   items,
   fileData,
-  cfg,
 }: {
   title: string
   items: QuartzComponentProps["allFiles"]
   fileData: QuartzComponentProps["fileData"]
-  cfg: QuartzComponentProps["cfg"]
 }) {
   return (
     <section class="home-panel">
@@ -38,11 +35,6 @@ function HomeColumn({
                 </a>
               </h3>
               {getSummary(page) && <p>{getSummary(page)}</p>}
-              {page.dates && (
-                <p class="home-panel-date">
-                  <Date date={getDate(cfg, page)!} locale={cfg.locale} />
-                </p>
-              )}
             </article>
           </li>
         ))}
@@ -52,7 +44,7 @@ function HomeColumn({
 }
 
 export default (() => {
-  const HomePanels: QuartzComponent = ({ fileData, allFiles, cfg }) => {
+  const HomePanels: QuartzComponent = ({ fileData, allFiles }) => {
     if (fileData.slug !== "index") {
       return null
     }
@@ -63,8 +55,8 @@ export default (() => {
 
     return (
       <div class="home-panels">
-        <HomeColumn title="Prose" items={prose} fileData={fileData} cfg={cfg} />
-        <HomeColumn title="Product" items={product} fileData={fileData} cfg={cfg} />
+        <HomeColumn title="Prose" items={prose} fileData={fileData} />
+        <HomeColumn title="Product" items={product} fileData={fileData} />
       </div>
     )
   }

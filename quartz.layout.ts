@@ -46,10 +46,6 @@ export const defaultContentPageLayout: PageLayout = {
       component: Component.ArticleTitle(),
       condition: (page) => !isHomePage(page.fileData),
     }),
-    Component.ConditionalRender({
-      component: Component.ContentMeta(),
-      condition: (page) => !isHomePage(page.fileData),
-    }),
   ],
   left: [
     Component.ConditionalRender({
@@ -66,7 +62,7 @@ export const defaultContentPageLayout: PageLayout = {
 }
 
 export const defaultListPageLayout: PageLayout = {
-  beforeBody: [Component.ArticleTitle(), Component.ContentMeta()],
+  beforeBody: [Component.ArticleTitle()],
   left: [],
   right: [],
 }

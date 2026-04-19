@@ -133,17 +133,6 @@ short hairline rule punctuates the transition from hero prose to curated index
   text-shadow: var(--shomo-text-bleed);
 }
 
-.home-panel-date {
-  margin-top: 0.55rem;
-  font-family: var(--sansFont);
-  font-size: 0.68rem;
-  font-variant-numeric: lining-nums;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--tertiary);
-  text-shadow: none;
-}
-
 @media (max-width: 800px) {
   .home-panels {
     grid-template-columns: 1fr;

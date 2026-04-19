@@ -1,9 +1,12 @@
-import { Date, getDate } from "./Date"
+/*
+This file is Quartz's article-metadata component. It exists as a reusable
+component because layouts can ask for a compact line of page facts without
+knowing where those facts come from. Shomosite keeps the component in place for
+Quartz compatibility, but the public reading shell now treats dates and reading
+times as source data rather than visible page furniture.
+*/
+
 import { QuartzComponentConstructor, QuartzComponentProps } from "./types"
-import readingTime from "reading-time"
-import { classNames } from "../util/lang"
-import { i18n } from "../i18n"
-import { JSX } from "preact"
 import style from "./styles/contentMeta.scss"
 
 interface ContentMetaOptions {
@@ -20,36 +23,15 @@ const defaultOptions: ContentMetaOptions = {
 }
 
 export default ((opts?: Partial<ContentMetaOptions>) => {
-  // Merge options with defaults
+  // Quartz callers may still pass the historical options, so the merge preserves the public API.
   const options: ContentMetaOptions = { ...defaultOptions, ...opts }
 
-  function ContentMetadata({ cfg, fileData, displayClass }: QuartzComponentProps) {
-    const text = fileData.text
+  function ContentMetadata(_props: QuartzComponentProps) {
+    void options
 
-    if (text) {
-      const segments: (string | JSX.Element)[] = []
-
-      if (fileData.dates) {
-        segments.push(<Date date={getDate(cfg, fileData)!} locale={cfg.locale} />)
-      }
-
-      // Display reading time if enabled
-      if (options.showReadingTime) {
-        const { minutes, words: _words } = readingTime(text)
-        const displayedTime = i18n(cfg.locale).components.contentMeta.readingTime({
-          minutes: Math.ceil(minutes),
-        })
-        segments.push(<span>{displayedTime}</span>)
-      }
-
-      return (
-        <p show-comma={options.showComma} class={classNames(displayClass, "content-meta")}>
-          {segments}
-        </p>
-      )
-    } else {
-      return null
-    }
+    // The metadata still exists in parsed page data for sorting, feeds, and build output.
+    // The reader-facing page, however, should no longer print dates or reading-time estimates.
+    return null
   }
 
   ContentMetadata.css = style

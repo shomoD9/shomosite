@@ -1,6 +1,15 @@
+/*
+This file renders Quartz's reusable page-list component and its default sorting
+rules. It exists separately because many index-style pages need the same
+source-aware ordering and link construction without each page component
+rebuilding that behavior. It talks to Quartz's plugin data, global date
+configuration for ordering, and path utilities for links, but it deliberately
+keeps dates as hidden ordering data rather than visible reader-facing metadata.
+*/
+
 import { FullSlug, isFolderPath, resolveRelative } from "../util/path"
 import { QuartzPluginData } from "../plugins/vfile"
-import { Date, getDate } from "./Date"
+import { getDate } from "./Date"
 import { QuartzComponent, QuartzComponentProps } from "./types"
 import { GlobalConfiguration } from "../cfg"
 
@@ -73,9 +82,6 @@ export const PageList: QuartzComponent = ({ cfg, fileData, allFiles, limit, sort
         return (
           <li class="section-li">
             <div class="section">
-              <p class="meta">
-                {page.dates && <Date date={getDate(cfg, page)!} locale={cfg.locale} />}
-              </p>
               <div class="desc">
                 <h3>
                   <a href={resolveRelative(fileData.slug!, page.slug!)} class="internal">

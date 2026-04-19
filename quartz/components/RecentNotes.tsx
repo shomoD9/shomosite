@@ -1,9 +1,16 @@
+/*
+This file renders Quartz's compact recent-notes block. It exists separately
+because sidebars and landing fragments need a small reusable list that can be
+filtered, sorted, and capped without becoming a full folder page. It talks to
+the same page-list sorting helper and Quartz path utilities, while leaving dates
+available for ordering instead of printing them beside each link.
+*/
+
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { FullSlug, SimpleSlug, resolveRelative } from "../util/path"
 import { QuartzPluginData } from "../plugins/vfile"
 import { byDateAndAlphabetical } from "./PageList"
 import style from "./styles/recentNotes.scss"
-import { Date, getDate } from "./Date"
 import { GlobalConfiguration } from "../cfg"
 import { i18n } from "../i18n"
 import { classNames } from "../util/lang"
@@ -53,11 +60,6 @@ export default ((userOpts?: Partial<Options>) => {
                       </a>
                     </h3>
                   </div>
-                  {page.dates && (
-                    <p class="meta">
-                      <Date date={getDate(cfg, page)!} locale={cfg.locale} />
-                    </p>
-                  )}
                   {opts.showTags && (
                     <ul class="tags">
                       {tags.map((tag) => (

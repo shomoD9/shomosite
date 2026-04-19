@@ -4,6 +4,10 @@
 - Refine the long-term visual layer and motifs only after the wiki reading system and public information architecture are stable.
 - Lock the eventual production domain, metadata, and social image strategy once the public hostname is decided.
 
+## 2026-04-19 - GPT-5 - Codex App
+
+#work_context On `codex/rebrand-rethink`, removed visible dates and reading-time estimates from the page shell, footer, homepage panels, section index entries, reusable Quartz lists, and generated Open Graph images while keeping date metadata available for sorting, feeds, and build output.
+
 ## 2026-04-18 - GPT-5 - Codex App
 
 #shomos_preferences Shomo wants the homepage's first two sentences in small caps rather than the whole first rendered line or only the first sentence.

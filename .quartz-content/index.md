@@ -54,6 +54,6 @@ I am a Product Manager. I have built and managed B2B Platform products in Enterp
 
 My strongest influences include David Deutsch and Steve Jobs. My favorite writers are Friedrich Nietzsche and JRR Tolkien. My philosophical aesthetic is Bhadralok Intellectualism, which itself is a form of the Sanskrit Intellectual Worldview.
 
-This site is an evolving and navigable encyclopedia of my Prose as well as the Products I build.
+This site is an evolving and navigable encyclopedia of my Prose as well as theses for the Products I build or ideate.
 
 If you want to point your AI to this Site or export a Markdown snapshot of the entire site as a wiki, visit:
