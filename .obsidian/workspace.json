@@ -11,22 +11,14 @@
             "id": "e05e028bda0a0d01",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "docs/Shomosite-Kanban.md",
-                "kanbanViewState": {
-                  "kanban-plugin": "board",
-                  "list-collapse": [
-                    false,
-                    false,
-                    false,
-                    false,
-                    false
-                  ]
-                }
+                "file": "docs/_J-Shomosite.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-trello",
-              "title": "Shomosite-Kanban"
+              "icon": "lucide-file",
+              "title": "_J-Shomosite"
             }
           },
           {
@@ -42,8 +34,19 @@
               "icon": "lucide-file",
               "title": "Launch Site"
             }
+          },
+          {
+            "id": "84ea9ba98919d577",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -206,23 +209,27 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "e05e028bda0a0d01",
+  "active": "84ea9ba98919d577",
   "lastOpenFiles": [
-    "public/static/sidenotes/prose/anthropic-exceptionalism/explanatory-knowledge",
-    "public/static/sidenotes/prose/anthropic-exceptionalism/cultural-accumulation",
-    "public/docs/Kanban-Notes/index.html",
-    "public/docs/Kanban-Notes",
-    "public/prose/memetic-knowledge-creation/memetic-knowledge-creation.html",
-    "public/prose/margins-are-part-of-the-argument/margins-are-part-of-the-argument.html",
-    "public/prose/freedom-through-constraints/freedom-through-constraints.html",
+    "docs/_J-Shomosite.md",
+    "_journals/_J-Agent.md",
+    "docs/index.md",
     "public/tags/index.html",
     "public/tags/design.html",
-    "public/static/sidenotes/prose/margins-are-part-of-the-argument/visible-hesitation",
-    "public/static/sidenotes/prose/margins-are-part-of-the-argument/unit-of-annotation",
+    "public/prose/building-with-ontologies/building-with-ontologies.html",
+    "public/tags/writing.html",
+    "public/product/shomosite/public-system.html",
+    "public/tags/psychology.html",
+    "public/tags/productivity.html",
+    "public/tags/product.html",
+    "public/postscript.js",
+    "public/prose/index.html",
     "public/static/og-image.png",
     "public/static/icon.png",
-    "docs/index.md",
+    "prose/anthropic-exceptionalism/anthropic-exceptionalism.md",
+    "prose/index.md",
     "docs/Shomosite-Kanban.md",
+    "docs/Kanban-Notes/Launch Site.md",
     "home-narrow-dark.png",
     "home-narrow.png",
     "home-mobile.png",
@@ -231,10 +238,8 @@
     "current-home-light.png",
     "dark-popover2.png",
     "dark-popover-only.png",
-    "_journals/_J-Agent.md",
     "docs/Kanban-Notes/Vanity section.md",
     "docs/ARCHITECTURE.md",
-    "docs/Kanban-Notes/Launch Site.md",
     "prose/anthropic-exceptionalism/notes/cultural-accumulation.md",
     "prose/anthropic-exceptionalism/notes/criticism-engine.md",
     "docs/about.md",
@@ -251,8 +256,6 @@
     "prose/memetic-knowledge-creation/memetic-knowledge-creation.md",
     "prose/freedom-through-constraints/freedom-through-constraints.md",
     "prose/critical-optimism/critical-optimism.md",
-    "prose/anthropic-exceptionalism/anthropic-exceptionalism.md",
-    "prose/building-with-ontologies/building-with-ontologies.md",
-    "docs/_J-Shomosite.md"
+    "prose/building-with-ontologies/building-with-ontologies.md"
   ]
 }
