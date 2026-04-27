@@ -12,7 +12,6 @@ import ShomoHomePanels from "./components/ShomoHomePanels"
 import ShomoMarginNotes from "./components/ShomoMarginNotes"
 import ShomoTopNav from "./components/ShomoTopNav"
 import ShomoVanityMetricsScript from "./components/ShomoVanityMetricsScript"
-import ShomoFooter from "./components/ShomoFooter"
 import { isHomePage, isPrimaryNotePage } from "./components/siteData"
 
 export const sharedPageComponents: SharedLayout = {
@@ -32,7 +31,13 @@ export const sharedPageComponents: SharedLayout = {
       condition: (page) => isPrimaryNotePage(page.fileData),
     }),
   ],
-  footer: ShomoFooter(),
+  footer: Component.Footer({
+    links: {
+      About: "/docs/about",
+      Design: "/docs/design",
+      GitHub: "https://github.com/shomoD9/shomosite",
+    },
+  }),
 }
 
 export const defaultContentPageLayout: PageLayout = {

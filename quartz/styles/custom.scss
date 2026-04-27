@@ -92,10 +92,7 @@ article > blockquote p,
 
 .page {
   max-width: min(100vw, 126rem);
-  // Bottom breathing is owned by the footer itself (padding-bottom) so the
-  // space above and below the footer text stays symmetric. Adding extra page
-  // padding below the footer is what makes the old layout feel top-heavy.
-  padding: 0 clamp(1.25rem, 3vw, 3.25rem) 0;
+  padding: 0 clamp(1.25rem, 3vw, 3.25rem) 4rem;
 }
 
 .page > #quartz-body {
@@ -159,12 +156,25 @@ article > blockquote p,
 
 .page > #quartz-body > footer {
   grid-area: grid-footer;
-  margin-top: clamp(3rem, 5vw, 4.8rem);
-  // Match top and bottom padding so the footer content sits centered between
-  // the hairline rule above and the page's bottom edge below.
-  padding-top: clamp(2.8rem, 4vw, 3.8rem);
-  padding-bottom: clamp(2.8rem, 4vw, 3.8rem);
+  margin-top: clamp(1.6rem, 3vw, 2.4rem);
+  padding-top: 1rem;
   border-top: 1px solid var(--shomo-rule);
+}
+
+.page > #quartz-body > footer {
+  text-align: center;
+}
+
+.page > #quartz-body > footer a {
+  font-family: var(--sansFont);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.page > #quartz-body > footer a:hover {
+  color: var(--dark);
 }
 
 body[data-slug="index"] .page,
@@ -265,18 +275,17 @@ body[data-slug="docs/index"] .page > #quartz-body .center > article {
 body[data-slug^="prose/"]:not([data-slug="prose/index"]) .page > #quartz-body,
 body[data-slug^="product/"]:not([data-slug="product/index"]) .page > #quartz-body {
   grid-template-columns:
-    minmax(0, 1fr)
     minmax(10.5rem, var(--shomo-note-left-rail))
     minmax(34rem, var(--shomo-note-column))
-    minmax(12.75rem, var(--shomo-note-right-rail))
-    minmax(0, 1fr);
+    minmax(12.75rem, var(--shomo-note-right-rail));
   grid-template-rows: auto auto auto auto;
   grid-template-areas:
-    ". grid-header grid-header grid-header ."
-    ". grid-sidebar-left grid-center grid-sidebar-right ."
-    ". grid-page-footer grid-page-footer grid-page-footer ."
-    "grid-footer grid-footer grid-footer grid-footer grid-footer";
-  column-gap: clamp(1rem, 1.8vw, 2.25rem);
+    "grid-header grid-header grid-header"
+    "grid-sidebar-left grid-center grid-sidebar-right"
+    "grid-page-footer grid-page-footer grid-page-footer"
+    "grid-footer grid-footer grid-footer";
+  column-gap: clamp(2rem, 3.2vw, 4rem);
+  justify-content: center;
 }
 
 body[data-slug^="prose/"]:not([data-slug="prose/index"]) .page > #quartz-body .center > article,

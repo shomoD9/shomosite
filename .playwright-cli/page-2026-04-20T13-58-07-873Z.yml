@@ -1,0 +1,133 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - banner [ref=e6]:
+      - navigation "Primary" [ref=e7]:
+        - link "Shomosite" [ref=e8] [cursor=pointer]:
+          - /url: .
+        - generic [ref=e9]:
+          - link "Site" [ref=e10] [cursor=pointer]:
+            - /url: ./
+          - link "Prose" [ref=e11] [cursor=pointer]:
+            - /url: ./prose/
+          - link "Product" [ref=e12] [cursor=pointer]:
+            - /url: ./product/
+          - link "Docs" [ref=e13] [cursor=pointer]:
+            - /url: ./docs/
+          - link "Design" [ref=e14] [cursor=pointer]:
+            - /url: ./docs/design
+        - generic [ref=e15]:
+          - button "Search Search" [ref=e17] [cursor=pointer]:
+            - img "Search" [ref=e18]
+            - paragraph [ref=e22]: Search
+          - button "Dark mode" [ref=e23] [cursor=pointer]:
+            - img "Dark mode" [ref=e24]
+    - article [ref=e26]:
+      - paragraph [ref=e27]: This is the site of Shomodip De. I write about psychology, AI, personal productivity and knowledge management systems.
+      - region "Elsewhere" [ref=e28]:
+        - generic [ref=e29]: Elsewhere
+        - list [ref=e30]:
+          - listitem [ref=e31]:
+            - generic [ref=e32]: 31,305
+            - generic [ref=e33]: Views
+          - listitem [ref=e34]:
+            - generic [ref=e35]: "187"
+            - generic [ref=e36]: Comments
+          - listitem [ref=e37]:
+            - generic [ref=e38]: 2,596
+            - generic [ref=e39]: Likes
+          - listitem [ref=e40]:
+            - generic [ref=e41]: "432"
+            - generic [ref=e42]: Subscribers
+      - paragraph [ref=e43]: I am a Product Manager. I have built and managed B2B Platform products in Enterprise Ontology and Enterprise Data Productization.
+      - paragraph [ref=e44]: This site is an evolving and navigable encyclopedia of my Prose as well as a place to document the theses for the Products I build or ideate.
+      - paragraph [ref=e45]: "If you want to point your AI to this Site or export a Markdown snapshot of the entire site as a wiki, visit:"
+    - generic [ref=e47]:
+      - text: ⁂
+      - generic [ref=e48]:
+        - heading "Prose" [level=2] [ref=e49]
+        - list [ref=e50]:
+          - listitem [ref=e51]:
+            - article [ref=e52]:
+              - heading "Anthropic Exceptionalism" [level=3] [ref=e53]:
+                - link "Anthropic Exceptionalism" [ref=e54] [cursor=pointer]:
+                  - /url: ./prose/anthropic-exceptionalism/
+              - paragraph [ref=e55]: Why the human capacity to create explanatory knowledge deserves to be treated as a real discontinuity.
+          - listitem [ref=e56]:
+            - article [ref=e57]:
+              - heading "Memetic Knowledge Creation" [level=3] [ref=e58]:
+                - link "Memetic Knowledge Creation" [ref=e59] [cursor=pointer]:
+                  - /url: ./prose/memetic-knowledge-creation/
+              - paragraph [ref=e60]: A working distinction between genetic inheritance and the creation of knowledge in culture.
+          - listitem [ref=e61]:
+            - article [ref=e62]:
+              - heading "Critical Optimism" [level=3] [ref=e63]:
+                - link "Critical Optimism" [ref=e64] [cursor=pointer]:
+                  - /url: ./prose/critical-optimism/
+              - paragraph [ref=e65]: Optimism is only serious when it is paired with criticism sharp enough to expose failure.
+          - listitem [ref=e66]:
+            - article [ref=e67]:
+              - heading "Building with Ontologies" [level=3] [ref=e68]:
+                - link "Building with Ontologies" [ref=e69] [cursor=pointer]:
+                  - /url: ./prose/building-with-ontologies/
+              - paragraph [ref=e70]: Why ontology work matters when products need to make complex domains legible instead of merely searchable.
+          - listitem [ref=e71]:
+            - article [ref=e72]:
+              - heading "Margins Are Part of the Argument" [level=3] [ref=e73]:
+                - link "Margins Are Part of the Argument" [ref=e74] [cursor=pointer]:
+                  - /url: ./prose/margins-are-part-of-the-argument/
+              - paragraph [ref=e75]: A page with notes in the margin should make annotation feel like an editorial instrument rather than decorative gloss.
+          - listitem [ref=e76]:
+            - article [ref=e77]:
+              - heading "Freedom Through Constraints" [level=3] [ref=e78]:
+                - link "Freedom Through Constraints" [ref=e79] [cursor=pointer]:
+                  - /url: ./prose/freedom-through-constraints/
+              - paragraph [ref=e80]: Personal productivity becomes more interesting when constraints are treated as design decisions rather than punishments.
+      - generic [ref=e81]:
+        - heading "Product" [level=2] [ref=e82]
+        - list [ref=e83]:
+          - listitem [ref=e84]:
+            - article [ref=e85]:
+              - heading "Shomosite" [level=3] [ref=e86]:
+                - link "Shomosite" [ref=e87] [cursor=pointer]:
+                  - /url: ./product/shomosite/
+              - paragraph [ref=e88]: The public wiki site that renders Shomo's prose, products, and design notes through Quartz.
+          - listitem [ref=e89]:
+            - article [ref=e90]:
+              - heading "Master" [level=3] [ref=e91]:
+                - link "Master" [ref=e92] [cursor=pointer]:
+                  - /url: ./product/master/
+              - paragraph [ref=e93]: The private integrated vault where prose, product docs, and private knowledge are kept in one linked system.
+          - listitem [ref=e94]:
+            - article [ref=e95]:
+              - heading "Prompt Wallet" [level=3] [ref=e96]:
+                - link "Prompt Wallet" [ref=e97] [cursor=pointer]:
+                  - /url: ./product/prompt-wallet/
+              - paragraph [ref=e98]: A system for capturing, organizing, and reusing prompts as working knowledge rather than disposable snippets.
+          - listitem [ref=e99]:
+            - article [ref=e100]:
+              - heading "Obsidian Chat" [level=3] [ref=e101]:
+                - link "Obsidian Chat" [ref=e102] [cursor=pointer]:
+                  - /url: ./product/obsidian-chat/
+              - paragraph [ref=e103]: A bridge between conversational AI and the user's long-lived markdown knowledge base.
+          - listitem [ref=e104]:
+            - article [ref=e105]:
+              - heading "Corpus" [level=3] [ref=e106]:
+                - link "Corpus" [ref=e107] [cursor=pointer]:
+                  - /url: ./product/corpus/
+              - paragraph [ref=e108]: A research-oriented corpus layer for keeping source material organized, inspectable, and reusable.
+  - contentinfo [ref=e109]:
+    - paragraph [ref=e110]:
+      - text: Created with
+      - link "Quartz v4.5.2" [ref=e111] [cursor=pointer]:
+        - /url: https://quartz.jzhao.xyz/
+      - text: © 2026
+    - list [ref=e112]:
+      - listitem [ref=e113]:
+        - link "About" [ref=e114] [cursor=pointer]:
+          - /url: /docs/about
+      - listitem [ref=e115]:
+        - link "Design" [ref=e116] [cursor=pointer]:
+          - /url: /docs/design
+      - listitem [ref=e117]:
+        - link "GitHub" [ref=e118] [cursor=pointer]:
+          - /url: https://github.com/shomoD9/shomosite

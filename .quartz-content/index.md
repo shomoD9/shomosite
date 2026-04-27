@@ -22,13 +22,13 @@ aliases:
 ---
 <span class="home-opening-smallcaps">This is the site of Shomodip De. I write about psychology, AI, personal productivity and knowledge management systems.</span>
 
-<section class="vanity-metrics" aria-label="Elsewhere" data-generated-at="2026-04-19T20:44:27.893Z">
+<section class="vanity-metrics" aria-label="Elsewhere" data-generated-at="2026-04-20T13:57:51.963Z">
   <span class="vanity-metrics__corner" tabindex="0" aria-describedby="vanity-metrics-elsewhere-hint">Elsewhere<span id="vanity-metrics-elsewhere-hint" class="vanity-metrics__corner-hint" role="tooltip">From platforms I publish on — not this site.</span></span>
   <ol class="vanity-metrics__grid">
     <li class="vanity-metrics__stat" tabindex="0" data-metric="views">
-      <span class="vanity-metrics__num">78,268</span>
+      <span class="vanity-metrics__num">78,271</span>
       <span class="vanity-metrics__label">Views</span>
-      <span class="vanity-metrics__tooltip" role="tooltip">YouTube 77,810 · Substack 458</span>
+      <span class="vanity-metrics__tooltip" role="tooltip">YouTube 77,813 · Substack 458</span>
     </li>
     <li class="vanity-metrics__stat" tabindex="0" data-metric="comments">
       <span class="vanity-metrics__num">467</span>
@@ -36,9 +36,9 @@ aliases:
       <span class="vanity-metrics__tooltip" role="tooltip">YouTube comments 464 · Substack archive comments 3</span>
     </li>
     <li class="vanity-metrics__stat" tabindex="0" data-metric="likes">
-      <span class="vanity-metrics__num">6,490</span>
+      <span class="vanity-metrics__num">6,491</span>
       <span class="vanity-metrics__label">Likes</span>
-      <span class="vanity-metrics__tooltip" role="tooltip">YouTube likes 6,471 · Substack reactions 19</span>
+      <span class="vanity-metrics__tooltip" role="tooltip">YouTube likes 6,471 · Substack reactions 20</span>
     </li>
     <li class="vanity-metrics__stat" tabindex="0" data-metric="subscribers">
       <span class="vanity-metrics__num">1,081</span>
@@ -50,8 +50,6 @@ aliases:
 
 I am a Product Manager. I have built and managed B2B Platform products in Enterprise Ontology and Enterprise Data Productization.
 
-My strongest influences include David Deutsch and Steve Jobs. My favorite writers are Friedrich Nietzsche and JRR Tolkien. My philosophical aesthetic is Bhadralok Intellectualism, which itself is a form of the Sanskrit Intellectual Worldview.
-
-This site is an evolving and navigable encyclopedia of my Prose as well as documentation and theses for the Products I build or ideate.
+This site is an evolving and navigable encyclopedia of my Prose as well as a place to document the theses for the Products I build or ideate.
 
 If you want to point your AI to this Site or export a Markdown snapshot of the entire site as a wiki, visit:

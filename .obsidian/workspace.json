@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/index.md",
+                "file": "docs/about.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "about"
             }
           },
           {
@@ -222,8 +222,16 @@
   },
   "active": "e05e028bda0a0d01",
   "lastOpenFiles": [
+    "docs/design.md",
+    "docs/index.md",
+    "output/playwright/local-footer-corrected.png",
     "public/docs/Kanban-Notes/index.html",
     "public/docs/Kanban-Notes",
+    "output/playwright/live-footer-reference.png",
+    "output/playwright/footer-prose-v3.png",
+    "output/playwright/footer-home-v3.png",
+    "docs/Shomosite-Kanban.md",
+    "docs/Kanban-Notes/Add back the Influences paragraph.md",
     "public/postscript.js",
     "public/prescript.js",
     "public/index.css",
@@ -234,28 +242,20 @@
     "public/product/index.html",
     "public/static/contentIndex.json",
     "public/docs/design.html",
-    "public/docs/about.html",
     "output/playwright/page-home-v2.png",
     "output/playwright/footer-home-v2.png",
     "output/playwright/footer-critical-optimism.png",
     "docs/_J-Shomosite.md",
-    "docs/Shomosite-Kanban.md",
-    "docs/index.md",
     "_journals/_J-Agent.md",
     "prose/anthropic-exceptionalism/anthropic-exceptionalism.md",
     "prose/index.md",
     "docs/Kanban-Notes/Launch Site.md",
     "home-narrow-dark.png",
-    "home-narrow.png",
-    "home-mobile.png",
-    "home-dark-v2.png",
-    "home-light-v2.png",
     "docs/Kanban-Notes/Vanity section.md",
     "docs/ARCHITECTURE.md",
     "prose/anthropic-exceptionalism/notes/cultural-accumulation.md",
     "prose/anthropic-exceptionalism/notes/criticism-engine.md",
     "docs/about.md",
-    "docs/design.md",
     "docs/_J-Agent.md",
     "docs/DEVLOG.md",
     "docs/SYSTEM-DESIGN.md",
@@ -266,7 +266,6 @@
     "product/master/docs/index.md",
     "product/corpus/docs/index.md",
     "prose/memetic-knowledge-creation/memetic-knowledge-creation.md",
-    "prose/freedom-through-constraints/freedom-through-constraints.md",
-    "prose/critical-optimism/critical-optimism.md"
+    "prose/freedom-through-constraints/freedom-through-constraints.md"
   ]
 }

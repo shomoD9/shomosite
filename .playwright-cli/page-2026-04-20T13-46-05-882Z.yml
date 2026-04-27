@@ -1,0 +1,44 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - banner [ref=e6]:
+        - navigation "Primary" [ref=e7]:
+          - link "Shomosite" [ref=e8] [cursor=pointer]:
+            - /url: ../..
+          - generic [ref=e9]:
+            - link "Site" [ref=e10] [cursor=pointer]:
+              - /url: ../../
+            - link "Prose" [ref=e11] [cursor=pointer]:
+              - /url: ../../prose/
+            - link "Product" [ref=e12] [cursor=pointer]:
+              - /url: ../../product/
+            - link "Docs" [ref=e13] [cursor=pointer]:
+              - /url: ../../docs/
+            - link "Design" [ref=e14] [cursor=pointer]:
+              - /url: ../../docs/design
+          - generic [ref=e15]:
+            - button "Search Search" [ref=e17] [cursor=pointer]:
+              - img "Search" [ref=e18]
+              - paragraph [ref=e22]: Search
+            - button "Dark mode" [ref=e23] [cursor=pointer]:
+              - img "Dark mode" [ref=e24]
+      - heading "Critical Optimism" [level=1] [ref=e27]
+    - article [ref=e28]:
+      - paragraph [ref=e29]: Optimism without criticism becomes wishful thinking. Criticism without optimism becomes resignation. The interesting stance is the one that insists problems are solvable while also being ruthless about what is currently false, brittle, or theatrically impressive but structurally weak.
+      - paragraph [ref=e30]: That is the temperament I want both in prose and in product work. A good system should withstand criticism not because it is protected from attack, but because the attack improves it.
+  - complementary [ref=e32]
+  - contentinfo [ref=e34]:
+    - paragraph [ref=e35]:
+      - text: Created with
+      - link "Quartz v4.5.2" [ref=e36] [cursor=pointer]:
+        - /url: https://quartz.jzhao.xyz/
+    - list [ref=e37]:
+      - listitem [ref=e38]:
+        - link "About" [ref=e39] [cursor=pointer]:
+          - /url: /docs/about
+      - listitem [ref=e40]:
+        - link "Design" [ref=e41] [cursor=pointer]:
+          - /url: /docs/design
+      - listitem [ref=e42]:
+        - link "GitHub" [ref=e43] [cursor=pointer]:
+          - /url: https://github.com/shomoD9/shomosite

@@ -11,6 +11,8 @@ kanban-plugin: board
 - [ ] Improve the dragging and pinning behaviour of the popups.
 - [ ] Improve the email id for shomodip.com
 - [ ] Add a Subscribe or Share button for all Prose pages
+- [ ] Create the Markdown export feature
+- [ ] [[Add back the Influences paragraph]]
 
 
 ## To-do

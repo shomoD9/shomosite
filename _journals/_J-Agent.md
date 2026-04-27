@@ -6,8 +6,24 @@ _Long-term items and features to be built down the line. Not a working to-do lis
 
 ---
 
+## 2026-04-27 - GPT-5 - Codex App
+
+#work_context Read the public architecture, about, prose index, and product index notes to answer what Shomosite is about from the repository's own self-description rather than from memory or inference.
+
 ## 2026-04-19 - GPT-5 - Codex App
 ### GPT-5.4 (xhigh) - Warp
+
+#shomos_preferences — When Shomo says “implement it exactly like https://www.shomodip.com/”, the deployed site is the source of truth, even if a screenshot seems to suggest otherwise. For the footer, the live reference is centered, includes `© 2026`, and keeps the nav as a single inline row (`About / Design / GitHub`) — not a left-aligned or bulleted variant inferred from a crop.
+
+#work_context — Corrected the footer revert to match the live deployed site exactly. Verified with Playwright against `https://www.shomodip.com/`: footer HTML is `<p>Created with <a>Quartz v4.5.2</a> © 2026</p><ul>…</ul>`, computed `text-align: center`, `margin-top: 38.4px`, `margin-bottom: 64px`, `padding-top: 16px`, `padding-bottom: 0`, and `ul { list-style: none; display: flex; gap: 16px; margin-top: -16px; }`. Updated local `quartz/components/Footer.tsx` to restore the year and `quartz/styles/custom.scss` to restore centered alignment; local Playwright check now matches those live values exactly.
+
+#hurdles — The earlier “exact match” revert was still wrong because I trusted the screenshot over the deployed DOM/CSS and explicitly skipped the live site's `text-align: center` rule. Checking the live footer directly resolved the contradiction immediately.
+
+#shomos_preferences — The custom `ShomoFooter` (colophon / email / socials three-column block) is not the right footer for this site. Shomo prefers the stock Quartz Footer from `main`: a single serif line `Created with Quartz v4.5.2 © YEAR` with a short uppercase-sans nav row (About / Design / GitHub) below. Reference implementation lives at https://github.com/shomoD9/shomosite on `main`. Don't reinvent the footer with multiple columns.
+
+#work_context — Reverted the custom footer on `codex/rebrand-rethink` back to main's stock Quartz Footer. Swapped `footer: ShomoFooter()` for `Component.Footer({ links: { About: /docs/about, Design: /docs/design, GitHub: … } })` in `quartz.layout.ts`. Deleted `components/ShomoFooter.tsx` and `components/styles/shomoFooter.scss`. In `quartz/styles/custom.scss`, restored `.page { padding-bottom: 4rem }`, restored main's `.page > #quartz-body > footer` rule (margin-top `clamp(1.6rem, 3vw, 2.4rem)`, padding-top `1rem`, border-top) and link styles (sans 0.78rem uppercase gray, hover dark), and reverted the prose/product grid to the original 3-column centered layout. Skipped main's `text-align: center` override so the footer stays left-aligned as in the reference screenshot. Build green; Playwright confirms home and prose pages now render the expected `Created with Quartz v4.5.2 © 2026` + About · Design · GitHub.
+
+#hurdles — Spent three iterations over-engineering a bespoke three-column footer when Shomo actually wanted the plain Quartz-provided one. Lesson: when the user shows a screenshot and references the main branch, read that as “restore, don't redesign.”
 
 #shomos_preferences — The explanatory tooltip for the homepage `Elsewhere` label should appear above the corner title, not below it; below-the-notch hover text crowds the first metric row and makes the panel feel dirty.
 

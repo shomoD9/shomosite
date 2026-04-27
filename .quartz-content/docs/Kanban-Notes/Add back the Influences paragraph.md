@@ -1,0 +1,1 @@
+My strongest influences include David Deutsch and Steve Jobs. My favorite writers are Friedrich Nietzsche and JRR Tolkien. My philosophical aesthetic is Bhadralok Intellectualism, which itself is a form of the Sanskrit Intellectual Worldview.
