@@ -180,14 +180,16 @@ article > blockquote p,
 body[data-slug="index"] .page,
 body[data-slug="prose/index"] .page,
 body[data-slug="product/index"] .page,
-body[data-slug="docs/index"] .page {
+body[data-slug="prose/all/index"] .page,
+body[data-slug^="prose/topics/"] .page {
   max-width: min(100vw, 134rem);
 }
 
 body[data-slug="index"] .page > #quartz-body,
 body[data-slug="prose/index"] .page > #quartz-body,
 body[data-slug="product/index"] .page > #quartz-body,
-body[data-slug="docs/index"] .page > #quartz-body {
+body[data-slug="prose/all/index"] .page > #quartz-body,
+body[data-slug^="prose/topics/"] .page > #quartz-body {
   grid-template-columns: minmax(0, 1fr);
   grid-template-rows: auto auto auto auto;
   grid-template-areas:
@@ -201,7 +203,8 @@ body[data-slug="docs/index"] .page > #quartz-body {
 body[data-slug="index"] .page > #quartz-body .center > article,
 body[data-slug="prose/index"] .page > #quartz-body .center > article,
 body[data-slug="product/index"] .page > #quartz-body .center > article,
-body[data-slug="docs/index"] .page > #quartz-body .center > article {
+body[data-slug="prose/all/index"] .page > #quartz-body .center > article,
+body[data-slug^="prose/topics/"] .page > #quartz-body .center > article {
   max-width: min(100%, var(--shomo-editorial-frame));
 }
 
@@ -250,7 +253,8 @@ body[data-slug="index"] .home-opening-smallcaps {
 
 body[data-slug="prose/index"] .page > #quartz-body .page-footer,
 body[data-slug="product/index"] .page > #quartz-body .page-footer,
-body[data-slug="docs/index"] .page > #quartz-body .page-footer {
+body[data-slug="prose/all/index"] .page > #quartz-body .page-footer,
+body[data-slug^="prose/topics/"] .page > #quartz-body .page-footer {
   max-width: min(100%, var(--shomo-editorial-frame));
   margin-top: 0;
   padding-top: 0;
@@ -268,12 +272,14 @@ body[data-slug="index"] .page > #quartz-body .page-footer {
 
 body[data-slug="prose/index"] .page > #quartz-body .center > article,
 body[data-slug="product/index"] .page > #quartz-body .center > article,
-body[data-slug="docs/index"] .page > #quartz-body .center > article {
+body[data-slug="prose/all/index"] .page > #quartz-body .center > article,
+body[data-slug^="prose/topics/"] .page > #quartz-body .center > article {
   margin-top: clamp(2.3rem, 4.4vw, 4rem);
 }
 
-body[data-slug^="prose/"]:not([data-slug="prose/index"]) .page > #quartz-body,
-body[data-slug^="product/"]:not([data-slug="product/index"]) .page > #quartz-body {
+body[data-slug^="prose/"]:not([data-slug="prose/index"]):not([data-slug="prose/all/index"]):not([data-slug^="prose/topics/"]) .page > #quartz-body,
+body[data-slug^="product/"]:not([data-slug="product/index"]) .page > #quartz-body,
+body:is([data-slug="about/index"], [data-slug="design/index"]) .page > #quartz-body {
   grid-template-columns:
     minmax(10.5rem, var(--shomo-note-left-rail))
     minmax(34rem, var(--shomo-note-column))
@@ -288,27 +294,32 @@ body[data-slug^="product/"]:not([data-slug="product/index"]) .page > #quartz-bod
   justify-content: center;
 }
 
-body[data-slug^="prose/"]:not([data-slug="prose/index"]) .page > #quartz-body .center > article,
-body[data-slug^="product/"]:not([data-slug="product/index"]) .page > #quartz-body .center > article {
+body[data-slug^="prose/"]:not([data-slug="prose/index"]):not([data-slug="prose/all/index"]):not([data-slug^="prose/topics/"]) .page > #quartz-body .center > article,
+body[data-slug^="product/"]:not([data-slug="product/index"]) .page > #quartz-body .center > article,
+body:is([data-slug="about/index"], [data-slug="design/index"]) .page > #quartz-body .center > article {
   max-width: none;
   margin-left: 0;
   margin-right: 0;
 }
 
-body[data-slug^="prose/"]:not([data-slug="prose/index"]) .page > #quartz-body .page-header,
-body[data-slug^="product/"]:not([data-slug="product/index"]) .page > #quartz-body .page-header {
+body[data-slug^="prose/"]:not([data-slug="prose/index"]):not([data-slug="prose/all/index"]):not([data-slug^="prose/topics/"]) .page > #quartz-body .page-header,
+body[data-slug^="product/"]:not([data-slug="product/index"]) .page > #quartz-body .page-header,
+body:is([data-slug="about/index"], [data-slug="design/index"]) .page > #quartz-body .page-header {
   max-width: min(100%, var(--shomo-editorial-frame));
 }
 
-body[data-slug^="prose/"]:not([data-slug="prose/index"]) .page > #quartz-body .page-footer,
-body[data-slug^="product/"]:not([data-slug="product/index"]) .page > #quartz-body .page-footer {
+body[data-slug^="prose/"]:not([data-slug="prose/index"]):not([data-slug="prose/all/index"]):not([data-slug^="prose/topics/"]) .page > #quartz-body .page-footer,
+body[data-slug^="product/"]:not([data-slug="product/index"]) .page > #quartz-body .page-footer,
+body:is([data-slug="about/index"], [data-slug="design/index"]) .page > #quartz-body .page-footer {
   max-width: min(100%, var(--shomo-note-column));
 }
 
-body[data-slug^="prose/"]:not([data-slug="prose/index"]) .page > #quartz-body .sidebar.left,
+body[data-slug^="prose/"]:not([data-slug="prose/index"]):not([data-slug="prose/all/index"]):not([data-slug^="prose/topics/"]) .page > #quartz-body .sidebar.left,
 body[data-slug^="product/"]:not([data-slug="product/index"]) .page > #quartz-body .sidebar.left,
-body[data-slug^="prose/"]:not([data-slug="prose/index"]) .page > #quartz-body .sidebar.right,
-body[data-slug^="product/"]:not([data-slug="product/index"]) .page > #quartz-body .sidebar.right {
+body:is([data-slug="about/index"], [data-slug="design/index"]) .page > #quartz-body .sidebar.left,
+body[data-slug^="prose/"]:not([data-slug="prose/index"]):not([data-slug="prose/all/index"]):not([data-slug^="prose/topics/"]) .page > #quartz-body .sidebar.right,
+body[data-slug^="product/"]:not([data-slug="product/index"]) .page > #quartz-body .sidebar.right,
+body:is([data-slug="about/index"], [data-slug="design/index"]) .page > #quartz-body .sidebar.right {
   align-self: start;
   min-width: 0;
   padding: 0;
@@ -319,8 +330,9 @@ body[data-slug^="product/"]:not([data-slug="product/index"]) .page > #quartz-bod
 // rule pins the sidebar as `position: sticky; height: 100vh`, which forces
 // those children to track the viewport instead of the article. Unstick it on
 // note pages so the canvas can grow with the article and anchor correctly.
-body[data-slug^="prose/"]:not([data-slug="prose/index"]) .page > #quartz-body .sidebar.right,
-body[data-slug^="product/"]:not([data-slug="product/index"]) .page > #quartz-body .sidebar.right {
+body[data-slug^="prose/"]:not([data-slug="prose/index"]):not([data-slug="prose/all/index"]):not([data-slug^="prose/topics/"]) .page > #quartz-body .sidebar.right,
+body[data-slug^="product/"]:not([data-slug="product/index"]) .page > #quartz-body .sidebar.right,
+body:is([data-slug="about/index"], [data-slug="design/index"]) .page > #quartz-body .sidebar.right {
   position: static;
   top: auto;
   height: auto;
@@ -490,7 +502,38 @@ h1.article-title {
   text-transform: uppercase;
 }
 
-body[data-slug^="prose/"]:not([data-slug="prose/index"]) .center > article > p:first-of-type::first-letter {
+// Obsidian's `[!abstract]` callout is useful authoring syntax for a page
+// summary, but Quartz's default blue treatment reads like interface chrome on
+// Shomosite. When an abstract callout opens an article, render it as an untitled
+// monochrome lede note instead of a labeled alert box.
+article > .callout[data-callout="abstract"]:first-child {
+  --color: var(--shomo-text);
+  --border: var(--shomo-rule);
+  --bg: color-mix(in srgb, var(--shomo-muted-surface) 70%, transparent);
+  margin: 0 0 clamp(1.4rem, 3vw, 2.1rem);
+  padding: clamp(0.9rem, 1.8vw, 1.15rem) clamp(1rem, 2vw, 1.35rem);
+  border: 1px solid var(--shomo-rule);
+  background: var(--bg);
+}
+
+article > .callout[data-callout="abstract"]:first-child > .callout-title {
+  display: none;
+}
+
+article > .callout[data-callout="abstract"]:first-child .callout-content {
+  display: block;
+}
+
+article > .callout[data-callout="abstract"]:first-child .callout-content-inner > :first-child {
+  margin-top: 0;
+}
+
+article > .callout[data-callout="abstract"]:first-child .callout-content-inner > :last-child {
+  margin-bottom: 0;
+}
+
+body[data-slug^="prose/"]:not([data-slug="prose/index"]):not([data-slug="prose/all/index"]):not([data-slug^="prose/topics/"]) .center > article > p:first-of-type::first-letter,
+body:is([data-slug="about/index"], [data-slug="design/index"]) .center > article > p:first-of-type::first-letter {
   float: left;
   font-family: var(--headerFont);
   font-size: 3.2em;
@@ -507,7 +550,8 @@ body[data-slug^="prose/"]:not([data-slug="prose/index"]) .center > article > p:f
 // (sentence-start, proper nouns, acronyms) read as bolder than the
 // surrounding small-caps because Source Serif 4's semibold cut and its
 // smcp glyph pool are not weight-matched.
-body[data-slug^="prose/"]:not([data-slug="prose/index"]) .center > article > p:first-of-type::first-line {
+body[data-slug^="prose/"]:not([data-slug="prose/index"]):not([data-slug="prose/all/index"]):not([data-slug^="prose/topics/"]) .center > article > p:first-of-type::first-line,
+body:is([data-slug="about/index"], [data-slug="design/index"]) .center > article > p:first-of-type::first-line {
   font-variant-caps: small-caps;
   font-feature-settings: 'smcp';
   font-size: 1.06em;
@@ -531,8 +575,9 @@ body[data-slug^="prose/"]:not([data-slug="prose/index"]) .center > article > p:f
       "grid-footer";
   }
 
-  body[data-slug^="prose/"]:not([data-slug="prose/index"]) .page > #quartz-body,
-  body[data-slug^="product/"]:not([data-slug="product/index"]) .page > #quartz-body {
+  body[data-slug^="prose/"]:not([data-slug="prose/index"]):not([data-slug="prose/all/index"]):not([data-slug^="prose/topics/"]) .page > #quartz-body,
+  body[data-slug^="product/"]:not([data-slug="product/index"]) .page > #quartz-body,
+  body:is([data-slug="about/index"], [data-slug="design/index"]) .page > #quartz-body {
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: auto auto auto auto auto;
     grid-template-areas:
@@ -554,12 +599,15 @@ body[data-slug^="prose/"]:not([data-slug="prose/index"]) .center > article > p:f
     margin: 0 auto;
   }
 
-  body[data-slug^="prose/"]:not([data-slug="prose/index"]) .page > #quartz-body .center > article,
+  body[data-slug^="prose/"]:not([data-slug="prose/index"]):not([data-slug="prose/all/index"]):not([data-slug^="prose/topics/"]) .page > #quartz-body .center > article,
   body[data-slug^="product/"]:not([data-slug="product/index"]) .page > #quartz-body .center > article,
-  body[data-slug^="prose/"]:not([data-slug="prose/index"]) .page > #quartz-body .center > hr,
+  body:is([data-slug="about/index"], [data-slug="design/index"]) .page > #quartz-body .center > article,
+  body[data-slug^="prose/"]:not([data-slug="prose/index"]):not([data-slug="prose/all/index"]):not([data-slug^="prose/topics/"]) .page > #quartz-body .center > hr,
   body[data-slug^="product/"]:not([data-slug="product/index"]) .page > #quartz-body .center > hr,
-  body[data-slug^="prose/"]:not([data-slug="prose/index"]) .page > #quartz-body .page-footer,
-  body[data-slug^="product/"]:not([data-slug="product/index"]) .page > #quartz-body .page-footer {
+  body:is([data-slug="about/index"], [data-slug="design/index"]) .page > #quartz-body .center > hr,
+  body[data-slug^="prose/"]:not([data-slug="prose/index"]):not([data-slug="prose/all/index"]):not([data-slug^="prose/topics/"]) .page > #quartz-body .page-footer,
+  body[data-slug^="product/"]:not([data-slug="product/index"]) .page > #quartz-body .page-footer,
+  body:is([data-slug="about/index"], [data-slug="design/index"]) .page > #quartz-body .page-footer {
     margin-left: auto;
     margin-right: auto;
   }
@@ -578,7 +626,8 @@ body[data-slug^="prose/"]:not([data-slug="prose/index"]) .center > article > p:f
     font-size: clamp(1.9rem, 1.5rem + 1.2vw, 2.3rem);
   }
 
-  body[data-slug^="prose/"]:not([data-slug="prose/index"]) .center > article > p:first-of-type::first-letter {
+  body[data-slug^="prose/"]:not([data-slug="prose/index"]):not([data-slug="prose/all/index"]):not([data-slug^="prose/topics/"]) .center > article > p:first-of-type::first-letter,
+  body:is([data-slug="about/index"], [data-slug="design/index"]) .center > article > p:first-of-type::first-letter {
     float: none;
     font-size: inherit;
     line-height: inherit;

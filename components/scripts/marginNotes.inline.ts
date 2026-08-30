@@ -1,9 +1,9 @@
 /*
-This client script hydrates prose sidenotes into right-margin notes on desktop.
-It exists separately because the source markdown only knows about local
+This client script hydrates authored sidenotes into right-margin notes on
+desktop. It exists separately because the source markdown only knows about local
 `[[notes/...]]` links, while the rendered page needs positioned note cards that
 track those references in the reading gutter. It talks to the staged sidenote
-fragments, to the prose article content, and to the margin-note rail placeholder.
+fragments, to the article content, and to the margin-note rail placeholder.
 */
 
 const parser = new DOMParser()
@@ -93,7 +93,7 @@ async function renderMarginNotes() {
   // later observer pass starts while this one is fetching, this pass exits
   // before it can paint stale note positions into the new page geometry.
   const generation = ++renderGeneration
-  const rail = document.querySelector(".shomo-margin-notes[data-margin-notes='prose']") as HTMLElement | null
+  const rail = document.querySelector(".shomo-margin-notes[data-margin-notes='active']") as HTMLElement | null
   const canvas = rail?.querySelector(".shomo-margin-notes__canvas") as HTMLElement | null
 
   if (!rail || !canvas) {

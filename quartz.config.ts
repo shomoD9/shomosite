@@ -1,7 +1,7 @@
 /*
 This file is the site-level contract between Shomosite's source notes and Quartz's
 build pipeline. It exists separately because publication rules, typography, and
-content parsing shape the whole public site and need one place where those
+content parsing shape the whole site and need one place where those
 decisions remain legible. It talks to the local custom filter and transformer
 plugins, to the generated `.quartz-content` workspace prepared before each build,
 and to `quartz.layout.ts`, which decides how the parsed notes are rendered.
@@ -15,7 +15,7 @@ import { PlainTextBrokenLinks } from "./plugins/PlainTextBrokenLinks"
 
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Shomosite",
+    pageTitle: "Shomodip De",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -72,7 +72,7 @@ const config: QuartzConfig = {
         },
         keepBackground: false,
       }),
-      // Public prose should stay readable when it points toward private or still-unpublished notes.
+      // Prose should stay readable when it points toward private or still-unpublished notes.
       Plugin.ObsidianFlavoredMarkdown({
         enableInHtmlEmbed: false,
         disableBrokenWikilinks: true,

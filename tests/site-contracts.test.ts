@@ -1,30 +1,39 @@
 /*
-This test file checks the small contracts that make the rebuild trustworthy. It
-exists separately because the most failure-prone part of this architecture is
-not rendering markdown in general, but staging the right files and enforcing the
-right publication rule before Quartz ever emits HTML. It talks to the content
-preparation script and to the publication filter directly.
+This test file protects Shomosite's public information-architecture contracts.
+It verifies route staging, unlisted attachments, the explicit publication gate,
+and the classification helpers used by archive and catalog components.
 */
 
 import assert from "node:assert/strict"
-import { access, mkdtemp, readFile, rm, writeFile, mkdir } from "node:fs/promises"
+import { access, mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises"
 import os from "node:os"
 import path from "node:path"
 import test from "node:test"
 // @ts-ignore The prep script is plain ESM and is exercised directly in the contract tests.
 import { prepareContent } from "../scripts/prepare-content.mjs"
 import { PublishedState } from "../filters/PublishedState"
+import {
+  getProductClusters,
+  getProsePages,
+  getProsePagesForTopic,
+  getRelatedEntries,
+  isProseArticlePage,
+  isProseBrowsePage,
+} from "../components/siteData"
 
-test("prepareContent mirrors docs/index into the root index and omits internal docs", async () => {
+test("prepareContent stages the public IA and keeps internal docs private", async () => {
   const rootDir = await mkdtemp(path.join(os.tmpdir(), "shomosite-contracts-"))
   const outputDir = path.join(rootDir, ".quartz-content")
 
   try {
-    await mkdir(path.join(rootDir, "docs", ".obsidian"), { recursive: true })
+    await mkdir(path.join(rootDir, "docs"), { recursive: true })
+    await mkdir(path.join(rootDir, "prose", "topics"), { recursive: true })
     await mkdir(path.join(rootDir, "prose", "example", "assets"), { recursive: true })
     await mkdir(path.join(rootDir, "prose", "example", "notes"), { recursive: true })
+    await mkdir(path.join(rootDir, "product", "alpha", "docs", "guides"), { recursive: true })
     await mkdir(path.join(rootDir, "product", "alpha", "docs", "journals"), { recursive: true })
     await mkdir(path.join(rootDir, "product", "alpha", "assets"), { recursive: true })
+    await mkdir(path.join(rootDir, "attachments"), { recursive: true })
 
     await writeFile(
       path.join(rootDir, "docs", "index.md"),
@@ -44,8 +53,16 @@ state: published
 
 About page.`,
     )
-    await writeFile(path.join(rootDir, "docs", "_J-Agent.md"), "private journal")
-    await writeFile(path.join(rootDir, "docs", ".obsidian", "workspace.json"), "{}")
+    await writeFile(
+      path.join(rootDir, "docs", "DESIGN.md"),
+      `---
+title: Design
+state: published
+---
+
+Design page.`,
+    )
+    await writeFile(path.join(rootDir, "docs", "ARCHITECTURE.md"), "internal")
     await writeFile(
       path.join(rootDir, "prose", "index.md"),
       `---
@@ -53,15 +70,39 @@ title: Prose
 state: published
 ---
 
-Section intro.`,
+Topic archive.`,
+    )
+    await writeFile(
+      path.join(rootDir, "prose", "all.md"),
+      `---
+title: All Writing
+state: published
+---
+
+Chronological archive.`,
+    )
+    await writeFile(
+      path.join(rootDir, "prose", "topics", "knowledge-systems.md"),
+      `---
+title: Knowledge & Systems
+state: published
+topicSlug: knowledge-systems
+---
+
+Topic page.`,
     )
     await writeFile(
       path.join(rootDir, "prose", "example", "example.md"),
       `---
 title: Example
 state: published
-topics:
-  - systems
+primaryTopic: knowledge-systems
+sourceName: Example Source
+sourceUrl: https://example.com/article
+published: 2026-05-01
+added: 2026-06-07
+designFamily: editorial-essay
+related: []
 ---
 
 Example prose with [[notes/gloss|a sidenote]].`,
@@ -73,7 +114,7 @@ Example prose with [[notes/gloss|a sidenote]].`,
 title: Gloss
 ---
 
-This is the note that should render inside a preview.`,
+This note should render only inside a preview.`,
     )
     await writeFile(
       path.join(rootDir, "product", "index.md"),
@@ -82,76 +123,103 @@ title: Product
 state: published
 ---
 
-Section intro.`,
+Catalog.`,
     )
     await writeFile(
       path.join(rootDir, "product", "alpha", "docs", "index.md"),
       `---
 title: Alpha
 state: published
-topics:
-  - tooling
+itemType: skill
+status: active
+related: []
 ---
 
-Alpha product.`,
+Alpha overview.`,
     )
     await writeFile(
-      path.join(rootDir, "product", "alpha", "docs", "system.md"),
+      path.join(rootDir, "product", "alpha", "docs", "guides", "start.md"),
       `---
-title: System
+title: Start
 state: published
-topics:
-  - tooling
 ---
 
-Alpha system note.`,
+Alpha guide.`,
     )
     await writeFile(path.join(rootDir, "product", "alpha", "docs", "journals", "daily.md"), "private")
     await writeFile(path.join(rootDir, "product", "alpha", "assets", "logo.svg"), "<svg></svg>")
+    await writeFile(path.join(rootDir, "attachments", "evidence.pdf"), "attachment")
 
     await prepareContent({ rootDir, outputDir })
 
-    const home = await readFile(path.join(outputDir, "index.md"), "utf8")
-    assert.match(home, /aliases:\s*\n\s*- docs\/index/)
-    assert.match(home, /Opening paragraph\./)
-
-    const about = await readFile(path.join(outputDir, "docs", "about.md"), "utf8")
-    assert.match(about, /About page\./)
+    assert.match(await readFile(path.join(outputDir, "index.md"), "utf8"), /Opening paragraph\./)
+    assert.match(await readFile(path.join(outputDir, "about", "index.md"), "utf8"), /About page\./)
+    assert.match(await readFile(path.join(outputDir, "design", "index.md"), "utf8"), /Design page\./)
+    assert.match(await readFile(path.join(outputDir, "prose", "all", "index.md"), "utf8"), /Chronological archive\./)
+    assert.match(
+      await readFile(path.join(outputDir, "prose", "topics", "knowledge-systems", "index.md"), "utf8"),
+      /Topic page\./,
+    )
 
     const prose = await readFile(path.join(outputDir, "prose", "example", "index.md"), "utf8")
-    assert.match(prose, /Example prose with/)
-    assert.match(prose, /aliases:\s*\n\s*- prose\/example\/example/)
     assert.match(prose, /class="internal sidenote-ref"/)
     assert.match(prose, /static\/sidenotes\/prose\/example\/gloss/)
-    assert.doesNotMatch(prose, /static\/sidenotes\/prose\/example\/gloss\.html/)
-
-    const sidenote = await readFile(
-      // Sidenote fragments are extensionless because Quartz serves static HTML
-      // fragments through slugified asset paths rather than literal `.html` paths.
-      path.join(outputDir, "static", "sidenotes", "prose", "example", "gloss"),
-      "utf8",
+    assert.match(
+      await readFile(path.join(outputDir, "static", "sidenotes", "prose", "example", "gloss"), "utf8"),
+      /This note should render only inside a preview\./,
     )
-    assert.match(sidenote, /This is the note that should render inside a preview\./)
 
-    const productRoot = await readFile(path.join(outputDir, "product", "alpha", "index.md"), "utf8")
-    assert.match(productRoot, /Alpha product\./)
-    assert.match(productRoot, /aliases:\s*\n\s*- product\/alpha\/docs\/index/)
-
-    const productDoc = await readFile(path.join(outputDir, "product", "alpha", "system.md"), "utf8")
-    assert.match(productDoc, /Alpha system note\./)
-    assert.match(productDoc, /aliases:\s*\n\s*- product\/alpha\/docs\/system/)
+    assert.match(
+      await readFile(path.join(outputDir, "product", "alpha", "index.md"), "utf8"),
+      /Alpha overview\./,
+    )
+    assert.match(
+      await readFile(path.join(outputDir, "product", "alpha", "docs", "guides", "start.md"), "utf8"),
+      /Alpha guide\./,
+    )
 
     await access(path.join(outputDir, "prose", "example", "assets", "diagram.svg"))
     await access(path.join(outputDir, "product", "alpha", "assets", "logo.svg"))
+    await access(path.join(outputDir, "attachments", "evidence.pdf"))
 
-    await assert.rejects(access(path.join(outputDir, "docs", "_J-Agent.md")))
-    await assert.rejects(access(path.join(outputDir, "docs", ".obsidian", "workspace.json")))
-    await assert.rejects(access(path.join(outputDir, "docs", "index.md")))
+    await assert.rejects(access(path.join(outputDir, "docs")))
     await assert.rejects(access(path.join(outputDir, "prose", "example", "notes", "gloss.md")))
-    await assert.rejects(access(path.join(outputDir, "product", "alpha", "journals", "daily.md")))
+    await assert.rejects(access(path.join(outputDir, "product", "alpha", "docs", "journals", "daily.md")))
   } finally {
     await rm(rootDir, { recursive: true, force: true })
   }
+})
+
+test("siteData separates prose browse pages, prose items, and product documentation", () => {
+  const prose = {
+    slug: "prose/example/index",
+    frontmatter: { title: "Example", primaryTopic: "knowledge-systems", related: ["product/alpha"] },
+  } as never
+  const topic = {
+    slug: "prose/topics/knowledge-systems/index",
+    frontmatter: { title: "Knowledge & Systems" },
+  } as never
+  const product = {
+    slug: "product/alpha/index",
+    frontmatter: { title: "Alpha", itemType: "skill", status: "active" },
+  } as never
+  const productDoc = {
+    slug: "product/alpha/docs/start",
+    frontmatter: { title: "Start" },
+  } as never
+  const allFiles = [prose, topic, product, productDoc]
+
+  assert.equal(isProseArticlePage(prose), true)
+  assert.equal(isProseBrowsePage(topic), true)
+  assert.deepEqual(getProsePages(allFiles).map((page) => page.slug), ["prose/example/index"])
+  assert.deepEqual(
+    getProsePagesForTopic(allFiles, "knowledge-systems").map((page) => page.slug),
+    ["prose/example/index"],
+  )
+  assert.deepEqual(getProductClusters(allFiles)[0].docs.map((page) => page.slug), [
+    "product/alpha/docs/start",
+  ])
+  assert.deepEqual(getRelatedEntries(prose, allFiles).map((page) => page.slug), ["product/alpha/index"])
 })
 
 test("PublishedState only exposes notes with explicit state: published", () => {

@@ -1,83 +1,109 @@
 /*
-This stylesheet gives the prose, product, and docs folder pages their own quiet
-index language. It exists separately because these section pages are not generic
-archives: they are sectional maps of the public wiki and need spacing and rules
-that make browsing feel deliberate. It talks only to `ShomoFolderContent.tsx`.
+This stylesheet supports the topic archives, chronological writing archive, and
+filterable product catalog rendered by `ShomoFolderContent.tsx`.
 */
 
 .shomo-folder {
   display: grid;
-  gap: clamp(3rem, 5vw, 4.4rem);
+  gap: clamp(2rem, 4vw, 3.5rem);
   max-width: min(100%, var(--shomo-editorial-frame, 78rem));
   margin-inline: auto;
 }
 
 .folder-intro {
-  max-width: 43rem;
+  max-width: 44rem;
+}
+
+.archive-utility-link {
+  margin: -1.4rem 0 0;
 }
 
 .topic-groups,
-.product-clusters,
-.docs-grid {
+.product-clusters {
   display: grid;
-  gap: clamp(2.4rem, 4vw, 3.6rem);
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1.4rem;
 }
 
 .topic-group,
 .product-cluster {
-  padding-top: 0;
-  border-top: 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--shomo-rule, var(--lightgray));
 }
 
-.topic-group h2 {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  padding-bottom: 0.18rem;
-  border-bottom: 1px solid var(--shomo-rule, var(--lightgray));
-  font-family: var(--bodyFont);
-  font-size: 1.16rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: none;
-  font-variant-caps: all-small-caps;
-}
-
-.topic-group-grid,
-.docs-grid {
-  display: grid;
-  gap: 1rem 1.8rem;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-}
-
+.topic-group h2,
 .folder-entry h3 {
-  margin: 0 0 0.2rem;
-  font-size: 1rem;
+  margin: 0 0 0.35rem;
+  font-size: 1.08rem;
 }
 
+.topic-description,
 .folder-entry p {
-  margin: 0.22rem 0;
-  max-width: 26rem;
-  line-height: 1.62;
+  margin: 0.25rem 0;
+  max-width: 30rem;
+  line-height: 1.55;
 }
 
-.folder-entry-date {
+.topic-count,
+.folder-entry-date,
+.product-cluster-meta,
+.product-filter-count,
+.archive-empty {
   color: var(--gray);
-  font-size: 0.85rem;
+  font-family: var(--sansFont);
+  font-size: 0.78rem;
+}
+
+.product-cluster-meta {
+  margin: 0 0 0.45rem;
 }
 
 .product-doc-list {
-  margin: 0.75rem 0 0;
-  padding-left: 1.2rem;
-  columns: 2;
-  column-gap: 1.8rem;
+  margin: 0.8rem 0 0;
+  padding-left: 1.15rem;
 }
 
 .product-doc-list li + li {
   margin-top: 0.3rem;
 }
 
-@media (max-width: 760px) {
-  .product-doc-list {
-    columns: 1;
-  }
+.product-filters {
+  display: grid;
+  gap: 0.8rem;
+  margin-bottom: -2rem;
+}
+
+.product-filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.product-filter-group > span {
+  min-width: 3.5rem;
+  color: var(--gray);
+  font-family: var(--sansFont);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.product-filter-group button {
+  padding: 0.25rem 0.55rem;
+  border: 1px solid var(--shomo-rule, var(--lightgray));
+  border-radius: 0;
+  background: transparent;
+  color: var(--gray);
+  cursor: pointer;
+  font-family: var(--sansFont);
+  font-size: 0.72rem;
+}
+
+.product-filter-group button.is-active {
+  border-color: var(--dark);
+  color: var(--dark);
+}
+
+.product-cluster[hidden] {
+  display: none;
 }

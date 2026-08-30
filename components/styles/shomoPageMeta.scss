@@ -1,0 +1,28 @@
+/*
+This stylesheet keeps archive metadata compact and readable beneath the standard
+page metadata. It is shared by prose, product, skill, and documentation pages.
+*/
+
+.shomo-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem 1.2rem;
+  margin: 0.7rem auto 1.5rem;
+  color: var(--gray);
+  font-family: var(--sansFont);
+  font-size: 0.75rem;
+}
+
+.shomo-page-meta > div {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.shomo-page-meta dt {
+  font-weight: 600;
+}
+
+.shomo-page-meta dd {
+  margin: 0;
+}

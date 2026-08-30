@@ -1,8 +1,43 @@
 # Roadmap
-- Add an automated but explicit sync/deploy path from the private `master` repository once the manual workflow has settled.
-- Expand the homepage and section indices into richer editorial sub-sections as the prose and product corpus grows.
-- Refine the long-term visual layer and motifs only after the wiki reading system and public information architecture are stable.
-- Lock the eventual production domain, metadata, and social image strategy once the public hostname is decided.
+- Build the URL-to-HTML ingestion workflow around the new Prose metadata contract.
+- Replace the inherited visual aesthetic while preserving the implemented information architecture and preview behavior.
+- Lock metadata and social-image generation for imported writing.
+
+## 2026-06-07 - GPT-5 - Codex App
+
+#shomos_preferences Shomo wants Shomodip.com to be a direct, permanent archive for supplied writing links, products, skills, and documentation. The site no longer depends on the Master Obsidian vault or a Gwern-inspired public structure.
+
+#work_context Implemented the new public IA: root About and Design pages, topic-led Prose plus All Writing, one filterable Product and Skill catalog, source and lifecycle metadata, manual related items, automatic backlinks, product documentation trees, and an editorial homepage. Removed the old visible corpus and Master sync while preserving direct attachments and hover-preview behavior.
+
+#work_context Added a root-level direct-link attachment contract for resume evidence, copied three source documents into stable `attachments/` filenames, and updated staging, tests, architecture, and design documentation before deployment.
+
+#hurdles Cloudflare deployment requires interactive OAuth approval because no API token is available in this checkout. Wrangler opened its consent page, then timed out before approval; the verified build remains ready for deployment.
+
+#work_context Diagnosed `DNS_PROBE_FINISHED_NXDOMAIN`: Cloudflare nameservers are authoritative for `shomodip.com`, but the zone has no apex address or Worker route. Added explicit Worker custom-domain routes for `shomodip.com` and `www.shomodip.com`.
+
+#work_context Deployed Shomosite through Wrangler after user-approved Cloudflare OAuth. Cloudflare created working apex and `www` DNS records; verified the homepage and all three direct-link attachments return HTTP 200 with the expected content types.
+
+## 2026-04-28 - GPT-5 - Codex App
+
+#shomos_preferences Shomo wants the About page to avoid uncanny site-language and the adjective `linked`; avoid cliches such as digital garden, personal knowledge base, builder in public, AI-native, creator, and thought leader.
+
+#work_context Rewrote `docs/about.md` as `About This Site`, added four about-page sidenote fragments, generalized selected docs prose notes so About and Design share the prose shell and hidden sidenote staging, and updated architecture/test coverage.
+
+## 2026-04-27 - GPT-5 - Codex App
+
+#shomos_preferences Shomo does not want the word normally used for outward-facing publication status to appear in reader-facing docs; it feels uncanny and like internal plumbing leaking into prose. Use human terms such as site, published, reader-facing, rendered, selected, or on the page depending on the sentence.
+
+#work_context On `main`, removed that word from authored docs/prose/product notes, renamed `product/shomosite/docs/public-system.md` to `product/shomosite/docs/site-renderer.md`, cleaned matching visible component copy and local narration comments, regenerated `.quartz-content`/`public`, and verified with `npm test`, `npm run check`, `npm run build`, plus a source/output search.
+
+#work_context Reviewed Shomosite's design system from `docs/design.md`, `docs/ARCHITECTURE.md`, `quartz.config.ts`, `quartz.layout.ts`, and the custom `components/` styles to explain the current Gwern-inspired editorial hypertext principles without changing site behavior.
+
+#work_context Expanded `docs/design.md` from a stub into a Gwern-style design and architecture explanation covering Shomosite's principles, source-to-render pipeline, Quartz layer, semantic zoom features, implementation contracts, and deferred design tensions; updated `docs/ARCHITECTURE.md` to point to it.
+
+#work_context Promoted `docs/design.md` into the prose-style reading shell by treating `docs/design` as a primary note page, staging `docs/design/notes/` as hidden sidenote fragments, moving existing explanatory paragraphs into those notes without rewriting them, and updating the architecture/test contracts.
+
+#work_context Styled article-opening `[!abstract]` callouts as unlabeled monochrome lede notes in `quartz/styles/custom.scss`, so Obsidian-native summary callouts do not render as blue alert boxes on Shomosite.
+
+#work_context Rewrote `docs/ARCHITECTURE.md` as a practical architecture reference with an ASCII Shomosite system map, source/staging/rendering layers, page-type ownership, common change points, and verification commands.
 
 ## 2026-04-18 - GPT-5 - Codex App
 

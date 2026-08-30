@@ -1,0 +1,31 @@
+/*
+This stylesheet gives manually selected relationships a restrained list format
+that can sit beside the existing backlinks block in a page footer.
+*/
+
+.shomo-related {
+  margin-top: 2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--shomo-rule, var(--lightgray));
+}
+
+.shomo-related h2 {
+  margin: 0 0 0.8rem;
+  font-size: 1rem;
+}
+
+.shomo-related ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.shomo-related li + li {
+  margin-top: 0.8rem;
+}
+
+.shomo-related p {
+  margin: 0.2rem 0 0;
+  color: var(--gray);
+  line-height: 1.5;
+}

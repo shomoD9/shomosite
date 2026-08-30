@@ -1,6 +1,6 @@
 {
   "name": "shomosite",
-  "description": "Quartz-powered public wiki for Shomo's prose, products, and documentation.",
+  "description": "Shomodip De's archive of writing, products, skills, and documentation.",
   "private": true,
   "version": "4.5.2",
   "type": "module",
@@ -18,7 +18,6 @@
     "dev": "npm run prep:content && node ./quartz/bootstrap-cli.mjs build --serve -d .quartz-content",
     "check": "tsc --noEmit",
     "test": "npm run prep:content && node --import tsx --test tests/**/*.test.ts",
-    "sync:master": "./scripts/sync-master-subtrees.sh",
     "deploy": "wrangler deploy",
     "preview": "wrangler dev"
   },
@@ -29,8 +28,8 @@
   "keywords": [
     "quartz",
     "wiki",
-    "digital-garden",
-    "markdown",
+    "archive",
+    "writing",
     "shomosite"
   ],
   "bin": {

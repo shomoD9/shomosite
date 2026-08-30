@@ -1,7 +1,7 @@
 /*
 This file turns unresolved or private wikilinks into readable plain text. It
-exists separately because Shomosite's public rule is semantic rather than purely
-technical: if a public note points toward something private, the prose should
+exists separately because Shomosite's publishing rule is semantic rather than purely
+technical: if a rendered note points toward something private, the prose should
 still read cleanly instead of advertising a broken destination. It talks to the
 Obsidian-flavored markdown output and rewrites Quartz's broken-link placeholders
 before pages are rendered.
@@ -30,7 +30,7 @@ export const PlainTextBrokenLinks: QuartzTransformerPlugin = () => ({
               return
             }
 
-            // Replacing the anchor with a span keeps the sentence readable without inventing a public route.
+            // Replacing the anchor with a span keeps the sentence readable without inventing a route.
             parent.children[index] = {
               type: "element",
               tagName: "span",

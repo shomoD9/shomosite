@@ -25,7 +25,11 @@ import { QuartzPluginData } from "../vfile"
 
 function isPrimaryNoteIndex(slug: string) {
   const segments = slug.split("/")
-  return slug.endsWith("/index") && segments.length === 3 && (slug.startsWith("prose/") || slug.startsWith("product/"))
+  const isProductRoot = slug.startsWith("product/") && segments.length === 3
+  const isProseRoot =
+    slug.startsWith("prose/") && segments.length === 3 && slug !== "prose/all/index"
+  const isRootEditorialPage = slug === "about/index" || slug === "design/index"
+  return slug.endsWith("/index") && (isProseRoot || isProductRoot || isRootEditorialPage)
 }
 
 async function processContent(

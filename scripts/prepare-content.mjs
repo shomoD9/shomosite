@@ -1,10 +1,8 @@
 /*
-This script stages Shomosite's canonical source notes into the temporary Quartz
-content directory. It exists because the repo's real source of truth is split
-across `docs/`, `prose/`, and `product/`, while Quartz expects one content root.
-It talks to those source trees, rewrites source-shaped prose and product folders
-into clean public routes, and emits sidenote preview fragments for prose notes
-that should be previewable without becoming standalone public pages.
+This script stages Shomosite's archive sources into the temporary Quartz content
+directory. It maps internal source folders onto the public IA: root editorial
+pages, topic and chronology archives, prose renditions, product documentation,
+and unlisted direct-link attachments.
 */
 
 import path from "node:path"
@@ -17,16 +15,11 @@ import remarkGfm from "remark-gfm"
 import remarkRehype from "remark-rehype"
 import { toHtml } from "hast-util-to-html"
 
-const INTERNAL_DOC_FILES = new Set([
-  "ARCHITECTURE.md",
-  "DEVLOG.md",
-  "SYSTEM-DESIGN.md",
-  "_J-Agent.md",
-  "_J-Shomosite.md",
-  "home.md",
-])
-
 const INTERNAL_PRODUCT_DOC_SEGMENTS = new Set(["journals", ".obsidian"])
+const ROOT_EDITORIAL_PAGES = [
+  { sourceName: "about.md", slug: "about" },
+  { sourceName: "DESIGN.md", slug: "design" },
+]
 
 const thisFile = fileURLToPath(import.meta.url)
 const thisDir = path.dirname(thisFile)
@@ -186,9 +179,9 @@ async function buildSidenoteCatalog(notesDir, outputDir) {
     const fileName = path.posix.basename(relativePath, ".md")
     const title = typeof parsed.data.title === "string" ? parsed.data.title : fileName
     const body = await renderMarkdownFragment(parsed.content)
-    // Quartz's asset emitter slugifies `.html` files into extensionless public
+    // Quartz's asset emitter slugifies `.html` files into extensionless rendered
     // routes, so sidenote fragments are staged that way from the start. The
-    // link hrefs then match both local `public/` output and Cloudflare Pages.
+    // link hrefs then match both local build output and Cloudflare Pages.
     const fragmentFile = path.join(outputDir, stripMarkdownExtension(relativePath))
 
     await mkdir(path.dirname(fragmentFile), { recursive: true })
@@ -210,7 +203,7 @@ function rewriteSidenoteLinks(content, { catalog, pageTargetFile }) {
     const note = catalog.get(noteKey)
     const label = String(rawLabel ?? note?.title ?? path.posix.basename(notePath))
 
-    // Missing sidenotes should degrade to plain text rather than advertise a dead public target.
+    // Missing sidenotes should degrade to plain text rather than advertise a dead target.
     if (!note) {
       return escapeHtml(label)
     }
@@ -218,22 +211,6 @@ function rewriteSidenoteLinks(content, { catalog, pageTargetFile }) {
     const previewPath = toPosix(path.relative(path.dirname(pageTargetFile), note.absolutePath))
     return `<a href="#" class="internal sidenote-ref" data-sidenote="true" data-preview="${escapeHtml(previewPath)}">${escapeHtml(label)}</a>`
   })
-}
-
-function shouldPublishFromDocs(relativePath) {
-  const fileName = path.posix.basename(relativePath)
-
-  if (relativePath.startsWith(".obsidian/")) {
-    return false
-  }
-
-  // Operational narration files stay in-repo but never enter the Quartz staging area.
-  if (INTERNAL_DOC_FILES.has(fileName)) {
-    return false
-  }
-
-  // `docs/index.md` becomes the home page instead of a second public copy under `/docs/index`.
-  return relativePath !== "index.md"
 }
 
 function shouldPublishProductDoc(relativePath) {
@@ -271,14 +248,6 @@ async function mirrorHomePage(rootDir, outputDir) {
   const homeSource = path.join(rootDir, "docs", "index.md")
   const raw = await readFile(homeSource, "utf8")
   const parsed = matter(raw)
-  const aliases = Array.isArray(parsed.data.aliases)
-    ? [...parsed.data.aliases.map((entry) => String(entry))]
-    : []
-
-  // The home note remains canonically authored in `docs/index.md`, but Quartz needs a root index file.
-  if (!aliases.includes("docs/index")) {
-    aliases.push("docs/index")
-  }
 
   const home = parsed.data.home && typeof parsed.data.home === "object" ? parsed.data.home : undefined
   const normalizedHome =
@@ -293,11 +262,22 @@ async function mirrorHomePage(rootDir, outputDir) {
 
   const output = matter.stringify(parsed.content, {
     ...parsed.data,
-    aliases,
     ...(normalizedHome !== undefined ? { home: normalizedHome } : {}),
   })
 
   await writeFile(path.join(outputDir, "index.md"), output)
+}
+
+async function stageRootEditorialPages(rootDir, outputDir) {
+  for (const page of ROOT_EDITORIAL_PAGES) {
+    const sourceFile = path.join(rootDir, "docs", page.sourceName)
+    if (!(await fileExists(sourceFile))) {
+      continue
+    }
+
+    // About and Design are authored beside internal docs but publish at root routes.
+    await writeMarkdownWithAliases(sourceFile, path.join(outputDir, page.slug, "index.md"))
+  }
 }
 
 async function stageProse(rootDir, outputDir) {
@@ -310,6 +290,25 @@ async function stageProse(rootDir, outputDir) {
 
     if (entry.isFile() && entry.name === "index.md") {
       await writeMarkdownWithAliases(sourcePath, path.join(outputRoot, "index.md"))
+      continue
+    }
+
+    if (entry.isFile() && entry.name === "all.md") {
+      await writeMarkdownWithAliases(sourcePath, path.join(outputRoot, "all", "index.md"))
+      continue
+    }
+
+    if (entry.isDirectory() && entry.name === "topics") {
+      const topicFiles = (await collectRelativeFiles(sourcePath)).filter((relativePath) =>
+        relativePath.endsWith(".md"),
+      )
+      for (const relativePath of topicFiles) {
+        const topicSlug = stripMarkdownExtension(relativePath)
+        await writeMarkdownWithAliases(
+          path.join(sourcePath, relativePath),
+          path.join(outputRoot, "topics", topicSlug, "index.md"),
+        )
+      }
       continue
     }
 
@@ -372,14 +371,13 @@ async function stageProduct(rootDir, outputDir) {
 
     for (const relativePath of files) {
       const sourceFile = path.join(docsRoot, relativePath)
-      const targetRelativePath = relativePath === "index.md" ? "index.md" : relativePath
+      const targetRelativePath =
+        relativePath === "index.md" ? "index.md" : path.join("docs", relativePath)
       const targetFile = path.join(outputRoot, slug, targetRelativePath)
 
       if (relativePath.endsWith(".md")) {
-        // The public route hides the internal `/docs` segment, but aliases keep source-shaped links valid.
-        await writeMarkdownWithAliases(sourceFile, targetFile, {
-          aliases: [`product/${slug}/docs/${stripMarkdownExtension(relativePath)}`],
-        })
+        // Overview pages sit at the product root; supporting docs retain their public `/docs/` hierarchy.
+        await writeMarkdownWithAliases(sourceFile, targetFile)
         continue
       }
 
@@ -387,7 +385,7 @@ async function stageProduct(rootDir, outputDir) {
       await cp(sourceFile, targetFile, { force: true })
     }
 
-    // Sibling product assets are still public and should survive the route flattening.
+    // Sibling product assets are still publishable and should survive the route flattening.
     await copyTree(path.join(sourcePath, "assets"), path.join(outputRoot, slug, "assets"))
   }
 }
@@ -398,12 +396,15 @@ export async function prepareContent({
 } = {}) {
   await clearDirectory(outputDir)
 
-  // The docs tree is copied with a tighter gate because it mixes public notes and operational narration.
-  await copyTree(path.join(rootDir, "docs"), path.join(outputDir, "docs"), shouldPublishFromDocs)
+  // Internal documentation stays private; About and Design are staged as root editorial pages.
+  await stageRootEditorialPages(rootDir, outputDir)
 
-  // Prose and product are restaged into clean public routes while keeping the source vault structure intact.
+  // Prose and Product are the two public archive trees.
   await stageProse(rootDir, outputDir)
   await stageProduct(rootDir, outputDir)
+
+  // Resume-linked evidence files keep clean root-level URLs while remaining outside every site index.
+  await copyTree(path.join(rootDir, "attachments"), path.join(outputDir, "attachments"))
   await mirrorHomePage(rootDir, outputDir)
 }
 

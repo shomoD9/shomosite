@@ -1,49 +1,110 @@
-# Architecture
+# Shomodip.com Architecture
 
-## Opening
+Shomodip.com is a static archive for writing, products, skills, and product documentation. Quartz remains the rendering engine, while the public information architecture is independent of the old Master-vault workflow.
 
-Shomosite is a public reading surface for a larger private note system. Its job is not to invent a second content model for the web. Its job is to take the publishable parts of that larger system, preserve their internal logic, and render them as a serious hypertext publication. The architecture therefore sits in a useful middle position. It is not a hand-built React app anymore, but it is also not a stock Quartz wiki with a theme swap. It is a Quartz-based renderer whose local code exists to keep the public site faithful to Shomo's actual vault structure and to the reading principles taken from Gwern: dense but legible pages, navigation that stays out of the way, and previews that let the reader zoom into context without losing their place.
+## Public Routes
 
-That last point matters more than it first appears. The site is not meant to behave like a blog with a few backlinks bolted on. It is meant to feel like a note-native environment in which links, section pages, breadcrumbs, search, and previews all cooperate. The architecture is therefore organized around three promises. First, the repository keeps public source notes in honest source-shaped trees. Second, the staging layer rewrites those trees into clean public routes without lying about their origin. Third, Quartz supplies the parsing and static publishing engine, while a thin local layer reshapes its shell and preview behavior into something closer to an editorial hypertext publication than to a default digital garden.
+```text
+/                                  Editorial homepage
+/prose/                            Topic-led writing archive
+/prose/all/                        Complete chronological writing archive
+/prose/topics/<topic>/             One primary-topic archive
+/prose/<slug>/                     One prose rendition
+/product/                          Combined products and skills catalog
+/product/<slug>/                   Product or skill overview
+/product/<slug>/docs/<path>/       Nested documentation
+/about/                            Concise orientation
+/design/                           Living design document
+/attachments/<filename>            Unlisted direct-link evidence
+```
 
-## Source Of Truth
+There is no public `/docs/` section. Internal project documentation remains under `docs/` in the repository and is excluded from the generated content tree.
 
-The repository has three public source domains: `docs/`, `prose/`, and `product/`. `docs/` contains Shomosite's own public documentation notes. `prose/` contains essay folders whose canonical note lives at `prose/<slug>/<slug>.md`. Those folders may also contain `assets/`, `notes/`, drafts, and journals, but the root essay note remains the public anchor. `product/` contains product folders whose public root lives in the product docs tree at `product/<slug>/docs/index.md`, with additional public product documents living beneath that `docs/` subtree.
+## Source Layout
 
-Those trees are the human source of truth, but Quartz still expects one flat content root. The script at `scripts/prepare-content.mjs` bridges that mismatch. It stages `docs/` with a public-only filter, mirrors `docs/index.md` into the root `index.md` that Quartz expects for the homepage, rewrites each prose folder root into `prose/<slug>/index.md`, and flattens each product `docs/` subtree into `product/<slug>/...` so the public URLs do not expose the storage-only `/docs` segment. The important point is that the source vault stays honest while the public routes stay clean. The build is allowed to translate between those shapes, but the authored content is not forced to pretend that the public URL is the same thing as the source file path.
+```text
+docs/index.md                       Homepage source
+docs/about.md                       Root About page source
+docs/DESIGN.md                      Root Design page and living design document
+prose/index.md                      Prose landing source
+prose/all.md                        All Writing source
+prose/topics/*.md                   Primary-topic archive sources
+prose/<slug>/<slug>.md              Prose source
+prose/<slug>/notes/*.md             Optional preview-only fragments
+prose/<slug>/assets/*               Prose assets
+product/index.md                    Product catalog source
+product/<slug>/docs/index.md        Product or skill overview source
+product/<slug>/docs/**/*            Nested documentation sources
+product/<slug>/assets/*             Product assets
+attachments/*                       Unlisted direct-link files
+```
 
-There is one more layer inside prose folders. Essay-local `notes/` files are treated as sidenote material rather than as public pages. During staging they are converted into hidden HTML fragments under extensionless `static/sidenotes/` routes, and the corresponding wikilinks inside the essay root are rewritten into preview-only triggers that point at those final Quartz asset paths. The extensionless form is not aesthetic trivia; Quartz slugifies static `.html` assets when it emits `public/`, so the source-stage links have to name the route the browser will actually be able to fetch after deployment. The notes remain part of the authored prose system, but they do not become searchable public pages, explorer entries, or backlink targets. They exist only as semantic zoom for the reader.
+## Content Preparation
 
-The same staging boundary depends on ordinary YAML frontmatter remaining ordinary. Essay roots carry their title, publication state, shape, summary, topics, tags, and dates in the metadata block at the top of the source note. If that block is malformed, the staging script cannot safely decide what should publish or how the page should appear, so the build fails before Quartz starts serving. Keeping that metadata boundary boring and explicit is part of the product contract: page chrome and previews can use the metadata, while the essay body remains authored prose.
+`scripts/prepare-content.mjs` clears `.quartz-content` and stages only the public route tree.
 
-The staging script itself now has to be careful about how it writes Quartz's working tree. Quartz's dev server watches `.quartz-content` live, and the test/build scripts may restage content repeatedly in the same session. For that reason `scripts/prepare-content.mjs` no longer relies on a one-shot directory copy into a possibly unstable target root. It clears the existing working directory in place, copies trees entry by entry, and retries transient filesystem removals. That sounds operational, but it matters architecturally because the public renderer is only as trustworthy as the staging boundary that feeds it.
+- `docs/index.md` becomes `.quartz-content/index.md`.
+- `docs/about.md` and `docs/DESIGN.md` become `/about/` and `/design/`.
+- Prose browse sources become their corresponding folder indexes.
+- `prose/<slug>/<slug>.md` becomes `/prose/<slug>/`.
+- Product overview files become `/product/<slug>/`.
+- Supporting product docs retain `/product/<slug>/docs/...`.
+- Prose-local notes become hidden preview fragments.
+- Attachments are copied unchanged and remain absent from indexes.
 
-## Public Gate
+The previous Master-vault synchronization script has been removed. Content enters the repository directly.
 
-Publication is still explicit. The filter in `filters/PublishedState.ts` only allows notes with `state: published` to survive into the rendered site. This rule is the central contract that keeps the public wiki small and deliberate. The staging script reinforces it in a more structural way by refusing to stage obviously operational material such as journals and private docs into Quartz's working directory in the first place.
+## Metadata Contracts
 
-Links have their own gate. Shomosite's public prose is allowed to point toward private concepts or unpublished notes, but the site should not pretend that every mentioned thing has a public route. The transformer in `plugins/PlainTextBrokenLinks.ts` converts unresolved or private wiki targets into plain readable text instead of dead anchors. That preserves the sentence while refusing to advertise false public availability. The same philosophy explains the sidenote pipeline: preview-only prose notes remain usable where they matter, inside the essay, without turning into public destinations in their own right.
+### Prose
 
-## Rendering System
+```yaml
+title: Required
+summary: Required
+state: published
+primaryTopic: ai-intelligence
+tags: []
+sourceName: Original publication
+sourceUrl: https://example.com/article
+published: 2026-06-01
+added: 2026-06-07
+designFamily: editorial-essay
+related: []
+```
 
-Quartz remains the main reading engine. It parses markdown, resolves wikilinks, builds the search index, emits backlinks, and generates the static site. The local configuration in `quartz.config.ts` defines the publication rule, the restrained color system, and the transform stack that makes source-shaped markdown behave correctly in public. The important architectural choice is that Shomosite now bends Quartz at the shell and content-contract level rather than by replacing Quartz's core responsibilities.
+Allowed primary topics are `ai-intelligence`, `knowledge-systems`, `product-design`, `psychology-productivity`, and `philosophy-culture`.
 
-The public shell is defined in `quartz.layout.ts` and the custom component layer under `components/`. The old left Explorer-first sidebar has been replaced with a lighter top navigation component whose structure is now split in two: a modest utility row for search and theme, and a calmer editorial masthead for the brand and primary section links. Reader mode is deliberately gone. The CSS in `quartz/styles/custom.scss` then overrides Quartz's default shell in two distinct ways. The homepage and section indexes now share one editorial frame rather than two competing width systems: the opening copy sits inside a narrower centered measure, but the intro and the curated lower columns still belong to the same larger horizontal composition. The homepage introduction keeps Shomo's direct mixed-case prose overall, with only its first two sentences set in small caps as a precise frontispiece signal. Essay and product notes, by contrast, use a true three-zone desktop reading layout: table of contents in the left gutter, constrained article column in the center, and a reserved right gutter that can hold prose margin notes. The shell is therefore wide without becoming an edge-to-edge text wall.
+### Products And Skills
 
-The prose opening also carries one deliberately small typographic flourish: the first line after the drop cap is set in true small caps and tuned to read a little denser than ordinary body text. This is not a separate article-header system or a new page structure. It is a local reading cue, inspired by Gwern's restrained use of small caps, that signals the start of an essay while leaving the rest of the paragraph in the normal serif voice.
+```yaml
+title: Required
+summary: Required
+state: published
+itemType: product
+status: active
+related: []
+```
 
-One subtle but important part of that shell is that the page center wrapper is treated as a semantic grouping layer rather than as a visual box of its own. Quartz renders the page header, article body, and post-body material inside a `.center` wrapper, but the real reading layout wants those pieces to participate in the outer grid as distinct regions. The custom shell therefore gives the header, article, and post-body footer their own grid roles, including a dedicated row for material such as the homepage panels or backlinks. That is what keeps note pages from collapsing back into a narrow left-strip layout on desktop while still allowing the homepage to remain a single calm column above its curated lower half.
+Allowed `itemType` values are `product` and `skill`.
 
-The homepage and section pages are also local rather than generic. `components/ShomoHomePanels.tsx` renders the homepage from `docs/index.md` as an authored front door with two curated columns, `Prose` and `Product`. `components/ShomoFolderContent.tsx` renders `/prose`, `/product`, and `/docs` as semantic indexes rather than as raw directory dumps. `/prose` groups root essays by topic, `/product` groups by product root and then by published product docs, and `/docs` acts as a selective public documentation shelf. `components/siteData.ts` supplies the vocabulary that lets those views reason about staged slugs, root notes, summaries, and curated homepage references without each component reinventing the rules.
+Allowed `status` values are `active`, `in-development`, `experiment`, and `archived`.
 
-One important technical consequence of the folder-backed source contract is that Quartz's default emitter logic is no longer quite right by itself. Quartz normally treats nested `index.md` files as folder pages, which would turn a prose essay root such as `prose/anthropic-exceptionalism/index` into a directory listing instead of a note page. The local patches in `quartz/plugins/emitters/contentPage.tsx` and `quartz/plugins/emitters/folderPage.tsx` correct that. Section roots like `/prose` and `/product` still render as folder indexes, but nested prose and product roots now render as ordinary note pages even though their public routes still end in a folder-style slash.
+## Shared Behavior
 
-Previews are now a local architectural concern as well. Quartz's stock popover script already knew how to fetch internal pages, but Shomosite now replaces the fragile hover box with a small windowing system. Internal previews can be pinned, dragged, maximized, restored, and closed. Their first placement is chosen relative to the triggering link with an explicit bias against clipping into the viewport edges or touching the top header band. Just as importantly, text previews are no longer allowed to expand indefinitely with the article they contain. They open as bounded reading windows with their own scrollable interior, while richer media and document previews may claim a somewhat larger frame. On touch layouts the same system falls back to a centered preview sheet rather than pretending hover exists. The shared popover script and stylesheet in the vendored Quartz tree are therefore part of Shomosite's local behavior contract, not untouchable third-party defaults.
-
-The right gutter is similarly no longer generic sidebar space. `components/ShomoMarginNotes.tsx` and its paired client script turn prose-local `notes/` links into real desktop margin notes by hydrating the staged sidenote fragments into positioned cards beside the essay. The placement contract is deliberately textual rather than ornamental: each card tries to begin beside the first rendered line of the linked phrase that called it into being. If two notes are too close to occupy the same vertical space, the later card yields just enough to avoid overlap, preserving the reader's ability to scan the margin as a composed editorial surface. On narrower screens that same source material falls back to the preview window system instead of trying to preserve a desktop margin arrangement that no longer fits.
+- `ShomoTopNav` exposes Prose, Product, About, Design, search, and the site-name home link.
+- `ShomoFolderContent` renders topic archives, All Writing, and the filterable Product catalog.
+- `ShomoPageMeta` exposes source, topic, design-family, type, and status metadata.
+- `ShomoRelatedItems` renders manual relationships.
+- Quartz Backlinks renders automatic inbound relationships.
+- `ShomoProductDocs` renders the nested documentation tree on product and skill overviews.
+- Quartz popovers retain scrollable, draggable, pinnable internal previews.
 
 ## Verification
 
-The system is only trustworthy if the route translation stays stable as the repo evolves. That is why the contract tests in `tests/site-contracts.test.ts` do not merely check that files are copied. They check that `docs/index.md` still becomes the root homepage, that prose root notes are restaged into clean public folder routes, that product docs lose the internal `/docs` segment on the public side, and that essay-local sidenotes become hidden preview fragments instead of public pages. The tests also matter as a guardrail for the staging script itself: the build pipeline now needs to be idempotent enough to survive repeated prep runs during local work rather than only succeeding from a pristine directory. The rest of the verification stack then layers on top of that: `npm run check` validates the TypeScript surface of the local Quartz customization, and `npm run build` proves the end-to-end static emission path.
+```bash
+npm test
+npm run check
+npm run build
+```
 
-This produces an architecture that is smaller than the deleted application, but conceptually tighter. The site now knows what it is. It is a Quartz-based public renderer for source-shaped prose, products, and system notes, with a Gwern-oriented shell, a genuine note-page margin layout, and a preview system designed to keep the reader inside the argument rather than bouncing between pages.
+After building, verify that `/docs/` and removed corpus routes are absent, root About and Design routes exist, and all files under `/attachments/` still resolve.

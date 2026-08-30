@@ -1,0 +1,30 @@
+/*
+This stylesheet gives product documentation trees a simple readable hierarchy
+inside product and skill landing pages.
+*/
+
+.shomo-product-docs {
+  margin-top: 2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--shomo-rule, var(--lightgray));
+}
+
+.shomo-product-docs h2 {
+  margin: 0 0 0.8rem;
+  font-size: 1rem;
+}
+
+.shomo-product-docs ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.shomo-product-docs li + li {
+  margin-top: 0.7rem;
+}
+
+.shomo-product-docs p {
+  margin: 0.18rem 0 0;
+  color: var(--gray);
+  line-height: 1.5;
+}

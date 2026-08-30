@@ -81,7 +81,7 @@ function usesDesktopMarginNotes(link: HTMLAnchorElement) {
   return (
     link.dataset.sidenote === "true" &&
     window.innerWidth > 1080 &&
-    Boolean(document.querySelector(".shomo-margin-notes[data-margin-notes='prose']"))
+    Boolean(document.querySelector(".shomo-margin-notes[data-margin-notes='active']"))
   )
 }
 

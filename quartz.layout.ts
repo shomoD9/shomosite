@@ -1,5 +1,5 @@
 /*
-This file is the rendering blueprint for Shomosite's public pages. It exists as
+This file is the rendering blueprint for Shomosite's pages. It exists as
 its own file because layout decisions are architectural: they decide how search,
 navigation, metadata, and reading aids relate across every note. It talks to the
 Quartz component library for the shared reading system and to the custom Shomo
@@ -10,8 +10,10 @@ import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 import ShomoHomePanels from "./components/ShomoHomePanels"
 import ShomoMarginNotes from "./components/ShomoMarginNotes"
+import ShomoPageMeta from "./components/ShomoPageMeta"
+import ShomoProductDocs from "./components/ShomoProductDocs"
+import ShomoRelatedItems from "./components/ShomoRelatedItems"
 import ShomoTopNav from "./components/ShomoTopNav"
-import ShomoVanityMetricsScript from "./components/ShomoVanityMetricsScript"
 import { isHomePage, isPrimaryNotePage } from "./components/siteData"
 
 export const sharedPageComponents: SharedLayout = {
@@ -22,19 +24,17 @@ export const sharedPageComponents: SharedLayout = {
       component: ShomoHomePanels(),
       condition: (page) => isHomePage(page.fileData),
     }),
+    ShomoProductDocs(),
+    ShomoRelatedItems(),
     Component.ConditionalRender({
-      component: ShomoVanityMetricsScript(),
-      condition: (page) => isHomePage(page.fileData),
-    }),
-    Component.ConditionalRender({
-      component: Component.Backlinks(),
+      component: Component.Backlinks({ hideWhenEmpty: false }),
       condition: (page) => isPrimaryNotePage(page.fileData),
     }),
   ],
   footer: Component.Footer({
     links: {
-      About: "/docs/about",
-      Design: "/docs/design",
+      About: "/about/",
+      Design: "/design/",
       GitHub: "https://github.com/shomoD9/shomosite",
     },
   }),
@@ -50,6 +50,7 @@ export const defaultContentPageLayout: PageLayout = {
       component: Component.ContentMeta(),
       condition: (page) => !isHomePage(page.fileData),
     }),
+    ShomoPageMeta(),
   ],
   left: [
     Component.ConditionalRender({

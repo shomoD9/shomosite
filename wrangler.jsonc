@@ -8,6 +8,16 @@
   "assets": {
     "directory": "public"
   },
+  "routes": [
+    {
+      "pattern": "shomodip.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.shomodip.com",
+      "custom_domain": true
+    }
+  ],
   "compatibility_flags": [
     "nodejs_compat"
   ]

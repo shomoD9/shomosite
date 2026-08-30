@@ -1,8 +1,8 @@
 ---
 title: Prose
 state: published
-shape: section
-summary: Topic-wise sections for Shomo's public essays and working notes.
+shape: archive
+summary: Writing by Shomodip De, organized by primary topic.
 ---
 
-These notes are grouped by topic instead of by pure chronology. The site is meant to work as a browsable ideas wiki, so the primary question here is not what was written last, but which line of thought each note belongs to and what it connects to.
+Every supplied writing link enters this archive by default. Each piece has one primary topic, optional secondary tags, its original source and publication date, and a permanent page on Shomodip.com.
