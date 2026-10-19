@@ -6,6 +6,10 @@ _Long-term items and features to be built down the line. Not a working to-do lis
 
 ---
 
+## 2026-10-19 - Grafo - shomosite
+
+#work_context — Added `brand/` (outside the published content): Shomo's brand pack working files for marks, type and glow (VectorCraft `.vectorcraft`, PhotoCraft `.pcraft`, plus exports). The recent photo-grading subjects were left out on purpose. See `brand/README.md`.
+
 ## 2026-04-19 - GPT-5 - Codex App
 
 #hurdles — Live Cloudflare Pages sidenotes failed because the staged prose links pointed at `.html` fragment paths, while Quartz's asset emitter publishes static HTML fragments as extensionless routes. Adjusted sidenote staging and the contract test so preview links use the final extensionless asset path.

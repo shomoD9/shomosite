@@ -1,0 +1,5349 @@
+{
+  "format": "vectorcraft",
+  "version": 4,
+  "generator": "VectorCraft 0.13.1",
+  "document": {
+    "version": 1,
+    "title": "24_marks_v2",
+    "units": "Pixels",
+    "rulers": "artboard",
+    "color_mode": "Rgb",
+    "artboards": [
+      {
+        "id": 1,
+        "name": "Artboard 1",
+        "rect": {
+          "x0": 0.0,
+          "y0": 0.0,
+          "x1": 1600.0,
+          "y1": 1000.0
+        },
+        "show_center_mark": false,
+        "show_cross_hairs": false
+      }
+    ],
+    "layers": [
+      {
+        "id": 1,
+        "name": "Ground",
+        "kind": {
+          "type": "layer",
+          "color": {
+            "Preset": 0
+          },
+          "template": false,
+          "printable": true,
+          "children": [
+            {
+              "id": 2,
+              "name": "ground",
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.047058824,
+                        "g": 0.043137256,
+                        "b": 0.039215688
+                      }
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "none"
+                    },
+                    "width": 2.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            0.0,
+                            0.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            1600.0,
+                            0.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            1600.0,
+                            1000.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            0.0,
+                            1000.0
+                          ]
+                        }
+                      ],
+                      "closed": true
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "rectangle",
+                  "w": 1600.0,
+                  "h": 1000.0,
+                  "radii": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "xf": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0
+                  ]
+                }
+              }
+            },
+            {
+              "id": 3,
+              "name": "band divider",
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "none"
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.16470589,
+                        "g": 0.15294118,
+                        "b": 0.14117648
+                      }
+                    },
+                    "width": 1.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            100.0,
+                            440.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            1500.0,
+                            440.0
+                          ]
+                        }
+                      ],
+                      "closed": false
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "line",
+                  "a": {
+                    "x": 100.0,
+                    "y": 440.0
+                  },
+                  "b": {
+                    "x": 1500.0,
+                    "y": 440.0
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": 4,
+        "name": "Band A — Wordmark & Details",
+        "kind": {
+          "type": "layer",
+          "color": {
+            "Preset": 1
+          },
+          "template": false,
+          "printable": true,
+          "children": [
+            {
+              "id": 5,
+              "name": "A wordmark Shomo",
+              "kind": {
+                "type": "text",
+                "kind": {
+                  "kind": "point"
+                },
+                "xf": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  120.0,
+                  280.0
+                ],
+                "runs": [
+                  {
+                    "text": "Shomo",
+                    "style": {
+                      "font_family": "Newsreader",
+                      "font_style": "Regular",
+                      "fontAxes": {
+                        "opsz": 72.0
+                      },
+                      "size": 130.0,
+                      "tracking": -10.0,
+                      "baseline_shift": 0.0,
+                      "h_scale": 100.0,
+                      "v_scale": 100.0,
+                      "rotation": 0.0,
+                      "fill": {
+                        "type": "solid",
+                        "color": {
+                          "model": "rgb",
+                          "r": 0.9137255,
+                          "g": 0.89411765,
+                          "b": 0.8627451
+                        }
+                      },
+                      "stroke": {
+                        "type": "none"
+                      },
+                      "stroke_width": 0.0,
+                      "underline": false,
+                      "strikethrough": false,
+                      "all_caps": false
+                    }
+                  }
+                ],
+                "para": {
+                  "justify": "Left",
+                  "left_indent": 0.0,
+                  "right_indent": 0.0,
+                  "first_line_indent": 0.0,
+                  "space_before": 0.0,
+                  "space_after": 0.0,
+                  "hyphenate": false,
+                  "mojikumi": "lineEndHalf",
+                  "burasagari": "standard"
+                }
+              }
+            },
+            {
+              "id": 6,
+              "name": "A light halation bloom",
+              "opacity": 0.02,
+              "blend": "Screen",
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "none"
+                    },
+                    "width": 1.0
+                  }
+                ],
+                "effects": [
+                  {
+                    "id": "blur.gaussian",
+                    "params": {
+                      "radius": 10
+                    },
+                    "visible": true
+                  },
+                  {
+                    "id": "artistic.filmGrain",
+                    "params": {
+                      "grain": 3,
+                      "highlightArea": 0,
+                      "intensity": 6
+                    },
+                    "visible": true
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            475.50000004000003,
+                            246.0
+                          ],
+                          "in": [
+                            475.50000004000003,
+                            254.83655597520126
+                          ],
+                          "out": [
+                            475.50000004000003,
+                            237.16344402479868
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            491.5,
+                            230.00000003999997
+                          ],
+                          "in": [
+                            482.66344402479876,
+                            230.00000003999997
+                          ],
+                          "out": [
+                            500.3365559752013,
+                            230.00000003999997
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            507.49999996,
+                            246.0
+                          ],
+                          "in": [
+                            507.49999996,
+                            237.16344402479868
+                          ],
+                          "out": [
+                            507.49999996,
+                            254.83655597520126
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            491.5,
+                            261.99999995999997
+                          ],
+                          "in": [
+                            500.3365559752013,
+                            261.99999995999997
+                          ],
+                          "out": [
+                            482.66344402479876,
+                            261.99999995999997
+                          ],
+                          "kind": "Smooth"
+                        }
+                      ],
+                      "closed": true
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "ellipse",
+                  "w": 42.0,
+                  "h": 42.0,
+                  "pie": [
+                    0.0,
+                    360.0
+                  ],
+                  "xf": [
+                    0.7619047600000001,
+                    0.0,
+                    0.0,
+                    0.7619047600000001,
+                    475.50000004000003,
+                    230.00000003999997
+                  ]
+                }
+              }
+            },
+            {
+              "id": 7,
+              "name": "A light halation core",
+              "opacity": 0.04,
+              "blend": "Screen",
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "none"
+                    },
+                    "width": 1.0
+                  }
+                ],
+                "effects": [
+                  {
+                    "id": "blur.gaussian",
+                    "params": {
+                      "radius": 4
+                    },
+                    "visible": true
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            483.50000002,
+                            246.0
+                          ],
+                          "in": [
+                            483.50000002,
+                            250.41827798760062
+                          ],
+                          "out": [
+                            483.50000002,
+                            241.58172201239935
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            491.5,
+                            238.00000002
+                          ],
+                          "in": [
+                            487.0817220123994,
+                            238.00000002
+                          ],
+                          "out": [
+                            495.9182779876007,
+                            238.00000002
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            499.49999998000004,
+                            246.0
+                          ],
+                          "in": [
+                            499.49999998000004,
+                            241.58172201239935
+                          ],
+                          "out": [
+                            499.49999998000004,
+                            250.41827798760062
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            491.5,
+                            253.99999997999998
+                          ],
+                          "in": [
+                            495.9182779876007,
+                            253.99999997999998
+                          ],
+                          "out": [
+                            487.0817220123994,
+                            253.99999997999998
+                          ],
+                          "kind": "Smooth"
+                        }
+                      ],
+                      "closed": true
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "ellipse",
+                  "w": 21.0,
+                  "h": 21.0,
+                  "pie": [
+                    0.0,
+                    360.0
+                  ],
+                  "xf": [
+                    0.7619047600000001,
+                    0.0,
+                    0.0,
+                    0.7619047600000001,
+                    483.50000002,
+                    238.00000002
+                  ]
+                }
+              }
+            },
+            {
+              "id": 8,
+              "name": "A light point",
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "none"
+                    },
+                    "width": 1.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            488.0,
+                            246.0
+                          ],
+                          "in": [
+                            488.0,
+                            247.93299662440776
+                          ],
+                          "out": [
+                            488.0,
+                            244.06700337559224
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            491.5,
+                            242.5
+                          ],
+                          "in": [
+                            489.5670033755922,
+                            242.5
+                          ],
+                          "out": [
+                            493.4329966244078,
+                            242.5
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            495.0,
+                            246.0
+                          ],
+                          "in": [
+                            495.0,
+                            244.06700337559224
+                          ],
+                          "out": [
+                            495.0,
+                            247.93299662440776
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            491.5,
+                            249.5
+                          ],
+                          "in": [
+                            493.4329966244078,
+                            249.5
+                          ],
+                          "out": [
+                            489.5670033755922,
+                            249.5
+                          ],
+                          "kind": "Smooth"
+                        }
+                      ],
+                      "closed": true
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "ellipse",
+                  "w": 7.0,
+                  "h": 7.0,
+                  "pie": [
+                    0.0,
+                    360.0
+                  ],
+                  "xf": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    488.0,
+                    242.5
+                  ]
+                }
+              }
+            },
+            {
+              "id": 9,
+              "name": "A detail tile",
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.078431375,
+                        "g": 0.07058824,
+                        "b": 0.0627451
+                      }
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.16470589,
+                        "g": 0.15294118,
+                        "b": 0.14117648
+                      }
+                    },
+                    "width": 1.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            735.0,
+                            140.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            985.0,
+                            140.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            985.0,
+                            390.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            735.0,
+                            390.0
+                          ]
+                        }
+                      ],
+                      "closed": true
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "rectangle",
+                  "w": 250.0,
+                  "h": 250.0,
+                  "radii": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "xf": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    735.0,
+                    140.0
+                  ]
+                }
+              }
+            },
+            {
+              "id": 10,
+              "name": "A detail o",
+              "kind": {
+                "type": "text",
+                "kind": {
+                  "kind": "point"
+                },
+                "xf": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  860.0,
+                  365.5
+                ],
+                "runs": [
+                  {
+                    "text": "o",
+                    "style": {
+                      "font_family": "Newsreader",
+                      "font_style": "Regular",
+                      "fontAxes": {
+                        "opsz": 72.0
+                      },
+                      "size": 390.0,
+                      "tracking": 0.0,
+                      "baseline_shift": 0.0,
+                      "h_scale": 100.0,
+                      "v_scale": 100.0,
+                      "rotation": 0.0,
+                      "fill": {
+                        "type": "solid",
+                        "color": {
+                          "model": "rgb",
+                          "r": 0.9137255,
+                          "g": 0.89411765,
+                          "b": 0.8627451
+                        }
+                      },
+                      "stroke": {
+                        "type": "none"
+                      },
+                      "stroke_width": 0.0,
+                      "underline": false,
+                      "strikethrough": false,
+                      "all_caps": false
+                    }
+                  }
+                ],
+                "para": {
+                  "justify": "Center",
+                  "left_indent": 0.0,
+                  "right_indent": 0.0,
+                  "first_line_indent": 0.0,
+                  "space_before": 0.0,
+                  "space_after": 0.0,
+                  "hyphenate": false,
+                  "mojikumi": "lineEndHalf",
+                  "burasagari": "standard"
+                }
+              }
+            },
+            {
+              "id": 11,
+              "name": "A detail halation bloom",
+              "opacity": 0.02,
+              "blend": "Screen",
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "none"
+                    },
+                    "width": 1.0
+                  }
+                ],
+                "effects": [
+                  {
+                    "id": "blur.gaussian",
+                    "params": {
+                      "radius": 30
+                    },
+                    "visible": true
+                  },
+                  {
+                    "id": "artistic.filmGrain",
+                    "params": {
+                      "grain": 3,
+                      "highlightArea": 0,
+                      "intensity": 6
+                    },
+                    "visible": true
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            812.00000012,
+                            265.0
+                          ],
+                          "in": [
+                            812.00000012,
+                            291.50966792560394
+                          ],
+                          "out": [
+                            812.00000012,
+                            238.4903320743961
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            860.0,
+                            217.00000012
+                          ],
+                          "in": [
+                            833.4903320743961,
+                            217.00000012
+                          ],
+                          "out": [
+                            886.5096679256039,
+                            217.00000012
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            907.99999988,
+                            265.0
+                          ],
+                          "in": [
+                            907.99999988,
+                            238.4903320743961
+                          ],
+                          "out": [
+                            907.99999988,
+                            291.50966792560394
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            860.0,
+                            312.99999988
+                          ],
+                          "in": [
+                            886.5096679256039,
+                            312.99999988
+                          ],
+                          "out": [
+                            833.4903320743961,
+                            312.99999988
+                          ],
+                          "kind": "Smooth"
+                        }
+                      ],
+                      "closed": true
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "ellipse",
+                  "w": 126.0,
+                  "h": 126.0,
+                  "pie": [
+                    0.0,
+                    360.0
+                  ],
+                  "xf": [
+                    0.7619047600000001,
+                    0.0,
+                    0.0,
+                    0.7619047600000001,
+                    812.00000012,
+                    217.00000012
+                  ]
+                }
+              }
+            },
+            {
+              "id": 12,
+              "name": "A detail halation core",
+              "opacity": 0.04,
+              "blend": "Screen",
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "none"
+                    },
+                    "width": 1.0
+                  }
+                ],
+                "effects": [
+                  {
+                    "id": "blur.gaussian",
+                    "params": {
+                      "radius": 12
+                    },
+                    "visible": true
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            836.0000000599999,
+                            265.0
+                          ],
+                          "in": [
+                            836.0000000599999,
+                            278.25483396280197
+                          ],
+                          "out": [
+                            836.0000000599999,
+                            251.74516603719806
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            860.0,
+                            241.00000006
+                          ],
+                          "in": [
+                            846.745166037198,
+                            241.00000006
+                          ],
+                          "out": [
+                            873.254833962802,
+                            241.00000006
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            883.99999994,
+                            265.0
+                          ],
+                          "in": [
+                            883.99999994,
+                            251.74516603719806
+                          ],
+                          "out": [
+                            883.99999994,
+                            278.25483396280197
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            860.0,
+                            288.99999994
+                          ],
+                          "in": [
+                            873.254833962802,
+                            288.99999994
+                          ],
+                          "out": [
+                            846.745166037198,
+                            288.99999994
+                          ],
+                          "kind": "Smooth"
+                        }
+                      ],
+                      "closed": true
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "ellipse",
+                  "w": 63.0,
+                  "h": 63.0,
+                  "pie": [
+                    0.0,
+                    360.0
+                  ],
+                  "xf": [
+                    0.7619047600000001,
+                    0.0,
+                    0.0,
+                    0.7619047600000001,
+                    836.0000000599999,
+                    241.00000006
+                  ]
+                }
+              }
+            },
+            {
+              "id": 13,
+              "name": "A detail point",
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "none"
+                    },
+                    "width": 1.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            849.5,
+                            265.0
+                          ],
+                          "in": [
+                            849.5,
+                            270.7989898732233
+                          ],
+                          "out": [
+                            849.5,
+                            259.2010101267767
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            860.0,
+                            254.5
+                          ],
+                          "in": [
+                            854.2010101267766,
+                            254.5
+                          ],
+                          "out": [
+                            865.7989898732234,
+                            254.5
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            870.5,
+                            265.0
+                          ],
+                          "in": [
+                            870.5,
+                            259.2010101267767
+                          ],
+                          "out": [
+                            870.5,
+                            270.7989898732233
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            860.0,
+                            275.5
+                          ],
+                          "in": [
+                            865.7989898732234,
+                            275.5
+                          ],
+                          "out": [
+                            854.2010101267766,
+                            275.5
+                          ],
+                          "kind": "Smooth"
+                        }
+                      ],
+                      "closed": true
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "ellipse",
+                  "w": 21.0,
+                  "h": 21.0,
+                  "pie": [
+                    0.0,
+                    360.0
+                  ],
+                  "xf": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    849.5,
+                    254.5
+                  ]
+                }
+              }
+            },
+            {
+              "id": 14,
+              "name": "A detail label",
+              "kind": {
+                "type": "text",
+                "kind": {
+                  "kind": "point"
+                },
+                "xf": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  860.0,
+                  415.0
+                ],
+                "runs": [
+                  {
+                    "text": "DETAIL 3×",
+                    "style": {
+                      "font_family": "IBM Plex Mono",
+                      "font_style": "Regular",
+                      "size": 11.0,
+                      "tracking": 80.0,
+                      "baseline_shift": 0.0,
+                      "h_scale": 100.0,
+                      "v_scale": 100.0,
+                      "rotation": 0.0,
+                      "fill": {
+                        "type": "solid",
+                        "color": {
+                          "model": "rgb",
+                          "r": 0.3647059,
+                          "g": 0.34901962,
+                          "b": 0.3254902
+                        }
+                      },
+                      "stroke": {
+                        "type": "none"
+                      },
+                      "stroke_width": 0.0,
+                      "underline": false,
+                      "strikethrough": false,
+                      "all_caps": false
+                    }
+                  }
+                ],
+                "para": {
+                  "justify": "Center",
+                  "left_indent": 0.0,
+                  "right_indent": 0.0,
+                  "first_line_indent": 0.0,
+                  "space_before": 0.0,
+                  "space_after": 0.0,
+                  "hyphenate": false,
+                  "mojikumi": "lineEndHalf",
+                  "burasagari": "standard"
+                }
+              }
+            },
+            {
+              "id": 15,
+              "name": "A favicon tile 32",
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.078431375,
+                        "g": 0.07058824,
+                        "b": 0.0627451
+                      }
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "none"
+                    },
+                    "width": 1.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            1180.0,
+                            249.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            1212.0,
+                            249.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            1212.0,
+                            281.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            1180.0,
+                            281.0
+                          ]
+                        }
+                      ],
+                      "closed": true
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "rectangle",
+                  "w": 32.0,
+                  "h": 32.0,
+                  "radii": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "xf": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    1180.0,
+                    249.0
+                  ]
+                }
+              }
+            },
+            {
+              "id": 16,
+              "name": "A favicon o 32",
+              "kind": {
+                "type": "text",
+                "kind": {
+                  "kind": "point"
+                },
+                "xf": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  1196.0,
+                  273.5
+                ],
+                "runs": [
+                  {
+                    "text": "o",
+                    "style": {
+                      "font_family": "Newsreader",
+                      "font_style": "Regular",
+                      "fontAxes": {
+                        "opsz": 36.0
+                      },
+                      "size": 36.0,
+                      "tracking": 0.0,
+                      "baseline_shift": 0.0,
+                      "h_scale": 100.0,
+                      "v_scale": 100.0,
+                      "rotation": 0.0,
+                      "fill": {
+                        "type": "solid",
+                        "color": {
+                          "model": "rgb",
+                          "r": 0.9137255,
+                          "g": 0.89411765,
+                          "b": 0.8627451
+                        }
+                      },
+                      "stroke": {
+                        "type": "none"
+                      },
+                      "stroke_width": 0.0,
+                      "underline": false,
+                      "strikethrough": false,
+                      "all_caps": false
+                    }
+                  }
+                ],
+                "para": {
+                  "justify": "Center",
+                  "left_indent": 0.0,
+                  "right_indent": 0.0,
+                  "first_line_indent": 0.0,
+                  "space_before": 0.0,
+                  "space_after": 0.0,
+                  "hyphenate": false,
+                  "mojikumi": "lineEndHalf",
+                  "burasagari": "standard"
+                }
+              }
+            },
+            {
+              "id": 17,
+              "name": "A favicon point 32",
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "none"
+                    },
+                    "width": 1.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            1194.8,
+                            265.0
+                          ],
+                          "in": [
+                            1194.8,
+                            265.6627416997969
+                          ],
+                          "out": [
+                            1194.8,
+                            264.3372583002031
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            1196.0,
+                            263.8
+                          ],
+                          "in": [
+                            1195.337258300203,
+                            263.8
+                          ],
+                          "out": [
+                            1196.662741699797,
+                            263.8
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            1197.2,
+                            265.0
+                          ],
+                          "in": [
+                            1197.2,
+                            264.3372583002031
+                          ],
+                          "out": [
+                            1197.2,
+                            265.6627416997969
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            1196.0,
+                            266.2
+                          ],
+                          "in": [
+                            1196.662741699797,
+                            266.2
+                          ],
+                          "out": [
+                            1195.337258300203,
+                            266.2
+                          ],
+                          "kind": "Smooth"
+                        }
+                      ],
+                      "closed": true
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "ellipse",
+                  "w": 2.400000000000091,
+                  "h": 2.3999999999999773,
+                  "pie": [
+                    0.0,
+                    360.0
+                  ],
+                  "xf": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    1194.8,
+                    263.8
+                  ]
+                }
+              }
+            },
+            {
+              "id": 18,
+              "name": "A favicon label 32",
+              "kind": {
+                "type": "text",
+                "kind": {
+                  "kind": "point"
+                },
+                "xf": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  1196.0,
+                  302.0
+                ],
+                "runs": [
+                  {
+                    "text": "32",
+                    "style": {
+                      "font_family": "IBM Plex Mono",
+                      "font_style": "Regular",
+                      "size": 10.0,
+                      "tracking": 60.0,
+                      "baseline_shift": 0.0,
+                      "h_scale": 100.0,
+                      "v_scale": 100.0,
+                      "rotation": 0.0,
+                      "fill": {
+                        "type": "solid",
+                        "color": {
+                          "model": "rgb",
+                          "r": 0.3647059,
+                          "g": 0.34901962,
+                          "b": 0.3254902
+                        }
+                      },
+                      "stroke": {
+                        "type": "none"
+                      },
+                      "stroke_width": 0.0,
+                      "underline": false,
+                      "strikethrough": false,
+                      "all_caps": false
+                    }
+                  }
+                ],
+                "para": {
+                  "justify": "Center",
+                  "left_indent": 0.0,
+                  "right_indent": 0.0,
+                  "first_line_indent": 0.0,
+                  "space_before": 0.0,
+                  "space_after": 0.0,
+                  "hyphenate": false,
+                  "mojikumi": "lineEndHalf",
+                  "burasagari": "standard"
+                }
+              }
+            },
+            {
+              "id": 19,
+              "name": "A favicon tile 16",
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.078431375,
+                        "g": 0.07058824,
+                        "b": 0.0627451
+                      }
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "none"
+                    },
+                    "width": 1.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            1300.0,
+                            257.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            1316.0,
+                            257.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            1316.0,
+                            273.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            1300.0,
+                            273.0
+                          ]
+                        }
+                      ],
+                      "closed": true
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "rectangle",
+                  "w": 16.0,
+                  "h": 16.0,
+                  "radii": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "xf": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    1300.0,
+                    257.0
+                  ]
+                }
+              }
+            },
+            {
+              "id": 20,
+              "name": "A favicon o 16",
+              "kind": {
+                "type": "text",
+                "kind": {
+                  "kind": "point"
+                },
+                "xf": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  1308.0,
+                  269.0
+                ],
+                "runs": [
+                  {
+                    "text": "o",
+                    "style": {
+                      "font_family": "Newsreader",
+                      "font_style": "Regular",
+                      "size": 18.0,
+                      "tracking": 0.0,
+                      "baseline_shift": 0.0,
+                      "h_scale": 100.0,
+                      "v_scale": 100.0,
+                      "rotation": 0.0,
+                      "fill": {
+                        "type": "solid",
+                        "color": {
+                          "model": "rgb",
+                          "r": 0.9137255,
+                          "g": 0.89411765,
+                          "b": 0.8627451
+                        }
+                      },
+                      "stroke": {
+                        "type": "none"
+                      },
+                      "stroke_width": 0.0,
+                      "underline": false,
+                      "strikethrough": false,
+                      "all_caps": false
+                    }
+                  }
+                ],
+                "para": {
+                  "justify": "Center",
+                  "left_indent": 0.0,
+                  "right_indent": 0.0,
+                  "first_line_indent": 0.0,
+                  "space_before": 0.0,
+                  "space_after": 0.0,
+                  "hyphenate": false,
+                  "mojikumi": "lineEndHalf",
+                  "burasagari": "standard"
+                }
+              }
+            },
+            {
+              "id": 21,
+              "name": "A favicon point 16",
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "none"
+                    },
+                    "width": 1.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            1307.2,
+                            265.0
+                          ],
+                          "in": [
+                            1307.2,
+                            265.44182779986465
+                          ],
+                          "out": [
+                            1307.2,
+                            264.55817220013535
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            1308.0,
+                            264.2
+                          ],
+                          "in": [
+                            1307.5581722001355,
+                            264.2
+                          ],
+                          "out": [
+                            1308.4418277998645,
+                            264.2
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            1308.8,
+                            265.0
+                          ],
+                          "in": [
+                            1308.8,
+                            264.55817220013535
+                          ],
+                          "out": [
+                            1308.8,
+                            265.44182779986465
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            1308.0,
+                            265.8
+                          ],
+                          "in": [
+                            1308.4418277998645,
+                            265.8
+                          ],
+                          "out": [
+                            1307.5581722001355,
+                            265.8
+                          ],
+                          "kind": "Smooth"
+                        }
+                      ],
+                      "closed": true
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "ellipse",
+                  "w": 1.599999999999909,
+                  "h": 1.6000000000000227,
+                  "pie": [
+                    0.0,
+                    360.0
+                  ],
+                  "xf": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    1307.2,
+                    264.2
+                  ]
+                }
+              }
+            },
+            {
+              "id": 22,
+              "name": "A favicon label 16",
+              "kind": {
+                "type": "text",
+                "kind": {
+                  "kind": "point"
+                },
+                "xf": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  1308.0,
+                  302.0
+                ],
+                "runs": [
+                  {
+                    "text": "16",
+                    "style": {
+                      "font_family": "IBM Plex Mono",
+                      "font_style": "Regular",
+                      "size": 10.0,
+                      "tracking": 60.0,
+                      "baseline_shift": 0.0,
+                      "h_scale": 100.0,
+                      "v_scale": 100.0,
+                      "rotation": 0.0,
+                      "fill": {
+                        "type": "solid",
+                        "color": {
+                          "model": "rgb",
+                          "r": 0.3647059,
+                          "g": 0.34901962,
+                          "b": 0.3254902
+                        }
+                      },
+                      "stroke": {
+                        "type": "none"
+                      },
+                      "stroke_width": 0.0,
+                      "underline": false,
+                      "strikethrough": false,
+                      "all_caps": false
+                    }
+                  }
+                ],
+                "para": {
+                  "justify": "Center",
+                  "left_indent": 0.0,
+                  "right_indent": 0.0,
+                  "first_line_indent": 0.0,
+                  "space_before": 0.0,
+                  "space_after": 0.0,
+                  "hyphenate": false,
+                  "mojikumi": "lineEndHalf",
+                  "burasagari": "standard"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": 23,
+        "name": "Band B — Underline System",
+        "kind": {
+          "type": "layer",
+          "color": {
+            "Preset": 2
+          },
+          "template": false,
+          "printable": true,
+          "children": [
+            {
+              "id": 24,
+              "name": "B label Shomo",
+              "kind": {
+                "type": "text",
+                "kind": {
+                  "kind": "point"
+                },
+                "xf": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  195.0,
+                  540.0
+                ],
+                "runs": [
+                  {
+                    "text": "PARENT",
+                    "style": {
+                      "font_family": "IBM Plex Mono",
+                      "font_style": "Regular",
+                      "size": 9.5,
+                      "tracking": 80.0,
+                      "baseline_shift": 0.0,
+                      "h_scale": 100.0,
+                      "v_scale": 100.0,
+                      "rotation": 0.0,
+                      "fill": {
+                        "type": "solid",
+                        "color": {
+                          "model": "rgb",
+                          "r": 0.3647059,
+                          "g": 0.34901962,
+                          "b": 0.3254902
+                        }
+                      },
+                      "stroke": {
+                        "type": "none"
+                      },
+                      "stroke_width": 0.0,
+                      "underline": false,
+                      "strikethrough": false,
+                      "all_caps": false
+                    }
+                  }
+                ],
+                "para": {
+                  "justify": "Right",
+                  "left_indent": 0.0,
+                  "right_indent": 0.0,
+                  "first_line_indent": 0.0,
+                  "space_before": 0.0,
+                  "space_after": 0.0,
+                  "hyphenate": false,
+                  "mojikumi": "lineEndHalf",
+                  "burasagari": "standard"
+                }
+              }
+            },
+            {
+              "id": 25,
+              "name": "B name Shomo",
+              "kind": {
+                "type": "text",
+                "kind": {
+                  "kind": "point"
+                },
+                "xf": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  220.0,
+                  540.0
+                ],
+                "runs": [
+                  {
+                    "text": "Shomo",
+                    "style": {
+                      "font_family": "Newsreader",
+                      "font_style": "Regular",
+                      "fontAxes": {
+                        "opsz": 52.0
+                      },
+                      "size": 52.0,
+                      "tracking": 0.0,
+                      "baseline_shift": 0.0,
+                      "h_scale": 100.0,
+                      "v_scale": 100.0,
+                      "rotation": 0.0,
+                      "fill": {
+                        "type": "solid",
+                        "color": {
+                          "model": "rgb",
+                          "r": 0.9137255,
+                          "g": 0.89411765,
+                          "b": 0.8627451
+                        }
+                      },
+                      "stroke": {
+                        "type": "none"
+                      },
+                      "stroke_width": 0.0,
+                      "underline": false,
+                      "strikethrough": false,
+                      "all_caps": false
+                    }
+                  }
+                ],
+                "para": {
+                  "justify": "Left",
+                  "left_indent": 0.0,
+                  "right_indent": 0.0,
+                  "first_line_indent": 0.0,
+                  "space_before": 0.0,
+                  "space_after": 0.0,
+                  "hyphenate": false,
+                  "mojikumi": "lineEndHalf",
+                  "burasagari": "standard"
+                }
+              }
+            },
+            {
+              "id": 26,
+              "name": "B trace Shomo seg1",
+              "opacity": 0.18,
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "none"
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    },
+                    "width": 2.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            220.0,
+                            562.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            273.03,
+                            562.0
+                          ]
+                        }
+                      ],
+                      "closed": false
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "line",
+                  "a": {
+                    "x": 220.0,
+                    "y": 562.0
+                  },
+                  "b": {
+                    "x": 273.03,
+                    "y": 562.0
+                  }
+                }
+              }
+            },
+            {
+              "id": 27,
+              "name": "B trace Shomo seg2",
+              "opacity": 0.4,
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "none"
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    },
+                    "width": 2.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            273.03,
+                            562.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            326.06,
+                            562.0
+                          ]
+                        }
+                      ],
+                      "closed": false
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "line",
+                  "a": {
+                    "x": 273.03,
+                    "y": 562.0
+                  },
+                  "b": {
+                    "x": 326.06,
+                    "y": 562.0
+                  }
+                }
+              }
+            },
+            {
+              "id": 28,
+              "name": "B trace Shomo seg3",
+              "opacity": 0.75,
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "none"
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    },
+                    "width": 2.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            326.06,
+                            562.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            379.09,
+                            562.0
+                          ]
+                        }
+                      ],
+                      "closed": false
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "line",
+                  "a": {
+                    "x": 326.06,
+                    "y": 562.0
+                  },
+                  "b": {
+                    "x": 379.09,
+                    "y": 562.0
+                  }
+                }
+              }
+            },
+            {
+              "id": 29,
+              "name": "B point Shomo",
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "none"
+                    },
+                    "width": 2.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            374.59,
+                            562.0
+                          ],
+                          "in": [
+                            374.59,
+                            564.4852813742385
+                          ],
+                          "out": [
+                            374.59,
+                            559.5147186257615
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            379.09,
+                            557.5
+                          ],
+                          "in": [
+                            376.6047186257614,
+                            557.5
+                          ],
+                          "out": [
+                            381.57528137423856,
+                            557.5
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            383.59,
+                            562.0
+                          ],
+                          "in": [
+                            383.59,
+                            559.5147186257615
+                          ],
+                          "out": [
+                            383.59,
+                            564.4852813742385
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            379.09,
+                            566.5
+                          ],
+                          "in": [
+                            381.57528137423856,
+                            566.5
+                          ],
+                          "out": [
+                            376.6047186257614,
+                            566.5
+                          ],
+                          "kind": "Smooth"
+                        }
+                      ],
+                      "closed": true
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "ellipse",
+                  "w": 9.0,
+                  "h": 9.0,
+                  "pie": [
+                    0.0,
+                    360.0
+                  ],
+                  "xf": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    374.59,
+                    557.5
+                  ]
+                }
+              }
+            },
+            {
+              "id": 30,
+              "name": "B label Armchair_Descending",
+              "kind": {
+                "type": "text",
+                "kind": {
+                  "kind": "point"
+                },
+                "xf": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  195.0,
+                  630.0
+                ],
+                "runs": [
+                  {
+                    "text": "DAUGHTER",
+                    "style": {
+                      "font_family": "IBM Plex Mono",
+                      "font_style": "Regular",
+                      "size": 9.5,
+                      "tracking": 80.0,
+                      "baseline_shift": 0.0,
+                      "h_scale": 100.0,
+                      "v_scale": 100.0,
+                      "rotation": 0.0,
+                      "fill": {
+                        "type": "solid",
+                        "color": {
+                          "model": "rgb",
+                          "r": 0.3647059,
+                          "g": 0.34901962,
+                          "b": 0.3254902
+                        }
+                      },
+                      "stroke": {
+                        "type": "none"
+                      },
+                      "stroke_width": 0.0,
+                      "underline": false,
+                      "strikethrough": false,
+                      "all_caps": false
+                    }
+                  }
+                ],
+                "para": {
+                  "justify": "Right",
+                  "left_indent": 0.0,
+                  "right_indent": 0.0,
+                  "first_line_indent": 0.0,
+                  "space_before": 0.0,
+                  "space_after": 0.0,
+                  "hyphenate": false,
+                  "mojikumi": "lineEndHalf",
+                  "burasagari": "standard"
+                }
+              }
+            },
+            {
+              "id": 31,
+              "name": "B name Armchair_Descending",
+              "kind": {
+                "type": "text",
+                "kind": {
+                  "kind": "point"
+                },
+                "xf": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  220.0,
+                  630.0
+                ],
+                "runs": [
+                  {
+                    "text": "Armchair Descending",
+                    "style": {
+                      "font_family": "Newsreader",
+                      "font_style": "Regular",
+                      "fontAxes": {
+                        "opsz": 36.0
+                      },
+                      "size": 44.0,
+                      "tracking": 0.0,
+                      "baseline_shift": 0.0,
+                      "h_scale": 100.0,
+                      "v_scale": 100.0,
+                      "rotation": 0.0,
+                      "fill": {
+                        "type": "solid",
+                        "color": {
+                          "model": "rgb",
+                          "r": 0.9137255,
+                          "g": 0.89411765,
+                          "b": 0.8627451
+                        }
+                      },
+                      "stroke": {
+                        "type": "none"
+                      },
+                      "stroke_width": 0.0,
+                      "underline": false,
+                      "strikethrough": false,
+                      "all_caps": false
+                    }
+                  }
+                ],
+                "para": {
+                  "justify": "Left",
+                  "left_indent": 0.0,
+                  "right_indent": 0.0,
+                  "first_line_indent": 0.0,
+                  "space_before": 0.0,
+                  "space_after": 0.0,
+                  "hyphenate": false,
+                  "mojikumi": "lineEndHalf",
+                  "burasagari": "standard"
+                }
+              }
+            },
+            {
+              "id": 32,
+              "name": "B trace Armchair_Descending seg1",
+              "opacity": 0.18,
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "none"
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    },
+                    "width": 2.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            220.0,
+                            652.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            353.92,
+                            652.0
+                          ]
+                        }
+                      ],
+                      "closed": false
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "line",
+                  "a": {
+                    "x": 220.0,
+                    "y": 652.0
+                  },
+                  "b": {
+                    "x": 353.92,
+                    "y": 652.0
+                  }
+                }
+              }
+            },
+            {
+              "id": 33,
+              "name": "B trace Armchair_Descending seg2",
+              "opacity": 0.4,
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "none"
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    },
+                    "width": 2.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            353.92,
+                            652.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            487.84,
+                            652.0
+                          ]
+                        }
+                      ],
+                      "closed": false
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "line",
+                  "a": {
+                    "x": 353.92,
+                    "y": 652.0
+                  },
+                  "b": {
+                    "x": 487.84,
+                    "y": 652.0
+                  }
+                }
+              }
+            },
+            {
+              "id": 34,
+              "name": "B trace Armchair_Descending seg3",
+              "opacity": 0.75,
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "none"
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    },
+                    "width": 2.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            487.84,
+                            652.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            621.76,
+                            652.0
+                          ]
+                        }
+                      ],
+                      "closed": false
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "line",
+                  "a": {
+                    "x": 487.84,
+                    "y": 652.0
+                  },
+                  "b": {
+                    "x": 621.76,
+                    "y": 652.0
+                  }
+                }
+              }
+            },
+            {
+              "id": 35,
+              "name": "B point Armchair_Descending",
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "none"
+                    },
+                    "width": 2.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            617.26,
+                            652.0
+                          ],
+                          "in": [
+                            617.26,
+                            654.4852813742385
+                          ],
+                          "out": [
+                            617.26,
+                            649.5147186257615
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            621.76,
+                            647.5
+                          ],
+                          "in": [
+                            619.2747186257615,
+                            647.5
+                          ],
+                          "out": [
+                            624.2452813742385,
+                            647.5
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            626.26,
+                            652.0
+                          ],
+                          "in": [
+                            626.26,
+                            649.5147186257615
+                          ],
+                          "out": [
+                            626.26,
+                            654.4852813742385
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            621.76,
+                            656.5
+                          ],
+                          "in": [
+                            624.2452813742385,
+                            656.5
+                          ],
+                          "out": [
+                            619.2747186257615,
+                            656.5
+                          ],
+                          "kind": "Smooth"
+                        }
+                      ],
+                      "closed": true
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "ellipse",
+                  "w": 9.0,
+                  "h": 9.0,
+                  "pie": [
+                    0.0,
+                    360.0
+                  ],
+                  "xf": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    617.26,
+                    647.5
+                  ]
+                }
+              }
+            },
+            {
+              "id": 36,
+              "name": "B label Context_Window",
+              "kind": {
+                "type": "text",
+                "kind": {
+                  "kind": "point"
+                },
+                "xf": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  195.0,
+                  720.0
+                ],
+                "runs": [
+                  {
+                    "text": "DAUGHTER",
+                    "style": {
+                      "font_family": "IBM Plex Mono",
+                      "font_style": "Regular",
+                      "size": 9.5,
+                      "tracking": 80.0,
+                      "baseline_shift": 0.0,
+                      "h_scale": 100.0,
+                      "v_scale": 100.0,
+                      "rotation": 0.0,
+                      "fill": {
+                        "type": "solid",
+                        "color": {
+                          "model": "rgb",
+                          "r": 0.3647059,
+                          "g": 0.34901962,
+                          "b": 0.3254902
+                        }
+                      },
+                      "stroke": {
+                        "type": "none"
+                      },
+                      "stroke_width": 0.0,
+                      "underline": false,
+                      "strikethrough": false,
+                      "all_caps": false
+                    }
+                  }
+                ],
+                "para": {
+                  "justify": "Right",
+                  "left_indent": 0.0,
+                  "right_indent": 0.0,
+                  "first_line_indent": 0.0,
+                  "space_before": 0.0,
+                  "space_after": 0.0,
+                  "hyphenate": false,
+                  "mojikumi": "lineEndHalf",
+                  "burasagari": "standard"
+                }
+              }
+            },
+            {
+              "id": 37,
+              "name": "B name Context_Window",
+              "kind": {
+                "type": "text",
+                "kind": {
+                  "kind": "point"
+                },
+                "xf": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  220.0,
+                  720.0
+                ],
+                "runs": [
+                  {
+                    "text": "Context Window",
+                    "style": {
+                      "font_family": "Newsreader",
+                      "font_style": "Regular",
+                      "fontAxes": {
+                        "opsz": 36.0
+                      },
+                      "size": 44.0,
+                      "tracking": 0.0,
+                      "baseline_shift": 0.0,
+                      "h_scale": 100.0,
+                      "v_scale": 100.0,
+                      "rotation": 0.0,
+                      "fill": {
+                        "type": "solid",
+                        "color": {
+                          "model": "rgb",
+                          "r": 0.9137255,
+                          "g": 0.89411765,
+                          "b": 0.8627451
+                        }
+                      },
+                      "stroke": {
+                        "type": "none"
+                      },
+                      "stroke_width": 0.0,
+                      "underline": false,
+                      "strikethrough": false,
+                      "all_caps": false
+                    }
+                  }
+                ],
+                "para": {
+                  "justify": "Left",
+                  "left_indent": 0.0,
+                  "right_indent": 0.0,
+                  "first_line_indent": 0.0,
+                  "space_before": 0.0,
+                  "space_after": 0.0,
+                  "hyphenate": false,
+                  "mojikumi": "lineEndHalf",
+                  "burasagari": "standard"
+                }
+              }
+            },
+            {
+              "id": 38,
+              "name": "B trace Context_Window seg1",
+              "opacity": 0.18,
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "none"
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    },
+                    "width": 2.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            220.0,
+                            742.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            325.2,
+                            742.0
+                          ]
+                        }
+                      ],
+                      "closed": false
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "line",
+                  "a": {
+                    "x": 220.0,
+                    "y": 742.0
+                  },
+                  "b": {
+                    "x": 325.2,
+                    "y": 742.0
+                  }
+                }
+              }
+            },
+            {
+              "id": 39,
+              "name": "B trace Context_Window seg2",
+              "opacity": 0.4,
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "none"
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    },
+                    "width": 2.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            325.2,
+                            742.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            430.39,
+                            742.0
+                          ]
+                        }
+                      ],
+                      "closed": false
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "line",
+                  "a": {
+                    "x": 325.2,
+                    "y": 742.0
+                  },
+                  "b": {
+                    "x": 430.39,
+                    "y": 742.0
+                  }
+                }
+              }
+            },
+            {
+              "id": 40,
+              "name": "B trace Context_Window seg3",
+              "opacity": 0.75,
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "none"
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    },
+                    "width": 2.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            430.39,
+                            742.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            535.59,
+                            742.0
+                          ]
+                        }
+                      ],
+                      "closed": false
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "line",
+                  "a": {
+                    "x": 430.39,
+                    "y": 742.0
+                  },
+                  "b": {
+                    "x": 535.59,
+                    "y": 742.0
+                  }
+                }
+              }
+            },
+            {
+              "id": 41,
+              "name": "B point Context_Window",
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "none"
+                    },
+                    "width": 2.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            531.09,
+                            742.0
+                          ],
+                          "in": [
+                            531.09,
+                            744.4852813742385
+                          ],
+                          "out": [
+                            531.09,
+                            739.5147186257615
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            535.59,
+                            737.5
+                          ],
+                          "in": [
+                            533.1047186257615,
+                            737.5
+                          ],
+                          "out": [
+                            538.0752813742386,
+                            737.5
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            540.09,
+                            742.0
+                          ],
+                          "in": [
+                            540.09,
+                            739.5147186257615
+                          ],
+                          "out": [
+                            540.09,
+                            744.4852813742385
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            535.59,
+                            746.5
+                          ],
+                          "in": [
+                            538.0752813742386,
+                            746.5
+                          ],
+                          "out": [
+                            533.1047186257615,
+                            746.5
+                          ],
+                          "kind": "Smooth"
+                        }
+                      ],
+                      "closed": true
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "ellipse",
+                  "w": 9.0,
+                  "h": 9.0,
+                  "pie": [
+                    0.0,
+                    360.0
+                  ],
+                  "xf": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    531.09,
+                    737.5
+                  ]
+                }
+              }
+            },
+            {
+              "id": 42,
+              "name": "B label Specfiction",
+              "kind": {
+                "type": "text",
+                "kind": {
+                  "kind": "point"
+                },
+                "xf": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  195.0,
+                  810.0
+                ],
+                "runs": [
+                  {
+                    "text": "DAUGHTER",
+                    "style": {
+                      "font_family": "IBM Plex Mono",
+                      "font_style": "Regular",
+                      "size": 9.5,
+                      "tracking": 80.0,
+                      "baseline_shift": 0.0,
+                      "h_scale": 100.0,
+                      "v_scale": 100.0,
+                      "rotation": 0.0,
+                      "fill": {
+                        "type": "solid",
+                        "color": {
+                          "model": "rgb",
+                          "r": 0.3647059,
+                          "g": 0.34901962,
+                          "b": 0.3254902
+                        }
+                      },
+                      "stroke": {
+                        "type": "none"
+                      },
+                      "stroke_width": 0.0,
+                      "underline": false,
+                      "strikethrough": false,
+                      "all_caps": false
+                    }
+                  }
+                ],
+                "para": {
+                  "justify": "Right",
+                  "left_indent": 0.0,
+                  "right_indent": 0.0,
+                  "first_line_indent": 0.0,
+                  "space_before": 0.0,
+                  "space_after": 0.0,
+                  "hyphenate": false,
+                  "mojikumi": "lineEndHalf",
+                  "burasagari": "standard"
+                }
+              }
+            },
+            {
+              "id": 43,
+              "name": "B name Specfiction",
+              "kind": {
+                "type": "text",
+                "kind": {
+                  "kind": "point"
+                },
+                "xf": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  220.0,
+                  810.0
+                ],
+                "runs": [
+                  {
+                    "text": "Specfiction",
+                    "style": {
+                      "font_family": "Newsreader",
+                      "font_style": "Regular",
+                      "fontAxes": {
+                        "opsz": 36.0
+                      },
+                      "size": 44.0,
+                      "tracking": 0.0,
+                      "baseline_shift": 0.0,
+                      "h_scale": 100.0,
+                      "v_scale": 100.0,
+                      "rotation": 0.0,
+                      "fill": {
+                        "type": "solid",
+                        "color": {
+                          "model": "rgb",
+                          "r": 0.9137255,
+                          "g": 0.89411765,
+                          "b": 0.8627451
+                        }
+                      },
+                      "stroke": {
+                        "type": "none"
+                      },
+                      "stroke_width": 0.0,
+                      "underline": false,
+                      "strikethrough": false,
+                      "all_caps": false
+                    }
+                  }
+                ],
+                "para": {
+                  "justify": "Left",
+                  "left_indent": 0.0,
+                  "right_indent": 0.0,
+                  "first_line_indent": 0.0,
+                  "space_before": 0.0,
+                  "space_after": 0.0,
+                  "hyphenate": false,
+                  "mojikumi": "lineEndHalf",
+                  "burasagari": "standard"
+                }
+              }
+            },
+            {
+              "id": 44,
+              "name": "B trace Specfiction seg1",
+              "opacity": 0.18,
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "none"
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    },
+                    "width": 2.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            220.0,
+                            832.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            288.63,
+                            832.0
+                          ]
+                        }
+                      ],
+                      "closed": false
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "line",
+                  "a": {
+                    "x": 220.0,
+                    "y": 832.0
+                  },
+                  "b": {
+                    "x": 288.63,
+                    "y": 832.0
+                  }
+                }
+              }
+            },
+            {
+              "id": 45,
+              "name": "B trace Specfiction seg2",
+              "opacity": 0.4,
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "none"
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    },
+                    "width": 2.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            288.63,
+                            832.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            357.27,
+                            832.0
+                          ]
+                        }
+                      ],
+                      "closed": false
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "line",
+                  "a": {
+                    "x": 288.63,
+                    "y": 832.0
+                  },
+                  "b": {
+                    "x": 357.27,
+                    "y": 832.0
+                  }
+                }
+              }
+            },
+            {
+              "id": 46,
+              "name": "B trace Specfiction seg3",
+              "opacity": 0.75,
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "none"
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    },
+                    "width": 2.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            357.27,
+                            832.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            425.9,
+                            832.0
+                          ]
+                        }
+                      ],
+                      "closed": false
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "line",
+                  "a": {
+                    "x": 357.27,
+                    "y": 832.0
+                  },
+                  "b": {
+                    "x": 425.9,
+                    "y": 832.0
+                  }
+                }
+              }
+            },
+            {
+              "id": 47,
+              "name": "B point Specfiction",
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "none"
+                    },
+                    "width": 2.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            421.4,
+                            832.0
+                          ],
+                          "in": [
+                            421.4,
+                            834.4852813742385
+                          ],
+                          "out": [
+                            421.4,
+                            829.5147186257615
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            425.9,
+                            827.5
+                          ],
+                          "in": [
+                            423.4147186257614,
+                            827.5
+                          ],
+                          "out": [
+                            428.38528137423856,
+                            827.5
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            430.4,
+                            832.0
+                          ],
+                          "in": [
+                            430.4,
+                            829.5147186257615
+                          ],
+                          "out": [
+                            430.4,
+                            834.4852813742385
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            425.9,
+                            836.5
+                          ],
+                          "in": [
+                            428.38528137423856,
+                            836.5
+                          ],
+                          "out": [
+                            423.4147186257614,
+                            836.5
+                          ],
+                          "kind": "Smooth"
+                        }
+                      ],
+                      "closed": true
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "ellipse",
+                  "w": 9.0,
+                  "h": 9.0,
+                  "pie": [
+                    0.0,
+                    360.0
+                  ],
+                  "xf": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    421.4,
+                    827.5
+                  ]
+                }
+              }
+            },
+            {
+              "id": 48,
+              "name": "B label Shomodip_com",
+              "kind": {
+                "type": "text",
+                "kind": {
+                  "kind": "point"
+                },
+                "xf": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  195.0,
+                  900.0
+                ],
+                "runs": [
+                  {
+                    "text": "SITE",
+                    "style": {
+                      "font_family": "IBM Plex Mono",
+                      "font_style": "Regular",
+                      "size": 9.5,
+                      "tracking": 80.0,
+                      "baseline_shift": 0.0,
+                      "h_scale": 100.0,
+                      "v_scale": 100.0,
+                      "rotation": 0.0,
+                      "fill": {
+                        "type": "solid",
+                        "color": {
+                          "model": "rgb",
+                          "r": 0.3647059,
+                          "g": 0.34901962,
+                          "b": 0.3254902
+                        }
+                      },
+                      "stroke": {
+                        "type": "none"
+                      },
+                      "stroke_width": 0.0,
+                      "underline": false,
+                      "strikethrough": false,
+                      "all_caps": false
+                    }
+                  }
+                ],
+                "para": {
+                  "justify": "Right",
+                  "left_indent": 0.0,
+                  "right_indent": 0.0,
+                  "first_line_indent": 0.0,
+                  "space_before": 0.0,
+                  "space_after": 0.0,
+                  "hyphenate": false,
+                  "mojikumi": "lineEndHalf",
+                  "burasagari": "standard"
+                }
+              }
+            },
+            {
+              "id": 49,
+              "name": "B name Shomodip_com",
+              "kind": {
+                "type": "text",
+                "kind": {
+                  "kind": "point"
+                },
+                "xf": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  220.0,
+                  900.0
+                ],
+                "runs": [
+                  {
+                    "text": "Shomodip.com",
+                    "style": {
+                      "font_family": "Newsreader",
+                      "font_style": "Regular",
+                      "fontAxes": {
+                        "opsz": 36.0
+                      },
+                      "size": 44.0,
+                      "tracking": 0.0,
+                      "baseline_shift": 0.0,
+                      "h_scale": 100.0,
+                      "v_scale": 100.0,
+                      "rotation": 0.0,
+                      "fill": {
+                        "type": "solid",
+                        "color": {
+                          "model": "rgb",
+                          "r": 0.9137255,
+                          "g": 0.89411765,
+                          "b": 0.8627451
+                        }
+                      },
+                      "stroke": {
+                        "type": "none"
+                      },
+                      "stroke_width": 0.0,
+                      "underline": false,
+                      "strikethrough": false,
+                      "all_caps": false
+                    }
+                  }
+                ],
+                "para": {
+                  "justify": "Left",
+                  "left_indent": 0.0,
+                  "right_indent": 0.0,
+                  "first_line_indent": 0.0,
+                  "space_before": 0.0,
+                  "space_after": 0.0,
+                  "hyphenate": false,
+                  "mojikumi": "lineEndHalf",
+                  "burasagari": "standard"
+                }
+              }
+            },
+            {
+              "id": 50,
+              "name": "B trace Shomodip_com seg1",
+              "opacity": 0.18,
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "none"
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    },
+                    "width": 2.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            220.0,
+                            922.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            312.96,
+                            922.0
+                          ]
+                        }
+                      ],
+                      "closed": false
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "line",
+                  "a": {
+                    "x": 220.0,
+                    "y": 922.0
+                  },
+                  "b": {
+                    "x": 312.96,
+                    "y": 922.0
+                  }
+                }
+              }
+            },
+            {
+              "id": 51,
+              "name": "B trace Shomodip_com seg2",
+              "opacity": 0.4,
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "none"
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    },
+                    "width": 2.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            312.96,
+                            922.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            405.91,
+                            922.0
+                          ]
+                        }
+                      ],
+                      "closed": false
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "line",
+                  "a": {
+                    "x": 312.96,
+                    "y": 922.0
+                  },
+                  "b": {
+                    "x": 405.91,
+                    "y": 922.0
+                  }
+                }
+              }
+            },
+            {
+              "id": 52,
+              "name": "B trace Shomodip_com seg3",
+              "opacity": 0.75,
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "none"
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    },
+                    "width": 2.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            405.91,
+                            922.0
+                          ]
+                        },
+                        {
+                          "p": [
+                            498.87,
+                            922.0
+                          ]
+                        }
+                      ],
+                      "closed": false
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "line",
+                  "a": {
+                    "x": 405.91,
+                    "y": 922.0
+                  },
+                  "b": {
+                    "x": 498.87,
+                    "y": 922.0
+                  }
+                }
+              }
+            },
+            {
+              "id": 53,
+              "name": "B point Shomodip_com",
+              "appearance": {
+                "items": [
+                  {
+                    "kind": "fill",
+                    "paint": {
+                      "type": "solid",
+                      "color": {
+                        "model": "rgb",
+                        "r": 0.9137255,
+                        "g": 0.89411765,
+                        "b": 0.8627451
+                      }
+                    }
+                  },
+                  {
+                    "kind": "stroke",
+                    "paint": {
+                      "type": "none"
+                    },
+                    "width": 2.0
+                  }
+                ]
+              },
+              "kind": {
+                "type": "path",
+                "path": {
+                  "subpaths": [
+                    {
+                      "anchors": [
+                        {
+                          "p": [
+                            494.37,
+                            922.0
+                          ],
+                          "in": [
+                            494.37,
+                            924.4852813742385
+                          ],
+                          "out": [
+                            494.37,
+                            919.5147186257615
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            498.87,
+                            917.5
+                          ],
+                          "in": [
+                            496.3847186257614,
+                            917.5
+                          ],
+                          "out": [
+                            501.3552813742386,
+                            917.5
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            503.37,
+                            922.0
+                          ],
+                          "in": [
+                            503.37,
+                            919.5147186257615
+                          ],
+                          "out": [
+                            503.37,
+                            924.4852813742385
+                          ],
+                          "kind": "Smooth"
+                        },
+                        {
+                          "p": [
+                            498.87,
+                            926.5
+                          ],
+                          "in": [
+                            501.3552813742386,
+                            926.5
+                          ],
+                          "out": [
+                            496.3847186257614,
+                            926.5
+                          ],
+                          "kind": "Smooth"
+                        }
+                      ],
+                      "closed": true
+                    }
+                  ]
+                },
+                "live": {
+                  "shape": "ellipse",
+                  "w": 9.0,
+                  "h": 9.0,
+                  "pie": [
+                    0.0,
+                    360.0
+                  ],
+                  "xf": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    494.37,
+                    917.5
+                  ]
+                }
+              }
+            },
+            {
+              "id": 54,
+              "name": "B note",
+              "kind": {
+                "type": "text",
+                "kind": {
+                  "kind": "point"
+                },
+                "xf": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  880.0,
+                  710.0
+                ],
+                "runs": [
+                  {
+                    "text": "THE LIGHT ALWAYS SITS AT THE END OF THE NAME;\nTHE TRAIL IS ITS UNDERLINE.",
+                    "style": {
+                      "font_family": "IBM Plex Mono",
+                      "font_style": "Regular",
+                      "size": 11.0,
+                      "leading": 22.0,
+                      "tracking": 60.0,
+                      "baseline_shift": 0.0,
+                      "h_scale": 100.0,
+                      "v_scale": 100.0,
+                      "rotation": 0.0,
+                      "fill": {
+                        "type": "solid",
+                        "color": {
+                          "model": "rgb",
+                          "r": 0.3647059,
+                          "g": 0.34901962,
+                          "b": 0.3254902
+                        }
+                      },
+                      "stroke": {
+                        "type": "none"
+                      },
+                      "stroke_width": 0.0,
+                      "underline": false,
+                      "strikethrough": false,
+                      "all_caps": false
+                    }
+                  }
+                ],
+                "para": {
+                  "justify": "Left",
+                  "left_indent": 0.0,
+                  "right_indent": 0.0,
+                  "first_line_indent": 0.0,
+                  "space_before": 0.0,
+                  "space_after": 0.0,
+                  "hyphenate": false,
+                  "mojikumi": "lineEndHalf",
+                  "burasagari": "standard"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": 55,
+        "name": "Labels & Header",
+        "kind": {
+          "type": "layer",
+          "color": {
+            "Preset": 3
+          },
+          "template": false,
+          "printable": true,
+          "children": [
+            {
+              "id": 56,
+              "name": "header left",
+              "kind": {
+                "type": "text",
+                "kind": {
+                  "kind": "point"
+                },
+                "xf": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  100.0,
+                  56.0
+                ],
+                "runs": [
+                  {
+                    "text": "SHOMO — MARKS V2",
+                    "style": {
+                      "font_family": "IBM Plex Mono",
+                      "font_style": "Regular",
+                      "size": 11.0,
+                      "tracking": 60.0,
+                      "baseline_shift": 0.0,
+                      "h_scale": 100.0,
+                      "v_scale": 100.0,
+                      "rotation": 0.0,
+                      "fill": {
+                        "type": "solid",
+                        "color": {
+                          "model": "rgb",
+                          "r": 0.3647059,
+                          "g": 0.34901962,
+                          "b": 0.3254902
+                        }
+                      },
+                      "stroke": {
+                        "type": "none"
+                      },
+                      "stroke_width": 0.0,
+                      "underline": false,
+                      "strikethrough": false,
+                      "all_caps": false
+                    }
+                  }
+                ],
+                "para": {
+                  "justify": "Left",
+                  "left_indent": 0.0,
+                  "right_indent": 0.0,
+                  "first_line_indent": 0.0,
+                  "space_before": 0.0,
+                  "space_after": 0.0,
+                  "hyphenate": false,
+                  "mojikumi": "lineEndHalf",
+                  "burasagari": "standard"
+                }
+              }
+            },
+            {
+              "id": 57,
+              "name": "header right",
+              "kind": {
+                "type": "text",
+                "kind": {
+                  "kind": "point"
+                },
+                "xf": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  1500.0,
+                  56.0
+                ],
+                "runs": [
+                  {
+                    "text": "DRAFT FOR SHOMO · 18.10.2026",
+                    "style": {
+                      "font_family": "IBM Plex Mono",
+                      "font_style": "Regular",
+                      "size": 11.0,
+                      "tracking": 60.0,
+                      "baseline_shift": 0.0,
+                      "h_scale": 100.0,
+                      "v_scale": 100.0,
+                      "rotation": 0.0,
+                      "fill": {
+                        "type": "solid",
+                        "color": {
+                          "model": "rgb",
+                          "r": 0.3647059,
+                          "g": 0.34901962,
+                          "b": 0.3254902
+                        }
+                      },
+                      "stroke": {
+                        "type": "none"
+                      },
+                      "stroke_width": 0.0,
+                      "underline": false,
+                      "strikethrough": false,
+                      "all_caps": false
+                    }
+                  }
+                ],
+                "para": {
+                  "justify": "Right",
+                  "left_indent": 0.0,
+                  "right_indent": 0.0,
+                  "first_line_indent": 0.0,
+                  "space_before": 0.0,
+                  "space_after": 0.0,
+                  "hyphenate": false,
+                  "mojikumi": "lineEndHalf",
+                  "burasagari": "standard"
+                }
+              }
+            },
+            {
+              "id": 58,
+              "name": "A section label",
+              "kind": {
+                "type": "text",
+                "kind": {
+                  "kind": "point"
+                },
+                "xf": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  100.0,
+                  105.0
+                ],
+                "runs": [
+                  {
+                    "text": "A — WORDMARK, POINT IN LETTER COLOUR",
+                    "style": {
+                      "font_family": "IBM Plex Mono",
+                      "font_style": "Regular",
+                      "size": 11.0,
+                      "tracking": 60.0,
+                      "baseline_shift": 0.0,
+                      "h_scale": 100.0,
+                      "v_scale": 100.0,
+                      "rotation": 0.0,
+                      "fill": {
+                        "type": "solid",
+                        "color": {
+                          "model": "rgb",
+                          "r": 0.3647059,
+                          "g": 0.34901962,
+                          "b": 0.3254902
+                        }
+                      },
+                      "stroke": {
+                        "type": "none"
+                      },
+                      "stroke_width": 0.0,
+                      "underline": false,
+                      "strikethrough": false,
+                      "all_caps": false
+                    }
+                  }
+                ],
+                "para": {
+                  "justify": "Left",
+                  "left_indent": 0.0,
+                  "right_indent": 0.0,
+                  "first_line_indent": 0.0,
+                  "space_before": 0.0,
+                  "space_after": 0.0,
+                  "hyphenate": false,
+                  "mojikumi": "lineEndHalf",
+                  "burasagari": "standard"
+                }
+              }
+            },
+            {
+              "id": 59,
+              "name": "B section label",
+              "kind": {
+                "type": "text",
+                "kind": {
+                  "kind": "point"
+                },
+                "xf": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  100.0,
+                  475.0
+                ],
+                "runs": [
+                  {
+                    "text": "B — THE TRACE AS AN UNDERLINE SYSTEM",
+                    "style": {
+                      "font_family": "IBM Plex Mono",
+                      "font_style": "Regular",
+                      "size": 11.0,
+                      "tracking": 60.0,
+                      "baseline_shift": 0.0,
+                      "h_scale": 100.0,
+                      "v_scale": 100.0,
+                      "rotation": 0.0,
+                      "fill": {
+                        "type": "solid",
+                        "color": {
+                          "model": "rgb",
+                          "r": 0.3647059,
+                          "g": 0.34901962,
+                          "b": 0.3254902
+                        }
+                      },
+                      "stroke": {
+                        "type": "none"
+                      },
+                      "stroke_width": 0.0,
+                      "underline": false,
+                      "strikethrough": false,
+                      "all_caps": false
+                    }
+                  }
+                ],
+                "para": {
+                  "justify": "Left",
+                  "left_indent": 0.0,
+                  "right_indent": 0.0,
+                  "first_line_indent": 0.0,
+                  "space_before": 0.0,
+                  "space_after": 0.0,
+                  "hyphenate": false,
+                  "mojikumi": "lineEndHalf",
+                  "burasagari": "standard"
+                }
+              }
+            },
+            {
+              "id": 60,
+              "name": "footer",
+              "kind": {
+                "type": "text",
+                "kind": {
+                  "kind": "point"
+                },
+                "xf": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  100.0,
+                  965.0
+                ],
+                "runs": [
+                  {
+                    "text": "ROUGH ROUTES FOR DISCUSSION — UPRIGHT NEWSREADER + IBM PLEX MONO — NOT FINAL ARTWORK",
+                    "style": {
+                      "font_family": "IBM Plex Mono",
+                      "font_style": "Regular",
+                      "size": 11.0,
+                      "tracking": 60.0,
+                      "baseline_shift": 0.0,
+                      "h_scale": 100.0,
+                      "v_scale": 100.0,
+                      "rotation": 0.0,
+                      "fill": {
+                        "type": "solid",
+                        "color": {
+                          "model": "rgb",
+                          "r": 0.3647059,
+                          "g": 0.34901962,
+                          "b": 0.3254902
+                        }
+                      },
+                      "stroke": {
+                        "type": "none"
+                      },
+                      "stroke_width": 0.0,
+                      "underline": false,
+                      "strikethrough": false,
+                      "all_caps": false
+                    }
+                  }
+                ],
+                "para": {
+                  "justify": "Left",
+                  "left_indent": 0.0,
+                  "right_indent": 0.0,
+                  "first_line_indent": 0.0,
+                  "space_before": 0.0,
+                  "space_after": 0.0,
+                  "hyphenate": false,
+                  "mojikumi": "lineEndHalf",
+                  "burasagari": "standard"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "swatches": [
+      {
+        "name": "[None]",
+        "paint": {
+          "type": "none"
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "White",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Black",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Red",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.92941177,
+            "g": 0.10980392,
+            "b": 0.14117648
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Orange Red",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.94509804,
+            "g": 0.3529412,
+            "b": 0.14117648
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Orange",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.96862745,
+            "g": 0.5764706,
+            "b": 0.11764706
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Amber",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.9843137,
+            "g": 0.6901961,
+            "b": 0.23137255
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Yellow",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.9882353,
+            "g": 0.93333334,
+            "b": 0.12941177
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Yellow Green",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.8509804,
+            "g": 0.8784314,
+            "b": 0.12941177
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Lime",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.54901963,
+            "g": 0.7764706,
+            "b": 0.24705882
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Green",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.22352941,
+            "g": 0.70980394,
+            "b": 0.2901961
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Emerald",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.0,
+            "g": 0.57254905,
+            "b": 0.27058825
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Teal",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.0,
+            "g": 0.40784314,
+            "b": 0.21568628
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Aqua",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.13333334,
+            "g": 0.70980394,
+            "b": 0.4509804
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Cyan Green",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.0,
+            "g": 0.6627451,
+            "b": 0.6156863
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Cyan",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.16078432,
+            "g": 0.67058825,
+            "b": 0.8862745
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Azure",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.0,
+            "g": 0.44313726,
+            "b": 0.7372549
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Blue",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.18039216,
+            "g": 0.19215687,
+            "b": 0.57254905
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Indigo",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.105882354,
+            "g": 0.078431375,
+            "b": 0.39215687
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Violet",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.4,
+            "g": 0.1764706,
+            "b": 0.5686275
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Purple",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.5764706,
+            "g": 0.15294118,
+            "b": 0.56078434
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Magenta",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.61960787,
+            "g": 0.0,
+            "b": 0.3647059
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Rose",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.83137256,
+            "g": 0.078431375,
+            "b": 0.3529412
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Pink",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.92941177,
+            "g": 0.11764706,
+            "b": 0.4745098
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Brown",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.78039217,
+            "g": 0.69803923,
+            "b": 0.6
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Tan",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.6,
+            "g": 0.5254902,
+            "b": 0.45882353
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Coffee",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.4509804,
+            "g": 0.3882353,
+            "b": 0.34117648
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Chocolate",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.3254902,
+            "g": 0.2784314,
+            "b": 0.25490198
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Sand",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.7764706,
+            "g": 0.6117647,
+            "b": 0.42745098
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Copper",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.6509804,
+            "g": 0.4862745,
+            "b": 0.32156864
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Rust",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.54901963,
+            "g": 0.38431373,
+            "b": 0.22352941
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Walnut",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.45882353,
+            "g": 0.29803923,
+            "b": 0.14117648
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Espresso",
+        "paint": {
+          "type": "solid",
+          "color": {
+            "model": "rgb",
+            "r": 0.3764706,
+            "g": 0.21960784,
+            "b": 0.07450981
+          }
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "White, Black",
+        "paint": {
+          "type": "gradient",
+          "gradient": {
+            "kind": "Linear",
+            "stops": [
+              {
+                "offset": 0.0,
+                "color": {
+                  "model": "rgb",
+                  "r": 1.0,
+                  "g": 1.0,
+                  "b": 1.0
+                },
+                "opacity": 1.0,
+                "midpoint": 0.5
+              },
+              {
+                "offset": 1.0,
+                "color": {
+                  "model": "rgb",
+                  "r": 0.0,
+                  "g": 0.0,
+                  "b": 0.0
+                },
+                "opacity": 1.0,
+                "midpoint": 0.5
+              }
+            ]
+          },
+          "angle": 0.0
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Radial White, Black",
+        "paint": {
+          "type": "gradient",
+          "gradient": {
+            "kind": "Radial",
+            "stops": [
+              {
+                "offset": 0.0,
+                "color": {
+                  "model": "rgb",
+                  "r": 1.0,
+                  "g": 1.0,
+                  "b": 1.0
+                },
+                "opacity": 1.0,
+                "midpoint": 0.5
+              },
+              {
+                "offset": 1.0,
+                "color": {
+                  "model": "rgb",
+                  "r": 0.0,
+                  "g": 0.0,
+                  "b": 0.0
+                },
+                "opacity": 1.0,
+                "midpoint": 0.5
+              }
+            ]
+          },
+          "angle": 0.0
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Sunset",
+        "paint": {
+          "type": "gradient",
+          "gradient": {
+            "kind": "Linear",
+            "stops": [
+              {
+                "offset": 0.0,
+                "color": {
+                  "model": "rgb",
+                  "r": 0.9843137,
+                  "g": 0.6901961,
+                  "b": 0.23137255
+                },
+                "opacity": 1.0,
+                "midpoint": 0.5
+              },
+              {
+                "offset": 1.0,
+                "color": {
+                  "model": "rgb",
+                  "r": 0.83137256,
+                  "g": 0.078431375,
+                  "b": 0.3529412
+                },
+                "opacity": 1.0,
+                "midpoint": 0.5
+              }
+            ]
+          },
+          "angle": 0.0
+        },
+        "global": false,
+        "spot": false
+      },
+      {
+        "name": "Ocean",
+        "paint": {
+          "type": "gradient",
+          "gradient": {
+            "kind": "Linear",
+            "stops": [
+              {
+                "offset": 0.0,
+                "color": {
+                  "model": "rgb",
+                  "r": 0.16078432,
+                  "g": 0.67058825,
+                  "b": 0.8862745
+                },
+                "opacity": 1.0,
+                "midpoint": 0.5
+              },
+              {
+                "offset": 1.0,
+                "color": {
+                  "model": "rgb",
+                  "r": 0.18039216,
+                  "g": 0.19215687,
+                  "b": 0.57254905
+                },
+                "opacity": 1.0,
+                "midpoint": 0.5
+              }
+            ]
+          },
+          "angle": 0.0
+        },
+        "global": false,
+        "spot": false
+      }
+    ],
+    "swatch_groups": [
+      {
+        "name": "Grays",
+        "swatches": [
+          {
+            "name": "K=90",
+            "paint": {
+              "type": "solid",
+              "color": {
+                "model": "gray",
+                "k": 0.9
+              }
+            },
+            "global": false,
+            "spot": false
+          },
+          {
+            "name": "K=80",
+            "paint": {
+              "type": "solid",
+              "color": {
+                "model": "gray",
+                "k": 0.8
+              }
+            },
+            "global": false,
+            "spot": false
+          },
+          {
+            "name": "K=70",
+            "paint": {
+              "type": "solid",
+              "color": {
+                "model": "gray",
+                "k": 0.7
+              }
+            },
+            "global": false,
+            "spot": false
+          },
+          {
+            "name": "K=60",
+            "paint": {
+              "type": "solid",
+              "color": {
+                "model": "gray",
+                "k": 0.6
+              }
+            },
+            "global": false,
+            "spot": false
+          },
+          {
+            "name": "K=50",
+            "paint": {
+              "type": "solid",
+              "color": {
+                "model": "gray",
+                "k": 0.5
+              }
+            },
+            "global": false,
+            "spot": false
+          },
+          {
+            "name": "K=40",
+            "paint": {
+              "type": "solid",
+              "color": {
+                "model": "gray",
+                "k": 0.4
+              }
+            },
+            "global": false,
+            "spot": false
+          },
+          {
+            "name": "K=30",
+            "paint": {
+              "type": "solid",
+              "color": {
+                "model": "gray",
+                "k": 0.3
+              }
+            },
+            "global": false,
+            "spot": false
+          },
+          {
+            "name": "K=20",
+            "paint": {
+              "type": "solid",
+              "color": {
+                "model": "gray",
+                "k": 0.2
+              }
+            },
+            "global": false,
+            "spot": false
+          },
+          {
+            "name": "K=10",
+            "paint": {
+              "type": "solid",
+              "color": {
+                "model": "gray",
+                "k": 0.1
+              }
+            },
+            "global": false,
+            "spot": false
+          }
+        ]
+      },
+      {
+        "name": "Brights",
+        "swatches": [
+          {
+            "name": "Bright Red",
+            "paint": {
+              "type": "solid",
+              "color": {
+                "model": "rgb",
+                "r": 1.0,
+                "g": 0.11372549,
+                "b": 0.14509805
+              }
+            },
+            "global": false,
+            "spot": false
+          },
+          {
+            "name": "Bright Yellow",
+            "paint": {
+              "type": "solid",
+              "color": {
+                "model": "rgb",
+                "r": 1.0,
+                "g": 0.9019608,
+                "b": 0.0
+              }
+            },
+            "global": false,
+            "spot": false
+          },
+          {
+            "name": "Bright Green",
+            "paint": {
+              "type": "solid",
+              "color": {
+                "model": "rgb",
+                "r": 0.0,
+                "g": 0.9019608,
+                "b": 0.4627451
+              }
+            },
+            "global": false,
+            "spot": false
+          },
+          {
+            "name": "Bright Blue",
+            "paint": {
+              "type": "solid",
+              "color": {
+                "model": "rgb",
+                "r": 0.16078432,
+                "g": 0.4745098,
+                "b": 1.0
+              }
+            },
+            "global": false,
+            "spot": false
+          },
+          {
+            "name": "Bright Violet",
+            "paint": {
+              "type": "solid",
+              "color": {
+                "model": "rgb",
+                "r": 0.8352941,
+                "g": 0.0,
+                "b": 0.9764706
+              }
+            },
+            "global": false,
+            "spot": false
+          }
+        ]
+      }
+    ],
+    "graphic_styles": [
+      {
+        "name": "Default Graphic Style",
+        "appearance": {
+          "items": [
+            {
+              "kind": "fill",
+              "paint": {
+                "type": "solid",
+                "color": {
+                  "model": "rgb",
+                  "r": 1.0,
+                  "g": 1.0,
+                  "b": 1.0
+                }
+              }
+            },
+            {
+              "kind": "stroke",
+              "paint": {
+                "type": "solid",
+                "color": {
+                  "model": "rgb",
+                  "r": 0.0,
+                  "g": 0.0,
+                  "b": 0.0
+                }
+              },
+              "width": 1.0
+            }
+          ]
+        },
+        "id": 1,
+        "unit_box": true
+      },
+      {
+        "name": "Black Outline",
+        "appearance": {
+          "items": [
+            {
+              "kind": "fill",
+              "paint": {
+                "type": "none"
+              }
+            },
+            {
+              "kind": "stroke",
+              "paint": {
+                "type": "solid",
+                "color": {
+                  "model": "rgb",
+                  "r": 0.0,
+                  "g": 0.0,
+                  "b": 0.0
+                }
+              },
+              "width": 1.0
+            }
+          ]
+        },
+        "id": 2,
+        "unit_box": true
+      },
+      {
+        "name": "Heavy Ink",
+        "appearance": {
+          "items": [
+            {
+              "kind": "fill",
+              "paint": {
+                "type": "solid",
+                "color": {
+                  "model": "rgb",
+                  "r": 0.105882354,
+                  "g": 0.078431375,
+                  "b": 0.39215687
+                }
+              }
+            },
+            {
+              "kind": "stroke",
+              "paint": {
+                "type": "solid",
+                "color": {
+                  "model": "rgb",
+                  "r": 0.0,
+                  "g": 0.0,
+                  "b": 0.0
+                }
+              },
+              "width": 4.0
+            }
+          ]
+        },
+        "id": 3,
+        "unit_box": true
+      },
+      {
+        "name": "Sunshine",
+        "appearance": {
+          "items": [
+            {
+              "kind": "fill",
+              "paint": {
+                "type": "solid",
+                "color": {
+                  "model": "rgb",
+                  "r": 0.9843137,
+                  "g": 0.6901961,
+                  "b": 0.23137255
+                }
+              }
+            },
+            {
+              "kind": "stroke",
+              "paint": {
+                "type": "solid",
+                "color": {
+                  "model": "rgb",
+                  "r": 0.94509804,
+                  "g": 0.3529412,
+                  "b": 0.14117648
+                }
+              },
+              "width": 2.0
+            }
+          ]
+        },
+        "id": 4,
+        "unit_box": true
+      }
+    ],
+    "symbols": [],
+    "guides": [],
+    "grid": {
+      "spacing": 72.0,
+      "subdivisions": 8
+    },
+    "raster_effects_ppi": 72.0,
+    "images": {},
+    "next_id": 61,
+    "metadata": {
+      "author": "",
+      "authorTitle": "",
+      "description": "",
+      "keywords": [],
+      "rating": 0,
+      "copyrightStatus": "unknown",
+      "copyrightNotice": "",
+      "copyrightUrl": "",
+      "created": 1792322729,
+      "modified": 1792323375
+    },
+    "layers_open": [
+      1
+    ]
+  },
+  "images": {}
+}
